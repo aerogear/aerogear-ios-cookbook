@@ -1,0 +1,7 @@
+xcodeproj 'AeroGear-OTP-Demo.xcodeproj'
+
+platform :ios, '5.0'
+
+pod 'AeroGear-OTP', '1.0.0.M1.20121124'
+pod 'AFNetworking', '1.0RC1'
+pod 'SVProgressHUD', '0.8'
