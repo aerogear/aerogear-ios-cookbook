@@ -24,6 +24,7 @@
 #import "SVProgressHUD.h"
 
 #import "AGTotp.h"
+#import "AGBase32.h"
 
 @implementation AGOTPViewController {
     NSString *_secret;
@@ -51,11 +52,12 @@
                                        NSString *uri = [response objectForKey:@"uri"];
                                        NSRange start = [uri rangeOfString:@"="];
                                        _secret = [uri substringFromIndex:start.location+1];
-                                       NSLog(@"%@", _secret);
+
                                        // initialize OTP
-                                       _totp = [[AGTotp alloc] initWithSecret:[_secret dataUsingEncoding:NSASCIIStringEncoding]];
+                                       _totp = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:_secret]];
+                                       
                                        // generate token
-                                       self.otp.text = [_totp now:[NSDate date]];
+                                       self.otp.text = [_totp generateOTP];
 
                                        [self startTimer];
                                        
@@ -87,8 +89,14 @@
 
                                        NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
                                        
-                                       NSLog(@"%@", text);
-
+                                       if ([text rangeOfString:@"Otp Logged in"].location == NSNotFound) {
+                                           self.status.text =@"Failed!";
+                                           self.status.textColor = [UIColor redColor];
+                                       } else {
+                                           self.status.text =@"Success!";
+                                           self.status.textColor = [UIColor greenColor];
+                                       }
+                                       
                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                        [SVProgressHUD dismiss];
                                        
@@ -121,7 +129,7 @@
     secs--;
     
     if (secs == 0) {
-        self.otp.text = [_totp now:[NSDate date]];
+        self.otp.text = [_totp generateOTP];
         secs = 30;
     }
     
@@ -137,13 +145,11 @@
                                                         repeats:YES];
 }
 
-- (void)stopTimer {
-    if (_timer == nil)
-        return;
-    
-    self.timer.text = @"";
-    
-    [_updateTokenTimer invalidate];
+#pragma mark - UITextField delegate methods
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [self.otp resignFirstResponder];
+    return YES;
 }
 
 @end

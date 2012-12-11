@@ -18,7 +18,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AGOTPViewController : UIViewController
+@interface AGOTPViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *otp;
 @property (weak, nonatomic) IBOutlet UILabel *timer;
