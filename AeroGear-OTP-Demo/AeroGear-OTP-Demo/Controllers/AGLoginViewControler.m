@@ -54,7 +54,7 @@
           
           [delegate transitionToViewController:otpController withTransition:UIViewAnimationOptionTransitionFlipFromRight];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"\n%@\n", error);
+        //NSLog(@"\n%@\n", error);
         [SVProgressHUD dismiss];
     }];
 }
