@@ -37,7 +37,7 @@
 
 - (IBAction)buttonPressed:(id)sender {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.username.text, @"aeroGearUser.id",
+                            self.username.text, @"aeroGearUser.username",
                             self.password.text, @"aeroGearUser.password",
                             nil];
     
