@@ -21,13 +21,16 @@
 		6F8075F3166E122A003CF5DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8075CD166E122A003CF5DB /* UIKit.framework */; };
 		6F8075F4166E122A003CF5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8075CF166E122A003CF5DB /* Foundation.framework */; };
 		6F8075FC166E122A003CF5DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F8075FA166E122A003CF5DB /* InfoPlist.strings */; };
-		6F8075FF166E122A003CF5DB /* AeroGear_OTP_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8075FE166E122A003CF5DB /* AeroGear_OTP_DemoTests.m */; };
 		6F80762B166E6708003CF5DB /* AGLoginViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F807629166E6708003CF5DB /* AGLoginViewControler.m */; };
 		6F80762C166E6708003CF5DB /* AGLoginViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F80762A166E6708003CF5DB /* AGLoginViewControler.xib */; };
 		6F80762E166E6739003CF5DB /* aerogear_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F80762D166E6739003CF5DB /* aerogear_logo.png */; };
 		6F80763F166E6F6A003CF5DB /* AGOTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F80763E166E6F6A003CF5DB /* AGOTPClient.m */; };
 		6F807645166E78D7003CF5DB /* AGOTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F807643166E78D7003CF5DB /* AGOTPViewController.m */; };
 		6F807646166E78D7003CF5DB /* AGOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F807644166E78D7003CF5DB /* AGOTPViewController.xib */; };
+		DD8CAD0316D385C3002B07F3 /* AGLoginViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8CAD0216D385C3002B07F3 /* AGLoginViewControllerTest.m */; };
+		DD8CAD1316D39823002B07F3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CAD1216D39823002B07F3 /* libPods.a */; };
+		DD8CAD1416D3A02E002B07F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8075D1166E122A003CF5DB /* CoreGraphics.framework */; };
+		DD8CAD1716D3CA09002B07F3 /* AGOTPViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8CAD1616D3CA09002B07F3 /* AGOTPViewControllerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +62,6 @@
 		6F8075F1166E122A003CF5DB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F8075F9166E122A003CF5DB /* AeroGear-OTP-DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AeroGear-OTP-DemoTests-Info.plist"; sourceTree = "<group>"; };
 		6F8075FB166E122A003CF5DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6F8075FD166E122A003CF5DB /* AeroGear_OTP_DemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AeroGear_OTP_DemoTests.h; sourceTree = "<group>"; };
-		6F8075FE166E122A003CF5DB /* AeroGear_OTP_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AeroGear_OTP_DemoTests.m; sourceTree = "<group>"; };
 		6F807628166E6708003CF5DB /* AGLoginViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewControler.h; path = Controllers/AGLoginViewControler.h; sourceTree = "<group>"; };
 		6F807629166E6708003CF5DB /* AGLoginViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewControler.m; path = Controllers/AGLoginViewControler.m; sourceTree = "<group>"; };
 		6F80762A166E6708003CF5DB /* AGLoginViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AGLoginViewControler.xib; path = Controllers/AGLoginViewControler.xib; sourceTree = "<group>"; };
@@ -70,6 +71,9 @@
 		6F807642166E78D7003CF5DB /* AGOTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGOTPViewController.h; path = Controllers/AGOTPViewController.h; sourceTree = "<group>"; };
 		6F807643166E78D7003CF5DB /* AGOTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGOTPViewController.m; path = Controllers/AGOTPViewController.m; sourceTree = "<group>"; };
 		6F807644166E78D7003CF5DB /* AGOTPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AGOTPViewController.xib; path = Controllers/AGOTPViewController.xib; sourceTree = "<group>"; };
+		DD8CAD0216D385C3002B07F3 /* AGLoginViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGLoginViewControllerTest.m; sourceTree = "<group>"; };
+		DD8CAD1216D39823002B07F3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		DD8CAD1616D3CA09002B07F3 /* AGOTPViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGOTPViewControllerTest.m; sourceTree = "<group>"; };
 		F6602F847A80491583AD08B5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -89,9 +93,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD8CAD1416D3A02E002B07F3 /* CoreGraphics.framework in Frameworks */,
 				6F8075F2166E122A003CF5DB /* SenTestingKit.framework in Frameworks */,
 				6F8075F3166E122A003CF5DB /* UIKit.framework in Frameworks */,
 				6F8075F4166E122A003CF5DB /* Foundation.framework in Frameworks */,
+				DD8CAD1316D39823002B07F3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +107,7 @@
 		6F8075BE166E122A003CF5DB = {
 			isa = PBXGroup;
 			children = (
+				DD8CAD1216D39823002B07F3 /* libPods.a */,
 				6F8075D3166E122A003CF5DB /* AeroGear-OTP-Demo */,
 				6F8075DC166E122A003CF5DB /* AGAppDelegate.h */,
 				6F8075DD166E122A003CF5DB /* AGAppDelegate.m */,
@@ -160,9 +167,9 @@
 		6F8075F7166E122A003CF5DB /* AeroGear-OTP-DemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F8075FD166E122A003CF5DB /* AeroGear_OTP_DemoTests.h */,
-				6F8075FE166E122A003CF5DB /* AeroGear_OTP_DemoTests.m */,
 				6F8075F8166E122A003CF5DB /* Supporting Files */,
+				DD8CAD0216D385C3002B07F3 /* AGLoginViewControllerTest.m */,
+				DD8CAD1616D3CA09002B07F3 /* AGOTPViewControllerTest.m */,
 			);
 			path = "AeroGear-OTP-DemoTests";
 			sourceTree = "<group>";
@@ -346,7 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F8075FF166E122A003CF5DB /* AeroGear_OTP_DemoTests.m in Sources */,
+				DD8CAD0316D385C3002B07F3 /* AGLoginViewControllerTest.m in Sources */,
+				DD8CAD1716D3CA09002B07F3 /* AGOTPViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +466,7 @@
 		};
 		6F807606166E122A003CF5DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6602F847A80491583AD08B5 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroGear-OTP-Demo.app/AeroGear-OTP-Demo";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -475,6 +484,7 @@
 		};
 		6F807607166E122A003CF5DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6602F847A80491583AD08B5 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroGear-OTP-Demo.app/AeroGear-OTP-Demo";
 				FRAMEWORK_SEARCH_PATHS = (
