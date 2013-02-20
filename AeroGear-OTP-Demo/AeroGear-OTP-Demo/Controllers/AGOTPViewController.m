@@ -18,6 +18,7 @@
 #import "AGOTPViewController.h"
 #import "AGLoginViewControler.h"
 #import "AGAppDelegate.h"
+#import "JSONKit.h"
 
 #import "AGOTPClient.h"
 #import "SVProgressHUD.h"
@@ -87,8 +88,8 @@
                                        [SVProgressHUD dismiss];
 
                                        NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-                                       
-                                       if ([text rangeOfString:@"Otp Logged in"].location == NSNotFound) {
+                                       NSDictionary *userJson = [text objectFromJSONString];
+                                       if ([userJson objectForKey:@"otp"] == nil) {
                                            self.status.text =@"Failed!";
                                            self.status.textColor = [UIColor redColor];
                                        } else {

@@ -17,7 +17,8 @@
 
 #import "AGOTPClient.h"
 
-#define AGControllerBaseURL @"http://controller-aerogear.rhcloud.com/"
+//#define AGControllerBaseURL @"http://controller-aerogear.rhcloud.com/"
+#define AGControllerBaseURL @"http://localhost:8080/"
 
 @implementation AGOTPClient
 
@@ -35,6 +36,7 @@
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
+        [self setDefaultHeader:@"Accept" value:@"application/json"];
         /*
         //custom settings
         [self setDefaultHeader:@"x-api-token" value:BeersAPIToken];

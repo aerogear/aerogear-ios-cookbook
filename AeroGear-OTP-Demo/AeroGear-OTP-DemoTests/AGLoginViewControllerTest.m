@@ -43,7 +43,7 @@
     assertThat([[loginViewController password] text], is(@"123"));
 }
 
--(void)testLoginButtonAction
+-(void)testLoginButtonActionIsConnected
 {
     UIButton *loginButton = [loginViewController login];
     NSArray *actions = [loginButton actionsForTarget:loginViewController forControlEvent:UIControlEventTouchUpInside];
