@@ -18,7 +18,6 @@
 #import "AGOTPViewController.h"
 #import "AGLoginViewControler.h"
 #import "AGAppDelegate.h"
-#import "JSONKit.h"
 
 #import "AGOTPClient.h"
 #import "SVProgressHUD.h"
@@ -87,8 +86,8 @@
                                    success:^(AFHTTPRequestOperation *operation, id response) {
                                        [SVProgressHUD dismiss];
 
-                                       NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-                                       NSDictionary *userJson = [text objectFromJSONString];
+                                       NSError *jsonParsingError = nil;
+                                       NSDictionary *userJson = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonParsingError];
                                        if ([userJson objectForKey:@"otp"] == nil) {
                                            self.status.text =@"Failed!";
                                            self.status.textColor = [UIColor redColor];
