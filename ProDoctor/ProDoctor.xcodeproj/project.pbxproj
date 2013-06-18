@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		481BE86E176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
+		481BE870176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
+		481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE871176F155A00960BDF /* CoreGraphics.framework */; };
+		481BE878176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE876176F155A00960BDF /* InfoPlist.strings */; };
+		481BE87A176F155A00960BDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE879176F155A00960BDF /* main.m */; };
+		481BE87E176F155A00960BDF /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE87D176F155A00960BDF /* AGAppDelegate.m */; };
+		481BE880176F155A00960BDF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE87F176F155A00960BDF /* Default.png */; };
+		481BE882176F155A00960BDF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE881176F155A00960BDF /* Default@2x.png */; };
+		481BE884176F155A00960BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE883176F155A00960BDF /* Default-568h@2x.png */; };
+		481BE886176F155A00960BDF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 481BE885176F155A00960BDF /* Podfile */; };
+		481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE889176F155A00960BDF /* ProDoctorAPIClient.m */; };
+		481BE88E176F155A00960BDF /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE88D176F155A00960BDF /* AGViewController.m */; };
+		481BE890176F155A00960BDF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 481BE88F176F155A00960BDF /* .gitignore */; };
+		481BE898176F155A00960BDF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE897176F155A00960BDF /* SenTestingKit.framework */; };
+		481BE899176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
+		481BE89A176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
+		481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE8A0176F155A00960BDF /* InfoPlist.strings */; };
+		481BE8A5176F155A00960BDF /* ProDoctorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE8A4176F155A00960BDF /* ProDoctorTests.m */; };
+		481BE900176F2D4200960BDF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE8FF176F2D4200960BDF /* AGLoginViewController.m */; };
+		481BE902176F3DFE00960BDF /* heart_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE901176F3DFE00960BDF /* heart_tool.png */; };
+		489EB59C176F5F0600617642 /* prodoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB59B176F5F0600617642 /* prodoctor.png */; };
+		489EB5A4176F636100617642 /* heart57*57.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A3176F636100617642 /* heart57*57.png */; };
+		489EB5A6176F63E200617642 /* heart114*114.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A5176F63E200617642 /* heart114*114.png */; };
+		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		481BE89B176F155A00960BDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481BE862176F155900960BDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 481BE869176F155A00960BDF;
+			remoteInfo = ProDoctor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3ED1957D45914DBAA7632452 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE86A176F155A00960BDF /* ProDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE86D176F155A00960BDF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		481BE86F176F155A00960BDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		481BE871176F155A00960BDF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		481BE875176F155A00960BDF /* ProDoctor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProDoctor-Info.plist"; sourceTree = "<group>"; };
+		481BE877176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		481BE879176F155A00960BDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		481BE87B176F155A00960BDF /* ProDoctor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProDoctor-Prefix.pch"; sourceTree = "<group>"; };
+		481BE87C176F155A00960BDF /* AGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGAppDelegate.h; sourceTree = "<group>"; };
+		481BE87D176F155A00960BDF /* AGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGAppDelegate.m; sourceTree = "<group>"; };
+		481BE87F176F155A00960BDF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		481BE881176F155A00960BDF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		481BE883176F155A00960BDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		481BE885176F155A00960BDF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
+		481BE888176F155A00960BDF /* ProDoctorAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProDoctorAPIClient.h; path = Classes/Networking/ProDoctorAPIClient.h; sourceTree = "<group>"; };
+		481BE889176F155A00960BDF /* ProDoctorAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProDoctorAPIClient.m; path = Classes/Networking/ProDoctorAPIClient.m; sourceTree = "<group>"; };
+		481BE88C176F155A00960BDF /* AGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AGViewController.h; path = Classes/Controllers/AGViewController.h; sourceTree = "<group>"; };
+		481BE88D176F155A00960BDF /* AGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AGViewController.m; path = Classes/Controllers/AGViewController.m; sourceTree = "<group>"; };
+		481BE88F176F155A00960BDF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		481BE896176F155A00960BDF /* ProDoctorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProDoctorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE897176F155A00960BDF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		481BE89F176F155A00960BDF /* ProDoctorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProDoctorTests-Info.plist"; sourceTree = "<group>"; };
+		481BE8A1176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		481BE8A3176F155A00960BDF /* ProDoctorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProDoctorTests.h; sourceTree = "<group>"; };
+		481BE8A4176F155A00960BDF /* ProDoctorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProDoctorTests.m; sourceTree = "<group>"; };
+		481BE8FE176F2D4200960BDF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = Classes/Controllers/AGLoginViewController.h; sourceTree = "<group>"; };
+		481BE8FF176F2D4200960BDF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = Classes/Controllers/AGLoginViewController.m; sourceTree = "<group>"; };
+		481BE901176F3DFE00960BDF /* heart_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart_tool.png; path = Resources/images/heart_tool.png; sourceTree = "<group>"; };
+		489EB59B176F5F0600617642 /* prodoctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prodoctor.png; path = Resources/images/prodoctor.png; sourceTree = "<group>"; };
+		489EB5A3176F636100617642 /* heart57*57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart57*57.png"; path = "../heart57*57.png"; sourceTree = "<group>"; };
+		489EB5A5176F63E200617642 /* heart114*114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart114*114.png"; path = "Resources/images/heart114*114.png"; sourceTree = "<group>"; };
+		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		481BE867176F155A00960BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE86E176F155A00960BDF /* UIKit.framework in Frameworks */,
+				481BE870176F155A00960BDF /* Foundation.framework in Frameworks */,
+				481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */,
+				CCB432686BC74882B5C55932 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE892176F155A00960BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE898176F155A00960BDF /* SenTestingKit.framework in Frameworks */,
+				481BE899176F155A00960BDF /* UIKit.framework in Frameworks */,
+				481BE89A176F155A00960BDF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		481BE861176F155900960BDF = {
+			isa = PBXGroup;
+			children = (
+				481BE873176F155A00960BDF /* ProDoctor */,
+				481BE89D176F155A00960BDF /* ProDoctorTests */,
+				481BE86C176F155A00960BDF /* Frameworks */,
+				481BE86B176F155A00960BDF /* Products */,
+				71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		481BE86B176F155A00960BDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				481BE86A176F155A00960BDF /* ProDoctor.app */,
+				481BE896176F155A00960BDF /* ProDoctorTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		481BE86C176F155A00960BDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				481BE86D176F155A00960BDF /* UIKit.framework */,
+				481BE86F176F155A00960BDF /* Foundation.framework */,
+				481BE871176F155A00960BDF /* CoreGraphics.framework */,
+				481BE897176F155A00960BDF /* SenTestingKit.framework */,
+				3ED1957D45914DBAA7632452 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		481BE873176F155A00960BDF /* ProDoctor */ = {
+			isa = PBXGroup;
+			children = (
+				481BE87C176F155A00960BDF /* AGAppDelegate.h */,
+				481BE87D176F155A00960BDF /* AGAppDelegate.m */,
+				481BE885176F155A00960BDF /* Podfile */,
+				481BE88F176F155A00960BDF /* .gitignore */,
+				481BE887176F155A00960BDF /* Networking */,
+				481BE88B176F155A00960BDF /* Controllers */,
+				481BE874176F155A00960BDF /* Supporting Files */,
+			);
+			path = ProDoctor;
+			sourceTree = "<group>";
+		};
+		481BE874176F155A00960BDF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				481BE875176F155A00960BDF /* ProDoctor-Info.plist */,
+				481BE876176F155A00960BDF /* InfoPlist.strings */,
+				481BE879176F155A00960BDF /* main.m */,
+				481BE87B176F155A00960BDF /* ProDoctor-Prefix.pch */,
+				481BE901176F3DFE00960BDF /* heart_tool.png */,
+				489EB5A3176F636100617642 /* heart57*57.png */,
+				489EB5A5176F63E200617642 /* heart114*114.png */,
+				489EB59B176F5F0600617642 /* prodoctor.png */,
+				481BE87F176F155A00960BDF /* Default.png */,
+				481BE881176F155A00960BDF /* Default@2x.png */,
+				481BE883176F155A00960BDF /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		481BE887176F155A00960BDF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				481BE888176F155A00960BDF /* ProDoctorAPIClient.h */,
+				481BE889176F155A00960BDF /* ProDoctorAPIClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		481BE88B176F155A00960BDF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				481BE8FE176F2D4200960BDF /* AGLoginViewController.h */,
+				481BE8FF176F2D4200960BDF /* AGLoginViewController.m */,
+				481BE88C176F155A00960BDF /* AGViewController.h */,
+				481BE88D176F155A00960BDF /* AGViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		481BE89D176F155A00960BDF /* ProDoctorTests */ = {
+			isa = PBXGroup;
+			children = (
+				481BE8A3176F155A00960BDF /* ProDoctorTests.h */,
+				481BE8A4176F155A00960BDF /* ProDoctorTests.m */,
+				481BE89E176F155A00960BDF /* Supporting Files */,
+			);
+			path = ProDoctorTests;
+			sourceTree = "<group>";
+		};
+		481BE89E176F155A00960BDF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				481BE89F176F155A00960BDF /* ProDoctorTests-Info.plist */,
+				481BE8A0176F155A00960BDF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		481BE869176F155A00960BDF /* ProDoctor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctor" */;
+			buildPhases = (
+				5514BACBE1264F0CBDC066B7 /* Check Pods Manifest.lock */,
+				481BE866176F155A00960BDF /* Sources */,
+				481BE867176F155A00960BDF /* Frameworks */,
+				481BE868176F155A00960BDF /* Resources */,
+				886BF5EE0EEE49A9BC50E39D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProDoctor;
+			productName = ProDoctor;
+			productReference = 481BE86A176F155A00960BDF /* ProDoctor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		481BE895176F155A00960BDF /* ProDoctorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctorTests" */;
+			buildPhases = (
+				481BE891176F155A00960BDF /* Sources */,
+				481BE892176F155A00960BDF /* Frameworks */,
+				481BE893176F155A00960BDF /* Resources */,
+				481BE894176F155A00960BDF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				481BE89C176F155A00960BDF /* PBXTargetDependency */,
+			);
+			name = ProDoctorTests;
+			productName = ProDoctorTests;
+			productReference = 481BE896176F155A00960BDF /* ProDoctorTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		481BE862176F155900960BDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AG;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = AeroGear;
+			};
+			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "ProDoctor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 481BE861176F155900960BDF;
+			productRefGroup = 481BE86B176F155A00960BDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				481BE869176F155A00960BDF /* ProDoctor */,
+				481BE895176F155A00960BDF /* ProDoctorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		481BE868176F155A00960BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE878176F155A00960BDF /* InfoPlist.strings in Resources */,
+				481BE880176F155A00960BDF /* Default.png in Resources */,
+				481BE882176F155A00960BDF /* Default@2x.png in Resources */,
+				481BE884176F155A00960BDF /* Default-568h@2x.png in Resources */,
+				481BE886176F155A00960BDF /* Podfile in Resources */,
+				481BE890176F155A00960BDF /* .gitignore in Resources */,
+				481BE902176F3DFE00960BDF /* heart_tool.png in Resources */,
+				489EB59C176F5F0600617642 /* prodoctor.png in Resources */,
+				489EB5A4176F636100617642 /* heart57*57.png in Resources */,
+				489EB5A6176F63E200617642 /* heart114*114.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE893176F155A00960BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		481BE894176F155A00960BDF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		5514BACBE1264F0CBDC066B7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		886BF5EE0EEE49A9BC50E39D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		481BE866176F155A00960BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE87A176F155A00960BDF /* main.m in Sources */,
+				481BE87E176F155A00960BDF /* AGAppDelegate.m in Sources */,
+				481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */,
+				481BE88E176F155A00960BDF /* AGViewController.m in Sources */,
+				481BE900176F2D4200960BDF /* AGLoginViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE891176F155A00960BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE8A5176F155A00960BDF /* ProDoctorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		481BE89C176F155A00960BDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 481BE869176F155A00960BDF /* ProDoctor */;
+			targetProxy = 481BE89B176F155A00960BDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		481BE876176F155A00960BDF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				481BE877176F155A00960BDF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		481BE8A0176F155A00960BDF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				481BE8A1176F155A00960BDF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		481BE8A6176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		481BE8A7176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		481BE8A9176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
+				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		481BE8AA176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
+				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		481BE8AC176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProDoctor.app/ProDoctor";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
+				INFOPLIST_FILE = "ProDoctorTests/ProDoctorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		481BE8AD176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProDoctor.app/ProDoctor";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
+				INFOPLIST_FILE = "ProDoctorTests/ProDoctorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		481BE865176F155900960BDF /* Build configuration list for PBXProject "ProDoctor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8A6176F155A00960BDF /* Debug */,
+				481BE8A7176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8A9176F155A00960BDF /* Debug */,
+				481BE8AA176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8AC176F155A00960BDF /* Debug */,
+				481BE8AD176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 481BE862176F155900960BDF /* Project object */;
+}
