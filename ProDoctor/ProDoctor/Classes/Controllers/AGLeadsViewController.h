@@ -6,6 +6,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AGViewController : UITableViewController
+@interface AGLeadsViewController : UITableViewController
 
 @end

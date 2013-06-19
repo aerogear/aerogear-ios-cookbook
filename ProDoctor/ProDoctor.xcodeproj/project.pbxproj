@@ -18,7 +18,7 @@
 		481BE884176F155A00960BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE883176F155A00960BDF /* Default-568h@2x.png */; };
 		481BE886176F155A00960BDF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 481BE885176F155A00960BDF /* Podfile */; };
 		481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE889176F155A00960BDF /* ProDoctorAPIClient.m */; };
-		481BE88E176F155A00960BDF /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE88D176F155A00960BDF /* AGViewController.m */; };
+		481BE88E176F155A00960BDF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE88D176F155A00960BDF /* AGLeadsViewController.m */; };
 		481BE890176F155A00960BDF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 481BE88F176F155A00960BDF /* .gitignore */; };
 		481BE898176F155A00960BDF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE897176F155A00960BDF /* SenTestingKit.framework */; };
 		481BE899176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
@@ -30,6 +30,7 @@
 		489EB59C176F5F0600617642 /* prodoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB59B176F5F0600617642 /* prodoctor.png */; };
 		489EB5A4176F636100617642 /* heart57*57.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A3176F636100617642 /* heart57*57.png */; };
 		489EB5A6176F63E200617642 /* heart114*114.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A5176F63E200617642 /* heart114*114.png */; };
+		48E07C0C1771E35F00043C05 /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E07C0B1771E35F00043C05 /* AGLead.m */; };
 		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +62,8 @@
 		481BE885176F155A00960BDF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		481BE888176F155A00960BDF /* ProDoctorAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProDoctorAPIClient.h; path = Classes/Networking/ProDoctorAPIClient.h; sourceTree = "<group>"; };
 		481BE889176F155A00960BDF /* ProDoctorAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProDoctorAPIClient.m; path = Classes/Networking/ProDoctorAPIClient.m; sourceTree = "<group>"; };
-		481BE88C176F155A00960BDF /* AGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AGViewController.h; path = Classes/Controllers/AGViewController.h; sourceTree = "<group>"; };
-		481BE88D176F155A00960BDF /* AGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AGViewController.m; path = Classes/Controllers/AGViewController.m; sourceTree = "<group>"; };
+		481BE88C176F155A00960BDF /* AGLeadsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AGLeadsViewController.h; path = Classes/Controllers/AGLeadsViewController.h; sourceTree = "<group>"; };
+		481BE88D176F155A00960BDF /* AGLeadsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = Classes/Controllers/AGLeadsViewController.m; sourceTree = "<group>"; };
 		481BE88F176F155A00960BDF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		481BE896176F155A00960BDF /* ProDoctorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProDoctorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		481BE897176F155A00960BDF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -76,6 +77,8 @@
 		489EB59B176F5F0600617642 /* prodoctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prodoctor.png; path = Resources/images/prodoctor.png; sourceTree = "<group>"; };
 		489EB5A3176F636100617642 /* heart57*57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart57*57.png"; path = "../heart57*57.png"; sourceTree = "<group>"; };
 		489EB5A5176F63E200617642 /* heart114*114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart114*114.png"; path = "Resources/images/heart114*114.png"; sourceTree = "<group>"; };
+		48E07C0A1771E35F00043C05 /* AGLead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLead.h; path = Classes/Model/AGLead.h; sourceTree = "<group>"; };
+		48E07C0B1771E35F00043C05 /* AGLead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLead.m; path = Classes/Model/AGLead.m; sourceTree = "<group>"; };
 		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -139,6 +142,7 @@
 		481BE873176F155A00960BDF /* ProDoctor */ = {
 			isa = PBXGroup;
 			children = (
+				48E07C091771E31F00043C05 /* Model */,
 				481BE87C176F155A00960BDF /* AGAppDelegate.h */,
 				481BE87D176F155A00960BDF /* AGAppDelegate.m */,
 				481BE885176F155A00960BDF /* Podfile */,
@@ -182,8 +186,8 @@
 			children = (
 				481BE8FE176F2D4200960BDF /* AGLoginViewController.h */,
 				481BE8FF176F2D4200960BDF /* AGLoginViewController.m */,
-				481BE88C176F155A00960BDF /* AGViewController.h */,
-				481BE88D176F155A00960BDF /* AGViewController.m */,
+				481BE88C176F155A00960BDF /* AGLeadsViewController.h */,
+				481BE88D176F155A00960BDF /* AGLeadsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +209,15 @@
 				481BE8A0176F155A00960BDF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48E07C091771E31F00043C05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48E07C0A1771E35F00043C05 /* AGLead.h */,
+				48E07C0B1771E35F00043C05 /* AGLead.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,8 +369,9 @@
 				481BE87A176F155A00960BDF /* main.m in Sources */,
 				481BE87E176F155A00960BDF /* AGAppDelegate.m in Sources */,
 				481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */,
-				481BE88E176F155A00960BDF /* AGViewController.m in Sources */,
+				481BE88E176F155A00960BDF /* AGLeadsViewController.m in Sources */,
 				481BE900176F2D4200960BDF /* AGLoginViewController.m in Sources */,
+				48E07C0C1771E35F00043C05 /* AGLead.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
 				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -476,6 +491,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
 				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

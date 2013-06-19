@@ -5,12 +5,13 @@
 //
 
 #import "ProDoctorAPIClient.h"
+#import "AGLead.h"
 
 static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/prodoctor/";
 
 @implementation ProDoctorAPIClient
 
-@synthesize tasksPipe = _tasksPipe;
+@synthesize leadsPipe = _leadsPipe;
 
 + (ProDoctorAPIClient *)sharedInstance {
     static ProDoctorAPIClient *_sharedInstance = nil;
@@ -36,7 +37,7 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/pro
     AGAuthenticator *authenticator = [AGAuthenticator authenticator];
 
     // request the default 'AeroGear' authentication module from 'Authenticator'
-    id<AGAuthenticationModule> todoAuthMod = [authenticator auth:^(id<AGAuthConfig> config) {
+    id<AGAuthenticationModule> authMod = [authenticator auth:^(id<AGAuthConfig> config) {
         [config setName:@"todoAuthMod"]; // assign it a name
         [config setBaseURL:baseURL]; // the base url to authenticate to
         [config setType:@"AG_SECURITY"]; // can be omitted as 'AG_SECURITY' is the default auth module
@@ -44,14 +45,14 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/pro
     }];
 
     // login to the service
-    [todoAuthMod login:username password:password success:^(id object) {
+    [authMod login:username password:password success:^(id object) {
         // if successfully logged in, it is time to construct our pipes.
         // Note that we assign the authentication module we
         // created earlier, so every request can be properly
         // authenticated against the remote endpoints.
-        _tasksPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"tasks"];
-            [config setAuthModule:todoAuthMod];
+        _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
+            [config setName:@"leads"];
+            [config setAuthModule:authMod];
             
         }];
 
@@ -61,6 +62,26 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/pro
         success();
 
     } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)fetchLeads:(void (^)(NSMutableArray *leads))success
+           failure:(void (^)(NSError *error))failure {
+    
+    [_leadsPipe read:^(id responseObject) {
+        NSMutableArray *leads = [NSMutableArray array];
+        
+        for (id leadDict in responseObject) {
+            AGLead *lead = [[AGLead alloc] initWithDictionary:leadDict];
+            
+            [leads addObject:lead];
+        }
+        
+        success(leads);
+        
+    } failure:^(NSError *error) {
+        
         failure(error);
     }];
 }

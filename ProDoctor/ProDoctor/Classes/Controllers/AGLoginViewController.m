@@ -17,7 +17,7 @@
 
 #import "AGLoginViewController.h"
 
-#import "AGViewController.h"
+#import "AGLeadsViewController.h"
 #import "ProDoctorAPIClient.h"
 
 //#import "AGRegisterUserViewController.h"
@@ -121,14 +121,21 @@
     [apiClient loginWithUsername:_username.text password:_password.text success:^{
         
         // logged in successfully
+        DLog(@"Sucessussfully logged");
+        
+        
+        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+        //navController.toolbarHidden = NO;
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [self presentModalViewController:navController animated:YES];
         
         // time to retrieve remote data
-        [[apiClient tasksPipe] read:^(id responseObject) {
-            // update our model
-            //_tasks = responseObject;
+        [[apiClient leadsPipe] read:^(id responseObject) {
+            DLog(@"Sucessussfully retrieved Leads");
+
             
-            // instruct table to refresh view
-            //[self.tableView reloadData];
+            
             
         } failure:^(NSError *error) {
             ALog(@"An error has occured during read! \n%@", error);

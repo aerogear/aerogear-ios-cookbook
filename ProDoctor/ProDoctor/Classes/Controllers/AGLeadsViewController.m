@@ -4,43 +4,31 @@
 //  See Project's web site for more details http://www.aerogear.org
 //
 
-#import "AGViewController.h"
+#import "AGLeadsViewController.h"
 #import "ProDoctorAPIClient.h"
+#import "AGLead.h"
 
-@implementation AGViewController {
-    NSArray *_tasks;
+@implementation AGLeadsViewController {
+    NSArray *_leads;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"Tasks";
-
-    // access the singleton instance that holds our pipes
-    ProDoctorAPIClient *apiClient = [ProDoctorAPIClient sharedInstance];
-
-    // first, we need to login to the service
-
-    // Note: here we use static strings but a login screen
-    // will provide the necessary authentication details.
-    [apiClient loginWithUsername:@"john" password:@"123" success:^{
-
-        // logged in successfully
-
-        // time to retrieve remote data
-        [[apiClient tasksPipe] read:^(id responseObject) {
-            // update our model
-            _tasks = responseObject;
-
-            // instruct table to refresh view
-            [self.tableView reloadData];
-
-        } failure:^(NSError *error) {
-            NSLog(@"An error has occured during read! \n%@", error);
-        }];
-
+    self.title = @"Leads";
+    [self displayLeads];
+}
+- (void) displayLeads {
+    [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
+        _leads = leads;
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
-        NSLog(@"An error has occured during login! \n%@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
     }];
 }
 
@@ -54,7 +42,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_tasks count];
+    return [_leads count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,9 +55,12 @@
     
     NSUInteger row = [indexPath row];
     
-    cell.textLabel.text = [[_tasks objectAtIndex:row] objectForKey:@"title"];
+    AGLead *lead = [_leads objectAtIndex:row];
+    cell.textLabel.text = lead.name;
     
     return cell;
 }
+
+
 
 @end

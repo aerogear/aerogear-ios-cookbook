@@ -8,9 +8,7 @@
 
 @interface ProDoctorAPIClient : NSObject
 
-// the pipes for this service
-@property(readonly, nonatomic) id<AGPipe> tasksPipe;
-// ...add your own pipes
+@property(readonly, nonatomic) id<AGPipe> leadsPipe;
 
 + (ProDoctorAPIClient *)sharedInstance;
 
@@ -18,4 +16,8 @@
                  password:(NSString *)password
                   success:(void (^)())success
                   failure:(void (^)(NSError *error))failure;
+
+- (void)fetchLeads:(void (^)(NSMutableArray *leads))success
+           failure:(void (^)(NSError *error))failure;
+
 @end
