@@ -7,11 +7,13 @@
 #import "ProDoctorAPIClient.h"
 #import "AGLead.h"
 
-static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/prodoctor/";
+static NSString * const kProDoctorAPIBaseURLString = @"http://192.168.0.13:8080/prodoctor/";
 
 @implementation ProDoctorAPIClient
 
 @synthesize leadsPipe = _leadsPipe;
+@synthesize userId = _userId;
+@synthesize loginName = _loginName;
 
 + (ProDoctorAPIClient *)sharedInstance {
     static ProDoctorAPIClient *_sharedInstance = nil;
@@ -50,6 +52,8 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://localhost:8080/pro
         // Note that we assign the authentication module we
         // created earlier, so every request can be properly
         // authenticated against the remote endpoints.
+        _userId = object[@"id"];
+        _loginName = object[@"loginName"];
         _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"leads"];
             [config setAuthModule:authMod];

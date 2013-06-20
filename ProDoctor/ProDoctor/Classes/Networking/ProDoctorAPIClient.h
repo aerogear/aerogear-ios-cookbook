@@ -9,6 +9,8 @@
 @interface ProDoctorAPIClient : NSObject
 
 @property(readonly, nonatomic) id<AGPipe> leadsPipe;
+@property(readonly, nonatomic) NSString *userId;
+@property(readonly, nonatomic) NSString *loginName;
 
 + (ProDoctorAPIClient *)sharedInstance;
 

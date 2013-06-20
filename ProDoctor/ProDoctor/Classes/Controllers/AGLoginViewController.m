@@ -19,12 +19,8 @@
 
 #import "AGLeadsViewController.h"
 #import "ProDoctorAPIClient.h"
+#import "AGDeviceRegistration.h"
 
-//#import "AGRegisterUserViewController.h"
-
-//#import "AGToDoAPIService.h"
-
-//#import "SVProgressHUD.h"
 
 @implementation AGLoginViewController {
     UIImageView *_logo;
@@ -33,6 +29,9 @@
     UITextField *_password;
     UIButton *_login;
 }
+
+@synthesize deviceToken = _deviceToken;
+@synthesize navController = _navController;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -111,58 +110,68 @@
     
     // save username/passwd for future logins
     [self save];
-    
-    //[SVProgressHUD showWithStatus:@"Logging you in..." maskType:SVProgressHUDMaskTypeGradient];
-    
     // first, we need to login to the service
     ProDoctorAPIClient *apiClient = [ProDoctorAPIClient sharedInstance];
-    // Note: here we use static strings but a login screen
-    // will provide the necessary authentication details.
     [apiClient loginWithUsername:_username.text password:_password.text success:^{
         
         // logged in successfully
         DLog(@"Sucessussfully logged");
         
         
-        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-        //navController.toolbarHidden = NO;
-        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [self presentModalViewController:navController animated:YES];
+        #if !TARGET_IPHONE_SIMULATOR
+        //--------------------------------------------------------------------
+        // Registration of actual device. 
+        //--------------------------------------------------------------------
+        AGDeviceRegistration *registration =
         
-        // time to retrieve remote data
-        [[apiClient leadsPipe] read:^(id responseObject) {
-            DLog(@"Sucessussfully retrieved Leads");
-
+        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.13:8080/ag-push/"]];
+        
+        // perform registration of this device
+        [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
+            // set up configuration parameters
             
+            // You need to fill the ID you received when performing
+            // the mobile variant registration with the server.
+            // See section "Register an iOS Variant" in the guide:
+            // http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/
+            [clientInfo setMobileVariantID:@"6f15c68f-9792-4cc6-b7c9-08206958dc15"];
             
+            // apply the deviceToken as received by Apple's Push Notification service
+            [clientInfo setDeviceToken:self.deviceToken];
+            
+            // --optional config--
+            // set some 'useful' hardware information params
+            UIDevice *currentDevice = [UIDevice currentDevice];
+            [clientInfo setAlias: [[ProDoctorAPIClient sharedInstance] loginName]];
+            [clientInfo setOperatingSystem:[currentDevice systemName]];
+            [clientInfo setOsVersion:[currentDevice systemVersion]];
+            [clientInfo setDeviceType: [currentDevice model]];
+            
+        } success:^() {
+            
+            // successfully registered!
             
         } failure:^(NSError *error) {
-            ALog(@"An error has occured during read! \n%@", error);
+            // An error occurred during registration.
+            // Let's log it for now
+            NSLog(@"PushEE registration Error: %@", error);
         }];
+        #endif        
+        
+        //--------------------------------------------------------------------
+        // Move to Leads list
+        //--------------------------------------------------------------------
+        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
+        //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+        self.navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+        self.navController.toolbarHidden = NO;
+        [self.navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [self presentModalViewController:self.navController animated:YES];
+        
         
     } failure:^(NSError *error) {
         ALog(@"An error has occured during login! \n%@", error);
     }];
-//    
-//    [AGToDoAPIService initSharedInstanceWithBaseURL:TodoServiceBaseURLString username:_username.text password:_password.text success:^{
-//        [SVProgressHUD dismiss];
-//        AGTasksViewController *tasksController = [[AGTasksViewController alloc] initWithStyle:UITableViewStylePlain];
-//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tasksController];
-//        navController.toolbarHidden = NO;
-//        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-//        [self presentModalViewController:navController animated:YES];
-//    } failure:^(NSError *error) {
-//        [SVProgressHUD dismiss];
-//        
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
-//                                                        message:[error localizedDescription]
-//                                                       delegate:nil
-//                                              cancelButtonTitle:@"Bummer"
-//                                              otherButtonTitles:nil];
-//        [alert show];
-//        
-//    }];
 }
 
 #pragma mark - UITextFieldDelegate methods

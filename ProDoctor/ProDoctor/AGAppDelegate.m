@@ -7,6 +7,7 @@
 //
 
 #import "AGLoginViewController.h"
+#import "AGLeadsViewController.h"
 #import "AGAppDelegate.h"
 
 #import "AeroGearPush.h"
@@ -24,6 +25,9 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     return YES;
 }
 
@@ -34,68 +38,40 @@
 }
 
 #pragma mark - Push Notification handling
-//
-// // Here we need to register this "Mobile Variant Instance"
-//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken 
-//{
-//    // initialize "Registration helper" object using the
-//    // base URL where the "AeroGear Unified Push Server" is running.
-//    AGDeviceRegistration *registration =
-//    
-//        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running AeroGear UnifiedPush Server #>"]];
-//    
-//    // perform registration of this device
-//    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-//        // set up configuration parameters
-//
-//        // You need to fill the ID you received when performing
-//        // the mobile variant registration with the server.
-//        // See section "Register an iOS Variant" in the guide:
-//        // http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/
-//        [clientInfo setMobileVariantID:@"<# Mobile Variant Id #>"];
-//        
-//        // apply the deviceToken as received by Apple's Push Notification service
-//        [clientInfo setDeviceToken:deviceToken];
-//
-//        // --optional config--
-//        // set some 'useful' hardware information params
-//        UIDevice *currentDevice = [UIDevice currentDevice];
-//        
-//        [clientInfo setOperatingSystem:[currentDevice systemName]];
-//        [clientInfo setOsVersion:[currentDevice systemVersion]];
-//        [clientInfo setDeviceType: [currentDevice model]];
-//
-//    } success:^() {
-//        
-//        // successfully registered!
-//
-//    } failure:^(NSError *error) {
-//        // An error occurred during registration.
-//        // Let's log it for now
-//        NSLog(@"PushEE registration Error: %@", error);
-//    }];
-//}
-//
-//// There was an error with connecting to APNs or receiving an APNs generated token for this phone!
-//- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-//    // something went wrong, while talking to APNs
-//    // for now we simply log the error
-//    NSLog(@"APNs Error: %@", error);
-//}
-//
-//// When the program is in the foreground, this callback receives the Payload of the received Push Notification message
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-//    // 'userInfo' contains information related to the remote notification.
-//    // For demo reasons, we simply read the "alert" key, from the "aps" dictionary
-//    NSString *alertValue = [userInfo valueForKeyPath:@"aps.alert"];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc]
-//                          initWithTitle: @"Custom Dialog, while Program is active"
-//                          message: alertValue
-//                          delegate: nil
-//                          cancelButtonTitle:@"OK"
-//                          otherButtonTitles:nil];
-//    [alert show];
-//}
+
+ // Here we need to register this "Mobile Variant Instance"
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken 
+{
+    [self.viewController setDeviceToken:deviceToken];
+}
+
+// There was an error with connecting to APNs or receiving an APNs generated token for this phone!
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    // something went wrong, while talking to APNs
+    // for now we simply log the error
+    NSLog(@"APNs Error: %@", error);
+}
+
+// When the program is in the foreground, this callback receives the Payload of the received Push Notification message
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // TODO
+    NSString *alertValue = userInfo[@"aps"][@"alert"];
+    
+    NSString *name = userInfo[@"name"];
+    NSString *phone = userInfo[@"phone"];
+    NSString *location = userInfo[@"location"];
+    DLog(@"Lead pushed: name=%@ location=%@ phone=%@ ", name, location, phone);
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Custom Dialog, while Program is active"
+                          message: @"Lead"
+                          delegate: nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    AGLeadsViewController *current = (AGLeadsViewController *)self.viewController.navController.visibleViewController;
+    
+    [current displayLeads];
+    [alert show];;
+}
 
 @end

@@ -9,7 +9,7 @@
 #import "AGLead.h"
 
 @implementation AGLeadsViewController {
-    NSArray *_leads;
+    NSMutableArray *_leads;
 }
 
 - (void)viewDidLoad {
@@ -61,6 +61,17 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger row = [indexPath row];
+    
+    AGLead *lead = [_leads objectAtIndex:row];
+    
+//    AGLeadViewController *taskController = [[AGLeadViewController alloc] initWithStyle:UITableViewStyleGrouped];
+//    taskController.delegate = self;
+//    taskController.task = task;
+//    taskController.hidesBottomBarWhenPushed = YES;
+//    
+//	[self.navigationController pushViewController:taskController animated:YES];
+}
 
 @end

@@ -7,5 +7,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AGLeadsViewController : UITableViewController
-
+- (void) displayLeads;
 @end
