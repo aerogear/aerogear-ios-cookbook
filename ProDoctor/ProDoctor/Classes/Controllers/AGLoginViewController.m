@@ -15,9 +15,11 @@
  * limitations under the License.
  */
 
+#import "AGConfig.h"
 #import "AGLoginViewController.h"
 
 #import "AGLeadsViewController.h"
+#import "AGMyLeadsViewController.h"
 #import "ProDoctorAPIClient.h"
 #import "AGDeviceRegistration.h"
 
@@ -31,7 +33,7 @@
 }
 
 @synthesize deviceToken = _deviceToken;
-@synthesize navController = _navController;
+@synthesize tabController = _tabController;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -42,44 +44,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     DLog(@"AGLoginViewController start viewDidLoad");
-    self.view.backgroundColor = [UIColor whiteColor];
-   
+    self.view.backgroundColor = [UIColor clearColor];
     UIImage *logoBackground = [UIImage imageNamed: @"prodoctor.png"];
     _logo = [[UIImageView alloc] initWithImage:logoBackground];
     _logo.center = CGPointMake(160, 60);
     [self.view addSubview: _logo];
-    
-    UIImage *background = [UIImage imageNamed: @"heart_tool.png"];
+
+    UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _illustration = [[UIImageView alloc] initWithImage:background];
-    _illustration.center = CGPointMake(180, 360);    
+    _illustration.center = CGPointMake(160, 360);
     [self.view addSubview: _illustration];
 
     
-    _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 120, 200, 32)];
+    _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 160, 200, 32)];
     _username.borderStyle = UITextBorderStyleRoundedRect;
     _username.placeholder = @"Username";
     _username.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _username.autocorrectionType = UITextAutocorrectionTypeNo;
     _username.delegate = self;
+    _username.backgroundColor = [UIColor clearColor];
     
-    
-    _password = [[UITextField alloc] initWithFrame:CGRectMake(55, 166, 200, 32)];
+    _password = [[UITextField alloc] initWithFrame:CGRectMake(55, 206, 200, 32)];
     _password.borderStyle = UITextBorderStyleRoundedRect;
     _password.placeholder = @"Password";
     _password.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _password.autocorrectionType = UITextAutocorrectionTypeNo;
     _password.secureTextEntry = YES;
     _password.delegate = self;
+    _password.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:_username];
     [self.view addSubview:_password];
     
-    _login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _login.frame = CGRectMake(55, 216, 200, 32);
-    [_login addTarget:self action:@selector(login:)
-        forControlEvents:UIControlEventTouchDown];
-    
-    [_login setTitle:@"Login" forState:UIControlStateNormal];
+    _login =  [self buttonWithText:@"Login"];
+    _login.frame = CGRectMake(55, 256, 200, 52);
+    _login.titleLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
+    [_login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchDown];
     
     [self.view addSubview:_login];
     
@@ -91,6 +91,24 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
+}
+
+-(UIButton*) buttonWithText:(NSString*) text
+{
+    UIImage* buttonImage = [UIImage imageNamed:@"topAndBottomRow.png"];
+    UIImage* buttonPressedImage = [UIImage imageNamed:@"topAndBottomRowSelected.png"];
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    
+    [button setTitle:text forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
+    
+    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [button setBackgroundImage:buttonPressedImage forState:UIControlStateHighlighted];
+    [button setBackgroundImage:buttonPressedImage forState:UIControlStateSelected];
+    
+    return button;
 }
 
 # pragma mark - Action Methods
@@ -117,30 +135,16 @@
         // logged in successfully
         DLog(@"Sucessussfully logged");
         
-        
         #if !TARGET_IPHONE_SIMULATOR
         //--------------------------------------------------------------------
-        // Registration of actual device. 
+        // Device Registration 
         //--------------------------------------------------------------------
-        AGDeviceRegistration *registration =
+        AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
         
-        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.13:8080/ag-push/"]];
-        
-        // perform registration of this device
         [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-            // set up configuration parameters
-            
-            // You need to fill the ID you received when performing
-            // the mobile variant registration with the server.
-            // See section "Register an iOS Variant" in the guide:
-            // http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/
-            [clientInfo setMobileVariantID:@"6f15c68f-9792-4cc6-b7c9-08206958dc15"];
-            
-            // apply the deviceToken as received by Apple's Push Notification service
+            [clientInfo setMobileVariantID:VARIANT_ID];
             [clientInfo setDeviceToken:self.deviceToken];
-            
-            // --optional config--
-            // set some 'useful' hardware information params
+
             UIDevice *currentDevice = [UIDevice currentDevice];
             [clientInfo setAlias: [[ProDoctorAPIClient sharedInstance] loginName]];
             [clientInfo setOperatingSystem:[currentDevice systemName]];
@@ -148,25 +152,32 @@
             [clientInfo setDeviceType: [currentDevice model]];
             
         } success:^() {
-            
-            // successfully registered!
-            
+            DLog(@"PushEE registration successful");
         } failure:^(NSError *error) {
-            // An error occurred during registration.
-            // Let's log it for now
-            NSLog(@"PushEE registration Error: %@", error);
+            DLog(@"PushEE registration Error: %@", error);
         }];
         #endif        
         
         //--------------------------------------------------------------------
         // Move to Leads list
         //--------------------------------------------------------------------
-        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-        //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-        self.navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-        self.navController.toolbarHidden = NO;
-        [self.navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [self presentModalViewController:self.navController animated:YES];
+        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];//initWithStyle:UITableViewStylePlain];
+        leadsController.title = @"Leads";
+        leadsController.tableView.rowHeight = 60;
+        leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+        navController.toolbarHidden = YES;
+        navController.navigationBarHidden = YES;
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+
+        AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
+        myLeadsController.title = @"My leads";
+        self.tabController = [[UITabBarController alloc] init];
+        NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsController, nil];
+        self.tabController.viewControllers = controllers;
+        
+        [self presentViewController:self.tabController animated:YES completion:^{            
+        }];
         
         
     } failure:^(NSError *error) {

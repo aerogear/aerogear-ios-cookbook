@@ -19,5 +19,5 @@
 
 @interface AGLoginViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) NSData *deviceToken;
-@property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic) UITabBarController *tabController;
 @end

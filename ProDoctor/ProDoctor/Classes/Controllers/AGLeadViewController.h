@@ -15,20 +15,19 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "AGLead.h"
+#import "AGLeadViewController.h"
 
-@interface AGLead : NSObject <NSCopying>
+@class AGLeadViewController;
 
-@property(strong, nonatomic) NSNumber *recId;
-@property(copy, nonatomic) NSString *name;
-@property(copy, nonatomic) NSString *location;
-@property(copy, nonatomic) NSString *phoneNumber;
-@property(copy, nonatomic) NSNumber *saleAgent;
-@property(copy, nonatomic) NSNumber *isPushed;
-// convert from JSON
-- (id)initWithDictionary:(NSDictionary *)dictionary;
-// convert to JSON
-- (NSDictionary *)dictionary;
-
-- (void)copyFrom:(AGLead *)lead;
+@protocol AGLeadActionDelegate <NSObject>
+- (void)didAccept:(AGLeadViewController *)controller lead:(AGLead *)lead;
+- (void)didDismiss:(AGLeadViewController *)controller lead:(AGLead *)lead;
 @end
+
+@interface AGLeadViewController : UIViewController <UITextFieldDelegate>
+@property(strong, nonatomic) AGLead *lead;
+@property (weak, nonatomic) id <AGLeadActionDelegate> delegate;
+@end
+

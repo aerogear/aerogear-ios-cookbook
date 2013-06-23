@@ -5,19 +5,22 @@
 //
 
 #import "AGLeadsViewController.h"
+#import "AGLeadViewController.h"
 #import "ProDoctorAPIClient.h"
 #import "AGLead.h"
+#import "LeadCell.h"
 
-@implementation AGLeadsViewController {
-    NSMutableArray *_leads;
-}
+@implementation AGLeadsViewController
+
+@synthesize leads = _leads;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
 
-    self.title = @"Leads";
     [self displayLeads];
 }
+
 - (void) displayLeads {
     [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
         _leads = leads;
@@ -32,9 +35,30 @@
     }];
 }
 
+
+- (void) displayLeadsWithPush:(NSString *)pushedId {
+    [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
+        _leads = leads;
+
+        for(AGLead *currLead in leads) {
+            if ([pushedId isEqual:currLead.name]) {
+                currLead.isPushed = @1;
+            }
+                
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -46,18 +70,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *cellIdentifier = @"Cell";
+    LeadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSInteger row = [indexPath row];
+    AGLead *lead = [_leads objectAtIndex:row];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:lead.isPushed];
     }
+    [cell decorateCell:row inListCount:[self.leads count] with:lead.isPushed];
     
-    NSUInteger row = [indexPath row];
-    
-    AGLead *lead = [_leads objectAtIndex:row];
-    cell.textLabel.text = lead.name;
-    
+    cell.topLabel.text = [NSString stringWithFormat:@"%@.", lead.name];
+    cell.bottomLabel.text = [NSString stringWithFormat:@"at: %@", lead.location];
+	   
     return cell;
 }
 
@@ -66,12 +91,52 @@
     
     AGLead *lead = [_leads objectAtIndex:row];
     
-//    AGLeadViewController *taskController = [[AGLeadViewController alloc] initWithStyle:UITableViewStyleGrouped];
-//    taskController.delegate = self;
-//    taskController.task = task;
-//    taskController.hidesBottomBarWhenPushed = YES;
-//    
-//	[self.navigationController pushViewController:taskController animated:YES];
+    AGLeadViewController *leadController = [[AGLeadViewController alloc] init];
+    leadController.delegate = self;
+    leadController.lead = lead;
+    leadController.hidesBottomBarWhenPushed = YES;
+    
+	[self.navigationController pushViewController:leadController animated:YES];
+}
+
+- (void)didAccept:(AGLeadViewController *)controller lead:(AGLead *)lead {
+    //------------------------------------------------------
+    // Update lead
+    //------------------------------------------------------
+    [[ProDoctorAPIClient sharedInstance] postLead:lead success:^{
+        [self remove:lead from:_leads];
+        //------------------------------------------------------
+        // TODO: On success update, add lead to TODO list
+        //------------------------------------------------------
+
+        //[self goBackToList];
+        [self.tableView reloadData];
+    
+        } failure:^(NSError *error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                            message:@"An error has occured during save!"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Bummer"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }];
+
+}
+
+- (void)didDismiss:(AGLeadViewController *)controller lead:(AGLead *)lead {
+    //TODO remove highlight
+    //[self.tableView reloadData];
+}
+
+- (void) remove:(AGLead*)lead from:(NSMutableArray*)list {
+    int i;
+    for(i=0; i<[list count]; i++) {
+        AGLead *currentLead = [list objectAtIndex:i];
+        if(currentLead.recId == lead.recId) {
+            [list removeObjectAtIndex:i];
+            i--;
+        }
+    }
 }
 
 @end

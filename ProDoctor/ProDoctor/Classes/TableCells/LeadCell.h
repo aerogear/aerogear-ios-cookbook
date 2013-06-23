@@ -15,20 +15,12 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface AGLead : NSObject <NSCopying>
 
-@property(strong, nonatomic) NSNumber *recId;
-@property(copy, nonatomic) NSString *name;
-@property(copy, nonatomic) NSString *location;
-@property(copy, nonatomic) NSString *phoneNumber;
-@property(copy, nonatomic) NSNumber *saleAgent;
-@property(copy, nonatomic) NSNumber *isPushed;
-// convert from JSON
-- (id)initWithDictionary:(NSDictionary *)dictionary;
-// convert to JSON
-- (NSDictionary *)dictionary;
-
-- (void)copyFrom:(AGLead *)lead;
+@interface LeadCell : UITableViewCell
+@property(nonatomic, strong) UILabel *topLabel;
+@property(nonatomic, strong) UILabel *bottomLabel;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(NSNumber *)imageDisplay;
+- (void)decorateCell:(NSInteger)row inListCount:(NSInteger)count with:(NSNumber *)imageDisplay;
 @end

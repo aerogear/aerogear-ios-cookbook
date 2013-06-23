@@ -6,10 +6,12 @@
 
 #import "AeroGear.h"
 
+@class AGLead;
+
 @interface ProDoctorAPIClient : NSObject
 
 @property(readonly, nonatomic) id<AGPipe> leadsPipe;
-@property(readonly, nonatomic) NSString *userId;
+@property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;
 
 + (ProDoctorAPIClient *)sharedInstance;
@@ -21,5 +23,9 @@
 
 - (void)fetchLeads:(void (^)(NSMutableArray *leads))success
            failure:(void (^)(NSError *error))failure;
+
+- (void)postLead:(AGLead *)lead
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure;
 
 @end

@@ -6,8 +6,7 @@
 
 #import "ProDoctorAPIClient.h"
 #import "AGLead.h"
-
-static NSString * const kProDoctorAPIBaseURLString = @"http://192.168.0.13:8080/prodoctor/";
+#import "AGConfig.h"
 
 @implementation ProDoctorAPIClient
 
@@ -30,7 +29,7 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://192.168.0.13:8080/
                   success:(void (^)())success
                   failure:(void (^)(NSError *error))failure {
 
-    NSURL *baseURL = [NSURL URLWithString:kProDoctorAPIBaseURLString];
+    NSURL *baseURL = [NSURL URLWithString:URL_PRODOCTOR];
 
     // create the Pipeline object
     AGPipeline *pipeline = [AGPipeline pipelineWithBaseURL:baseURL];
@@ -89,4 +88,22 @@ static NSString * const kProDoctorAPIBaseURLString = @"http://192.168.0.13:8080/
         failure(error);
     }];
 }
+
+
+- (void)postLead:(AGLead *)lead
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure {
+    
+    [_leadsPipe save:[lead dictionary] success:^(id responseObject) {
+        if (lead.recId == nil) { // if it is a new lead, set the id
+            lead.recId = [responseObject objectForKey:@"id"];
+        }
+        
+        success();
+        
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
 @end

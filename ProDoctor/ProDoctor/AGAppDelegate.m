@@ -23,11 +23,15 @@
     // Override point for customization after application launch.
     self.viewController = [[AGLoginViewController alloc] init];
     self.window.rootViewController = self.viewController;
+    
+    // set background
+    UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey5.jpg"]];//@"gradientBackground.png"]];
+    [self.window addSubview:backgroundView];
+    
     [self.window makeKeyAndVisible];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     return YES;
 }
 
@@ -56,22 +60,23 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // TODO
     NSString *alertValue = userInfo[@"aps"][@"alert"];
-    
+    NSString *recId = userInfo[@"id"];
     NSString *name = userInfo[@"name"];
     NSString *phone = userInfo[@"phone"];
     NSString *location = userInfo[@"location"];
+    
+    AGLead *lead = [[AGLead alloc] initWithDictionary:userInfo];
     DLog(@"Lead pushed: name=%@ location=%@ phone=%@ ", name, location, phone);
     
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Custom Dialog, while Program is active"
-                          message: @"Lead"
+                          initWithTitle: @""
+                          message: [NSString stringWithFormat: @"Lead %@ is available!", name]
                           delegate: nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
-    AGLeadsViewController *current = (AGLeadsViewController *)self.viewController.navController.visibleViewController;
-    
-    [current displayLeads];
-    [alert show];;
+    AGLeadsViewController *current = (AGLeadsViewController *)((UINavigationController *)self.viewController.tabController.viewControllers[0]).visibleViewController;
+    [current displayLeadsWithPush:name];
+    [alert show];
 }
 
 @end

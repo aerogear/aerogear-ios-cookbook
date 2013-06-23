@@ -7,8 +7,6 @@
 #import <UIKit/UIKit.h>
 #import "AGLeadViewController.h"
 
-@interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate>
-@property(nonatomic, strong) NSMutableArray *leads;
+@interface AGMyLeadsViewController : UITableViewController
 - (void) displayLeads;
-- (void) displayLeadsWithPush:(NSString *)pushedId;
 @end
