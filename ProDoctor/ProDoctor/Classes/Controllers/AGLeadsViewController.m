@@ -18,14 +18,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
-
+    
+    // register to receive the notification
+    // when a new lead is pushed
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self selector:@selector(leadPushed:) name:@"LeadAddedNotification" object:nil];
+    
     [self displayLeads];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    // unregister our notification listener
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self name:@"LeadAddedNotification" object:nil];
 }
 
 - (void) displayLeads {
     [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
         _leads = leads;
         [self.tableView reloadData];
+    
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                         message:[error localizedDescription]
@@ -56,10 +70,6 @@
                                               otherButtonTitles:nil];
         [alert show];
     }];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -105,12 +115,14 @@
     // Update lead
     //------------------------------------------------------
     [[ProDoctorAPIClient sharedInstance] postLead:lead success:^{
+        // add it to the local store
+        NSError *error = nil;
+        if (![[ProDoctorAPIClient sharedInstance].localStore save:[lead dictionary] error:&error]) {
+            DLog(@"Save: An error occured during save! \n%@", [error localizedDescription]);
+        }
+        
         [self remove:lead from:_leads];
-        //------------------------------------------------------
-        // TODO: On success update, add lead to TODO list
-        //------------------------------------------------------
-        AGMyLeadsViewController *myLeadsViewController = (AGMyLeadsViewController *)((UINavigationController *) self.tabBarController.viewControllers[1]);
-        [myLeadsViewController saveLead:lead];
+        
         [self.tableView reloadData];
     
         } failure:^(NSError *error) {
@@ -138,6 +150,12 @@
             i--;
         }
     }
+}
+
+#pragma mark - Notification
+
+- (void)leadPushed:(NSNotification *)notification {
+    [self displayLeadsWithPush:notification.userInfo[@"name"]];
 }
 
 @end

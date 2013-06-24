@@ -58,25 +58,21 @@
 
 // When the program is in the foreground, this callback receives the Payload of the received Push Notification message
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    // TODO
-    NSString *alertValue = userInfo[@"aps"][@"alert"];
-    NSString *recId = userInfo[@"id"];
-    NSString *name = userInfo[@"name"];
-    NSString *phone = userInfo[@"phone"];
-    NSString *location = userInfo[@"location"];
-    
-    AGLead *lead = [[AGLead alloc] initWithDictionary:userInfo];
-    DLog(@"Lead pushed: name=%@ location=%@ phone=%@ ", name, location, phone);
-    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @""
-                          message: [NSString stringWithFormat: @"Lead %@ is available!", name]
+                          message: [NSString stringWithFormat: @"Lead %@ is available!", userInfo[@"name"]]
                           delegate: nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
-    AGLeadsViewController *current = (AGLeadsViewController *)((UINavigationController *)self.viewController.tabController.viewControllers[0]).visibleViewController;
-    [current displayLeadsWithPush:name];
+
     [alert show];
+    
+    // send to interest parties
+    NSNotification *notification = [NSNotification notificationWithName:@"LeadAddedNotification"
+                                                                 object:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+    DLog(@"Lead pushed: name=%@ location=%@ phone=%@ ", userInfo[@"name"], userInfo[@"location"], userInfo[@"phone"]);
 }
 
 @end
