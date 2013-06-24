@@ -11,15 +11,29 @@
 
 @implementation AGMyLeadsViewController {
     NSMutableArray *_leads;
+    id<AGStore> _myStore;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    AGDataManager *dm = [AGDataManager manager];
+    _myStore = [dm store:^(id<AGStoreConfig> config) {
+        [config setName:@"myLeads"];
+        [config setType:@"PLIST"];
+    }];
     [self displayLeads];
 }
-- (void) displayLeads {
 
+- (void) displayLeads {
+    _leads = [[_myStore readAll] mutableCopy];
+}
+
+- (void) saveLead:(AGLead *)lead {
+    NSError *error;
+    NSDictionary *leadDict = [lead dictionary];
+    if (![_myStore save:leadDict error:&error]) {
+        ALog(@"Save: An error occured during save! \n%@", error);
+    }
 }
 
 - (void)viewDidUnload {
@@ -57,7 +71,6 @@
     AGLead *lead = [_leads objectAtIndex:row];
     
     AGLeadViewController *leadController = [[AGLeadViewController alloc] init];
-    leadController.delegate = self;
     leadController.lead = lead;
     leadController.hidesBottomBarWhenPushed = YES;
     

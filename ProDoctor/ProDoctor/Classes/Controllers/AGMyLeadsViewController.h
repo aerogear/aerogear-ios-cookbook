@@ -9,4 +9,5 @@
 
 @interface AGMyLeadsViewController : UITableViewController
 - (void) displayLeads;
+- (void) saveLead:(AGLead *)lead;
 @end

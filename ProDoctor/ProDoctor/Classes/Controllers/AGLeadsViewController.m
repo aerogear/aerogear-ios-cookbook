@@ -4,6 +4,7 @@
 //  See Project's web site for more details http://www.aerogear.org
 //
 
+#import "AGMyLeadsViewController.h"
 #import "AGLeadsViewController.h"
 #import "AGLeadViewController.h"
 #import "ProDoctorAPIClient.h"
@@ -108,8 +109,8 @@
         //------------------------------------------------------
         // TODO: On success update, add lead to TODO list
         //------------------------------------------------------
-
-        //[self goBackToList];
+        AGMyLeadsViewController *myLeadsViewController = (AGMyLeadsViewController *)((UINavigationController *) self.tabBarController.viewControllers[1]);
+        [myLeadsViewController saveLead:lead];
         [self.tableView reloadData];
     
         } failure:^(NSError *error) {
