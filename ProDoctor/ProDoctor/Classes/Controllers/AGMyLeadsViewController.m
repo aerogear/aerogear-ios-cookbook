@@ -11,29 +11,19 @@
 
 @implementation AGMyLeadsViewController {
     NSMutableArray *_leads;
-    id<AGStore> _myStore;
+    id<AGStore> _localStore;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    AGDataManager *dm = [AGDataManager manager];
-    _myStore = [dm store:^(id<AGStoreConfig> config) {
-        [config setName:@"myLeads"];
-        [config setType:@"PLIST"];
-    }];
+
+    _localStore = [[ProDoctorAPIClient sharedInstance] localStore];
+    
     [self displayLeads];
 }
 
 - (void) displayLeads {
-    _leads = [[_myStore readAll] mutableCopy];
-}
-
-- (void) saveLead:(AGLead *)lead {
-    NSError *error;
-    NSDictionary *leadDict = [lead dictionary];
-    if (![_myStore save:leadDict error:&error]) {
-        ALog(@"Save: An error occured during save! \n%@", error);
-    }
+    _leads = [[_localStore readAll] mutableCopy];
 }
 
 - (void)viewDidUnload {

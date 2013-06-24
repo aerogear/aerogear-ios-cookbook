@@ -12,7 +12,8 @@
 
 @synthesize leadsPipe = _leadsPipe;
 @synthesize userId = _userId;
-@synthesize loginName = _loginName;
+
+@synthesize localStore = _localStore;
 
 + (ProDoctorAPIClient *)sharedInstance {
     static ProDoctorAPIClient *_sharedInstance = nil;
@@ -60,6 +61,14 @@
         }];
 
         // ..add your own pipes here
+        
+        // initialize local store
+        AGDataManager *dm = [AGDataManager manager];
+        _localStore = [dm store:^(id<AGStoreConfig> config) {
+            // each login has a different store associated
+            [config setName:username];
+            [config setType:@"PLIST"];
+        }];
 
         // inform client that we have successfully logged in
         success();
