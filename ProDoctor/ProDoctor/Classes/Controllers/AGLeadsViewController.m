@@ -23,6 +23,8 @@
     // when a new lead is pushed
     [[NSNotificationCenter defaultCenter]
         addObserver:self selector:@selector(leadPushed:) name:@"LeadAddedNotification" object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(leadAccepted:) name:@"LeadAcceptedNotification" object:nil];
     
     [self displayLeads];
 }
@@ -33,11 +35,14 @@
     // unregister our notification listener
     [[NSNotificationCenter defaultCenter]
      removeObserver:self name:@"LeadAddedNotification" object:nil];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self name:@"LeadAcceptedNotification" object:nil];
 }
 
 - (void) displayLeads {
     [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
         _leads = leads;
+              
         [self.tableView reloadData];
     
     } failure:^(NSError *error) {
@@ -121,9 +126,8 @@
             DLog(@"Save: An error occured during save! \n%@", [error localizedDescription]);
         }
         
-        [self remove:lead from:_leads];
-        
-        [self.tableView reloadData];
+        //[self remove:lead from:_leads];
+
     
         } failure:^(NSError *error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -155,7 +159,18 @@
 #pragma mark - Notification
 
 - (void)leadPushed:(NSNotification *)notification {
-    [self displayLeadsWithPush:notification.userInfo[@"name"]];
+    NSString *temp= [notification.object objectForKey:@"name"];
+    [self displayLeadsWithPush:[notification.object objectForKey:@"name"]];
+    DLog(@"leadPushed on notification called");
+}
+
+- (void)leadAccepted:(NSNotification *)notification {
+    DLog(@"Start of leadAccepted on notification called");
+    NSString *temp= [notification.object objectForKey:@"name"];
+    AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
+    [self remove:lead from:_leads];
+    [self.tableView reloadData];
+    DLog(@"End of leadAccepted on notification called");
 }
 
 @end

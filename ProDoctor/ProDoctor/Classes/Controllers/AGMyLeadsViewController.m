@@ -49,7 +49,7 @@
     
     NSUInteger row = [indexPath row];
     
-    AGLead *lead = [_leads objectAtIndex:row];
+    AGLead *lead = [[AGLead alloc] initWithDictionary: [_leads objectAtIndex:row]];
     cell.textLabel.text = lead.name;
     
     return cell;

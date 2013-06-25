@@ -58,21 +58,43 @@
 
 // When the program is in the foreground, this callback receives the Payload of the received Push Notification message
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @""
-                          message: [NSString stringWithFormat: @"Lead %@ is available!", userInfo[@"name"]]
-                          delegate: nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
 
-    [alert show];
+    NSString *recId = userInfo[@"id"];
+    NSString *name = userInfo[@"name"];
+    NSString *phone = userInfo[@"phone"];
+    NSString *location = userInfo[@"location"];
+    NSString *messageType = userInfo[@"messageType"];
     
-    // send to interest parties
-    NSNotification *notification = [NSNotification notificationWithName:@"LeadAddedNotification"
-                                                                 object:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    //AGLead *lead = [[AGLead alloc] initWithDictionary:userInfo];
+    
+    
+    //AGLeadsViewController *current = (AGLeadsViewController *)((UINavigationController *)self.viewController.tabController.viewControllers[0]).visibleViewController;
+    if ([messageType isEqual:@"accepted_lead"]) {
+        // send to interest parties
+        NSNotification *notification = [NSNotification notificationWithName:@"LeadAcceptedNotification"
+                                                                     object:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        DLog(@"Lead accepted: id=%@ name=%@ location=%@ phone=%@ messageType=%@", recId, name, location, phone, messageType);
 
-    DLog(@"Lead pushed: name=%@ location=%@ phone=%@ ", userInfo[@"name"], userInfo[@"location"], userInfo[@"phone"]);
-}
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @""
+                              message: [NSString stringWithFormat: @"Lead %@ is available!", name]
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        
+        //[current displayLeadsWithPush:name];
+        [alert show];
+        // send to interest parties
+        NSNotification *notification = [NSNotification notificationWithName:@"LeadAddedNotification"
+                                                                     object:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        DLog(@"Lead pushed: id=%@ name=%@ location=%@ phone=%@ messageType=%@", recId, name, location, phone, messageType);
+
+    }
+
+    
+   }
 
 @end
