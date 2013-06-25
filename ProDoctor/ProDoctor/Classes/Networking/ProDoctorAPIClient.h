@@ -11,12 +11,15 @@
 @interface ProDoctorAPIClient : NSObject
 
 @property(readonly, nonatomic) id<AGPipe> leadsPipe;
+@property(readonly, nonatomic) id<AGPipe> agentPipe;
 
 @property(readonly, nonatomic) id<AGStore> localStore;
 @property(readonly, nonatomic) id<AGStore> pushedLocalStore;
 
 @property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;
+@property(readonly, nonatomic) NSString *location;
+@property(readonly, nonatomic) BOOL isStandBy;
 
 + (ProDoctorAPIClient *)sharedInstance;
 
@@ -31,5 +34,8 @@
 - (void)postLead:(AGLead *)lead
          success:(void (^)())success
          failure:(void (^)(NSError *error))failure;
+
+- (void)toggleStatus:(void (^)())success
+             failure:(void (^)(NSError *error))failure;
 
 @end

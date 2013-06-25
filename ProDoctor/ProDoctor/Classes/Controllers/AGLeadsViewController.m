@@ -19,6 +19,15 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     
+    // set up navigation button items
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                   target:self
+                                                                                   action:@selector(displayLeads)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+
+    // set the status button item depending on agent status
+    self.navigationItem.leftBarButtonItem = [self statusButtonItem];
+
     // register to receive the notification
     // when a new lead is pushed
     [[NSNotificationCenter defaultCenter]
@@ -199,6 +208,52 @@
     NSNotification *myNotification = [NSNotification notificationWithName:@"NewMyLeadNotification"                                                                 object:lead];
     [[NSNotificationCenter defaultCenter] postNotification:myNotification];
     DLog(@"End of leadAccepted on notification called");
+}
+
+#pragma mark - Navigation Button
+
+- (void)changeStatus {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Change your Status:"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"PTO"
+                                  otherButtonTitles:@"StandBy", nil];
+    
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // no need to do anything if cancelled
+    if (buttonIndex == 2)
+        return;
+    
+    [[ProDoctorAPIClient sharedInstance] toggleStatus:^{
+        // if succeeded, update the status bar
+        self.navigationItem.leftBarButtonItem = [self statusButtonItem];
+
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"An error has occured changing status!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+
+}
+
+- (UIBarButtonItem*) statusButtonItem {
+    UIImage *status = [ProDoctorAPIClient sharedInstance].isStandBy?
+    [UIImage imageNamed:@"green.png"]: [UIImage imageNamed:@"orange.png"];
+    
+    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:status landscapeImagePhone:status
+                                                                     style:UIBarButtonItemStylePlain                                        target:self
+                                                                    action:@selector(changeStatus)];
+    
+    
+    return statusButton;
 }
 
 @end

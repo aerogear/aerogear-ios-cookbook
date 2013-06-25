@@ -11,7 +11,12 @@
 @implementation ProDoctorAPIClient
 
 @synthesize leadsPipe = _leadsPipe;
+@synthesize agentPipe = _agentPipe;
+
 @synthesize userId = _userId;
+@synthesize loginName = _loginName;
+@synthesize location = _location;
+@synthesize isStandBy = _isStandBy;
 
 @synthesize localStore = _localStore;
 @synthesize pushedLocalStore = _pushedLocalStore;
@@ -55,8 +60,17 @@
         // authenticated against the remote endpoints.
         _userId = object[@"id"];
         _loginName = object[@"loginName"];
+        _location = object[@"location"];
+        _isStandBy = [object[@"status"] isEqualToString:@"STANDBY"]? YES: NO;
+        
         _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"leads"];
+            [config setAuthModule:authMod];
+            
+        }];
+
+        _agentPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
+            [config setName:@"saleagents"];
             [config setAuthModule:authMod];
             
         }];
@@ -113,6 +127,23 @@
         
         success();
         
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)toggleStatus:(void (^)())success
+             failure:(void (^)(NSError *error))failure {
+    
+    NSDictionary *params = @{@"id": _userId, @"loginName": _loginName,
+                             @"status": (_isStandBy? @"PTO": @"STANDBY"),
+                             @"location": _location};
+    
+    [_agentPipe save:params success:^(id responseObject) {
+                 // update local status on success
+                 _isStandBy = !_isStandBy;
+                 
+                 success();
     } failure:^(NSError *error) {
         failure(error);
     }];
