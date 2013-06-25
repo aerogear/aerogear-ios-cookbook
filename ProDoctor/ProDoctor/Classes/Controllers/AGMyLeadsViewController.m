@@ -19,6 +19,9 @@
 
     _localStore = [[ProDoctorAPIClient sharedInstance] localStore];
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(myLeadRefresh) name:@"NewMyLeadNotification" object:nil];
+    
     [self displayLeads];
 }
 
@@ -28,7 +31,9 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    // unregister our notification listener
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self name:@"NewMyLeadNotification" object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -65,6 +70,11 @@
     leadController.hidesBottomBarWhenPushed = YES;
     
 	[self.navigationController pushViewController:leadController animated:YES];
+}
+
+- (void) myLeadRefresh {
+    [self displayLeads];
+    [self.tableView reloadData];
 }
 
 

@@ -61,7 +61,7 @@
         _leads = leads;
 
         for(AGLead *currLead in leads) {
-            if ([pushedId isEqual:currLead.name]) {
+            if ([pushedId isEqual:currLead.recId]) {
                 currLead.isPushed = @1;
             }
                 
@@ -92,9 +92,12 @@
     AGLead *lead = [_leads objectAtIndex:row];
     
     if (cell == nil) {
-        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:lead.isPushed];
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO];
     }
-    [cell decorateCell:row inListCount:[self.leads count] with:lead.isPushed];
+    // check if list belong to list of pushed leads to display it with star icon
+    NSArray *_pushedLeads = [[ProDoctorAPIClient sharedInstance].pushedLocalStore readAll];
+    BOOL isPushed = [self isLead:lead in:_pushedLeads];
+    [cell decorateCell:row inListCount:[self.leads count] with:isPushed];
     
     cell.topLabel.text = [NSString stringWithFormat:@"%@.", lead.name];
     cell.bottomLabel.text = [NSString stringWithFormat:@"at: %@", lead.location];
@@ -123,11 +126,8 @@
         // add it to the local store
         NSError *error = nil;
         if (![[ProDoctorAPIClient sharedInstance].localStore save:[lead dictionary] error:&error]) {
-            DLog(@"Save: An error occured during save! \n%@", [error localizedDescription]);
+            DLog(@"Save: An error occured during save! \n");
         }
-        
-        //[self remove:lead from:_leads];
-
     
         } failure:^(NSError *error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -145,11 +145,29 @@
     //[self.tableView reloadData];
 }
 
+- (BOOL) isLead:(AGLead*)lead in:(NSArray*)list {
+    int i;
+    for(i=0; i<[list count]; i++) {
+        //AGLead *currentLead = [list objectAtIndex:i];
+        AGLead *currentLead = [[AGLead alloc] initWithDictionary: [list objectAtIndex:i]];
+        NSNumber* currentId = (NSNumber*)currentLead.recId;
+        NSNumber* recId = (NSNumber*)lead.recId;
+        NSString* strCurrentId = [NSString stringWithFormat:@"%@", currentId];
+        NSString* strId = [NSString stringWithFormat:@"%@", recId];
+        
+        if([strCurrentId isEqual:strId]) {
+            return YES;
+            i--;
+        }
+    }
+    return NO;
+}
+
 - (void) remove:(AGLead*)lead from:(NSMutableArray*)list {
     int i;
     for(i=0; i<[list count]; i++) {
         AGLead *currentLead = [list objectAtIndex:i];
-        if(currentLead.recId == lead.recId) {
+        if([currentLead.recId isEqual:lead.recId]) {
             [list removeObjectAtIndex:i];
             i--;
         }
@@ -159,17 +177,32 @@
 #pragma mark - Notification
 
 - (void)leadPushed:(NSNotification *)notification {
-    NSString *temp= [notification.object objectForKey:@"name"];
-    [self displayLeadsWithPush:[notification.object objectForKey:@"name"]];
-    DLog(@"leadPushed on notification called");
+    NSString *leadName= [notification.object objectForKey:@"name"];
+    //[self displayLeadsWithPush:[notification.object objectForKey:@"id"]];
+    AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
+    NSError *error = nil;
+    if (![[ProDoctorAPIClient sharedInstance].pushedLocalStore save:[lead dictionary] error:&error]) {
+        DLog(@"Save: An error occured during save to pushedLocalStorage!\n");
+    }
+    
+    [self displayLeads];
+    [self.tableView reloadData];
+    
+    DLog(@"leadPushed on notification called for lead %@", leadName);
 }
 
 - (void)leadAccepted:(NSNotification *)notification {
-    DLog(@"Start of leadAccepted on notification called");
     NSString *temp= [notification.object objectForKey:@"name"];
+    DLog(@"Start of leadAccepted on notification called %@", temp);
+
     AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
+    DLog(@"%@ %@", lead.recId, lead.name);
     [self remove:lead from:_leads];
     [self.tableView reloadData];
+    
+    // Refresh MyLeads table
+    NSNotification *myNotification = [NSNotification notificationWithName:@"NewMyLeadNotification"                                                                 object:lead];
+    [[NSNotificationCenter defaultCenter] postNotification:myNotification];
     DLog(@"End of leadAccepted on notification called");
 }
 

@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) id<AGPipe> leadsPipe;
 
 @property(readonly, nonatomic) id<AGStore> localStore;
+@property(readonly, nonatomic) id<AGStore> pushedLocalStore;
 
 @property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;

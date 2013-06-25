@@ -22,7 +22,7 @@
 }
 @synthesize topLabel, bottomLabel;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(NSNumber *)imageDisplay {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(BOOL)imageDisplay {
 
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
 
@@ -76,7 +76,7 @@
     return self;
 }
 
-- (void)decorateCell:(NSInteger)row inListCount:(NSInteger)count with:(NSNumber *)imageDisplay {
+- (void)decorateCell:(NSInteger)row inListCount:(NSInteger)count with:(BOOL)imageDisplay {
     //
 	// Set the background and selected background images for the text.
 	// Since we will round the corners at the top and bottom of sections, we
@@ -85,7 +85,7 @@
 	//
 	UIImage *rowBackground;
 	UIImage *selectionBackground;
-	NSInteger sectionRows = count;//[self.leads count];//[tableView numberOfRowsInSection:0];
+	NSInteger sectionRows = count;
 	//
 	if (row == 0 && row == sectionRows - 1) {
 		rowBackground = [UIImage imageNamed:@"topAndBottomRow.png"];
@@ -102,8 +102,10 @@
 	}
 	((UIImageView *)self.backgroundView).image = rowBackground;
 	((UIImageView *)self.selectedBackgroundView).image = selectionBackground;
-    if ([imageDisplay isEqual: @1]) {
+    if (imageDisplay) {
         self.image = [UIImage imageNamed:@"fullstar.png"];
+    } else {
+        self.image = nil;
     }
 }
 

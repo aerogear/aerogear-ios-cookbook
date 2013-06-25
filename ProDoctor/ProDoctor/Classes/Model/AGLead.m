@@ -51,12 +51,16 @@
     
     if (self.recId != nil)
         [dict setObject:[self.recId stringValue] forKey:@"id"];
-
-    [dict setObject:self.name forKey:@"name"];
-    [dict setObject:self.location forKey:@"location"];
-    [dict setObject:self.phoneNumber forKey:@"phoneNumber"];
-    [dict setObject:self.saleAgent forKey:@"saleAgent"];
-    [dict setObject:self.isPushed forKey:@"isPushed"];
+    if (self.name != nil)
+        [dict setObject:self.name forKey:@"name"];
+    if (self.location != nil)
+        [dict setObject:self.location forKey:@"location"];
+    if (self.phoneNumber != nil)
+        [dict setObject:self.phoneNumber forKey:@"phoneNumber"];
+    if (self.saleAgent != nil)
+        [dict setObject:self.saleAgent forKey:@"saleAgent"];
+    if (self.isPushed != nil)
+        [dict setObject:self.isPushed forKey:@"isPushed"];
     
     return dict;
 }

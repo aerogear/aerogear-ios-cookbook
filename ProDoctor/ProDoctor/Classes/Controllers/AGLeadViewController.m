@@ -121,14 +121,7 @@
     [delegate didDismiss:self lead:self.lead];
     [self goBackToList];
 }
-- (void)goBackToList {
-//    UIViewAnimationTransition trans = UIViewAnimationTransitionFlipFromLeft;
-//    [UIView beginAnimations: nil context: nil];
-//    [UIView setAnimationDuration:0.8];
-//    [UIView setAnimationTransition: trans forView: [self.view window] cache: NO];
-    
+- (void)goBackToList {   
     [self.navigationController popViewControllerAnimated:YES];
-    
-    //[UIView commitAnimations];
 }
 @end

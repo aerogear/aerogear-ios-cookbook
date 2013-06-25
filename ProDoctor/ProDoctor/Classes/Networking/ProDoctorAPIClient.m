@@ -14,6 +14,7 @@
 @synthesize userId = _userId;
 
 @synthesize localStore = _localStore;
+@synthesize pushedLocalStore = _pushedLocalStore;
 
 + (ProDoctorAPIClient *)sharedInstance {
     static ProDoctorAPIClient *_sharedInstance = nil;
@@ -59,8 +60,6 @@
             [config setAuthModule:authMod];
             
         }];
-
-        // ..add your own pipes here
         
         // initialize local store
         AGDataManager *dm = [AGDataManager manager];
@@ -69,7 +68,11 @@
             [config setName:username];
             [config setType:@"PLIST"];
         }];
-
+        _pushedLocalStore = [dm store:^(id<AGStoreConfig> config) {
+            // each login has a different store associated
+            [config setName:[NSString stringWithFormat: @"pusheLocalStorage%@", username]];
+            [config setType:@"PLIST"];
+        }];
         // inform client that we have successfully logged in
         success();
 
