@@ -11,6 +11,9 @@
 @interface ProDoctorAPIClient : NSObject
 
 @property(readonly, nonatomic) id<AGPipe> leadsPipe;
+
+@property(readonly, nonatomic) id<AGStore> localStore;
+
 @property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;
 
