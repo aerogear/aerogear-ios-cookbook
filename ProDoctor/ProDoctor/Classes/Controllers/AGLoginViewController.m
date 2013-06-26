@@ -180,7 +180,7 @@
     leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
     navController.toolbarHidden = YES;
-    navController.navigationBarHidden = YES;
+    navController.navigationBarHidden = NO;
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     
     AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
