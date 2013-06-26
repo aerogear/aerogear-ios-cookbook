@@ -10,5 +10,4 @@
 @interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate>
 @property(nonatomic, strong) NSMutableArray *leads;
 - (void) displayLeads;
-- (void) displayLeadsWithPush:(NSString *)pushedId;
 @end

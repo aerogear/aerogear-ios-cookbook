@@ -112,7 +112,10 @@
 }
 
 # pragma mark - Action Methods
-
+//--------------------------------------------------------------------
+// Login button action. Once successfully logged we register device
+// for push notification
+//--------------------------------------------------------------------
 - (IBAction)login:(id)sender {
     if (_username.text == nil || _password.text == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -121,7 +124,6 @@
                                               cancelButtonTitle:@"Bummer"
                               
                                               otherButtonTitles:nil];
-
         [alert show];
         return;
     }
@@ -131,57 +133,65 @@
     // first, we need to login to the service
     ProDoctorAPIClient *apiClient = [ProDoctorAPIClient sharedInstance];
     [apiClient loginWithUsername:_username.text password:_password.text success:^{
-        
         // logged in successfully
         DLog(@"Sucessussfully logged");
-        
-        #if !TARGET_IPHONE_SIMULATOR
-        //--------------------------------------------------------------------
-        // Device Registration 
-        //--------------------------------------------------------------------
-        AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
-        
-        [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-            [clientInfo setMobileVariantID:VARIANT_ID];
-            [clientInfo setDeviceToken:self.deviceToken];
-
-            UIDevice *currentDevice = [UIDevice currentDevice];
-            [clientInfo setAlias: [[ProDoctorAPIClient sharedInstance] loginName]];
-            [clientInfo setOperatingSystem:[currentDevice systemName]];
-            [clientInfo setOsVersion:[currentDevice systemVersion]];
-            [clientInfo setDeviceType: [currentDevice model]];
-            
-        } success:^() {
-            DLog(@"PushEE registration successful");
-        } failure:^(NSError *error) {
-            DLog(@"PushEE registration Error: %@", error);
-        }];
-        #endif        
-        
-        //--------------------------------------------------------------------
-        // Move to Leads list
-        //--------------------------------------------------------------------
-        AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];//initWithStyle:UITableViewStylePlain];
-        leadsController.title = @"Leads";
-        leadsController.tableView.rowHeight = 60;
-        leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-        navController.toolbarHidden = YES;
-        navController.navigationBarHidden = YES;
-        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-
-        AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-        myLeadsController.title = @"My leads";
-        self.tabController = [[UITabBarController alloc] init];
-        NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsController, nil];
-        self.tabController.viewControllers = controllers;
-        
-        [self presentViewController:self.tabController animated:YES completion:^{            
-        }];
-        
-        
+        [self deviceRegistration];
+        [self initUINavigation];
     } failure:^(NSError *error) {
         ALog(@"An error has occured during login! \n%@", error);
+    }];
+}
+
+//--------------------------------------------------------------------
+// Device Registration for Unified Push Server
+//--------------------------------------------------------------------
+- (void) deviceRegistration {
+#if !TARGET_IPHONE_SIMULATOR
+    AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
+    
+    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
+        [clientInfo setMobileVariantID:VARIANT_ID];
+        [clientInfo setDeviceToken:self.deviceToken];
+        
+        UIDevice *currentDevice = [UIDevice currentDevice];
+        [clientInfo setAlias: [[ProDoctorAPIClient sharedInstance] loginName]];
+        [clientInfo setOperatingSystem:[currentDevice systemName]];
+        [clientInfo setOsVersion:[currentDevice systemVersion]];
+        [clientInfo setDeviceType: [currentDevice model]];
+        
+    } success:^() {
+        DLog(@"PushEE registration successful");
+    } failure:^(NSError *error) {
+        DLog(@"PushEE registration Error: %@", error);
+    }];
+#endif
+}
+
+//--------------------------------------------------------------------
+// Create tabbarcontroller with two tabs:
+// - Open Leads
+// - My leads
+// and navigation controller for UI flow
+//--------------------------------------------------------------------
+- (void) initUINavigation {
+    AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];
+    leadsController.title = @"Leads";
+    leadsController.tableView.rowHeight = 60;
+    leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+    navController.toolbarHidden = YES;
+    navController.navigationBarHidden = YES;
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
+    myLeadsController.title = @"My leads";
+    myLeadsController.tableView.rowHeight = 60;
+    myLeadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tabController = [[UITabBarController alloc] init];
+    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsController, nil];
+    self.tabController.viewControllers = controllers;
+    
+    [self presentViewController:self.tabController animated:YES completion:^{
     }];
 }
 

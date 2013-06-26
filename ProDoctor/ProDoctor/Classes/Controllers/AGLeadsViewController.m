@@ -55,28 +55,6 @@
     }];
 }
 
-
-- (void) displayLeadsWithPush:(NSString *)pushedId {
-    [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
-        _leads = leads;
-
-        for(AGLead *currLead in leads) {
-            if ([pushedId isEqual:currLead.recId]) {
-                currLead.isPushed = @1;
-            }
-                
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Bummer"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -92,7 +70,7 @@
     AGLead *lead = [_leads objectAtIndex:row];
     
     if (cell == nil) {
-        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO];
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO withIndicatorDisplay:YES];
     }
     // check if list belong to list of pushed leads to display it with star icon
     NSArray *_pushedLeads = [[ProDoctorAPIClient sharedInstance].pushedLocalStore readAll];
@@ -118,10 +96,11 @@
 	[self.navigationController pushViewController:leadController animated:YES];
 }
 
+//------------------------------------------------------
+// Once the lead is accepted by user logged. Send update
+// and store my leads locally
+//------------------------------------------------------
 - (void)didAccept:(AGLeadViewController *)controller lead:(AGLead *)lead {
-    //------------------------------------------------------
-    // Update lead
-    //------------------------------------------------------
     [[ProDoctorAPIClient sharedInstance] postLead:lead success:^{
         // add it to the local store
         NSError *error = nil;
@@ -141,8 +120,7 @@
 }
 
 - (void)didDismiss:(AGLeadViewController *)controller lead:(AGLead *)lead {
-    //TODO remove highlight
-    //[self.tableView reloadData];
+
 }
 
 - (BOOL) isLead:(AGLead*)lead in:(NSArray*)list {
@@ -175,12 +153,20 @@
 }
 
 #pragma mark - Notification
-
+//------------------------------------------------------
+// Callback method for NSNotification for
+// LeadAcceptedNotification, thrown in AGAppDelegate
+// application:didReceiveRemoteNotification: on receipt of
+// push notification. Actions is:
+// - Save loccally all pushed leads.
+// - Retrieve all open leads from server.
+// - Redisplay table with star icon for pushed leads.
+//------------------------------------------------------
 - (void)leadPushed:(NSNotification *)notification {
     NSString *leadName= [notification.object objectForKey:@"name"];
-    //[self displayLeadsWithPush:[notification.object objectForKey:@"id"]];
     AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
     NSError *error = nil;
+    
     if (![[ProDoctorAPIClient sharedInstance].pushedLocalStore save:[lead dictionary] error:&error]) {
         DLog(@"Save: An error occured during save to pushedLocalStorage!\n");
     }
@@ -191,6 +177,15 @@
     DLog(@"leadPushed on notification called for lead %@", leadName);
 }
 
+//------------------------------------------------------
+// Callback method for NSNotification for
+// LeadAddedNotification, thrown in AGAppDelegate
+// application:didReceiveRemoteNotification: on receipt of
+// push notification. Actions is:
+// - Save loccally all pushed leads.
+// - Retrieve all open leads from server.
+// - Redisplay table with star icon for pushed leads.
+//------------------------------------------------------
 - (void)leadAccepted:(NSNotification *)notification {
     NSString *temp= [notification.object objectForKey:@"name"];
     DLog(@"Start of leadAccepted on notification called %@", temp);

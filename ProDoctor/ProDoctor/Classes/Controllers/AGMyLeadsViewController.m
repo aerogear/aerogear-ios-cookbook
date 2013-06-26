@@ -8,6 +8,7 @@
 #import "AGLeadViewController.h"
 #import "ProDoctorAPIClient.h"
 #import "AGLead.h"
+#import "LeadCell.h"
 
 @implementation AGMyLeadsViewController {
     NSMutableArray *_leads;
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.view.backgroundColor = [UIColor clearColor];
+    
     _localStore = [[ProDoctorAPIClient sharedInstance] localStore];
     
     [[NSNotificationCenter defaultCenter]
@@ -45,32 +47,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    NSUInteger row = [indexPath row];
-    
+    static NSString *cellIdentifier = @"Cell";
+    LeadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSInteger row = [indexPath row];
+    //AGLead *lead = [_leads objectAtIndex:row];
     AGLead *lead = [[AGLead alloc] initWithDictionary: [_leads objectAtIndex:row]];
-    cell.textLabel.text = lead.name;
+    if (cell == nil) {
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO withIndicatorDisplay:NO];
+    }
+
+    [cell decorateCell:row inListCount:[_leads count] with:NO];
+    
+    cell.topLabel.text = [NSString stringWithFormat:@"%@.", lead.name];
+    cell.bottomLabel.text = [NSString stringWithFormat:@"at: %@", lead.location];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger row = [indexPath row];
-    
-    AGLead *lead = [_leads objectAtIndex:row];
-    
-    AGLeadViewController *leadController = [[AGLeadViewController alloc] init];
-    leadController.lead = lead;
-    leadController.hidesBottomBarWhenPushed = YES;
-    
-	[self.navigationController pushViewController:leadController animated:YES];
-}
 
 - (void) myLeadRefresh {
     [self displayLeads];

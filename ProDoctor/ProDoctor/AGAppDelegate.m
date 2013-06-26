@@ -64,11 +64,7 @@
     NSString *phone = userInfo[@"phone"];
     NSString *location = userInfo[@"location"];
     NSString *messageType = userInfo[@"messageType"];
-    
-    //AGLead *lead = [[AGLead alloc] initWithDictionary:userInfo];
-    
-    
-    //AGLeadsViewController *current = (AGLeadsViewController *)((UINavigationController *)self.viewController.tabController.viewControllers[0]).visibleViewController;
+
     if ([messageType isEqual:@"accepted_lead"]) {
         // send to interest parties
         NSNotification *notification = [NSNotification notificationWithName:@"LeadAcceptedNotification"
@@ -83,8 +79,6 @@
                               delegate: nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
-        
-        //[current displayLeadsWithPush:name];
         [alert show];
         // send to interest parties
         NSNotification *notification = [NSNotification notificationWithName:@"LeadAddedNotification"

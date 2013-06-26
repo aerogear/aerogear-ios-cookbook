@@ -22,14 +22,17 @@
 }
 @synthesize topLabel, bottomLabel;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(BOOL)imageDisplay {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(BOOL)imageDisplay withIndicatorDisplay:(BOOL) indicatorDisplay {
 
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
-
-    UIImage *indicatorImage = [UIImage imageNamed:@"indicator.png"];
-    self.accessoryView = [[UIImageView alloc] initWithImage:indicatorImage];
-    [self.accessoryView setFrame:CGRectMake(0, 0, 15, 45)];
-    
+        CGFloat indicatorWidth = 0.0;
+        
+        if (indicatorDisplay) {
+            UIImage *indicatorImage = [UIImage imageNamed:@"indicator.png"];
+        self.accessoryView = [[UIImageView alloc] initWithImage:indicatorImage];
+        [self.accessoryView setFrame:CGRectMake(0, 0, 15, 45)];
+        indicatorWidth = indicatorImage.size.width;
+    }
     const CGFloat LABEL_HEIGHT = 20;
     UIImage *image = [UIImage imageNamed:@"fullstar.png"];
     
@@ -40,7 +43,7 @@
                                                           0.5 * (tableView.rowHeight - 2 * LABEL_HEIGHT),
                                                           tableView.bounds.size.width -
                                                           image.size.width - 4.0 * self.indentationWidth
-                                                          - indicatorImage.size.width,
+                                                          - indicatorWidth,
                                                           LABEL_HEIGHT)];
     [self.contentView addSubview:topLabel];
     
@@ -56,7 +59,7 @@
                                                              0.5 * (tableView.rowHeight - 2 * LABEL_HEIGHT) + LABEL_HEIGHT,
                                                              tableView.bounds.size.width -
                                                              image.size.width - 4.0 * self.indentationWidth
-                                                             - indicatorImage.size.width,
+                                                             - indicatorWidth,
                                                              LABEL_HEIGHT)];
     [self.contentView addSubview:bottomLabel];
     
