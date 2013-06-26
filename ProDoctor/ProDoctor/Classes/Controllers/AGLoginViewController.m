@@ -179,10 +179,16 @@
     leadsController.tableView.rowHeight = 60;
     leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
+    
+    UINavigationBar *navBar = [navController navigationBar];
+    UIImage *backgroundImage = [UIImage imageNamed:@"topBarGreen.png"];
+    [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+    
     navController.toolbarHidden = YES;
     navController.navigationBarHidden = NO;
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    
+    [navController.navigationBar setTintColor:[UIColor brownColor]];
+  
     AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
     myLeadsController.title = @"My leads";
     myLeadsController.tableView.rowHeight = 60;

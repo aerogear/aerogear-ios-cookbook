@@ -23,6 +23,7 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                    target:self
                                                                                    action:@selector(displayLeads)];
+    
     self.navigationItem.rightBarButtonItem = refreshButton;
 
     // set the status button item depending on agent status
