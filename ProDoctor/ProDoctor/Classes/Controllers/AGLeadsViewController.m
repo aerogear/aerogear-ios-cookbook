@@ -225,11 +225,13 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // no need to do anything if cancelled
+    // no need to do anything if user clicks cancel
     if (buttonIndex == 2)
         return;
     
-    [[ProDoctorAPIClient sharedInstance] toggleStatus:^{
+    NSString *status = (buttonIndex == 0? @"PTO": @"STANDBY");
+                        
+    [[ProDoctorAPIClient sharedInstance] changeStatus:status success:^{
         // if succeeded, update the status bar
         self.navigationItem.leftBarButtonItem = [self statusButtonItem];
 
@@ -245,10 +247,15 @@
 }
 
 - (UIBarButtonItem*) statusButtonItem {
-    UIImage *status = [ProDoctorAPIClient sharedInstance].isStandBy?
-    [UIImage imageNamed:@"green.png"]: [UIImage imageNamed:@"orange.png"];
+    UIImage *statusImage;
     
-    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:status landscapeImagePhone:status
+    if ([[ProDoctorAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
+        statusImage = [UIImage imageNamed:@"orange.png"];
+    } else {
+        statusImage = [UIImage imageNamed:@"green.png"];
+    }
+    
+    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
                                                                      style:UIBarButtonItemStylePlain                                        target:self
                                                                     action:@selector(changeStatus)];
     

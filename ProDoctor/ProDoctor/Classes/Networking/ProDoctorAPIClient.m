@@ -16,7 +16,7 @@
 @synthesize userId = _userId;
 @synthesize loginName = _loginName;
 @synthesize location = _location;
-@synthesize isStandBy = _isStandBy;
+@synthesize status = _status;
 
 @synthesize localStore = _localStore;
 @synthesize pushedLocalStore = _pushedLocalStore;
@@ -61,7 +61,7 @@
         _userId = object[@"id"];
         _loginName = object[@"loginName"];
         _location = object[@"location"];
-        _isStandBy = [object[@"status"] isEqualToString:@"STANDBY"]? YES: NO;
+        _status = object[@"status"];
         
         _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"leads"];
@@ -132,17 +132,18 @@
     }];
 }
 
-- (void)toggleStatus:(void (^)())success
+- (void)changeStatus:(NSString*) status
+             success:(void (^)())success
              failure:(void (^)(NSError *error))failure {
     
     NSDictionary *params = @{@"id": _userId, @"loginName": _loginName,
-                             @"status": (_isStandBy? @"PTO": @"STANDBY"),
+                             @"status": status,
                              @"location": _location};
     
     [_agentPipe save:params success:^(id responseObject) {
                  // update local status on success
-                 _isStandBy = !_isStandBy;
-                 
+                _status = status;
+        
                  success();
     } failure:^(NSError *error) {
         failure(error);

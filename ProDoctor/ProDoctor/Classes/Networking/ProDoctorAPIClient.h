@@ -19,7 +19,7 @@
 @property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;
 @property(readonly, nonatomic) NSString *location;
-@property(readonly, nonatomic) BOOL isStandBy;
+@property(readonly, nonatomic) NSString *status;
 
 + (ProDoctorAPIClient *)sharedInstance;
 
@@ -35,7 +35,7 @@
          success:(void (^)())success
          failure:(void (^)(NSError *error))failure;
 
-- (void)toggleStatus:(void (^)())success
+- (void)changeStatus:(NSString*) status
+             success:(void (^)())success
              failure:(void (^)(NSError *error))failure;
-
 @end
