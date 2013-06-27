@@ -60,6 +60,7 @@
 		48EFC91E177B2F7E00075A19 /* topBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 48EFC91D177B2F7E00075A19 /* topBarGreen.png */; };
 		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
 		6F016811177A142200601E7A /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680F177A142200601E7A /* orange.png */; };
+		6FC42B8D177C1528008DAAB2 /* AGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */; };
 		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		48EFC91D177B2F7E00075A19 /* topBarGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topBarGreen.png; path = Resources/images/topBarGreen.png; sourceTree = "<group>"; };
 		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
 		6F01680F177A142200601E7A /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = Resources/images/orange.png; sourceTree = "<group>"; };
+		6FC42B8B177C1528008DAAB2 /* AGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLocationViewController.h; path = Classes/Controllers/AGLocationViewController.h; sourceTree = "<group>"; };
+		6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLocationViewController.m; path = Classes/Controllers/AGLocationViewController.m; sourceTree = "<group>"; };
 		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -258,6 +261,8 @@
 				481BE88D176F155A00960BDF /* AGLeadsViewController.m */,
 				48E07C2417749EF500043C05 /* AGMyLeadsViewController.h */,
 				48E07C2517749EF500043C05 /* AGMyLeadsViewController.m */,
+				6FC42B8B177C1528008DAAB2 /* AGLocationViewController.h */,
+				6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				48E07C16177465D900043C05 /* AGLeadViewController.m in Sources */,
 				48E07C2617749EF500043C05 /* AGMyLeadsViewController.m in Sources */,
 				48E07C771776F58900043C05 /* LeadCell.m in Sources */,
+				6FC42B8D177C1528008DAAB2 /* AGLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
