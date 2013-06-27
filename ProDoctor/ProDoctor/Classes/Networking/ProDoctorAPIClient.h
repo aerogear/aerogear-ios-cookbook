@@ -38,4 +38,9 @@
 - (void)changeStatus:(NSString*) status
              success:(void (^)())success
              failure:(void (^)(NSError *error))failure;
+
+- (void)changeLocation:(NSString*) location
+               success:(void (^)())success
+               failure:(void (^)(NSError *error))failure;
+
 @end

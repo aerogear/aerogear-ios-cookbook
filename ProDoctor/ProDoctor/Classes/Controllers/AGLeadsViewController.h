@@ -6,8 +6,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AGLeadViewController.h"
+#import "AGLocationViewController.h"
 
-@interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate, UIActionSheetDelegate>
+@interface AGLeadsViewController : UITableViewController <AGLeadActionDelegate, AGLocationActionDelegate, UIActionSheetDelegate>
 @property(nonatomic, strong) NSMutableArray *leads;
 - (void) displayLeads;
 @end

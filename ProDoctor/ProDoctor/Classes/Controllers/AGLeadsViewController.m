@@ -23,11 +23,15 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                    target:self
                                                                                    action:@selector(displayLeads)];
-    
     self.navigationItem.rightBarButtonItem = refreshButton;
-
+    
+    UIBarButtonItem *locButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                               target:self
+                                                                               action:@selector(showLocationChooser)];
+    NSArray *buttons = @[[self statusButtonItem], locButton];
+    
     // set the status button item depending on agent status
-    self.navigationItem.leftBarButtonItem = [self statusButtonItem];
+    self.navigationItem.leftBarButtonItems = buttons;
 
     // register to receive the notification
     // when a new lead is pushed
@@ -133,6 +137,21 @@
 
 }
 
+- (void)didChangeLocation:(AGLocationViewController *)controller location:(NSString*)location {
+    [[ProDoctorAPIClient sharedInstance] changeLocation:location success:^{
+        
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"An error has occured changing status!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+    
+    [controller dismissModalViewControllerAnimated:YES];
+}
+
 - (BOOL) isLead:(AGLead*)lead in:(NSArray*)list {
     int i;
     for(i=0; i<[list count]; i++) {
@@ -223,6 +242,16 @@
     
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     [actionSheet showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)showLocationChooser {
+    AGLocationViewController *locController = [[AGLocationViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    locController.location = [ProDoctorAPIClient sharedInstance].location;
+    locController.delegate = self;
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:locController];
+    [self.navigationController presentModalViewController:controller animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

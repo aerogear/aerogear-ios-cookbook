@@ -136,15 +136,32 @@
              success:(void (^)())success
              failure:(void (^)(NSError *error))failure {
     
+    [self changeAgentWithStatus:status location:_location success:success failure:failure];
+}
+
+- (void)changeLocation:(NSString*) location
+               success:(void (^)())success
+               failure:(void (^)(NSError *error))failure {
+    
+    [self changeAgentWithStatus:_status location:location success:success failure:failure];
+}
+
+
+- (void)changeAgentWithStatus:(NSString*)status
+                     location:(NSString*)location
+                      success:(void (^)())success
+                      failure:(void (^)(NSError *error))failure {
+    
     NSDictionary *params = @{@"id": _userId, @"loginName": _loginName,
                              @"status": status,
-                             @"location": _location};
+                             @"location": location};
     
     [_agentPipe save:params success:^(id responseObject) {
-                 // update local status on success
-                _status = status;
+        // update local status on success
+        _status = status;
+        _location = location;
         
-                 success();
+        success();
     } failure:^(NSError *error) {
         failure(error);
     }];
