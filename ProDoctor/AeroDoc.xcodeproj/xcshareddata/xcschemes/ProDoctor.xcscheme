@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "481BE869176F155A00960BDF"
-               BuildableName = "ProDoctor.app"
-               BlueprintName = "ProDoctor"
-               ReferencedContainer = "container:ProDoctor.xcodeproj">
+               BuildableName = "AeroDoc.app"
+               BlueprintName = "AeroDoc"
+               ReferencedContainer = "container:AeroDoc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "481BE895176F155A00960BDF"
-               BuildableName = "ProDoctorTests.octest"
-               BlueprintName = "ProDoctorTests"
-               ReferencedContainer = "container:ProDoctor.xcodeproj">
+               BuildableName = "AeroDocTests.octest"
+               BlueprintName = "AeroDocTests"
+               ReferencedContainer = "container:AeroDoc.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "481BE869176F155A00960BDF"
-            BuildableName = "ProDoctor.app"
-            BlueprintName = "ProDoctor"
-            ReferencedContainer = "container:ProDoctor.xcodeproj">
+            BuildableName = "AeroDoc.app"
+            BlueprintName = "AeroDoc"
+            ReferencedContainer = "container:AeroDoc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "481BE869176F155A00960BDF"
-            BuildableName = "ProDoctor.app"
-            BlueprintName = "ProDoctor"
-            ReferencedContainer = "container:ProDoctor.xcodeproj">
+            BuildableName = "AeroDoc.app"
+            BlueprintName = "AeroDoc"
+            ReferencedContainer = "container:AeroDoc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "481BE869176F155A00960BDF"
-            BuildableName = "ProDoctor.app"
-            BlueprintName = "ProDoctor"
-            ReferencedContainer = "container:ProDoctor.xcodeproj">
+            BuildableName = "AeroDoc.app"
+            BlueprintName = "AeroDoc"
+            ReferencedContainer = "container:AeroDoc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -150,7 +150,7 @@
     AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-        [clientInfo setMobileVariantID:VARIANT_ID];
+        [clientInfo setVariantID:VARIANT_ID];
         [clientInfo setDeviceToken:self.deviceToken];
         
         UIDevice *currentDevice = [UIDevice currentDevice];
