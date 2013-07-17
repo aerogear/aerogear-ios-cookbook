@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 AeroGear. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
-
-@interface AeroDocTests : SenTestCase
-
-@end
+//#import <SenTestingKit/SenTestingKit.h>
+//
+//@interface AeroDocTests : SenTestCase
+//
+//@end
