@@ -1,14 +1,14 @@
 //
-//  ProDoctorTests.m
-//  ProDoctorTests
+//  AeroDocTests.m
+//  AeroDocTests
 //
 //  Created by Corinne Krych on 6/17/13.
 //  Copyright (c) 2013 AeroGear. All rights reserved.
 //
 
-#import "ProDoctorTests.h"
+#import "AeroDocTests.h"
 
-@implementation ProDoctorTests
+@implementation AeroDocTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in ProDoctorTests");
+    STFail(@"Unit tests are not implemented yet in AeroDocTests");
 }
 
 @end

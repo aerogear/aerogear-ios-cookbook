@@ -1,6 +1,6 @@
 //
 //  main.m
-//  ProDoctor
+//  AeroDoc
 //
 //  Created by Corinne Krych on 6/17/13.
 //  Copyright (c) 2013 AeroGear. All rights reserved.

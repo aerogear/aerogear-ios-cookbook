@@ -6,7 +6,7 @@
 
 #import "AGMyLeadsViewController.h"
 #import "AGLeadViewController.h"
-#import "ProDoctorAPIClient.h"
+#import "AeroDocAPIClient.h"
 #import "AGLead.h"
 #import "LeadCell.h"
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     
-    _localStore = [[ProDoctorAPIClient sharedInstance] localStore];
+    _localStore = [[AeroDocAPIClient sharedInstance] localStore];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(myLeadRefresh) name:@"NewMyLeadNotification" object:nil];

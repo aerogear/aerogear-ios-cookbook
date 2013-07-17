@@ -7,7 +7,7 @@
 #import "AGMyLeadsViewController.h"
 #import "AGLeadsViewController.h"
 #import "AGLeadViewController.h"
-#import "ProDoctorAPIClient.h"
+#import "AeroDocAPIClient.h"
 #import "AGLead.h"
 #import "LeadCell.h"
 
@@ -54,7 +54,7 @@
 }
 
 - (void) displayLeads {
-    [[ProDoctorAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
+    [[AeroDocAPIClient sharedInstance] fetchLeads:^(NSMutableArray *leads) {
         _leads = leads;
               
         [self.tableView reloadData];
@@ -87,7 +87,7 @@
         cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO withIndicatorDisplay:YES];
     }
     // check if list belong to list of pushed leads to display it with star icon
-    NSArray *_pushedLeads = [[ProDoctorAPIClient sharedInstance].pushedLocalStore readAll];
+    NSArray *_pushedLeads = [[AeroDocAPIClient sharedInstance].pushedLocalStore readAll];
     BOOL isPushed = [self isLead:lead in:_pushedLeads];
     [cell decorateCell:row inListCount:[self.leads count] with:isPushed];
     
@@ -115,10 +115,10 @@
 // and store my leads locally
 //------------------------------------------------------
 - (void)didAccept:(AGLeadViewController *)controller lead:(AGLead *)lead {
-    [[ProDoctorAPIClient sharedInstance] postLead:lead success:^{
+    [[AeroDocAPIClient sharedInstance] postLead:lead success:^{
         // add it to the local store
         NSError *error = nil;
-        if (![[ProDoctorAPIClient sharedInstance].localStore save:[lead dictionary] error:&error]) {
+        if (![[AeroDocAPIClient sharedInstance].localStore save:[lead dictionary] error:&error]) {
             DLog(@"Save: An error occured during save! \n");
         }
     
@@ -138,7 +138,7 @@
 }
 
 - (void)didChangeLocation:(AGLocationViewController *)controller location:(NSString*)location {
-    [[ProDoctorAPIClient sharedInstance] changeLocation:location success:^{
+    [[AeroDocAPIClient sharedInstance] changeLocation:location success:^{
         
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -196,7 +196,7 @@
     AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
     NSError *error = nil;
     
-    if (![[ProDoctorAPIClient sharedInstance].pushedLocalStore save:[lead dictionary] error:&error]) {
+    if (![[AeroDocAPIClient sharedInstance].pushedLocalStore save:[lead dictionary] error:&error]) {
         DLog(@"Save: An error occured during save to pushedLocalStorage!\n");
     }
     
@@ -247,7 +247,7 @@
 - (void)showLocationChooser {
     AGLocationViewController *locController = [[AGLocationViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    locController.location = [ProDoctorAPIClient sharedInstance].location;
+    locController.location = [AeroDocAPIClient sharedInstance].location;
     locController.delegate = self;
     
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:locController];
@@ -261,7 +261,7 @@
     
     NSString *status = (buttonIndex == 0? @"PTO": @"STANDBY");
                         
-    [[ProDoctorAPIClient sharedInstance] changeStatus:status success:^{
+    [[AeroDocAPIClient sharedInstance] changeStatus:status success:^{
         // if succeeded, update the status bar
         self.navigationItem.leftBarButtonItem = [self statusButtonItem];
 
@@ -279,7 +279,7 @@
 - (UIBarButtonItem*) statusButtonItem {
     UIImage *statusImage;
     
-    if ([[ProDoctorAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
+    if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
         statusImage = [UIImage imageNamed:@"orange.png"];
     } else {
         statusImage = [UIImage imageNamed:@"green.png"];
