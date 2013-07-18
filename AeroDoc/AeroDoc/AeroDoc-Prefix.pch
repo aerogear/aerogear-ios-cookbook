@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'ProDoctor' target in the 'ProDoctor' project
+// Prefix header for all source files of the 'AeroDoc' target in the 'AeroDoc' project
 //
 
 #ifdef __OBJC__

@@ -20,7 +20,7 @@
 
 #import "AGLeadsViewController.h"
 #import "AGMyLeadsViewController.h"
-#import "ProDoctorAPIClient.h"
+#import "AeroDocAPIClient.h"
 #import "AGDeviceRegistration.h"
 
 
@@ -45,16 +45,22 @@
     [super viewDidLoad];
     DLog(@"AGLoginViewController start viewDidLoad");
     self.view.backgroundColor = [UIColor clearColor];
-    UIImage *logoBackground = [UIImage imageNamed: @"prodoctor.png"];
-    _logo = [[UIImageView alloc] initWithImage:logoBackground];
-    _logo.center = CGPointMake(160, 60);
-    [self.view addSubview: _logo];
+
 
     UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _illustration = [[UIImageView alloc] initWithImage:background];
     _illustration.center = CGPointMake(160, 360);
     [self.view addSubview: _illustration];
 
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, 80, 200, 32)];
+    [label setLineBreakMode:UILineBreakModeWordWrap];
+    [label setNumberOfLines:0];
+    [label setTextColor:[UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:UITextAlignmentCenter];
+    [label setText:@"AeroDoc"];
+    [label setFont:[UIFont boldSystemFontOfSize:24.0]];
+    [[self view] addSubview:label];
     
     _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 160, 200, 32)];
     _username.borderStyle = UITextBorderStyleRoundedRect;
@@ -131,7 +137,7 @@
     // save username/passwd for future logins
     [self save];
     // first, we need to login to the service
-    ProDoctorAPIClient *apiClient = [ProDoctorAPIClient sharedInstance];
+    AeroDocAPIClient *apiClient = [AeroDocAPIClient sharedInstance];
     [apiClient loginWithUsername:_username.text password:_password.text success:^{
         // logged in successfully
         DLog(@"Sucessussfully logged");
@@ -150,11 +156,11 @@
     AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-        [clientInfo setMobileVariantID:VARIANT_ID];
+        [clientInfo setVariantID:VARIANT_ID];
         [clientInfo setDeviceToken:self.deviceToken];
         
         UIDevice *currentDevice = [UIDevice currentDevice];
-        [clientInfo setAlias: [[ProDoctorAPIClient sharedInstance] loginName]];
+        [clientInfo setAlias: [[AeroDocAPIClient sharedInstance] loginName]];
         [clientInfo setOperatingSystem:[currentDevice systemName]];
         [clientInfo setOsVersion:[currentDevice systemVersion]];
         [clientInfo setDeviceType: [currentDevice model]];

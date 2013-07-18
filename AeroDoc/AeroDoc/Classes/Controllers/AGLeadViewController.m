@@ -17,7 +17,7 @@
 
 #import "AGLeadViewController.h"
 #import "AGLead.h"
-#import "ProDoctorAPIClient.h"
+#import "AeroDocAPIClient.h"
 
 @implementation AGLeadViewController {
     UILabel *_name;
@@ -111,7 +111,7 @@
 
 - (IBAction)accept {
     DLog(@"Lead accepted");
-    self.lead.saleAgent = [[ProDoctorAPIClient sharedInstance] userId];
+    self.lead.saleAgent = [[AeroDocAPIClient sharedInstance] userId];
     [delegate didAccept:self lead:self.lead];
     [self goBackToList];
 }

@@ -1,7 +1,7 @@
 aerogear-push-quickstart-ios
 ============================
 
-See Prodoctor description in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend/blob/master/readme.md#description-of-the-application)
+See AeroDoc description in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend/blob/master/readme.md#description-of-the-application)
 
 Installation
 ===========
@@ -18,19 +18,19 @@ Please follow the steps explained in [aerogear tutorial](http://aerogear.org/doc
 
 * Register your variant id as explained in [iOS variant section](https://github.com/aerogear/aerogear-unified-push-server#ios-variant)
 
-* Before starting ProDoctor backend replace push-app-id as explained in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend#setting-the-pushapplicationid-and-the-push-server-url)
+* Before starting AeroDoc backend replace push-app-id as explained in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend#setting-the-pushapplicationid-and-the-push-server-url)
 
 * Before deploying your app on device:
 - make sure bundle id of app matches the one in provisioning device
-- replace server side url, app-push-id and variant id in [config file](https://github.com/aerogear/aerogear-push-quickstart-ios/blob/master/ProDoctor/ProDoctor/Classes/Config/AGConfig.h)
+- replace server side url, app-push-id and variant id in [config file](https://github.com/aerogear/aerogear-push-quickstart-ios/blob/master/AeroDoc/AeroDoc/Classes/Config/AGConfig.h)
 
 you're all set, enjoy!
 
 Working with the app
 ====================
-Using Prodoctor, admin can create new leads, search for a nearby sale agent (SA), push the lead to a particular SA.
+Using AeroDoc, admin can create new leads, search for a nearby sale agent (SA), push the lead to a particular SA.
 
-The SA logins to iOS ProDoctor aoo. Get a list of all open leads. Get a special message for the leads pushed to him. Puhsed leads appear with star icons. Once a lead is accepted is not available on open leads any more but it is stored locally on SA device
+The SA logins to iOS AeroDoc aoo. Get a list of all open leads. Get a special message for the leads pushed to him. Puhsed leads appear with star icons. Once a lead is accepted is not available on open leads any more but it is stored locally on SA device
 in MyLeads list. 
 
 Post-install

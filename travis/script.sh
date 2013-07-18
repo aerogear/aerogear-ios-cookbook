@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-xctool -workspace ProDoctor/ProDoctor.xcworkspace/ -scheme ProDoctor -sdk iphonesimulator
+xctool -workspace AeroDoc/AeroDoc.xcworkspace/ -scheme AeroDoc -sdk iphonesimulator

@@ -11,29 +11,26 @@
 		481BE870176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
 		481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE871176F155A00960BDF /* CoreGraphics.framework */; };
 		481BE878176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE876176F155A00960BDF /* InfoPlist.strings */; };
-		481BE87A176F155A00960BDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE879176F155A00960BDF /* main.m */; };
-		481BE87E176F155A00960BDF /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE87D176F155A00960BDF /* AGAppDelegate.m */; };
-		481BE880176F155A00960BDF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE87F176F155A00960BDF /* Default.png */; };
-		481BE882176F155A00960BDF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE881176F155A00960BDF /* Default@2x.png */; };
-		481BE884176F155A00960BDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE883176F155A00960BDF /* Default-568h@2x.png */; };
 		481BE886176F155A00960BDF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 481BE885176F155A00960BDF /* Podfile */; };
-		481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE889176F155A00960BDF /* ProDoctorAPIClient.m */; };
-		481BE88E176F155A00960BDF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE88D176F155A00960BDF /* AGLeadsViewController.m */; };
 		481BE890176F155A00960BDF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 481BE88F176F155A00960BDF /* .gitignore */; };
 		481BE898176F155A00960BDF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE897176F155A00960BDF /* SenTestingKit.framework */; };
 		481BE899176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
 		481BE89A176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
 		481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE8A0176F155A00960BDF /* InfoPlist.strings */; };
-		481BE8A5176F155A00960BDF /* ProDoctorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE8A4176F155A00960BDF /* ProDoctorTests.m */; };
-		481BE900176F2D4200960BDF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481BE8FF176F2D4200960BDF /* AGLoginViewController.m */; };
-		481BE902176F3DFE00960BDF /* heart_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BE901176F3DFE00960BDF /* heart_tool.png */; };
-		489EB59C176F5F0600617642 /* prodoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB59B176F5F0600617642 /* prodoctor.png */; };
-		489EB5A4176F636100617642 /* heart57*57.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A3176F636100617642 /* heart57*57.png */; };
-		489EB5A6176F63E200617642 /* heart114*114.png in Resources */ = {isa = PBXBuildFile; fileRef = 489EB5A5176F63E200617642 /* heart114*114.png */; };
-		48E07C0C1771E35F00043C05 /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E07C0B1771E35F00043C05 /* AGLead.m */; };
-		48E07C16177465D900043C05 /* AGLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E07C15177465D900043C05 /* AGLeadViewController.m */; };
-		48E07C20177476B600043C05 /* heart57*57.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C1F177476B600043C05 /* heart57*57.png */; };
-		48E07C2617749EF500043C05 /* AGMyLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E07C2517749EF500043C05 /* AGMyLeadsViewController.m */; };
+		48C4A9981796F595000108DF /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9971796F595000108DF /* AGLead.m */; };
+		48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */; };
+		48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99D1796F5B2000108DF /* AGLeadViewController.m */; };
+		48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99F1796F5B2000108DF /* AGLocationViewController.m */; };
+		48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A11796F5B2000108DF /* AGLoginViewController.m */; };
+		48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */; };
+		48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */; };
+		48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AD1796F5DE000108DF /* LeadCell.m */; };
+		48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B01796F5FF000108DF /* AGAppDelegate.m */; };
+		48C4A9B81796F645000108DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B71796F645000108DF /* main.m */; };
+		48C4A9C51796F69B000108DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C21796F69B000108DF /* Default-568h@2x.png */; };
+		48C4A9C61796F69B000108DF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C31796F69B000108DF /* Default.png */; };
+		48C4A9C71796F69B000108DF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C41796F69B000108DF /* Default@2x.png */; };
+		48C4A9C91796F6B8000108DF /* AeroDocTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */; };
 		48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C44177622A000043C05 /* aerogear_logo.png */; };
 		48E07C5D177622A000043C05 /* bottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C45177622A000043C05 /* bottomRow.png */; };
 		48E07C5E177622A000043C05 /* bottomRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C46177622A000043C05 /* bottomRowSelected.png */; };
@@ -46,13 +43,11 @@
 		48E07C69177622A000043C05 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C51177622A000043C05 /* logout.png */; };
 		48E07C6A177622A000043C05 /* middleRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C52177622A000043C05 /* middleRow.png */; };
 		48E07C6B177622A000043C05 /* middleRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C53177622A000043C05 /* middleRowSelected.png */; };
-		48E07C6C177622A000043C05 /* prodoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C54177622A000043C05 /* prodoctor.png */; };
 		48E07C6D177622A000043C05 /* projects.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C55177622A000043C05 /* projects.png */; };
 		48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C58177622A000043C05 /* topAndBottomRow.png */; };
 		48E07C71177622A000043C05 /* topAndBottomRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C59177622A000043C05 /* topAndBottomRowSelected.png */; };
 		48E07C72177622A000043C05 /* topRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C5A177622A000043C05 /* topRow.png */; };
 		48E07C73177622A000043C05 /* topRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C5B177622A000043C05 /* topRowSelected.png */; };
-		48E07C771776F58900043C05 /* LeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E07C761776F58900043C05 /* LeadCell.m */; };
 		48EFC90E1777889800075A19 /* fullstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 48EFC90D1777889800075A19 /* fullstar.png */; };
 		48EFC9141777961800075A19 /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48EFC9131777961800075A19 /* green.jpg */; };
 		48EFC91A17779F4700075A19 /* grey5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48EFC91917779F4700075A19 /* grey5.jpg */; };
@@ -60,7 +55,6 @@
 		48EFC91E177B2F7E00075A19 /* topBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 48EFC91D177B2F7E00075A19 /* topBarGreen.png */; };
 		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
 		6F016811177A142200601E7A /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680F177A142200601E7A /* orange.png */; };
-		6FC42B8D177C1528008DAAB2 /* AGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */; };
 		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,51 +64,47 @@
 			containerPortal = 481BE862176F155900960BDF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 481BE869176F155A00960BDF;
-			remoteInfo = ProDoctor;
+			remoteInfo = AeroDoc;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3ED1957D45914DBAA7632452 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		481BE86A176F155A00960BDF /* ProDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE86A176F155A00960BDF /* AeroDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		481BE86D176F155A00960BDF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		481BE86F176F155A00960BDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		481BE871176F155A00960BDF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		481BE875176F155A00960BDF /* ProDoctor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProDoctor-Info.plist"; sourceTree = "<group>"; };
 		481BE877176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		481BE879176F155A00960BDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		481BE87B176F155A00960BDF /* ProDoctor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProDoctor-Prefix.pch"; sourceTree = "<group>"; };
-		481BE87C176F155A00960BDF /* AGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGAppDelegate.h; sourceTree = "<group>"; };
-		481BE87D176F155A00960BDF /* AGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGAppDelegate.m; sourceTree = "<group>"; };
-		481BE87F176F155A00960BDF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		481BE881176F155A00960BDF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		481BE883176F155A00960BDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		481BE885176F155A00960BDF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		481BE888176F155A00960BDF /* ProDoctorAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProDoctorAPIClient.h; path = Classes/Networking/ProDoctorAPIClient.h; sourceTree = "<group>"; };
-		481BE889176F155A00960BDF /* ProDoctorAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProDoctorAPIClient.m; path = Classes/Networking/ProDoctorAPIClient.m; sourceTree = "<group>"; };
-		481BE88C176F155A00960BDF /* AGLeadsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AGLeadsViewController.h; path = Classes/Controllers/AGLeadsViewController.h; sourceTree = "<group>"; };
-		481BE88D176F155A00960BDF /* AGLeadsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = Classes/Controllers/AGLeadsViewController.m; sourceTree = "<group>"; };
 		481BE88F176F155A00960BDF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		481BE896176F155A00960BDF /* ProDoctorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProDoctorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE896176F155A00960BDF /* AeroDocTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AeroDocTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		481BE897176F155A00960BDF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		481BE89F176F155A00960BDF /* ProDoctorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProDoctorTests-Info.plist"; sourceTree = "<group>"; };
 		481BE8A1176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		481BE8A3176F155A00960BDF /* ProDoctorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProDoctorTests.h; sourceTree = "<group>"; };
-		481BE8A4176F155A00960BDF /* ProDoctorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProDoctorTests.m; sourceTree = "<group>"; };
-		481BE8FE176F2D4200960BDF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = Classes/Controllers/AGLoginViewController.h; sourceTree = "<group>"; };
-		481BE8FF176F2D4200960BDF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = Classes/Controllers/AGLoginViewController.m; sourceTree = "<group>"; };
-		481BE901176F3DFE00960BDF /* heart_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart_tool.png; path = Resources/images/heart_tool.png; sourceTree = "<group>"; };
-		489EB59B176F5F0600617642 /* prodoctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prodoctor.png; path = Resources/images/prodoctor.png; sourceTree = "<group>"; };
-		489EB5A3176F636100617642 /* heart57*57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart57*57.png"; path = "../heart57*57.png"; sourceTree = "<group>"; };
-		489EB5A5176F63E200617642 /* heart114*114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart114*114.png"; path = "Resources/images/heart114*114.png"; sourceTree = "<group>"; };
-		48E07C0A1771E35F00043C05 /* AGLead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLead.h; path = Classes/Model/AGLead.h; sourceTree = "<group>"; };
-		48E07C0B1771E35F00043C05 /* AGLead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLead.m; path = Classes/Model/AGLead.m; sourceTree = "<group>"; };
-		48E07C0D177435CE00043C05 /* AGConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGConfig.h; path = Classes/Config/AGConfig.h; sourceTree = "<group>"; };
-		48E07C14177465D900043C05 /* AGLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadViewController.h; path = Classes/Controllers/AGLeadViewController.h; sourceTree = "<group>"; };
-		48E07C15177465D900043C05 /* AGLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadViewController.m; path = Classes/Controllers/AGLeadViewController.m; sourceTree = "<group>"; };
-		48E07C1F177476B600043C05 /* heart57*57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart57*57.png"; sourceTree = "<group>"; };
-		48E07C2417749EF500043C05 /* AGMyLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGMyLeadsViewController.h; path = Classes/Controllers/AGMyLeadsViewController.h; sourceTree = "<group>"; };
-		48E07C2517749EF500043C05 /* AGMyLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGMyLeadsViewController.m; path = Classes/Controllers/AGMyLeadsViewController.m; sourceTree = "<group>"; };
+		48C4A9961796F595000108DF /* AGLead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLead.h; path = AeroDoc/Classes/Model/AGLead.h; sourceTree = SOURCE_ROOT; };
+		48C4A9971796F595000108DF /* AGLead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLead.m; path = AeroDoc/Classes/Model/AGLead.m; sourceTree = SOURCE_ROOT; };
+		48C4A9991796F5A5000108DF /* AGConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGConfig.h; path = AeroDoc/Classes/Config/AGConfig.h; sourceTree = SOURCE_ROOT; };
+		48C4A99A1796F5B2000108DF /* AGLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGLeadsViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGLeadsViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A99C1796F5B2000108DF /* AGLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadViewController.h; path = AeroDoc/Classes/Controllers/AGLeadViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A99D1796F5B2000108DF /* AGLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadViewController.m; path = AeroDoc/Classes/Controllers/AGLeadViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A99E1796F5B2000108DF /* AGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLocationViewController.h; path = AeroDoc/Classes/Controllers/AGLocationViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A99F1796F5B2000108DF /* AGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLocationViewController.m; path = AeroDoc/Classes/Controllers/AGLocationViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A01796F5B2000108DF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = AeroDoc/Classes/Controllers/AGLoginViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A9A11796F5B2000108DF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = AeroDoc/Classes/Controllers/AGLoginViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGMyLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGMyLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A91796F5C6000108DF /* AeroDocAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroDocAPIClient.h; path = AeroDoc/Classes/Networking/AeroDocAPIClient.h; sourceTree = SOURCE_ROOT; };
+		48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AeroDocAPIClient.m; path = AeroDoc/Classes/Networking/AeroDocAPIClient.m; sourceTree = SOURCE_ROOT; };
+		48C4A9AC1796F5DE000108DF /* LeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeadCell.h; path = AeroDoc/Classes/TableCells/LeadCell.h; sourceTree = SOURCE_ROOT; };
+		48C4A9AD1796F5DE000108DF /* LeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeadCell.m; path = AeroDoc/Classes/TableCells/LeadCell.m; sourceTree = SOURCE_ROOT; };
+		48C4A9AF1796F5FF000108DF /* AGAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAppDelegate.h; path = AeroDoc/AGAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		48C4A9B01796F5FF000108DF /* AGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAppDelegate.m; path = AeroDoc/AGAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		48C4A9B71796F645000108DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AeroDoc/main.m; sourceTree = SOURCE_ROOT; };
+		48C4A9B91796F64E000108DF /* AeroDoc-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AeroDoc-Prefix.pch"; path = "AeroDoc/AeroDoc-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		48C4A9C21796F69B000108DF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "AeroDoc/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		48C4A9C31796F69B000108DF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = AeroDoc/Default.png; sourceTree = SOURCE_ROOT; };
+		48C4A9C41796F69B000108DF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "AeroDoc/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AeroDocTests-Info.plist"; path = "AeroDocTests/AeroDocTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		48E07C44177622A000043C05 /* aerogear_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aerogear_logo.png; path = Resources/images/aerogear_logo.png; sourceTree = "<group>"; };
 		48E07C45177622A000043C05 /* bottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottomRow.png; path = Resources/images/bottomRow.png; sourceTree = "<group>"; };
 		48E07C46177622A000043C05 /* bottomRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottomRowSelected.png; path = Resources/images/bottomRowSelected.png; sourceTree = "<group>"; };
@@ -127,14 +117,11 @@
 		48E07C51177622A000043C05 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logout.png; path = Resources/images/logout.png; sourceTree = "<group>"; };
 		48E07C52177622A000043C05 /* middleRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = middleRow.png; path = Resources/images/middleRow.png; sourceTree = "<group>"; };
 		48E07C53177622A000043C05 /* middleRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = middleRowSelected.png; path = Resources/images/middleRowSelected.png; sourceTree = "<group>"; };
-		48E07C54177622A000043C05 /* prodoctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prodoctor.png; path = Resources/images/prodoctor.png; sourceTree = "<group>"; };
 		48E07C55177622A000043C05 /* projects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = projects.png; path = Resources/images/projects.png; sourceTree = "<group>"; };
 		48E07C58177622A000043C05 /* topAndBottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topAndBottomRow.png; path = Resources/images/topAndBottomRow.png; sourceTree = "<group>"; };
 		48E07C59177622A000043C05 /* topAndBottomRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topAndBottomRowSelected.png; path = Resources/images/topAndBottomRowSelected.png; sourceTree = "<group>"; };
 		48E07C5A177622A000043C05 /* topRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topRow.png; path = Resources/images/topRow.png; sourceTree = "<group>"; };
 		48E07C5B177622A000043C05 /* topRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topRowSelected.png; path = Resources/images/topRowSelected.png; sourceTree = "<group>"; };
-		48E07C751776F58900043C05 /* LeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeadCell.h; path = Classes/TableCells/LeadCell.h; sourceTree = "<group>"; };
-		48E07C761776F58900043C05 /* LeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeadCell.m; path = Classes/TableCells/LeadCell.m; sourceTree = "<group>"; };
 		48EFC90D1777889800075A19 /* fullstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullstar.png; path = Resources/images/fullstar.png; sourceTree = "<group>"; };
 		48EFC9131777961800075A19 /* green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = green.jpg; path = Resources/images/green.jpg; sourceTree = "<group>"; };
 		48EFC91917779F4700075A19 /* grey5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = grey5.jpg; path = Resources/images/grey5.jpg; sourceTree = "<group>"; };
@@ -142,8 +129,6 @@
 		48EFC91D177B2F7E00075A19 /* topBarGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topBarGreen.png; path = Resources/images/topBarGreen.png; sourceTree = "<group>"; };
 		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
 		6F01680F177A142200601E7A /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = Resources/images/orange.png; sourceTree = "<group>"; };
-		6FC42B8B177C1528008DAAB2 /* AGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLocationViewController.h; path = Classes/Controllers/AGLocationViewController.h; sourceTree = "<group>"; };
-		6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLocationViewController.m; path = Classes/Controllers/AGLocationViewController.m; sourceTree = "<group>"; };
 		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -175,9 +160,8 @@
 		481BE861176F155900960BDF = {
 			isa = PBXGroup;
 			children = (
-				48E07C1F177476B600043C05 /* heart57*57.png */,
-				481BE873176F155A00960BDF /* ProDoctor */,
-				481BE89D176F155A00960BDF /* ProDoctorTests */,
+				481BE873176F155A00960BDF /* AeroDoc */,
+				481BE89D176F155A00960BDF /* AeroDocTests */,
 				481BE86C176F155A00960BDF /* Frameworks */,
 				481BE86B176F155A00960BDF /* Products */,
 				71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */,
@@ -187,8 +171,8 @@
 		481BE86B176F155A00960BDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				481BE86A176F155A00960BDF /* ProDoctor.app */,
-				481BE896176F155A00960BDF /* ProDoctorTests.octest */,
+				481BE86A176F155A00960BDF /* AeroDoc.app */,
+				481BE896176F155A00960BDF /* AeroDocTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,13 +189,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		481BE873176F155A00960BDF /* ProDoctor */ = {
+		481BE873176F155A00960BDF /* AeroDoc */ = {
 			isa = PBXGroup;
 			children = (
 				48E07C741776F57400043C05 /* TableCells */,
 				48E07C091771E31F00043C05 /* Model */,
-				481BE87C176F155A00960BDF /* AGAppDelegate.h */,
-				481BE87D176F155A00960BDF /* AGAppDelegate.m */,
+				48C4A9AF1796F5FF000108DF /* AGAppDelegate.h */,
+				48C4A9B01796F5FF000108DF /* AGAppDelegate.m */,
 				481BE885176F155A00960BDF /* Podfile */,
 				481BE88F176F155A00960BDF /* .gitignore */,
 				48E07C10177435D500043C05 /* Config */,
@@ -220,23 +204,18 @@
 				48E07C43177621B700043C05 /* Resources */,
 				481BE874176F155A00960BDF /* Supporting Files */,
 			);
-			path = ProDoctor;
+			path = AeroDoc;
 			sourceTree = "<group>";
 		};
 		481BE874176F155A00960BDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				481BE875176F155A00960BDF /* ProDoctor-Info.plist */,
+				48C4A9B71796F645000108DF /* main.m */,
+				48C4A9B91796F64E000108DF /* AeroDoc-Prefix.pch */,
 				481BE876176F155A00960BDF /* InfoPlist.strings */,
-				481BE879176F155A00960BDF /* main.m */,
-				481BE87B176F155A00960BDF /* ProDoctor-Prefix.pch */,
-				481BE901176F3DFE00960BDF /* heart_tool.png */,
-				489EB5A3176F636100617642 /* heart57*57.png */,
-				489EB5A5176F63E200617642 /* heart114*114.png */,
-				489EB59B176F5F0600617642 /* prodoctor.png */,
-				481BE87F176F155A00960BDF /* Default.png */,
-				481BE881176F155A00960BDF /* Default@2x.png */,
-				481BE883176F155A00960BDF /* Default-568h@2x.png */,
+				48C4A9C21796F69B000108DF /* Default-568h@2x.png */,
+				48C4A9C31796F69B000108DF /* Default.png */,
+				48C4A9C41796F69B000108DF /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -244,8 +223,8 @@
 		481BE887176F155A00960BDF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				481BE888176F155A00960BDF /* ProDoctorAPIClient.h */,
-				481BE889176F155A00960BDF /* ProDoctorAPIClient.m */,
+				48C4A9A91796F5C6000108DF /* AeroDocAPIClient.h */,
+				48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -253,34 +232,32 @@
 		481BE88B176F155A00960BDF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				48E07C14177465D900043C05 /* AGLeadViewController.h */,
-				48E07C15177465D900043C05 /* AGLeadViewController.m */,
-				481BE8FE176F2D4200960BDF /* AGLoginViewController.h */,
-				481BE8FF176F2D4200960BDF /* AGLoginViewController.m */,
-				481BE88C176F155A00960BDF /* AGLeadsViewController.h */,
-				481BE88D176F155A00960BDF /* AGLeadsViewController.m */,
-				48E07C2417749EF500043C05 /* AGMyLeadsViewController.h */,
-				48E07C2517749EF500043C05 /* AGMyLeadsViewController.m */,
-				6FC42B8B177C1528008DAAB2 /* AGLocationViewController.h */,
-				6FC42B8C177C1528008DAAB2 /* AGLocationViewController.m */,
+				48C4A99A1796F5B2000108DF /* AGLeadsViewController.h */,
+				48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */,
+				48C4A99C1796F5B2000108DF /* AGLeadViewController.h */,
+				48C4A99D1796F5B2000108DF /* AGLeadViewController.m */,
+				48C4A99E1796F5B2000108DF /* AGLocationViewController.h */,
+				48C4A99F1796F5B2000108DF /* AGLocationViewController.m */,
+				48C4A9A01796F5B2000108DF /* AGLoginViewController.h */,
+				48C4A9A11796F5B2000108DF /* AGLoginViewController.m */,
+				48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */,
+				48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		481BE89D176F155A00960BDF /* ProDoctorTests */ = {
+		481BE89D176F155A00960BDF /* AeroDocTests */ = {
 			isa = PBXGroup;
 			children = (
-				481BE8A3176F155A00960BDF /* ProDoctorTests.h */,
-				481BE8A4176F155A00960BDF /* ProDoctorTests.m */,
 				481BE89E176F155A00960BDF /* Supporting Files */,
 			);
-			path = ProDoctorTests;
+			path = AeroDocTests;
 			sourceTree = "<group>";
 		};
 		481BE89E176F155A00960BDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				481BE89F176F155A00960BDF /* ProDoctorTests-Info.plist */,
+				48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */,
 				481BE8A0176F155A00960BDF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -289,8 +266,8 @@
 		48E07C091771E31F00043C05 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				48E07C0A1771E35F00043C05 /* AGLead.h */,
-				48E07C0B1771E35F00043C05 /* AGLead.m */,
+				48C4A9961796F595000108DF /* AGLead.h */,
+				48C4A9971796F595000108DF /* AGLead.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -298,7 +275,7 @@
 		48E07C10177435D500043C05 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				48E07C0D177435CE00043C05 /* AGConfig.h */,
+				48C4A9991796F5A5000108DF /* AGConfig.h */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -323,7 +300,6 @@
 				48E07C51177622A000043C05 /* logout.png */,
 				48E07C52177622A000043C05 /* middleRow.png */,
 				48E07C53177622A000043C05 /* middleRowSelected.png */,
-				48E07C54177622A000043C05 /* prodoctor.png */,
 				48E07C55177622A000043C05 /* projects.png */,
 				48E07C58177622A000043C05 /* topAndBottomRow.png */,
 				48E07C59177622A000043C05 /* topAndBottomRowSelected.png */,
@@ -338,8 +314,8 @@
 		48E07C741776F57400043C05 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				48E07C751776F58900043C05 /* LeadCell.h */,
-				48E07C761776F58900043C05 /* LeadCell.m */,
+				48C4A9AC1796F5DE000108DF /* LeadCell.h */,
+				48C4A9AD1796F5DE000108DF /* LeadCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -347,9 +323,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		481BE869176F155A00960BDF /* ProDoctor */ = {
+		481BE869176F155A00960BDF /* AeroDoc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctor" */;
+			buildConfigurationList = 481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDoc" */;
 			buildPhases = (
 				5514BACBE1264F0CBDC066B7 /* Check Pods Manifest.lock */,
 				481BE866176F155A00960BDF /* Sources */,
@@ -361,14 +337,14 @@
 			);
 			dependencies = (
 			);
-			name = ProDoctor;
-			productName = ProDoctor;
-			productReference = 481BE86A176F155A00960BDF /* ProDoctor.app */;
+			name = AeroDoc;
+			productName = AeroDoc;
+			productReference = 481BE86A176F155A00960BDF /* AeroDoc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		481BE895176F155A00960BDF /* ProDoctorTests */ = {
+		481BE895176F155A00960BDF /* AeroDocTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctorTests" */;
+			buildConfigurationList = 481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDocTests" */;
 			buildPhases = (
 				481BE891176F155A00960BDF /* Sources */,
 				481BE892176F155A00960BDF /* Frameworks */,
@@ -380,9 +356,9 @@
 			dependencies = (
 				481BE89C176F155A00960BDF /* PBXTargetDependency */,
 			);
-			name = ProDoctorTests;
-			productName = ProDoctorTests;
-			productReference = 481BE896176F155A00960BDF /* ProDoctorTests.octest */;
+			name = AeroDocTests;
+			productName = AeroDocTests;
+			productReference = 481BE896176F155A00960BDF /* AeroDocTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -395,7 +371,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = AeroGear;
 			};
-			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "ProDoctor" */;
+			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -407,8 +383,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				481BE869176F155A00960BDF /* ProDoctor */,
-				481BE895176F155A00960BDF /* ProDoctorTests */,
+				481BE869176F155A00960BDF /* AeroDoc */,
+				481BE895176F155A00960BDF /* AeroDocTests */,
 			);
 		};
 /* End PBXProject section */
@@ -419,16 +395,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				481BE878176F155A00960BDF /* InfoPlist.strings in Resources */,
-				481BE880176F155A00960BDF /* Default.png in Resources */,
-				481BE882176F155A00960BDF /* Default@2x.png in Resources */,
-				481BE884176F155A00960BDF /* Default-568h@2x.png in Resources */,
 				481BE886176F155A00960BDF /* Podfile in Resources */,
 				481BE890176F155A00960BDF /* .gitignore in Resources */,
-				481BE902176F3DFE00960BDF /* heart_tool.png in Resources */,
-				489EB59C176F5F0600617642 /* prodoctor.png in Resources */,
-				489EB5A4176F636100617642 /* heart57*57.png in Resources */,
-				489EB5A6176F63E200617642 /* heart114*114.png in Resources */,
-				48E07C20177476B600043C05 /* heart57*57.png in Resources */,
 				48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */,
 				48E07C5D177622A000043C05 /* bottomRow.png in Resources */,
 				48E07C5E177622A000043C05 /* bottomRowSelected.png in Resources */,
@@ -441,7 +409,6 @@
 				48E07C69177622A000043C05 /* logout.png in Resources */,
 				48E07C6A177622A000043C05 /* middleRow.png in Resources */,
 				48E07C6B177622A000043C05 /* middleRowSelected.png in Resources */,
-				48E07C6C177622A000043C05 /* prodoctor.png in Resources */,
 				48E07C6D177622A000043C05 /* projects.png in Resources */,
 				48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */,
 				48E07C71177622A000043C05 /* topAndBottomRowSelected.png in Resources */,
@@ -454,6 +421,10 @@
 				6F016811177A142200601E7A /* orange.png in Resources */,
 				48EFC91C177B2EE200075A19 /* topBar.png in Resources */,
 				48EFC91E177B2F7E00075A19 /* topBarGreen.png in Resources */,
+				48C4A9C51796F69B000108DF /* Default-568h@2x.png in Resources */,
+				48C4A9C61796F69B000108DF /* Default.png in Resources */,
+				48C4A9C71796F69B000108DF /* Default@2x.png in Resources */,
+				48C4A9C91796F6B8000108DF /* AeroDocTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,16 +487,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				481BE87A176F155A00960BDF /* main.m in Sources */,
-				481BE87E176F155A00960BDF /* AGAppDelegate.m in Sources */,
-				481BE88A176F155A00960BDF /* ProDoctorAPIClient.m in Sources */,
-				481BE88E176F155A00960BDF /* AGLeadsViewController.m in Sources */,
-				481BE900176F2D4200960BDF /* AGLoginViewController.m in Sources */,
-				48E07C0C1771E35F00043C05 /* AGLead.m in Sources */,
-				48E07C16177465D900043C05 /* AGLeadViewController.m in Sources */,
-				48E07C2617749EF500043C05 /* AGMyLeadsViewController.m in Sources */,
-				48E07C771776F58900043C05 /* LeadCell.m in Sources */,
-				6FC42B8D177C1528008DAAB2 /* AGLocationViewController.m in Sources */,
+				48C4A9981796F595000108DF /* AGLead.m in Sources */,
+				48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */,
+				48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */,
+				48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */,
+				48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */,
+				48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */,
+				48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */,
+				48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */,
+				48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */,
+				48C4A9B81796F645000108DF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +504,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				481BE8A5176F155A00960BDF /* ProDoctorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +512,7 @@
 /* Begin PBXTargetDependency section */
 		481BE89C176F155A00960BDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 481BE869176F155A00960BDF /* ProDoctor */;
+			target = 481BE869176F155A00960BDF /* AeroDoc */;
 			targetProxy = 481BE89B176F155A00960BDF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -629,11 +599,11 @@
 			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
-				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AeroDoc;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -643,11 +613,11 @@
 			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
-				INFOPLIST_FILE = "ProDoctor/ProDoctor-Info.plist";
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AeroDoc;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -655,15 +625,15 @@
 		481BE8AC176F155A00960BDF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProDoctor.app/ProDoctor";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroDoc.app/AeroDoc";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
-				INFOPLIST_FILE = "ProDoctorTests/ProDoctorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDocTests/AeroDocTests-Info.plist";
+				PRODUCT_NAME = AeroDocTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -672,15 +642,15 @@
 		481BE8AD176F155A00960BDF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProDoctor.app/ProDoctor";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroDoc.app/AeroDoc";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ProDoctor/ProDoctor-Prefix.pch";
-				INFOPLIST_FILE = "ProDoctorTests/ProDoctorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDocTests/AeroDocTests-Info.plist";
+				PRODUCT_NAME = AeroDocTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -689,7 +659,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		481BE865176F155900960BDF /* Build configuration list for PBXProject "ProDoctor" */ = {
+		481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				481BE8A6176F155A00960BDF /* Debug */,
@@ -698,7 +668,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctor" */ = {
+		481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDoc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				481BE8A9176F155A00960BDF /* Debug */,
@@ -707,7 +677,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "ProDoctorTests" */ = {
+		481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDocTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				481BE8AC176F155A00960BDF /* Debug */,
