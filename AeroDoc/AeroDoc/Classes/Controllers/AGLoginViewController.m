@@ -52,6 +52,15 @@
     _illustration.center = CGPointMake(160, 360);
     [self.view addSubview: _illustration];
 
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, 80, 200, 32)];
+    [label setLineBreakMode:UILineBreakModeWordWrap];
+    [label setNumberOfLines:0];
+    [label setTextColor:[UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:UITextAlignmentCenter];
+    [label setText:@"AeroDoc"];
+    [label setFont:[UIFont boldSystemFontOfSize:24.0]];
+    [[self view] addSubview:label];
     
     _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 160, 200, 32)];
     _username.borderStyle = UITextBorderStyleRoundedRect;
