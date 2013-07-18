@@ -26,7 +26,6 @@
 		48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */; };
 		48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AD1796F5DE000108DF /* LeadCell.m */; };
 		48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B01796F5FF000108DF /* AGAppDelegate.m */; };
-		48C4A9B41796F623000108DF /* AeroDocTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B31796F623000108DF /* AeroDocTests.m */; };
 		48C4A9B61796F63E000108DF /* AeroDoc-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9B51796F63E000108DF /* AeroDoc-Info.plist */; };
 		48C4A9B81796F645000108DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B71796F645000108DF /* main.m */; };
 		48C4A9BB1796F66F000108DF /* heart_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9BA1796F66F000108DF /* heart_tool.png */; };
@@ -105,8 +104,6 @@
 		48C4A9AD1796F5DE000108DF /* LeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeadCell.m; path = AeroDoc/Classes/TableCells/LeadCell.m; sourceTree = SOURCE_ROOT; };
 		48C4A9AF1796F5FF000108DF /* AGAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAppDelegate.h; path = AeroDoc/AGAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		48C4A9B01796F5FF000108DF /* AGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAppDelegate.m; path = AeroDoc/AGAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		48C4A9B21796F623000108DF /* AeroDocTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroDocTests.h; path = AeroDocTests/AeroDocTests.h; sourceTree = SOURCE_ROOT; };
-		48C4A9B31796F623000108DF /* AeroDocTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AeroDocTests.m; path = AeroDocTests/AeroDocTests.m; sourceTree = SOURCE_ROOT; };
 		48C4A9B51796F63E000108DF /* AeroDoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AeroDoc-Info.plist"; path = "AeroDoc/AeroDoc-Info.plist"; sourceTree = SOURCE_ROOT; };
 		48C4A9B71796F645000108DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AeroDoc/main.m; sourceTree = SOURCE_ROOT; };
 		48C4A9B91796F64E000108DF /* AeroDoc-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AeroDoc-Prefix.pch"; path = "AeroDoc/AeroDoc-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -267,8 +264,6 @@
 		481BE89D176F155A00960BDF /* AeroDocTests */ = {
 			isa = PBXGroup;
 			children = (
-				48C4A9B21796F623000108DF /* AeroDocTests.h */,
-				48C4A9B31796F623000108DF /* AeroDocTests.m */,
 				481BE89E176F155A00960BDF /* Supporting Files */,
 			);
 			path = AeroDocTests;
@@ -521,7 +516,6 @@
 				48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */,
 				48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */,
 				48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */,
-				48C4A9B41796F623000108DF /* AeroDocTests.m in Sources */,
 				48C4A9B81796F645000108DF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
