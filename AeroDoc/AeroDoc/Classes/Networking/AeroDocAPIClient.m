@@ -62,9 +62,12 @@
         [config setType:@"AG_SECURITY"]; // can be omitted as 'AG_SECURITY' is the default auth module
         [config setLoginEndpoint:@"login"];
     }];
+    
+    // build the credentials JSON object for AeroDoc backend:
+    NSDictionary *credentials = @{@"loginName": username, @"password": password};
 
     // login to the service
-    [authMod login:username password:password success:^(id object) {
+    [authMod login:credentials success:^(id object) {
         // if successfully logged in, it is time to construct our pipes.
         // Note that we assign the authentication module we
         // created earlier, so every request can be properly

@@ -157,6 +157,7 @@
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setVariantID:VARIANT_ID];
+        [clientInfo setVariantSecret:VARIANT_SECRET];
         [clientInfo setDeviceToken:self.deviceToken];
         
         UIDevice *currentDevice = [UIDevice currentDevice];
