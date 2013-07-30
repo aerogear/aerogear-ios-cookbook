@@ -53,6 +53,16 @@
 
  // Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+    // this delegate is invoked in a case of a successful registration with the APNs servers. The 'deviceToken'
+    // argument passed into the function is used to identify this iOS device within APNs.
+
+    // For simple applications it is reasonable to 'store' the deviceToken with a 3rd party server, like the
+    // AeroGear UnifiedPush Server.
+
+    // However since this application requires a logged-in user, we simply stash the deviceToken on the
+    // AGLoginViewController. After a successful login the deviceToken is used to register this device against
+    // the AeroGear UnifiedPush Server.
     [self.viewController setDeviceToken:deviceToken];
 }
 

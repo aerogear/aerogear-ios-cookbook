@@ -141,6 +141,9 @@
     [apiClient loginWithUsername:_username.text password:_password.text success:^{
         // logged in successfully
         DLog(@"Sucessussfully logged");
+
+        // a successful login means we can trigger the device registration
+        // against the AeroGear UnifiedPush Server:
         [self deviceRegistration];
         [self initUINavigation];
     } failure:^(NSError *error) {
@@ -151,6 +154,10 @@
 //--------------------------------------------------------------------
 // Device Registration for Unified Push Server
 //--------------------------------------------------------------------
+
+/**
+ * Method is only invoked on a successful login on the user
+ */
 - (void) deviceRegistration {
 #if !TARGET_IPHONE_SIMULATOR
     AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
@@ -158,6 +165,9 @@
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setVariantID:VARIANT_ID];
         [clientInfo setVariantSecret:VARIANT_SECRET];
+        
+        // if the deviceToken value is nil, no registration will be performed
+        // and the failure callback is being invoked!
         [clientInfo setDeviceToken:self.deviceToken];
         
         UIDevice *currentDevice = [UIDevice currentDevice];
