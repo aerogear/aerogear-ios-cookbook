@@ -44,8 +44,7 @@
     return YES;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -53,8 +52,7 @@
 #pragma mark - Push Notification handling
 
  // Here we need to register this "Mobile Variant Instance"
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken 
-{
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self.viewController setDeviceToken:deviceToken];
 }
 
@@ -94,10 +92,7 @@
                                                                      object:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         DLog(@"Lead pushed: id=%@ name=%@ location=%@ phone=%@ messageType=%@", recId, name, location, phone, messageType);
-
     }
-
-    
-   }
+}
 
 @end
