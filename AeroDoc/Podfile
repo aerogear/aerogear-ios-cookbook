@@ -2,4 +2,4 @@ xcodeproj 'AeroDoc.xcodeproj'
 platform :ios, '5.0'
          
 pod 'AeroGear', :git => 'https://github.com/aerogear/aerogear-ios.git'
-pod 'AeroGear-Push', '0.5.0'
+pod 'AeroGear-Push', '0.6.0'
