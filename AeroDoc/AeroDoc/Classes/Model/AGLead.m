@@ -35,7 +35,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
-        self.recId = [dictionary objectForKey:@"id"];
+        self.recId = [NSNumber numberWithInteger:[[dictionary objectForKey:@"id"] integerValue]];
         self.name = [dictionary objectForKey:@"name"];
         self.location = [dictionary objectForKey:@"location"];
         self.phoneNumber = [dictionary objectForKey:@"phoneNumber"];
