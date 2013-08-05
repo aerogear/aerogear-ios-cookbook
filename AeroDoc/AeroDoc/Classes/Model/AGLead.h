@@ -24,7 +24,7 @@
 @property(copy, nonatomic) NSString *location;
 @property(copy, nonatomic) NSString *phoneNumber;
 @property(copy, nonatomic) NSNumber *saleAgent;
-@property(copy, nonatomic) NSNumber *isPushed;
+
 // convert from JSON
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 // convert to JSON

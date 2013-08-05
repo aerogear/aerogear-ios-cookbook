@@ -24,7 +24,6 @@
 @synthesize location = _location;
 @synthesize phoneNumber = _phoneNumber;
 @synthesize saleAgent = _saleAgent;
-@synthesize isPushed = _isPushed;
 
 - (id)init {
     if (self = [super init]) {          
@@ -40,7 +39,6 @@
         self.location = [dictionary objectForKey:@"location"];
         self.phoneNumber = [dictionary objectForKey:@"phoneNumber"];
         self.saleAgent = [dictionary objectForKey:@"saleAgent"];
-        self.isPushed =  @0;
     }
     
     return (self);
@@ -59,9 +57,7 @@
         [dict setObject:self.phoneNumber forKey:@"phoneNumber"];
     if (self.saleAgent != nil)
         [dict setObject:self.saleAgent forKey:@"saleAgent"];
-    if (self.isPushed != nil)
-        [dict setObject:self.isPushed forKey:@"isPushed"];
-    
+
     return dict;
 }
 
@@ -71,7 +67,6 @@
     self.location = lead.location;
     self.phoneNumber = lead.phoneNumber;
     self.saleAgent = lead.saleAgent;
-    self.isPushed = lead.isPushed;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -84,8 +79,7 @@
     lead.location = self.location;
     lead.phoneNumber = self.phoneNumber;
     lead.saleAgent = self.saleAgent;
-    self.isPushed = lead.isPushed;
-    
+
     return lead;
 }
 
