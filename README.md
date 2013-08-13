@@ -1,8 +1,9 @@
-what's in aerogear-push-aerodoc-ios?
+What's in aerogear-push-aerodoc-ios?
 ============================
 AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. To get the big picture:
 
-![Unified Push Server](https://github.com/aerogear/aerogear.org/blob/master/docs/specs/aerogear-server-push/aerogear_unified_push_server.png)
+
+![Unified Push Server big picture](https://raw.github.com/aerogear/aerogear.org/master/docs/specs/aerogear-server-push/aerogear_unified_push_server.png "Unified Push Server big picture")
 
 
 You're a developper and you want to use AeroGear Unified Push Server to develop AeroDoc, a backend RESTful application with iOS client to create new leads and send them as push notifications to sale agents. 
