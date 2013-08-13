@@ -17,5 +17,6 @@
 
 #define URL_AERODOC @"http://192.168.0.13:8080/aerodoc/"
 #define URL_UNIFIED_PUSH @"http://192.168.0.13:8080/ag-push/"
-#define VARIANT_ID @"6f15c68f-9792-4cc6-b7c9-08206958dc15"
-#define VARIANT_SECRET @"90af832d-8824-44ab-9bc2-7aa99135dc98"
+#define VARIANT_ID @"9ec0fbe3-ed83-4ec1-89df-5c46d7734d42"
+#define VARIANT_SECRET @"3394b71b-239c-4d0c-be6b-b2c61582445a"
+#define ENDPOINT @"rest"
