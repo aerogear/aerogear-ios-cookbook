@@ -60,7 +60,7 @@
         [config setName:@"todoAuthMod"]; // assign it a name
         [config setBaseURL:baseURL]; // the base url to authenticate to
         [config setType:@"AG_SECURITY"]; // can be omitted as 'AG_SECURITY' is the default auth module
-        [config setLoginEndpoint:@"login"];
+        [config setLoginEndpoint:[NSString stringWithFormat: @"%@/login", ENDPOINT]];
     }];
     
     // build the credentials JSON object for AeroDoc backend:
@@ -80,12 +80,14 @@
         _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"leads"];
             [config setAuthModule:authMod];
+            [config setEndpoint:[NSString stringWithFormat: @"%@/leads", ENDPOINT]];
             
         }];
 
         _agentPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"saleagents"];
             [config setAuthModule:authMod];
+            [config setEndpoint:[NSString stringWithFormat: @"%@/saleagents", ENDPOINT]];
             
         }];
         

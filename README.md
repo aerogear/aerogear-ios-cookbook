@@ -1,12 +1,17 @@
-aerogear-push-quickstart-ios
+What's in aerogear-push-aerodoc-ios?
 ============================
+AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. To get the big picture:
 
-See AeroDoc description in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend/blob/master/readme.md#description-of-the-application)
 
-Installation
-===========
- pod install
- 
+![Unified Push Server big picture](https://raw.github.com/aerogear/aerogear.org/master/docs/specs/aerogear-server-push/aerogear_unified_push_server.png "Unified Push Server big picture")
+
+
+You're a developper and you want to use AeroGear Unified Push Server to develop AeroDoc, a backend RESTful application with iOS client to create new leads and send them as push notifications to sale agents. 
+
+If you want to know more about AeroDoc description, see [aerogear-push-aerodoc-backend](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#description-of-the-application)
+
+This repo focus on iOS client app. But before running the app, you'll need some setup. 
+
 Prerequisites
 =============
 * This application is using Push notifications from APNS, it required setup of Provisioning Profile. 
@@ -14,24 +19,48 @@ Please follow the steps explained in [aerogear tutorial](http://aerogear.org/doc
 
 * Unified Push server should be deployed. Follow instructions from [aerogear unified push server](https://github.com/aerogear/aerogear-unified-push-server)
 
-* Register your application to get your app push id following instruction in [aerogear unified push server registration section](https://github.com/aerogear/aerogear-unified-push-server#register-push-app)
+* AeroDoc backend should be deployed. Follow instructions from [AeroDoc backend](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#deploying-the-app)
 
-* Register your variant id as explained in [iOS variant section](https://github.com/aerogear/aerogear-unified-push-server#ios-variant)
+Setup
+======
+* [Login](https://github.com/aerogear/aerogear-unifiedpush-server#login) (reset password if needed) 
 
-* Before starting AeroDoc backend replace push-app-id as explained in [aerogear-push-quickstart-backend](https://github.com/aerogear/aerogear-push-quickstart-backend#setting-the-pushapplicationid-and-the-push-server-url)
+* [Register your application](https://github.com/aerogear/aerogear-unifiedpush-server#register-push-app) to get: 
+ * your **pushApplicationID** 
+ * and a **masterSecret** 
 
-* Before deploying your app on device:
-- make sure bundle id of app matches the one in provisioning device
-- replace server side url, app-push-id and variant id in [config file](https://github.com/aerogear/aerogear-push-quickstart-ios/blob/master/AeroDoc/AeroDoc/Classes/Config/AGConfig.h)
+* [Register your iOS variant](https://github.com/aerogear/aerogear-unifiedpush-server#ios-variant). Start with development one. You will need your apple provisionning as explained in prerequisites. You should get:
+ * **variantID** 
+ * and a **secret**
+
+* [Setup AeroDoc backend configuration](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#configure-the-push-server-details) AeroDoc backend needs to know:
+  * where url is your Unified Push Server, it could be local or running on OpenShift.
+  * what is your **pushApplicationID**
+  * and **masterSecret**
+
+* Setup AeroDoc iOS client
+ * make sure bundle id of app matches the one in provisioning device
+ * in [config file](https://github.com/aerogear/aerogear-push-quickstart-ios/blob/master/AeroDoc/AeroDoc/Classes/Config/AGConfig.h), replace:
+
+```c
+  #define URL_AERODOC @"http://localhost:8080/aerodoc/"
+  #define URL_UNIFIED_PUSH @"http://localhost:8080/ag-push/"
+  #define VARIANT_ID @"YOUR_VARIANT"
+  #define VARIANT_SECRET @"YOUR_SECRET"
+  #define ENDPOINT @"rest"
+```
 
 you're all set, enjoy!
+
+Installation
+===========
+ pod install
 
 Working with the app
 ====================
 Using AeroDoc, admin can create new leads, search for a nearby sale agent (SA), push the lead to a particular SA.
 
-The SA logins to iOS AeroDoc aoo. Get a list of all open leads. Get a special message for the leads pushed to him. Puhsed leads appear with star icons. Once a lead is accepted is not available on open leads any more but it is stored locally on SA device
-in MyLeads list. 
+The SA logins to iOS AeroDoc aoo. Get a list of all open leads. Get a special message for the leads pushed to him. Puhsed leads appear with star icons. Once a lead is accepted, it is not available on open leads any more, but it is stored locally on SA device in MyLeads list. 
 
 Post-install
 ============
