@@ -1,4 +1,4 @@
-What's in aerogear-push-aerodoc-ios?
+What's in aerogear-aerodoc-ios?
 ============================
 AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. To get the big picture:
 
@@ -8,7 +8,7 @@ AeroDoc is an tutorial application to demonstrate how to build an application us
 
 You're a developper and you want to use AeroGear Unified Push Server to develop AeroDoc, a backend RESTful application with iOS client to create new leads and send them as push notifications to sale agents. 
 
-If you want to know more about AeroDoc description, see [aerogear-push-aerodoc-backend](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#description-of-the-application)
+If you want to know more about AeroDoc description, see [aerogear-aerodoc-backend](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#description-of-the-application)
 
 This repo focus on iOS client app. But before running the app, you'll need some setup. 
 
@@ -17,7 +17,7 @@ Prerequisites
 * This application is using Push notifications from APNS, it required setup of Provisioning Profile. 
 Please follow the steps explained in [aerogear tutorial](http://aerogear.org/docs/guides/aerogear-push-ios/)
 
-* Unified Push server should be deployed. Follow instructions from [aerogear unified push server](https://github.com/aerogear/aerogear-unified-push-server)
+* Unified Push server should be deployed. Follow instructions from [aerogear unified push server](https://github.com/aerogear/aerogear-unifiedpush-server)
 
 * AeroDoc backend should be deployed. Follow instructions from [AeroDoc backend](https://github.com/aerogear/aerogear-aerodoc-backend/blob/master/readme.md#deploying-the-app)
 
@@ -40,7 +40,7 @@ Setup
 
 * Setup AeroDoc iOS client
  * make sure bundle id of app matches the one in provisioning device
- * in [config file](https://github.com/aerogear/aerogear-push-quickstart-ios/blob/master/AeroDoc/AeroDoc/Classes/Config/AGConfig.h), replace:
+ * in [config file](https://github.com/aerogear/aerogear-aerodoc-ios/blob/master/AeroDoc/AeroDoc/Classes/Config/AGConfig.h), replace:
 
 ```c
   #define URL_AERODOC @"http://localhost:8080/aerodoc/"
