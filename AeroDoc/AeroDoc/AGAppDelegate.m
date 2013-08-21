@@ -35,7 +35,7 @@
     
     // set background
     UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
-    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey5.jpg"]];//@"gradientBackground.png"]];
+    backgroundView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     [self.window addSubview:backgroundView];
     
     [self.window makeKeyAndVisible];

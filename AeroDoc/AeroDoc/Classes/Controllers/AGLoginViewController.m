@@ -22,7 +22,8 @@
 #import "AGMyLeadsViewController.h"
 #import "AeroDocAPIClient.h"
 #import "AGDeviceRegistration.h"
-
+#import "RNBlurModalView.h"
+#import "AGSettingViewController.h"
 
 @implementation AGLoginViewController {
     UIImageView *_logo;
@@ -49,20 +50,20 @@
 
     UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _illustration = [[UIImageView alloc] initWithImage:background];
-    _illustration.center = CGPointMake(160, 360);
+    _illustration.center = CGPointMake(160, 120);
     [self.view addSubview: _illustration];
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, 80, 200, 32)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 160, 200, 32)];
     [label setLineBreakMode:UILineBreakModeWordWrap];
     [label setNumberOfLines:0];
-    [label setTextColor:[UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0]];
+    [label setTextColor:[UIColor blackColor]];
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextAlignment:UITextAlignmentCenter];
     [label setText:@"AeroDoc"];
-    [label setFont:[UIFont boldSystemFontOfSize:24.0]];
+    [label setFont:[UIFont boldSystemFontOfSize:20.0]];
     [[self view] addSubview:label];
     
-    _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 160, 200, 32)];
+    _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 226, 200, 32)];
     _username.borderStyle = UITextBorderStyleRoundedRect;
     _username.placeholder = @"Username";
     _username.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -70,7 +71,7 @@
     _username.delegate = self;
     _username.backgroundColor = [UIColor clearColor];
     
-    _password = [[UITextField alloc] initWithFrame:CGRectMake(55, 206, 200, 32)];
+    _password = [[UITextField alloc] initWithFrame:CGRectMake(55, 266, 200, 32)];
     _password.borderStyle = UITextBorderStyleRoundedRect;
     _password.placeholder = @"Password";
     _password.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -83,8 +84,8 @@
     [self.view addSubview:_password];
     
     _login =  [self buttonWithText:@"Login"];
-    _login.frame = CGRectMake(55, 256, 200, 52);
-    _login.titleLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
+    _login.frame = CGRectMake(55, 310, 200, 52);
+    _login.titleLabel.textColor = [UIColor blackColor];
     [_login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchDown];
     
     [self.view addSubview:_login];
@@ -102,7 +103,6 @@
 -(UIButton*) buttonWithText:(NSString*) text
 {
     UIImage* buttonImage = [UIImage imageNamed:@"topAndBottomRow.png"];
-    UIImage* buttonPressedImage = [UIImage imageNamed:@"topAndBottomRowSelected.png"];
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
@@ -111,8 +111,8 @@
     button.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
     
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [button setBackgroundImage:buttonPressedImage forState:UIControlStateHighlighted];
-    [button setBackgroundImage:buttonPressedImage forState:UIControlStateSelected];
+    [button setBackgroundImage:buttonImage forState:UIControlStateHighlighted];
+    [button setBackgroundImage:buttonImage forState:UIControlStateSelected];
     
     return button;
 }
@@ -191,31 +191,62 @@
 // and navigation controller for UI flow
 //--------------------------------------------------------------------
 - (void) initUINavigation {
+    
+    
+
+    
+    
     AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];
-    leadsController.title = @"Leads";
+    leadsController.title = @"AeroGear AeroDoc";
     leadsController.tableView.rowHeight = 60;
-    leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
     
-    UINavigationBar *navBar = [navController navigationBar];
-    UIImage *backgroundImage = [UIImage imageNamed:@"topBarGreen.png"];
-    [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-    
-    navController.toolbarHidden = YES;
-    navController.navigationBarHidden = NO;
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [navController.navigationBar setTintColor:[UIColor brownColor]];
+    [navController.navigationBar setTintColor:[UIColor blackColor]];
   
     AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-    myLeadsController.title = @"My leads";
+    myLeadsController.title = @"AeroGear AeroDoc";
     myLeadsController.tableView.rowHeight = 60;
-    myLeadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    myLeadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    UINavigationController *myLeadsNavController = [[UINavigationController alloc] initWithRootViewController:myLeadsController];
+    [myLeadsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
+    
+    
+//    AGMyLeadsViewController *settingsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
+//    settingsController.title = @"AeroGear AeroDoc";
+//    settingsController.tableView.rowHeight = 60;
+//    settingsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    AGSettingViewController *settingViewController = [[AGSettingViewController alloc] init];
+    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
+    [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
+    
+
+    
     self.tabController = [[UITabBarController alloc] init];
-    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsController, nil];
+    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, settingsNavController, nil];
     self.tabController.viewControllers = controllers;
+   
+    UITabBar *tabBar = self.tabController.tabBar;
+    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+    [tabBarItem1 setBadgeValue:@"2"];
+    
+    tabBarItem1.title = @"Available Leads";
+    tabBarItem2.title = @"My Leads";
+    tabBarItem3.title = @"Settings";
+    
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"aero_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"aero_greyed.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"favorite_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"favorite_greyed.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"settings_greyed.png"]];
     
     [self presentViewController:self.tabController animated:YES completion:^{
+
     }];
+    
 }
 
 #pragma mark - UITextFieldDelegate methods

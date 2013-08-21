@@ -36,13 +36,13 @@
                                                                                    action:@selector(displayLeads)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
-    UIBarButtonItem *locButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                               target:self
-                                                                               action:@selector(showLocationChooser)];
-    NSArray *buttons = @[[self statusButtonItem], locButton];
+//    UIBarButtonItem *locButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+//                                                                               target:self
+//                                                                               action:@selector(showLocationChooser)];
+//    NSArray *buttons = @[[self statusButtonItem], locButton];
     
     // set the status button item depending on agent status
-    self.navigationItem.leftBarButtonItems = buttons;
+    //self.navigationItem.leftBarButtonItems = buttons;
 
     // register to receive the notification
     // when a new lead is pushed
@@ -95,7 +95,7 @@
     AGLead *lead = [_leads objectAtIndex:row];
     
     if (cell == nil) {
-        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO withIndicatorDisplay:YES];
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO];
     }
     // check if list belong to list of pushed leads to display it with star icon
     NSArray *_pushedLeads = [[AeroDocAPIClient sharedInstance].pushedLocalStore readAll];

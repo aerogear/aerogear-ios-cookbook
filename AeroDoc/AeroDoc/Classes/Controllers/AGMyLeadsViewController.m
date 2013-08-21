@@ -35,6 +35,11 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(myLeadRefresh) name:@"NewMyLeadNotification" object:nil];
     
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                   target:self
+                                                                                   action:@selector(myLeadRefresh)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
     [self displayLeads];
 }
 
@@ -64,7 +69,7 @@
     //AGLead *lead = [_leads objectAtIndex:row];
     AGLead *lead = [[AGLead alloc] initWithDictionary: [_leads objectAtIndex:row]];
     if (cell == nil) {
-        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO withIndicatorDisplay:NO];
+        cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO];
     }
 
     [cell decorateCell:row inListCount:[_leads count] with:NO];
