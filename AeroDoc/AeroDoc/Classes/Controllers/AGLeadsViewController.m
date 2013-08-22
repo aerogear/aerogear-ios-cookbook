@@ -36,13 +36,9 @@
                                                                                    action:@selector(displayLeads)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
-//    UIBarButtonItem *locButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-//                                                                               target:self
-//                                                                               action:@selector(showLocationChooser)];
-//    NSArray *buttons = @[[self statusButtonItem], locButton];
     
     // set the status button item depending on agent status
-    //self.navigationItem.leftBarButtonItems = buttons;
+    self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
 
     // register to receive the notification
     // when a new lead is pushed

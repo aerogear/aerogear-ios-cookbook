@@ -73,7 +73,7 @@
 
 - (void)decorateCell:(NSInteger)row inListCount:(NSInteger)count with:(BOOL)imageDisplay {
     if (imageDisplay) {
-        self.image = [UIImage imageNamed:@"fullstar.png"];
+        self.image = [UIImage imageNamed:@"notification_red.png"];
     } else {
         self.image = nil;
     }

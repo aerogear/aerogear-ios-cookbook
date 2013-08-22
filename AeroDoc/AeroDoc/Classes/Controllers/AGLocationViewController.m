@@ -16,6 +16,7 @@
  */
 
 #import "AGLocationViewController.h"
+#import "AeroDocAPIClient.h"
 
 @implementation AGLocationViewController {
     NSArray *_locations;
@@ -48,9 +49,18 @@
                                                                                    action:@selector(done)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
+    location =  [AeroDocAPIClient sharedInstance].location;
+    int i = 0;
+    for (NSString *loc in _locations) {
+        if ([loc isEqualToString:location]) {
+            _selectedLocation = i;
+        }
+        i++;
+    }
     
+    // set the status button item depending on agent status
+    self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
 
-    self.title = @"Select Location";
 }
 
 #pragma mark - Table View Delegate
@@ -98,6 +108,23 @@
 
 - (void)done {
     [self.delegate didChangeLocation:self location:_locations[_selectedLocation]];
+}
+
+- (UIBarButtonItem*) statusButtonItem {
+    UIImage *statusImage;
+    
+    if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
+        statusImage = [UIImage imageNamed:@"orange.png"];
+    } else {
+        statusImage = [UIImage imageNamed:@"green.png"];
+    }
+    
+    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
+                                                                     style:UIBarButtonItemStylePlain                                        target:self
+                                                                    action:@selector(changeStatus)];
+    
+    
+    return statusButton;
 }
 
 @end

@@ -40,6 +40,12 @@
                                                                                    target:self
                                                                                    action:@selector(myLeadRefresh)];
     self.navigationItem.rightBarButtonItem = refreshButton;
+    
+    NSArray *buttons = @[[self statusButtonItem]];
+    
+    // set the status button item depending on agent status
+    self.navigationItem.leftBarButtonItems = buttons;
+    
     [self displayLeads];
 }
 
@@ -86,5 +92,21 @@
     [self.tableView reloadData];
 }
 
+- (UIBarButtonItem*) statusButtonItem {
+    UIImage *statusImage;
+    
+    if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
+        statusImage = [UIImage imageNamed:@"orange.png"];
+    } else {
+        statusImage = [UIImage imageNamed:@"green.png"];
+    }
+    
+    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
+                                                                     style:UIBarButtonItemStylePlain                                        target:self
+                                                                    action:@selector(changeStatus)];
+    
+    
+    return statusButton;
+}
 
 @end

@@ -23,7 +23,6 @@
 #import "AeroDocAPIClient.h"
 #import "AGDeviceRegistration.h"
 #import "RNBlurModalView.h"
-#import "AGSettingViewController.h"
 
 @implementation AGLoginViewController {
     UIImageView *_logo;
@@ -192,10 +191,6 @@
 //--------------------------------------------------------------------
 - (void) initUINavigation {
     
-    
-
-    
-    
     AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];
     leadsController.title = @"AeroGear AeroDoc";
     leadsController.tableView.rowHeight = 60;
@@ -213,16 +208,12 @@
     [myLeadsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
     
-    
-//    AGMyLeadsViewController *settingsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-//    settingsController.title = @"AeroGear AeroDoc";
-//    settingsController.tableView.rowHeight = 60;
-//    settingsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    AGSettingViewController *settingViewController = [[AGSettingViewController alloc] init];
-    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
+
+    AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
+    locationViewController.title = @"AeroGear AeroDoc";
+    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
     [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
-    
 
     
     self.tabController = [[UITabBarController alloc] init];
@@ -233,15 +224,15 @@
     UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-    [tabBarItem1 setBadgeValue:@"2"];
+    //[tabBarItem1 setBadgeValue:@"2"];
     
     tabBarItem1.title = @"Available Leads";
     tabBarItem2.title = @"My Leads";
-    tabBarItem3.title = @"Settings";
+    tabBarItem3.title = @"Location";
     
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"aero_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"aero_greyed.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"favorite_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"favorite_greyed.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"settings_greyed.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"user_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"user_greyed.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"pink_marker_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"pink_marker_greyed.png"]];
     
     [self presentViewController:self.tabController animated:YES completion:^{
 
