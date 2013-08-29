@@ -72,7 +72,6 @@
     static NSString *cellIdentifier = @"Cell";
     LeadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     NSInteger row = [indexPath row];
-    //AGLead *lead = [_leads objectAtIndex:row];
     AGLead *lead = [[AGLead alloc] initWithDictionary: [_leads objectAtIndex:row]];
     if (cell == nil) {
         cell = [[LeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier withTableView:tableView andIndexPath:indexPath withImageDisplay:NO];

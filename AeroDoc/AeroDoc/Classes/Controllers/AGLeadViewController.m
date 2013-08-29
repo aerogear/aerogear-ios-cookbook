@@ -44,8 +44,6 @@
     DLog(@"AGLeadViewController start viewDidLoad");
     self.view.backgroundColor = [UIColor clearColor];
     
-    //UIColor *textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
-    
     _name = [[UILabel alloc] initWithFrame:CGRectMake(55, 100, 200, 32)];
     _name.backgroundColor = [UIColor clearColor];
     _name.font = [UIFont fontWithName:@"Arial" size:15];
@@ -54,14 +52,12 @@
     }
     _location = [[UILabel alloc] initWithFrame:CGRectMake(55, 140, 200, 32)];
     _location.backgroundColor = [UIColor clearColor];
-    //_location.textColor = textColor;
     if (![self.lead.location isKindOfClass:[NSNull class]]) {
         _location.text = self.lead.location;
     }
 
     _phoneNumber = [[UILabel alloc] initWithFrame:CGRectMake(55, 180, 200, 32)];
     _phoneNumber.backgroundColor = [UIColor clearColor];
-    //_phoneNumber.textColor = textColor;
     if (![self.lead.phoneNumber isKindOfClass:[NSNull class]]) {
         _phoneNumber.text = [self.lead phoneNumber];
     }
@@ -72,12 +68,10 @@
     _accept = [self buttonWithText:@"Accept"];
     _accept.frame = CGRectMake(55, 246, 200, 52);
     [_accept addTarget:self action:@selector(accept) forControlEvents:UIControlEventTouchDown];
-    //_accept.titleLabel.textColor = textColor;
     
     _dismiss = [self buttonWithText:@"Dismiss"];
     _dismiss.frame = CGRectMake(55, 306, 200, 52);
     [_dismiss addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
-    //_dismiss.titleLabel.textColor = textColor;
     
     [self.view addSubview:_accept];
     [self.view addSubview:_dismiss];
