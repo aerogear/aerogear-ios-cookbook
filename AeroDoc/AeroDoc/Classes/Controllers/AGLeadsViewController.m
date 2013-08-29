@@ -156,7 +156,7 @@
         [alert show];
     }];
     
-    [controller dismissModalViewControllerAnimated:YES];
+    //[controller dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL) isLead:(AGLead*)lead in:(NSArray*)list {

@@ -210,6 +210,7 @@
     
 
     AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
+    locationViewController.delegate = leadsController;
     locationViewController.title = @"AeroGear AeroDoc";
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
     [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
