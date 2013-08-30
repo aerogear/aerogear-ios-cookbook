@@ -37,10 +37,6 @@
                                                                                    action:@selector(displayLeads)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
-    
-    // set the status button item depending on agent status
-    //self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
-
     // register to receive the notification
     // when a new lead is pushed
     [[NSNotificationCenter defaultCenter]
