@@ -43,13 +43,7 @@
             *stop = YES;
         }
     }];
-    
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-                                                                                   target:self
-                                                                                   action:@selector(done)];
-    self.navigationItem.rightBarButtonItem = doneButton;
-    
+       
     location =  [AeroDocAPIClient sharedInstance].location;
     int i = 0;
     for (NSString *loc in _locations) {
@@ -99,14 +93,10 @@
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma mark - Actions
-
-- (void)done {
     [self.delegate didChangeLocation:self location:_locations[_selectedLocation]];
 }
 
+#pragma mark - Actions
 - (void)changeStatus {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"Change your Status:"
