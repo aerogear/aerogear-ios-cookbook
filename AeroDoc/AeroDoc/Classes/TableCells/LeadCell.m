@@ -20,6 +20,7 @@
 @implementation LeadCell {
 
 }
+
 @synthesize topLabel, bottomLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(BOOL)imageDisplay {

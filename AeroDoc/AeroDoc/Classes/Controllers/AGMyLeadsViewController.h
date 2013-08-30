@@ -18,6 +18,6 @@
 #import <UIKit/UIKit.h>
 #import "AGLeadViewController.h"
 
-@interface AGMyLeadsViewController : UITableViewController
+@interface AGMyLeadsViewController : UITableViewController <UIActionSheetDelegate>
 - (void) displayLeads;
 @end

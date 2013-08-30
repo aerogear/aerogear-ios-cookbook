@@ -24,6 +24,8 @@
 #import "AGDeviceRegistration.h"
 #import "RNBlurModalView.h"
 
+#import "AGStatus.h"
+
 @implementation AGLoginViewController {
     UIImageView *_logo;
     UIImageView *_illustration;
@@ -196,7 +198,7 @@
     leadsController.tableView.rowHeight = 60;
     leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-    
+    leadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:leadsController];
     [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [navController.navigationBar setTintColor:[UIColor blackColor]];
   
@@ -207,7 +209,7 @@
     UINavigationController *myLeadsNavController = [[UINavigationController alloc] initWithRootViewController:myLeadsController];
     [myLeadsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
-    
+    myLeadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:myLeadsController];
 
     AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
     locationViewController.delegate = leadsController;
@@ -215,7 +217,7 @@
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
     [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
-
+    locationViewController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:locationViewController];
     
     self.tabController = [[UITabBarController alloc] init];
     NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, settingsNavController, nil];

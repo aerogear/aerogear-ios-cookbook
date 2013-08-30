@@ -41,11 +41,8 @@
 		48C4A9C61796F69B000108DF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C31796F69B000108DF /* Default.png */; };
 		48C4A9C71796F69B000108DF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C41796F69B000108DF /* Default@2x.png */; };
 		48C4A9C91796F6B8000108DF /* AeroDocTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */; };
+		48C4EAA817CF9FF700E2D71F /* AGStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4EAA717CF9FF700E2D71F /* AGStatus.m */; };
 		48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C44177622A000043C05 /* aerogear_logo.png */; };
-		48E07C5D177622A000043C05 /* bottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C45177622A000043C05 /* bottomRow.png */; };
-		48E07C5E177622A000043C05 /* bottomRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C46177622A000043C05 /* bottomRowSelected.png */; };
-		48E07C5F177622A000043C05 /* gradientBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C47177622A000043C05 /* gradientBackground.png */; };
-		48E07C68177622A000043C05 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C50177622A000043C05 /* indicator.png */; };
 		48E07C69177622A000043C05 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C51177622A000043C05 /* logout.png */; };
 		48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C58177622A000043C05 /* topAndBottomRow.png */; };
 		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
@@ -110,11 +107,9 @@
 		48C4A9C31796F69B000108DF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = AeroDoc/Default.png; sourceTree = SOURCE_ROOT; };
 		48C4A9C41796F69B000108DF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "AeroDoc/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AeroDocTests-Info.plist"; path = "AeroDocTests/AeroDocTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		48C4EAA617CF9FF700E2D71F /* AGStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGStatus.h; path = Classes/Controllers/AGStatus.h; sourceTree = "<group>"; };
+		48C4EAA717CF9FF700E2D71F /* AGStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGStatus.m; path = Classes/Controllers/AGStatus.m; sourceTree = "<group>"; };
 		48E07C44177622A000043C05 /* aerogear_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aerogear_logo.png; path = Resources/images/aerogear_logo.png; sourceTree = "<group>"; };
-		48E07C45177622A000043C05 /* bottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottomRow.png; path = Resources/images/bottomRow.png; sourceTree = "<group>"; };
-		48E07C46177622A000043C05 /* bottomRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottomRowSelected.png; path = Resources/images/bottomRowSelected.png; sourceTree = "<group>"; };
-		48E07C47177622A000043C05 /* gradientBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gradientBackground.png; path = Resources/images/gradientBackground.png; sourceTree = "<group>"; };
-		48E07C50177622A000043C05 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = indicator.png; path = Resources/images/indicator.png; sourceTree = "<group>"; };
 		48E07C51177622A000043C05 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logout.png; path = Resources/images/logout.png; sourceTree = "<group>"; };
 		48E07C58177622A000043C05 /* topAndBottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topAndBottomRow.png; path = Resources/images/topAndBottomRow.png; sourceTree = "<group>"; };
 		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
@@ -233,6 +228,8 @@
 				48C4A9A11796F5B2000108DF /* AGLoginViewController.m */,
 				48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */,
 				48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */,
+				48C4EAA617CF9FF700E2D71F /* AGStatus.h */,
+				48C4EAA717CF9FF700E2D71F /* AGStatus.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -284,10 +281,6 @@
 				4885A24617C4C5C600CD6B02 /* aero_greyed.png */,
 				4885A24717C4C5C600CD6B02 /* aero_selected.png */,
 				48E07C44177622A000043C05 /* aerogear_logo.png */,
-				48E07C45177622A000043C05 /* bottomRow.png */,
-				48E07C46177622A000043C05 /* bottomRowSelected.png */,
-				48E07C47177622A000043C05 /* gradientBackground.png */,
-				48E07C50177622A000043C05 /* indicator.png */,
 				48E07C51177622A000043C05 /* logout.png */,
 				48E07C58177622A000043C05 /* topAndBottomRow.png */,
 				6F01680E177A142200601E7A /* green.png */,
@@ -383,10 +376,6 @@
 				481BE886176F155A00960BDF /* Podfile in Resources */,
 				481BE890176F155A00960BDF /* .gitignore in Resources */,
 				48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */,
-				48E07C5D177622A000043C05 /* bottomRow.png in Resources */,
-				48E07C5E177622A000043C05 /* bottomRowSelected.png in Resources */,
-				48E07C5F177622A000043C05 /* gradientBackground.png in Resources */,
-				48E07C68177622A000043C05 /* indicator.png in Resources */,
 				48E07C69177622A000043C05 /* logout.png in Resources */,
 				48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */,
 				6F016810177A142200601E7A /* green.png in Resources */,
@@ -477,6 +466,7 @@
 				48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */,
 				48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */,
 				48C4A9B81796F645000108DF /* main.m in Sources */,
+				48C4EAA817CF9FF700E2D71F /* AGStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

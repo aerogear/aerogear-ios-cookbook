@@ -21,6 +21,7 @@
 #import "AeroDocAPIClient.h"
 #import "AGLead.h"
 #import "LeadCell.h"
+#import "AGStatus.h"
 
 @implementation AGLeadsViewController
 
@@ -38,7 +39,7 @@
     
     
     // set the status button item depending on agent status
-    self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
+    //self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
 
     // register to receive the notification
     // when a new lead is pushed
@@ -230,12 +231,23 @@
     [self.tableView reloadData];
     
     // Refresh MyLeads table
-    NSNotification *myNotification = [NSNotification notificationWithName:@"NewMyLeadNotification"                                                                 object:lead];
+    NSNotification *myNotification = [NSNotification notificationWithName:@"NewMyLeadNotification"
+                                                                   object:lead];
     [[NSNotificationCenter defaultCenter] postNotification:myNotification];
     DLog(@"End of leadAccepted on notification called");
 }
 
 #pragma mark - Navigation Button
+
+- (void)showLocationChooser {
+    AGLocationViewController *locController = [[AGLocationViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    locController.location = [AeroDocAPIClient sharedInstance].location;
+    locController.delegate = self;
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:locController];
+    [self.navigationController presentModalViewController:controller animated:YES];
+}
 
 - (void)changeStatus {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
@@ -249,16 +261,6 @@
     [actionSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
-- (void)showLocationChooser {
-    AGLocationViewController *locController = [[AGLocationViewController alloc] initWithStyle:UITableViewStylePlain];
-    
-    locController.location = [AeroDocAPIClient sharedInstance].location;
-    locController.delegate = self;
-    
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:locController];
-    [self.navigationController presentModalViewController:controller animated:YES];
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // no need to do anything if user clicks cancel
     if (buttonIndex == 2)
@@ -268,7 +270,9 @@
                         
     [[AeroDocAPIClient sharedInstance] changeStatus:status success:^{
         // if succeeded, update the status bar
-        self.navigationItem.leftBarButtonItem = [self statusButtonItem];
+        for (UIViewController *controller in [AGStatus targetsList]) {
+            controller.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] changeStatusOnTarget:controller];
+        }
 
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -281,21 +285,5 @@
 
 }
 
-- (UIBarButtonItem*) statusButtonItem {
-    UIImage *statusImage;
-    
-    if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
-        statusImage = [UIImage imageNamed:@"orange.png"];
-    } else {
-        statusImage = [UIImage imageNamed:@"green.png"];
-    }
-    
-    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
-                                                                     style:UIBarButtonItemStylePlain                                        target:self
-                                                                    action:@selector(changeStatus)];
-    
-    
-    return statusButton;
-}
 
 @end

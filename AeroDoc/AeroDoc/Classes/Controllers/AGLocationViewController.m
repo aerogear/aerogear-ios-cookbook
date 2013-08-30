@@ -17,6 +17,7 @@
 
 #import "AGLocationViewController.h"
 #import "AeroDocAPIClient.h"
+#import "AGStatus.h"
 
 @implementation AGLocationViewController {
     NSArray *_locations;
@@ -44,10 +45,10 @@
     }];
     
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                    target:self
                                                                                    action:@selector(done)];
-    self.navigationItem.rightBarButtonItem = refreshButton;
+    self.navigationItem.rightBarButtonItem = doneButton;
     
     location =  [AeroDocAPIClient sharedInstance].location;
     int i = 0;
@@ -57,10 +58,6 @@
         }
         i++;
     }
-    
-    // set the status button item depending on agent status
-    self.navigationItem.leftBarButtonItems = @[[self statusButtonItem]];
-
 }
 
 #pragma mark - Table View Delegate
@@ -110,21 +107,39 @@
     [self.delegate didChangeLocation:self location:_locations[_selectedLocation]];
 }
 
-- (UIBarButtonItem*) statusButtonItem {
-    UIImage *statusImage;
+- (void)changeStatus {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Change your Status:"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"PTO"
+                                  otherButtonTitles:@"StandBy", nil];
     
-    if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
-        statusImage = [UIImage imageNamed:@"orange.png"];
-    } else {
-        statusImage = [UIImage imageNamed:@"green.png"];
-    }
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // no need to do anything if user clicks cancel
+    if (buttonIndex == 2)
+        return;
     
-    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
-                                                                     style:UIBarButtonItemStylePlain                                        target:self
-                                                                    action:@selector(changeStatus)];
+    NSString *status = (buttonIndex == 0? @"PTO": @"STANDBY");
     
-    
-    return statusButton;
+    [[AeroDocAPIClient sharedInstance] changeStatus:status success:^{
+        // if succeeded, update the status bar
+        for (UIViewController *controller in [AGStatus targetsList]) {
+            controller.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] changeStatusOnTarget:controller];
+        }
+        
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"An error has occured changing status!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
 }
 
 @end
