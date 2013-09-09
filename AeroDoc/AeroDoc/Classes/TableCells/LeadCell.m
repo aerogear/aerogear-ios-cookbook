@@ -29,7 +29,7 @@
         CGFloat indicatorWidth = 0.0;
         
         const CGFloat LABEL_HEIGHT = 20;
-        UIImage *image = [UIImage imageNamed:@"fullstar.png"];
+        UIImage *image = [UIImage imageNamed:@"notification_red.png"];
         
         
         // Create the label for the top row of text
