@@ -24,7 +24,7 @@
 @end
 
 
-@interface AGLocationViewController : UITableViewController
+@interface AGLocationViewController : UITableViewController <UIActionSheetDelegate>
 
 @property (copy, nonatomic) NSString* location;
 

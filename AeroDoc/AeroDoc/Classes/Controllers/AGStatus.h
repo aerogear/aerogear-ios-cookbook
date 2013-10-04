@@ -17,10 +17,9 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface LeadCell : UITableViewCell
-@property(nonatomic, strong) UILabel *topLabel;
-@property(nonatomic, strong) UILabel *bottomLabel;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTableView: (UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath withImageDisplay:(BOOL)imageDisplay;
-- (void)decorateCell:(NSInteger)row inListCount:(NSInteger)count with:(BOOL)imageDisplay;
+@interface AGStatus : NSObject
+- (UIBarButtonItem*) registerStatusItemOnTarget:target;
+- (UIBarButtonItem*) changeStatusOnTarget:target;
++ (AGStatus *)sharedInstance;
++ (NSMutableArray *)targetsList;
 @end
