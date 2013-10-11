@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AGContactItemViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 @property(strong, nonatomic) NSString* name;
 @property(strong, nonatomic) NSString* phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @end

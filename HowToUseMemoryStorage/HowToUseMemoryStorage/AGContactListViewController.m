@@ -55,7 +55,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     _contacts = [[NSMutableArray alloc] initWithArray:@[@"111-111-111", @"222-222-222"]];
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,7 +85,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AGContactItemViewController *detailController = segue.destinationViewController;
-    NSString *contact = [_contacts objectAtIndex:self.myTableView.indexPathForSelectedRow.row];
-    detailController.name = contact;
+    NSIndexPath* row = self.myTableView.indexPathForSelectedRow;
+    if (row != nil) {
+        NSString *contact = [_contacts objectAtIndex:row.row];
+        detailController.name = contact;
+    } else {
+        NSString *contact = @"New Contact";
+        detailController.name = contact;
+    }
+
 }
 @end

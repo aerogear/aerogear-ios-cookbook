@@ -15,7 +15,7 @@
 
 @synthesize name;
 @synthesize phoneNumber;
-@synthesize nameLabel;
+@synthesize nameInput;
 @synthesize phoneNumberLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,10 +27,11 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.nameLabel.text = self.name;
+	self.nameInput.text = self.name;
     self.phoneNumberLabel.text = self.phoneNumber;
 }
 
@@ -38,6 +39,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+	for (UIView* view in self.view.subviews) {
+		if ([view isKindOfClass:[UITextField class]])
+			[view resignFirstResponder];
+	}
 }
 
 @end
