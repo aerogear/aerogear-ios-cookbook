@@ -42,28 +42,26 @@
     self.status.text = @"";
     
     // retrieve secret
-    [[AGOTPClient sharedInstance] registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [[AGOTPClient sharedInstance] getPath:@"aerogear-controller-demo/auth/otp/secret" parameters:nil
-                                   success:^(AFHTTPRequestOperation *operation, id response) {
-                                       [SVProgressHUD dismiss];
-                                       
-                                       //extract "secret"
-                                       NSString *uri = [response objectForKey:@"uri"];
-                                       NSRange start = [uri rangeOfString:@"="];
-                                       _secret = [uri substringFromIndex:start.location+1];
-
-                                       // initialize OTP
-                                       _totp = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:_secret]];
-                                       
-                                       // generate token
-                                       self.otp.text = [_totp generateOTP];
-
-                                       [self startTimer];
-                                       
-                                       [[AGOTPClient sharedInstance] unregisterHTTPOperationClass:[AFJSONRequestOperation class]];
-                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                       [SVProgressHUD dismiss];
-                                   }];
+    [[AGOTPClient sharedInstance] fetchSecret:^(id responseObject) {
+        [SVProgressHUD dismiss];
+        
+        //extract "secret"
+        NSString *uri = [responseObject objectForKey:@"uri"];
+        NSRange start = [uri rangeOfString:@"="];
+        _secret = [uri substringFromIndex:start.location+1];
+        
+        // initialize OTP
+        _totp = [[AGTotp alloc] initWithSecret:[AGBase32 base32Decode:_secret]];
+        
+        // generate token
+        self.otp.text = [_totp generateOTP];
+        
+        [self startTimer];
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        
+    }];
 }
 
 - (void)viewDidUnload {
@@ -76,50 +74,41 @@
 # pragma mark - Action Methods
 
 - (IBAction)checkPressed:(id)sender {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.otp.text, @"aeroGearUser.otp",
-                            nil];
+    NSDictionary *params = @{@"secret": self.otp.text};
     
     [SVProgressHUD showWithStatus:@"Validating OTP"];
     
-    [[AGOTPClient sharedInstance] postPath:@"aerogear-controller-demo/otp" parameters:params
-                                   success:^(AFHTTPRequestOperation *operation, id response) {
-                                       [SVProgressHUD dismiss];
-
-                                       NSError *jsonParsingError = nil;
-                                       NSDictionary *userJson = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonParsingError];
-                                       if ([userJson objectForKey:@"otp"] == nil) {
-                                           self.status.text =@"Failed!";
-                                           self.status.textColor = [UIColor redColor];
-                                       } else {
-                                           self.status.text =@"Success!";
-                                           self.status.textColor = [UIColor greenColor];
-                                       }
-                                       
-                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                       [SVProgressHUD dismiss];
-                                       
-                                       [self startTimer];                                       
-                                   }];
+    
+    [[AGOTPClient sharedInstance] verifyOTP:params success:^(id responseObject) {
+        [SVProgressHUD dismiss];
+        self.status.text =@"Success!";
+        self.status.textColor = [UIColor greenColor];
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        self.status.text =@"Failed!";
+        self.status.textColor = [UIColor redColor];
+        
+        [self startTimer];
+    }];
 }
 
 - (IBAction)logoutPressed:(id)sender {
     [SVProgressHUD show];
     
-    [[AGOTPClient sharedInstance] getPath:@"aerogear-controller-demo/logout" parameters:nil
-                                   success:^(AFHTTPRequestOperation *operation, id response) {
-                                       [SVProgressHUD dismiss];
-                                       
-                                       AGLoginViewControler *loginController = [[AGLoginViewControler alloc] initWithNibName: @"AGLoginViewControler" bundle:nil];
-                                       AGAppDelegate *delegate = [UIApplication sharedApplication].delegate;
-                                       
-                                       [delegate transitionToViewController:loginController withTransition:UIViewAnimationOptionTransitionFlipFromLeft];
-                                       
-                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                       [SVProgressHUD dismiss];
-                                       
-                                       [self startTimer];
-                                   }];
+    [[AGOTPClient sharedInstance] logout:^{
+        [SVProgressHUD dismiss];
+        
+        AGLoginViewControler *loginController = [[AGLoginViewControler alloc] initWithNibName: @"AGLoginViewControler" bundle:nil];
+        AGAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        
+        [delegate transitionToViewController:loginController withTransition:UIViewAnimationOptionTransitionFlipFromLeft];
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        
+        [self startTimer];
+    }];
 }
 
 #pragma mark - Utility Methods
