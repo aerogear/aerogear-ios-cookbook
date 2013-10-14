@@ -19,6 +19,20 @@
 
 @interface AGOTPClient : AFHTTPClient
 
+
++ (void)initSharedInstanceWithBaseURL:(NSString *)baseURL
+                             username:(NSString *)user password:(NSString *)passwd
+                              success:(void (^)())success
+                              failure:(void (^)(NSError *error))failure;
 + (id)sharedInstance;
+
+- (void)fetchSecret:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure;
+
+- (void)verifyOTP:(NSDictionary *)secret success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure;
+
+- (void) logout:(void (^)())success
+        failure:(void (^)(NSError *error))failure;
 
 @end

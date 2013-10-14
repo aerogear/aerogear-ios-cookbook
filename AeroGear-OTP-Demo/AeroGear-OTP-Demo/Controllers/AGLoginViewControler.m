@@ -36,26 +36,19 @@
 }
 
 - (IBAction)buttonPressed:(id)sender {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.username.text, @"aeroGearUser.username",
-                            self.password.text, @"aeroGearUser.password",
-                            nil];
     
     [SVProgressHUD showWithStatus:@"Logging in"];
-    
 
-    [[AGOTPClient sharedInstance] postPath:@"aerogear-controller-demo/login" parameters:params
-      success:^(AFHTTPRequestOperation *operation, id response) {
-          [SVProgressHUD dismiss];
 
-          AGOTPViewController *otpController = [[AGOTPViewController alloc] initWithNibName:@"AGOTPViewController" bundle:nil];
-          AGAppDelegate *delegate = [UIApplication sharedApplication].delegate;
-          
-          [delegate transitionToViewController:otpController withTransition:UIViewAnimationOptionTransitionFlipFromRight];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"\n%@\n", error);
+    [AGOTPClient initSharedInstanceWithBaseURL:@"http://jaxrs-sblanc.rhcloud.com/rest/" username:self.username.text password:self.password.text success:^{
+        [SVProgressHUD dismiss];
+        
+        AGOTPViewController *otpController = [[AGOTPViewController alloc] initWithNibName:@"AGOTPViewController" bundle:nil];
+        AGAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        
+        [delegate transitionToViewController:otpController withTransition:UIViewAnimationOptionTransitionFlipFromRight];
+    } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];
 }
-
 @end
