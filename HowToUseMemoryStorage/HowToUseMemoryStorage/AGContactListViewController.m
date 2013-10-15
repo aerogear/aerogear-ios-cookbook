@@ -9,10 +9,8 @@
 #import "AGContactListViewController.h"
 #import "AGContactItemViewController.h"
 
-@implementation AGContactListViewController {
-    NSMutableArray* _contacts;
-    NSString* _currentContact;
-}
+@implementation AGContactListViewController
+@synthesize contacts = _contacts;
 
 - (IBAction)editButton:(UIBarButtonItem *)sender {
      [self setEditing:UITableViewCellEditingStyleDelete animated:NO];
@@ -23,7 +21,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     // Return the number of rows in the section.
     // Usually the number of items in your array (the one that holds your list)
-    return [_contacts count];
+    return [self.contacts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -37,7 +35,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell... setting the text of our cell's label
-    cell.textLabel.text = [_contacts objectAtIndex:indexPath.row];
+    AGContactItem* item = [self.contacts objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.name;
     return cell;
 }
 
@@ -54,7 +53,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _contacts = [[NSMutableArray alloc] initWithArray:@[@"111-111-111", @"222-222-222"]];
+    AGContactItem* item1 = [[AGContactItem alloc] initWithName:@"Corinne" andPhoneNumber:@"111-111-112"];
+    AGContactItem* item2 = [[AGContactItem alloc] initWithName:@"Christos" andPhoneNumber:@"222-222-223"];
+    self.contacts = [(NSMutableArray<AGContact>*)[NSMutableArray alloc] initWithArray:@[item1, item2]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,11 +88,10 @@
     AGContactItemViewController *detailController = segue.destinationViewController;
     NSIndexPath* row = self.myTableView.indexPathForSelectedRow;
     if (row != nil) {
-        NSString *contact = [_contacts objectAtIndex:row.row];
-        detailController.name = contact;
+        AGContactItem *contact = [_contacts objectAtIndex:row.row];
+        detailController.contact = contact;
     } else {
-        NSString *contact = @"New Contact";
-        detailController.name = contact;
+        detailController.contact = [[AGContactItem alloc] initWithName:@"New contact" andPhoneNumber:@"000-000-000"];
     }
 
 }

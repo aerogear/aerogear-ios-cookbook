@@ -7,16 +7,19 @@
 //
 
 #import "AGContactItemViewController.h"
-
+#import "AGContactListViewController.h"
 
 @implementation AGContactItemViewController {
 
 }
 
-@synthesize name;
-@synthesize phoneNumber;
+@synthesize contact = _contact;
 @synthesize nameInput;
 @synthesize phoneNumberLabel;
+
+- (IBAction)saveContactItem:(UIButton *)sender {
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,12 +30,11 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.nameInput.text = self.name;
-    self.phoneNumberLabel.text = self.phoneNumber;
+	self.nameInput.text = self.contact.name;
+    self.phoneNumberLabel.text = self.contact.phoneNumber;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,5 +49,10 @@
 			[view resignFirstResponder];
 	}
 }
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{ 
+//}
+
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AGContactItem.h"
 
 @interface AGContactItemViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
-@property(strong, nonatomic) NSString* name;
-@property(strong, nonatomic) NSString* phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
+
+@property(strong, nonatomic) AGContactItem* contact;
 @end

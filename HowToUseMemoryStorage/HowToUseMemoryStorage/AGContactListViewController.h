@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AGContactItem.h"
 
 @interface AGContactListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property(nonatomic, strong) NSMutableArray<AGContact>* contacts;
 @end

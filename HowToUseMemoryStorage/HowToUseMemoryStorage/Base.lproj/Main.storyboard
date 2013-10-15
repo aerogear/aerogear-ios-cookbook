@@ -72,6 +72,10 @@
                                 <state key="normal" title="Save Contact">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveContactItem:" destination="CN6-kn-XPX" eventType="touchUpInside" id="d9V-g1-Txp"/>
+                                    <segue destination="b6U-ZV-lDw" kind="push" identifier="saveContactItem" id="YJt-rc-s1T"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcA-lh-4BC">
                                 <rect key="frame" x="52" y="107" width="243" height="30"/>
@@ -116,4 +120,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="YJt-rc-s1T"/>
+    </inferredMetricsTieBreakers>
 </document>
