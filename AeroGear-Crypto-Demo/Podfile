@@ -2,4 +2,4 @@ xcodeproj 'AeroGear-Crypto-Demo.xcodeproj'
 platform :ios, '5.0'
          
 pod 'AeroGear', '1.2.0'
-pod 'aerogear-crypto-ios', { :git => 'https://github.com/aerogear/aerogear-crypto-ios.git', :branch => 'podspec.AGIOS-92' }
+pod 'AeroGear-Crypto', { :git => 'https://github.com/aerogear/aerogear-crypto-ios.git', :branch => 'podspec.AGIOS-92' }
