@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
+		48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10C1821066100CDD418 /* CoreGraphics.framework */; };
+		48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10E1821066100CDD418 /* UIKit.framework */; };
+		48B7F1151821066100CDD418 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1131821066100CDD418 /* InfoPlist.strings */; };
+		48B7F1171821066100CDD418 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F1161821066100CDD418 /* main.m */; };
+		48B7F11E1821066100CDD418 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F11C1821066100CDD418 /* Main.storyboard */; };
+		48B7F1231821066100CDD418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1221821066100CDD418 /* Images.xcassets */; };
+		48B7F12A1821066100CDD418 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F1291821066100CDD418 /* XCTest.framework */; };
+		48B7F12B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
+		48B7F12C1821066100CDD418 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10E1821066100CDD418 /* UIKit.framework */; };
+		48B7F1341821066100CDD418 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1321821066100CDD418 /* InfoPlist.strings */; };
+		48B7F1361821066100CDD418 /* AeroGear_Crypto_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F1351821066100CDD418 /* AeroGear_Crypto_DemoTests.m */; };
+		48B7F1561821132A00CDD418 /* ios-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1441821132A00CDD418 /* ios-114.png */; };
+		48B7F1571821132A00CDD418 /* ios-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1451821132A00CDD418 /* ios-144.png */; };
+		48B7F1581821132A00CDD418 /* ios-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1461821132A00CDD418 /* ios-57.png */; };
+		48B7F1591821132A00CDD418 /* ios-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1471821132A00CDD418 /* ios-72.png */; };
+		48B7F15A1821132A00CDD418 /* aero_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1491821132A00CDD418 /* aero_greyed.png */; };
+		48B7F15B1821132A00CDD418 /* aero_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F14A1821132A00CDD418 /* aero_selected.png */; };
+		48B7F15C1821132A00CDD418 /* aerogear_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F14B1821132A00CDD418 /* aerogear_logo.png */; };
+		48B7F15D1821132A00CDD418 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F14C1821132A00CDD418 /* ic_launcher.png */; };
+		48B7F15E1821132A00CDD418 /* ic_launcher_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F14D1821132A00CDD418 /* ic_launcher_114.png */; };
+		48B7F15F1821132A00CDD418 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F14E1821132A00CDD418 /* logout.png */; };
+		48B7F1601821132A00CDD418 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1501821132A00CDD418 /* Default-568h@2x.png */; };
+		48B7F1611821132A00CDD418 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1511821132A00CDD418 /* Default-Landscape~ipad.png */; };
+		48B7F1621821132A00CDD418 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1521821132A00CDD418 /* Default-Portrait@2x~ipad.png */; };
+		48B7F1631821132A00CDD418 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1531821132A00CDD418 /* Default-Portrait~ipad.png */; };
+		48B7F1641821132A00CDD418 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1541821132A00CDD418 /* Default.png */; };
+		48B7F1651821132A00CDD418 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1551821132A00CDD418 /* Default@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48B7F12D1821066100CDD418 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48B7F0FF1821066100CDD418 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B7F1061821066100CDD418;
+			remoteInfo = "AeroGear-Crypto-Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AeroGear-Crypto-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B7F10A1821066100CDD418 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		48B7F10C1821066100CDD418 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		48B7F10E1821066100CDD418 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		48B7F1121821066100CDD418 /* AeroGear-Crypto-Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AeroGear-Crypto-Demo-Info.plist"; sourceTree = "<group>"; };
+		48B7F1141821066100CDD418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		48B7F1161821066100CDD418 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48B7F1181821066100CDD418 /* AeroGear-Crypto-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AeroGear-Crypto-Demo-Prefix.pch"; sourceTree = "<group>"; };
+		48B7F11D1821066100CDD418 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48B7F1221821066100CDD418 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		48B7F1281821066100CDD418 /* AeroGear-Crypto-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AeroGear-Crypto-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B7F1291821066100CDD418 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		48B7F1311821066100CDD418 /* AeroGear-Crypto-DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AeroGear-Crypto-DemoTests-Info.plist"; sourceTree = "<group>"; };
+		48B7F1331821066100CDD418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		48B7F1351821066100CDD418 /* AeroGear_Crypto_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AeroGear_Crypto_DemoTests.m; sourceTree = "<group>"; };
+		48B7F1441821132A00CDD418 /* ios-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-114.png"; sourceTree = "<group>"; };
+		48B7F1451821132A00CDD418 /* ios-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-144.png"; sourceTree = "<group>"; };
+		48B7F1461821132A00CDD418 /* ios-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-57.png"; sourceTree = "<group>"; };
+		48B7F1471821132A00CDD418 /* ios-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-72.png"; sourceTree = "<group>"; };
+		48B7F1491821132A00CDD418 /* aero_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aero_greyed.png; sourceTree = "<group>"; };
+		48B7F14A1821132A00CDD418 /* aero_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aero_selected.png; sourceTree = "<group>"; };
+		48B7F14B1821132A00CDD418 /* aerogear_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aerogear_logo.png; sourceTree = "<group>"; };
+		48B7F14C1821132A00CDD418 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
+		48B7F14D1821132A00CDD418 /* ic_launcher_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher_114.png; sourceTree = "<group>"; };
+		48B7F14E1821132A00CDD418 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		48B7F1501821132A00CDD418 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		48B7F1511821132A00CDD418 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		48B7F1521821132A00CDD418 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		48B7F1531821132A00CDD418 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		48B7F1541821132A00CDD418 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		48B7F1551821132A00CDD418 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48B7F1041821066100CDD418 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */,
+				48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */,
+				48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B7F1251821066100CDD418 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F12A1821066100CDD418 /* XCTest.framework in Frameworks */,
+				48B7F12C1821066100CDD418 /* UIKit.framework in Frameworks */,
+				48B7F12B1821066100CDD418 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48B7F0FE1821066100CDD418 = {
+			isa = PBXGroup;
+			children = (
+				48B7F1101821066100CDD418 /* AeroGear-Crypto-Demo */,
+				48B7F12F1821066100CDD418 /* AeroGear-Crypto-DemoTests */,
+				48B7F1091821066100CDD418 /* Frameworks */,
+				48B7F1081821066100CDD418 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48B7F1081821066100CDD418 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */,
+				48B7F1281821066100CDD418 /* AeroGear-Crypto-DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48B7F1091821066100CDD418 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F10A1821066100CDD418 /* Foundation.framework */,
+				48B7F10C1821066100CDD418 /* CoreGraphics.framework */,
+				48B7F10E1821066100CDD418 /* UIKit.framework */,
+				48B7F1291821066100CDD418 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48B7F1101821066100CDD418 /* AeroGear-Crypto-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1411821124B00CDD418 /* Networking */,
+				48B7F1401821124300CDD418 /* Model */,
+				48B7F13F1821123A00CDD418 /* Controller */,
+				48B7F1421821130F00CDD418 /* Resources */,
+				48B7F11C1821066100CDD418 /* Main.storyboard */,
+				48B7F1111821066100CDD418 /* Supporting Files */,
+			);
+			path = "AeroGear-Crypto-Demo";
+			sourceTree = "<group>";
+		};
+		48B7F1111821066100CDD418 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1221821066100CDD418 /* Images.xcassets */,
+				48B7F1121821066100CDD418 /* AeroGear-Crypto-Demo-Info.plist */,
+				48B7F1131821066100CDD418 /* InfoPlist.strings */,
+				48B7F1161821066100CDD418 /* main.m */,
+				48B7F1181821066100CDD418 /* AeroGear-Crypto-Demo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48B7F12F1821066100CDD418 /* AeroGear-Crypto-DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1351821066100CDD418 /* AeroGear_Crypto_DemoTests.m */,
+				48B7F1301821066100CDD418 /* Supporting Files */,
+			);
+			path = "AeroGear-Crypto-DemoTests";
+			sourceTree = "<group>";
+		};
+		48B7F1301821066100CDD418 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1311821066100CDD418 /* AeroGear-Crypto-DemoTests-Info.plist */,
+				48B7F1321821066100CDD418 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48B7F13F1821123A00CDD418 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		48B7F1401821124300CDD418 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		48B7F1411821124B00CDD418 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		48B7F1421821130F00CDD418 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1431821132A00CDD418 /* icons */,
+				48B7F1481821132A00CDD418 /* images */,
+				48B7F14F1821132A00CDD418 /* splash */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		48B7F1431821132A00CDD418 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1441821132A00CDD418 /* ios-114.png */,
+				48B7F1451821132A00CDD418 /* ios-144.png */,
+				48B7F1461821132A00CDD418 /* ios-57.png */,
+				48B7F1471821132A00CDD418 /* ios-72.png */,
+			);
+			name = icons;
+			path = Resources/icons;
+			sourceTree = "<group>";
+		};
+		48B7F1481821132A00CDD418 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1491821132A00CDD418 /* aero_greyed.png */,
+				48B7F14A1821132A00CDD418 /* aero_selected.png */,
+				48B7F14B1821132A00CDD418 /* aerogear_logo.png */,
+				48B7F14C1821132A00CDD418 /* ic_launcher.png */,
+				48B7F14D1821132A00CDD418 /* ic_launcher_114.png */,
+				48B7F14E1821132A00CDD418 /* logout.png */,
+			);
+			name = images;
+			path = Resources/images;
+			sourceTree = "<group>";
+		};
+		48B7F14F1821132A00CDD418 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1501821132A00CDD418 /* Default-568h@2x.png */,
+				48B7F1511821132A00CDD418 /* Default-Landscape~ipad.png */,
+				48B7F1521821132A00CDD418 /* Default-Portrait@2x~ipad.png */,
+				48B7F1531821132A00CDD418 /* Default-Portrait~ipad.png */,
+				48B7F1541821132A00CDD418 /* Default.png */,
+				48B7F1551821132A00CDD418 /* Default@2x.png */,
+			);
+			name = splash;
+			path = Resources/splash;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48B7F1061821066100CDD418 /* AeroGear-Crypto-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B7F1391821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-Demo" */;
+			buildPhases = (
+				48B7F1031821066100CDD418 /* Sources */,
+				48B7F1041821066100CDD418 /* Frameworks */,
+				48B7F1051821066100CDD418 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AeroGear-Crypto-Demo";
+			productName = "AeroGear-Crypto-Demo";
+			productReference = 48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48B7F1271821066100CDD418 /* AeroGear-Crypto-DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B7F13C1821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-DemoTests" */;
+			buildPhases = (
+				48B7F1241821066100CDD418 /* Sources */,
+				48B7F1251821066100CDD418 /* Frameworks */,
+				48B7F1261821066100CDD418 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48B7F12E1821066100CDD418 /* PBXTargetDependency */,
+			);
+			name = "AeroGear-Crypto-DemoTests";
+			productName = "AeroGear-Crypto-DemoTests";
+			productReference = 48B7F1281821066100CDD418 /* AeroGear-Crypto-DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48B7F0FF1821066100CDD418 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = AeroGear;
+				TargetAttributes = {
+					48B7F1271821066100CDD418 = {
+						TestTargetID = 48B7F1061821066100CDD418;
+					};
+				};
+			};
+			buildConfigurationList = 48B7F1021821066100CDD418 /* Build configuration list for PBXProject "AeroGear-Crypto-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48B7F0FE1821066100CDD418;
+			productRefGroup = 48B7F1081821066100CDD418 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48B7F1061821066100CDD418 /* AeroGear-Crypto-Demo */,
+				48B7F1271821066100CDD418 /* AeroGear-Crypto-DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48B7F1051821066100CDD418 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F15A1821132A00CDD418 /* aero_greyed.png in Resources */,
+				48B7F1641821132A00CDD418 /* Default.png in Resources */,
+				48B7F15B1821132A00CDD418 /* aero_selected.png in Resources */,
+				48B7F1561821132A00CDD418 /* ios-114.png in Resources */,
+				48B7F1231821066100CDD418 /* Images.xcassets in Resources */,
+				48B7F15E1821132A00CDD418 /* ic_launcher_114.png in Resources */,
+				48B7F1631821132A00CDD418 /* Default-Portrait~ipad.png in Resources */,
+				48B7F1601821132A00CDD418 /* Default-568h@2x.png in Resources */,
+				48B7F15C1821132A00CDD418 /* aerogear_logo.png in Resources */,
+				48B7F15F1821132A00CDD418 /* logout.png in Resources */,
+				48B7F1151821066100CDD418 /* InfoPlist.strings in Resources */,
+				48B7F1611821132A00CDD418 /* Default-Landscape~ipad.png in Resources */,
+				48B7F1571821132A00CDD418 /* ios-144.png in Resources */,
+				48B7F15D1821132A00CDD418 /* ic_launcher.png in Resources */,
+				48B7F1621821132A00CDD418 /* Default-Portrait@2x~ipad.png in Resources */,
+				48B7F11E1821066100CDD418 /* Main.storyboard in Resources */,
+				48B7F1651821132A00CDD418 /* Default@2x.png in Resources */,
+				48B7F1581821132A00CDD418 /* ios-57.png in Resources */,
+				48B7F1591821132A00CDD418 /* ios-72.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B7F1261821066100CDD418 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F1341821066100CDD418 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48B7F1031821066100CDD418 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F1171821066100CDD418 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B7F1241821066100CDD418 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F1361821066100CDD418 /* AeroGear_Crypto_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48B7F12E1821066100CDD418 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48B7F1061821066100CDD418 /* AeroGear-Crypto-Demo */;
+			targetProxy = 48B7F12D1821066100CDD418 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		48B7F1131821066100CDD418 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48B7F1141821066100CDD418 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		48B7F11C1821066100CDD418 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48B7F11D1821066100CDD418 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		48B7F1321821066100CDD418 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48B7F1331821066100CDD418 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48B7F1371821066100CDD418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		48B7F1381821066100CDD418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48B7F13A1821066100CDD418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				INFOPLIST_FILE = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		48B7F13B1821066100CDD418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				INFOPLIST_FILE = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		48B7F13D1821066100CDD418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroGear-Crypto-Demo.app/AeroGear-Crypto-Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AeroGear-Crypto-DemoTests/AeroGear-Crypto-DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		48B7F13E1821066100CDD418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroGear-Crypto-Demo.app/AeroGear-Crypto-Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				INFOPLIST_FILE = "AeroGear-Crypto-DemoTests/AeroGear-Crypto-DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48B7F1021821066100CDD418 /* Build configuration list for PBXProject "AeroGear-Crypto-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B7F1371821066100CDD418 /* Debug */,
+				48B7F1381821066100CDD418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B7F1391821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B7F13A1821066100CDD418 /* Debug */,
+				48B7F13B1821066100CDD418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		48B7F13C1821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B7F13D1821066100CDD418 /* Debug */,
+				48B7F13E1821066100CDD418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48B7F0FF1821066100CDD418 /* Project object */;
+}
