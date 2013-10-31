@@ -15,15 +15,8 @@
  * limitations under the License.
  */
 
-//#import "AGConfig.h"
 #import "AGLoginViewController.h"
-
-//#import "AGLeadsViewController.h"
-//#import "AGMyLeadsViewController.h"
-//#import "AeroDocAPIClient.h"
-//#import "AGDeviceRegistration.h"
-
-//#import "AGStatus.h"
+#import "AGPasswordListViewController.h"
 
 @implementation AGLoginViewController {
     UIImageView *_logo;
@@ -53,7 +46,7 @@
     _illustration.center = CGPointMake(160, 120);
     [self.view addSubview: _illustration];
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 160, 200, 32)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(150, 160, 200, 32)];
     [label setLineBreakMode:UILineBreakModeWordWrap];
     [label setNumberOfLines:0];
     [label setTextColor:[UIColor blackColor]];
@@ -136,109 +129,24 @@
     
     // save username/passwd for future logins
     [self save];
-    // first, we need to login to the service
-//    AeroDocAPIClient *apiClient = [AeroDocAPIClient sharedInstance];
-//    [apiClient loginWithUsername:_username.text password:_password.text success:^{
-//        // logged in successfully
-//        DLog(@"Sucessussfully logged");
-//
-//        // a successful login means we can trigger the device registration
-//        // against the AeroGear UnifiedPush Server:
-//        [self deviceRegistration];
-//        [self initUINavigation];
-//    } failure:^(NSError *error) {
-//        ALog(@"An error has occured during login! \n%@", error);
-//    }];
+    [self initUINavigation];
 }
 
 //--------------------------------------------------------------------
-// Device Registration for Unified Push Server
-//--------------------------------------------------------------------
-
-/**
- * Method is only invoked on a successful login on the user
- */
-- (void) deviceRegistration {
-#if !TARGET_IPHONE_SIMULATOR
-    AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:URL_UNIFIED_PUSH]];
-    
-    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
-        [clientInfo setVariantID:VARIANT_ID];
-        [clientInfo setVariantSecret:VARIANT_SECRET];
-        
-        // if the deviceToken value is nil, no registration will be performed
-        // and the failure callback is being invoked!
-        [clientInfo setDeviceToken:self.deviceToken];
-        
-        UIDevice *currentDevice = [UIDevice currentDevice];
-        [clientInfo setAlias: [[AeroDocAPIClient sharedInstance] loginName]];
-        [clientInfo setOperatingSystem:[currentDevice systemName]];
-        [clientInfo setOsVersion:[currentDevice systemVersion]];
-        [clientInfo setDeviceType: [currentDevice model]];
-        
-    } success:^() {
-        DLog(@"PushEE registration successful");
-    } failure:^(NSError *error) {
-        DLog(@"PushEE registration Error: %@", error);
-    }];
-#endif
-}
-
-//--------------------------------------------------------------------
-// Create tabbarcontroller with two tabs:
-// - Open Leads
-// - My leads
-// and navigation controller for UI flow
+// Create UINavigationController with an list of passwords
 //--------------------------------------------------------------------
 - (void) initUINavigation {
     
-//    AGLeadsViewController *leadsController = [[AGLeadsViewController alloc] init];
-//    leadsController.title = @"AeroGear AeroDoc";
-//    leadsController.tableView.rowHeight = 60;
-//    leadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:leadsController];
-//    leadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:leadsController];
-//    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-//    [navController.navigationBar setTintColor:[UIColor blackColor]];
-//  
-//    AGMyLeadsViewController *myLeadsController = [[AGMyLeadsViewController alloc] initWithStyle:UITableViewStylePlain];
-//    myLeadsController.title = @"AeroGear AeroDoc";
-//    myLeadsController.tableView.rowHeight = 60;
-//    myLeadsController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    UINavigationController *myLeadsNavController = [[UINavigationController alloc] initWithRootViewController:myLeadsController];
-//    [myLeadsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-//    [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
-//    myLeadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:myLeadsController];
-//
-//    AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
-//    locationViewController.delegate = leadsController;
-//    locationViewController.title = @"AeroGear AeroDoc";
-//    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
-//    [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-//    [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
-//    locationViewController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:locationViewController];
-//    
-//    self.tabController = [[UITabBarController alloc] init];
-//    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, settingsNavController, nil];
-//    self.tabController.viewControllers = controllers;
-//   
-//    UITabBar *tabBar = self.tabController.tabBar;
-//    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
-//    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
-//    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-//    //[tabBarItem1 setBadgeValue:@"2"];
-//    
-//    tabBarItem1.title = @"Available Leads";
-//    tabBarItem2.title = @"My Leads";
-//    tabBarItem3.title = @"Location";
-//    
-//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"aero_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"aero_greyed.png"]];
-//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"user_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"user_greyed.png"]];
-//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"pink_marker_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"pink_marker_greyed.png"]];
-//    
-//    [self presentViewController:self.tabController animated:YES completion:^{
-//
-//    }];
+    AGPasswordListViewController *passwordListController = [[AGPasswordListViewController alloc] init];
+    passwordListController.title = @"AeroGear Crypto";
+    passwordListController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passwordListController];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [navController.navigationBar setTintColor:[UIColor blackColor]];
+    
+    [self presentViewController:navController animated:YES completion:^{
+
+    }];
     
 }
 
@@ -259,7 +167,7 @@
 - (void)load {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *username = [defaults objectForKey:@"username"];
+//    NSString *username = [defaults objectForKey:@"username"];
     NSString *password = [defaults objectForKey:@"password"];
     
 //    _username.text = username;

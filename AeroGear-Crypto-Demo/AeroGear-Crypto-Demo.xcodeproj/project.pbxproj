@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		186C2B288C3149B7B3020839 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F62CE8F71F46458C59E4A3 /* libPods.a */; };
+		483E27B218226923004F6FD2 /* AGPasswordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E27B118226923004F6FD2 /* AGPasswordListViewController.m */; };
 		48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
 		48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10C1821066100CDD418 /* CoreGraphics.framework */; };
 		48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10E1821066100CDD418 /* UIKit.framework */; };
 		48B7F1151821066100CDD418 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1131821066100CDD418 /* InfoPlist.strings */; };
 		48B7F1171821066100CDD418 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F1161821066100CDD418 /* main.m */; };
-		48B7F11E1821066100CDD418 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F11C1821066100CDD418 /* Main.storyboard */; };
 		48B7F1231821066100CDD418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1221821066100CDD418 /* Images.xcassets */; };
 		48B7F12A1821066100CDD418 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F1291821066100CDD418 /* XCTest.framework */; };
 		48B7F12B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
@@ -52,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		31F62CE8F71F46458C59E4A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		483E27B018226923004F6FD2 /* AGPasswordListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPasswordListViewController.h; path = Classes/Controller/AGPasswordListViewController.h; sourceTree = "<group>"; };
+		483E27B118226923004F6FD2 /* AGPasswordListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGPasswordListViewController.m; path = Classes/Controller/AGPasswordListViewController.m; sourceTree = "<group>"; };
 		48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AeroGear-Crypto-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B7F10A1821066100CDD418 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		48B7F10C1821066100CDD418 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,7 +62,6 @@
 		48B7F1141821066100CDD418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		48B7F1161821066100CDD418 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		48B7F1181821066100CDD418 /* AeroGear-Crypto-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AeroGear-Crypto-Demo-Prefix.pch"; sourceTree = "<group>"; };
-		48B7F11D1821066100CDD418 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48B7F1221821066100CDD418 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48B7F1281821066100CDD418 /* AeroGear-Crypto-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AeroGear-Crypto-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B7F1291821066100CDD418 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -156,7 +157,6 @@
 				48B7F1401821124300CDD418 /* Model */,
 				48B7F13F1821123A00CDD418 /* Controller */,
 				48B7F1421821130F00CDD418 /* Resources */,
-				48B7F11C1821066100CDD418 /* Main.storyboard */,
 				48B7F1111821066100CDD418 /* Supporting Files */,
 			);
 			path = "AeroGear-Crypto-Demo";
@@ -195,6 +195,8 @@
 		48B7F13F1821123A00CDD418 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				483E27B018226923004F6FD2 /* AGPasswordListViewController.h */,
+				483E27B118226923004F6FD2 /* AGPasswordListViewController.m */,
 				48B7F16C1821719F00CDD418 /* AGLoginViewController.h */,
 				48B7F16D1821719F00CDD418 /* AGLoginViewController.m */,
 			);
@@ -358,7 +360,6 @@
 				48B7F1571821132A00CDD418 /* ios-144.png in Resources */,
 				48B7F15D1821132A00CDD418 /* ic_launcher.png in Resources */,
 				48B7F1621821132A00CDD418 /* Default-Portrait@2x~ipad.png in Resources */,
-				48B7F11E1821066100CDD418 /* Main.storyboard in Resources */,
 				48B7F1651821132A00CDD418 /* Default@2x.png in Resources */,
 				48B7F1581821132A00CDD418 /* ios-57.png in Resources */,
 				48B7F1591821132A00CDD418 /* ios-72.png in Resources */,
@@ -416,6 +417,7 @@
 				48B7F16E1821719F00CDD418 /* AGLoginViewController.m in Sources */,
 				48B7F168182170F200CDD418 /* AppDelegate.m in Sources */,
 				48B7F1171821066100CDD418 /* main.m in Sources */,
+				483E27B218226923004F6FD2 /* AGPasswordListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,14 +446,6 @@
 				48B7F1141821066100CDD418 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		48B7F11C1821066100CDD418 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48B7F11D1821066100CDD418 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		48B7F1321821066100CDD418 /* InfoPlist.strings */ = {
