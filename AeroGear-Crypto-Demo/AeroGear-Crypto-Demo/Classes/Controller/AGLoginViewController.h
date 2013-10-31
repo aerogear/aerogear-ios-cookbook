@@ -17,10 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class AGLoginViewController;
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) AGLoginViewController *viewController;
+@interface AGLoginViewController : UIViewController <UITextFieldDelegate>
+@property (strong, nonatomic) NSData *deviceToken;
+@property (strong, nonatomic) UITabBarController *tabController;
 @end
