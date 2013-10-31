@@ -1,7 +1,7 @@
 # AeroGear-Crypto-Demo
-The repo is a simple example testing [AeroGear-Crypto library](https://github.com/aerogear/aerogear-crypto-ios). We demo local data encryption with AeroGear Crypto Password management app. 
+The demo ```AeroGear Crypto Password ``` is a single app that will let you easily create stronger passwords and store them in an encrypted database that only you can access. One central point for all your passwords.
 
-Enter your passphrase, all your existing password will be decrypted. AeroGear Crypto Password secures your data using [AeroGear-Crypto library](https://github.com/aerogear/aerogear-crypto-ios) underneath powered by [CBC symmetric encryption](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29).
+Enter your passphrase, all your existing passwords will be decrypted. AeroGear Crypto Password secures your data using [AeroGear-Crypto library](https://github.com/aerogear/aerogear-crypto-ios) underneath powered by [CBC symmetric encryption](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29).
 
 ## Getting started
 
