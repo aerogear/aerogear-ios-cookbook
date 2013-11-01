@@ -19,7 +19,4 @@
 
 @interface AGLoginViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UIButton *login;
-
 @end
