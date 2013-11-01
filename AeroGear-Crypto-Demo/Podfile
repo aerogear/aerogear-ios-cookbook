@@ -3,3 +3,5 @@ platform :ios, '5.0'
          
 pod 'AeroGear', '1.2.0'
 pod 'AeroGear-Crypto', { :git => 'https://github.com/aerogear/aerogear-crypto-ios.git', :branch => 'master' }
+pod 'UIActionSheet-Blocks'
+pod 'UIAlertView+Blocks'
