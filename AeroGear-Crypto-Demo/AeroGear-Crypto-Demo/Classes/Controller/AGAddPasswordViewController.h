@@ -33,8 +33,4 @@
 
 @property (nonatomic, weak) id <AddPasswordViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-
 @end

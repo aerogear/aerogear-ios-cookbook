@@ -20,12 +20,24 @@
 
 @interface AGAddPasswordViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
 @end
 
 @implementation AGAddPasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    DLog(@"AGAddPasswordViewController viewDidLoad");
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    DLog(@"AGAddPasswordViewController viewDidUnLoad");
 }
 
 - (IBAction)cancel:(id)sender {
