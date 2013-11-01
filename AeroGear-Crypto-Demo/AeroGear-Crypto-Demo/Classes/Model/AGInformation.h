@@ -15,10 +15,12 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import "AGAddPasswordViewController.h"
+@interface AGInformation : NSObject
 
-@interface AGPasswordManagerViewController : UITableViewController <AddPasswordViewControllerDelegate>
+@property(nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *username;
+@property(nonatomic, copy) NSString *password;
 
 @end

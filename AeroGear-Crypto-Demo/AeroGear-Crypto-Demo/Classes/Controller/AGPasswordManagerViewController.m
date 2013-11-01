@@ -16,114 +16,93 @@
  */
 
 #import "AGPasswordManagerViewController.h"
+#import "AGInformation.h"
 
-@interface AGPasswordManagerViewController ()
+#import "UIActionSheet+Blocks.h"
 
-@end
-
-@implementation AGPasswordManagerViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@implementation AGPasswordManagerViewController {
+    NSMutableArray *_entries;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // TODO reload from strore
+    _entries = [[NSMutableArray alloc] init];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    _entries = nil;
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_entries count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
     
-    // Configure the cell...
+    AGInformation *entry = [_entries objectAtIndex:[indexPath row]];
+    
+    cell.textLabel.text = entry.name;
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+        
+        [UIActionSheet presentOnView:self.view
+                           withTitle:@"Are you sure you want to delete this entry?"
+                        cancelButton:@"Cancel"
+                   destructiveButton:@"Yes" otherButtons:nil
+                            onCancel:nil
+                       onDestructive:^(UIActionSheet *actionSheet) {
+                           [_entries removeObjectAtIndex:[indexPath row]];
+                           [tableView deleteRowsAtIndexPaths:@[indexPath]
+                                            withRowAnimation:UITableViewRowAnimationFade];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+                       } onClickedButton:nil
+        ];
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // prior to transition, assign delegates to
+    // self so we get get notified
+	if ([segue.identifier isEqualToString:@"AddPassword"]) {
+		UINavigationController *navigationController = segue.destinationViewController;
+		AGAddPasswordViewController *addPasswordViewController = [[navigationController viewControllers] objectAtIndex:0];
+		addPasswordViewController.delegate = self;
+	}
 }
 
- */
+# pragma mark - AGAddPasswordViewController Delegate Methods
+
+- (void)addPasswordViewControllerDidCancel:(AGAddPasswordViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addPasswordViewController:(AGAddPasswordViewController *)controller
+                   didAddInformation:(AGInformation *)information {
+    
+    [_entries addObject:information];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_entries count] - 1 inSection:0];
+	[self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject:indexPath]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

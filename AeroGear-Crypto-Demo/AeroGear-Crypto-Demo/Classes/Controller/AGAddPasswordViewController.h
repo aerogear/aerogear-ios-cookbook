@@ -17,8 +17,24 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AGAddPasswordViewController.h"
+@class AGAddPasswordViewController;
+@class AGInformation;
 
-@interface AGPasswordManagerViewController : UITableViewController <AddPasswordViewControllerDelegate>
+@protocol AddPasswordViewControllerDelegate <NSObject>
+
+- (void)addPasswordViewControllerDidCancel:(AGAddPasswordViewController *)controller;
+
+- (void)addPasswordViewController:(AGAddPasswordViewController *)controller
+                   didAddInformation:(AGInformation *)information;
+
+@end
+
+@interface AGAddPasswordViewController : UITableViewController
+
+@property (nonatomic, weak) id <AddPasswordViewControllerDelegate> delegate;
+
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
 
 @end

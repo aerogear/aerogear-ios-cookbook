@@ -15,10 +15,30 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
-
 #import "AGAddPasswordViewController.h"
+#import "AGInformation.h"
 
-@interface AGPasswordManagerViewController : UITableViewController <AddPasswordViewControllerDelegate>
+@interface AGAddPasswordViewController ()
+
+@end
+
+@implementation AGAddPasswordViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self.delegate addPasswordViewControllerDidCancel:self];
+}
+
+- (IBAction)done:(id)sender {    
+    AGInformation *entry = [[AGInformation alloc] init];
+    entry.name = self.name.text;
+    entry.username = self.username.text;
+    entry.password = self.password.text;
+    
+    [self.delegate addPasswordViewController:self didAddInformation:entry];
+}
 
 @end

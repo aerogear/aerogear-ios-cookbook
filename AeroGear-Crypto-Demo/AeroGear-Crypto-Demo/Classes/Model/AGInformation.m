@@ -15,10 +15,8 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import "AGInformation.h"
 
-#import "AGAddPasswordViewController.h"
-
-@interface AGPasswordManagerViewController : UITableViewController <AddPasswordViewControllerDelegate>
+@implementation AGInformation
 
 @end
