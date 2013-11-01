@@ -16,18 +16,21 @@
  */
 
 #import "AGLoginViewController.h"
-#import "AGPasswordListViewController.h"
 
-@implementation AGLoginViewController {
-    UIImageView *_logo;
-    UIImageView *_illustration;
-//    UITextField *_username;
-    UITextField *_password;
-    UIButton *_login;
+@interface AGLoginViewController()
+
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *login;
+
+@end
+
+@implementation AGLoginViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    DLog(@"AGLoginViewController start viewDidLoad");
 }
-
-@synthesize deviceToken = _deviceToken;
-@synthesize tabController = _tabController;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -35,150 +38,26 @@
     DLog(@"AGLoginViewController viewDidUnLoad");
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    DLog(@"AGLoginViewController start viewDidLoad");
-    self.view.backgroundColor = [UIColor clearColor];
-
-
-    UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
-    _illustration = [[UIImageView alloc] initWithImage:background];
-    _illustration.center = CGPointMake(160, 120);
-    [self.view addSubview: _illustration];
-
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(150, 160, 200, 32)];
-    [label setLineBreakMode:UILineBreakModeWordWrap];
-    [label setNumberOfLines:0];
-    [label setTextColor:[UIColor blackColor]];
-    [label setBackgroundColor:[UIColor clearColor]];
-    [label setTextAlignment:UITextAlignmentCenter];
-    [label setText:@"Crypto"];
-    [label setFont:[UIFont boldSystemFontOfSize:20.0]];
-    [[self view] addSubview:label];
-    
-//    _username = [[UITextField alloc] initWithFrame:CGRectMake(55, 226, 200, 32)];
-//    _username.borderStyle = UITextBorderStyleRoundedRect;
-//    _username.placeholder = @"Username";
-//    _username.autocapitalizationType = UITextAutocapitalizationTypeNone;
-//    _username.autocorrectionType = UITextAutocorrectionTypeNo;
-//    _username.delegate = self;
-//    _username.backgroundColor = [UIColor clearColor];
-    
-    _password = [[UITextField alloc] initWithFrame:CGRectMake(55, 266, 200, 32)];
-    _password.borderStyle = UITextBorderStyleRoundedRect;
-    _password.placeholder = @"Password";
-    _password.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _password.autocorrectionType = UITextAutocorrectionTypeNo;
-    _password.secureTextEntry = YES;
-    _password.delegate = self;
-    _password.backgroundColor = [UIColor clearColor];
-    
-//    [self.view addSubview:_username];
-    [self.view addSubview:_password];
-    
-    _login =  [self buttonWithText:@"Login"];
-    _login.frame = CGRectMake(55, 310, 200, 52);
-    _login.titleLabel.textColor = [UIColor blackColor];
-    [_login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchDown];
-    
-    [self.view addSubview:_login];
-    
-    // load saved username/password
-    [self load];
-    
-    DLog(@"AGLoginViewController end viewDidLoad");
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
--(UIButton*) buttonWithText:(NSString*) text
-{
-    UIImage* buttonImage = [UIImage imageNamed:@"topAndBottomRow.png"];
-    
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-    
-    [button setTitle:text forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-    
-    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [button setBackgroundImage:buttonImage forState:UIControlStateHighlighted];
-    [button setBackgroundImage:buttonImage forState:UIControlStateSelected];
-    
-    return button;
-}
-
-# pragma mark - Action Methods
-//--------------------------------------------------------------------
-// Login button action. Once successfully logged we register device
-// for push notification
-//--------------------------------------------------------------------
+#pragma mark - Action Methods
 - (IBAction)login:(id)sender {
-    if (_password.text == nil) {
+    if ([self.password.text isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:@"Please enter your username and password!"
+                                                        message:@"Password is required!"
                                                        delegate:nil
                                               cancelButtonTitle:@"Bummer"
-                              
                                               otherButtonTitles:nil];
         [alert show];
         return;
     }
     
-    // save username/passwd for future logins
-    [self save];
-    [self initUINavigation];
-}
-
-//--------------------------------------------------------------------
-// Create UINavigationController with an list of passwords
-//--------------------------------------------------------------------
-- (void) initUINavigation {
-    
-    AGPasswordListViewController *passwordListController = [[AGPasswordListViewController alloc] init];
-    passwordListController.title = @"AeroGear Crypto";
-    passwordListController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passwordListController];
-    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [navController.navigationBar setTintColor:[UIColor blackColor]];
-    
-    [self presentViewController:navController animated:YES completion:^{
-
-    }];
-    
+    [self performSegueWithIdentifier:@"ValidationSucceeded" sender:self];
 }
 
 #pragma mark - UITextFieldDelegate methods
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [textField resignFirstResponder];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-
-# pragma mark - load/save methods
-
-- (void)load {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-//    NSString *username = [defaults objectForKey:@"username"];
-    NSString *password = [defaults objectForKey:@"password"];
-    
-//    _username.text = username;
-    _password.text = password;
-}
-
-- (void)save {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-//    [defaults setObject:_username.text forKey:@"username"];
-    [defaults setObject:_password.text forKey:@"password"];
 }
 
 @end

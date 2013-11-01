@@ -14,30 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#import "AGLoginViewController.h"
+
 #import "AppDelegate.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    // Override point for customization after application launch.
-    self.viewController = [[AGLoginViewController alloc] init];
-    self.window.rootViewController = self.viewController;
-    
-    // set background
-    UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
-    backgroundView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-    [self.window addSubview:backgroundView];
-    
-    [self.window makeKeyAndVisible];
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return YES;
-
 }
-							
-
 
 @end

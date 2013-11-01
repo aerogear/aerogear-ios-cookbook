@@ -18,6 +18,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AGLoginViewController : UIViewController <UITextFieldDelegate>
-@property (strong, nonatomic) NSData *deviceToken;
-@property (strong, nonatomic) UITabBarController *tabController;
+
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *login;
+
 @end
