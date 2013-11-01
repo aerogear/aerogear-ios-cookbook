@@ -16,6 +16,7 @@
  */
 
 #import "AGPasswordManagerViewController.h"
+#import "AGPasswordViewController.h"
 #import "AGInformation.h"
 
 #import "UIActionSheet+Blocks.h"
@@ -27,14 +28,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // TODO reload from strore
+    // TODO reload from permanent strore
     _entries = [[NSMutableArray alloc] init];
+    
+    DLog(@"AGPasswordManagerViewController viewDidLoad");
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
     _entries = nil;
+    
+    DLog(@"AGPasswordManagerViewController viewDidUnLoad");
 }
 
 #pragma mark - Table view data source
@@ -80,14 +85,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // prior to transition, assign delegates to
     // self so we get get notified
-	if ([segue.identifier isEqualToString:@"AddPassword"]) {
-		UINavigationController *navigationController = segue.destinationViewController;
-		AGAddPasswordViewController *addPasswordViewController = [[navigationController viewControllers] objectAtIndex:0];
+    
+	if ([segue.identifier isEqualToString:@"AddPassword"]) {  // Add Screen
+        UINavigationController *navigationController = segue.destinationViewController;
+        AGAddPasswordViewController *addPasswordViewController = [[navigationController viewControllers] objectAtIndex:0];
 		addPasswordViewController.delegate = self;
-	}
+
+	} else if ([segue.identifier isEqualToString:@"ViewPassword"]) { // Details Screen
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+		AGPasswordViewController *passwordViewController = segue.destinationViewController;
+        passwordViewController.entry = [_entries objectAtIndex:[indexPath row]];
+    }
 }
 
-# pragma mark - AGAddPasswordViewController Delegate Methods
+#pragma mark - AGAddPasswordViewController Delegate Methods
 
 - (void)addPasswordViewControllerDidCancel:(AGAddPasswordViewController *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
