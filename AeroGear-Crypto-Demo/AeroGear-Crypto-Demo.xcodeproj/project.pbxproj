@@ -25,14 +25,11 @@
 		6F3512081823C33500115C4D /* AGPasswordManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3512071823C33500115C4D /* AGPasswordManagerViewController.m */; };
 		6F35120B1823C85500115C4D /* AGAddPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */; };
 		6F35120E1823D4B900115C4D /* AGInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F35120D1823D4B900115C4D /* AGInformation.m */; };
-<<<<<<< HEAD
 		6FE1EC661823FE3B00AB9866 /* AGPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */; };
 		6FE1EC681824141400AB9866 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC671824141400AB9866 /* SystemConfiguration.framework */; };
 		6FE1EC6A1824141B00AB9866 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */; };
 		6FE1EC6B182414CF00AB9866 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC671824141400AB9866 /* SystemConfiguration.framework */; };
 		6FE1EC6C182414D400AB9866 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */; };
-=======
->>>>>>> a5ebd17... new add entry screen and ability to save
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,13 +69,10 @@
 		6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAddPasswordViewController.m; path = Classes/Controller/AGAddPasswordViewController.m; sourceTree = "<group>"; };
 		6F35120C1823D4B900115C4D /* AGInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGInformation.h; path = Classes/Model/AGInformation.h; sourceTree = "<group>"; };
 		6F35120D1823D4B900115C4D /* AGInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGInformation.m; path = Classes/Model/AGInformation.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		6FE1EC641823FE3B00AB9866 /* AGPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPasswordViewController.h; path = Classes/Controller/AGPasswordViewController.h; sourceTree = "<group>"; };
 		6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGPasswordViewController.m; path = Classes/Controller/AGPasswordViewController.m; sourceTree = "<group>"; };
 		6FE1EC671824141400AB9866 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-=======
->>>>>>> a5ebd17... new add entry screen and ability to save
 		B23D58E80C0248458512743C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -199,11 +193,8 @@
 				6F3512071823C33500115C4D /* AGPasswordManagerViewController.m */,
 				6F3512091823C85500115C4D /* AGAddPasswordViewController.h */,
 				6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */,
-<<<<<<< HEAD
 				6FE1EC641823FE3B00AB9866 /* AGPasswordViewController.h */,
 				6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */,
-=======
->>>>>>> a5ebd17... new add entry screen and ability to save
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -395,10 +386,7 @@
 				48B7F168182170F200CDD418 /* AppDelegate.m in Sources */,
 				48B7F1171821066100CDD418 /* main.m in Sources */,
 				6F3512081823C33500115C4D /* AGPasswordManagerViewController.m in Sources */,
-<<<<<<< HEAD
 				6FE1EC661823FE3B00AB9866 /* AGPasswordViewController.m in Sources */,
-=======
->>>>>>> a5ebd17... new add entry screen and ability to save
 				6F35120B1823C85500115C4D /* AGAddPasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
