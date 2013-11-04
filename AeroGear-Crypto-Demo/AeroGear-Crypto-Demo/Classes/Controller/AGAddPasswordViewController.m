@@ -53,4 +53,21 @@
     [self.delegate addPasswordViewController:self didAddInformation:entry];
 }
 
+#pragma mark - UITextFieldDelegate methods
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField {
+    // circle through textfields after clicking 'Next' on keyboard
+    // tag is used to determine next
+    NSInteger nextTag = textField.tag + 1;
+
+    UIResponder* nextResponder = [self.view viewWithTag:nextTag];
+    if (nextResponder) {
+        [nextResponder becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
+}
+
 @end
