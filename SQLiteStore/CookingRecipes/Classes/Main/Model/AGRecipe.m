@@ -15,11 +15,19 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
 #import "AGRecipe.h"
 
-@interface AGRecipeViewController : UIViewController
-@property (weak, nonatomic)  IBOutlet UILabel *recipeTitle;
-@property (weak, nonatomic) IBOutlet UITextView *recipeDescription;
-@property (nonatomic, strong) AGRecipe *recipe;
+@implementation AGRecipe
+@synthesize recipeTitle = _recipeTitle;
+@synthesize recipeDescription = _recipeDescription;
+
+-(id)initWithTitle:(NSString*)title andDescription:(NSString*)description {
+    self = [super init];
+    if (self) {
+        _recipeTitle = title;
+        _recipeDescription = description;
+    }
+    return self;
+}
+
 @end

@@ -16,10 +16,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "AGRecipe.h"
 
-@interface AGRecipeViewController : UIViewController
-@property (weak, nonatomic)  IBOutlet UILabel *recipeTitle;
-@property (weak, nonatomic) IBOutlet UITextView *recipeDescription;
-@property (nonatomic, strong) AGRecipe *recipe;
+@interface AGAddRecipeViewController : UIViewController
+
 @end

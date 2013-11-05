@@ -36,6 +36,9 @@
 		4893F950182927EC008A0B6E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F94A182927EC008A0B6E /* Default-Portrait~ipad.png */; };
 		4893F951182927EC008A0B6E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F94B182927EC008A0B6E /* Default.png */; };
 		4893F952182927EC008A0B6E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F94C182927EC008A0B6E /* Default@2x.png */; };
+		4893F95518294763008A0B6E /* AGAddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F95418294763008A0B6E /* AGAddRecipeViewController.m */; };
+		4893F960182948F4008A0B6E /* AGRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F95F182948F4008A0B6E /* AGRecipe.m */; };
+		7F672D8CB9A5445A9B5D01C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F458E641854C04A2A71C33 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,12 @@
 		4893F94A182927EC008A0B6E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		4893F94B182927EC008A0B6E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4893F94C182927EC008A0B6E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4893F95318294763008A0B6E /* AGAddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAddRecipeViewController.h; sourceTree = "<group>"; };
+		4893F95418294763008A0B6E /* AGAddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAddRecipeViewController.m; sourceTree = "<group>"; };
+		4893F95E182948F4008A0B6E /* AGRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRecipe.h; sourceTree = "<group>"; };
+		4893F95F182948F4008A0B6E /* AGRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRecipe.m; sourceTree = "<group>"; };
+		4BEDC58F1FEB485C9CE8BB1E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		73F458E641854C04A2A71C33 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +103,7 @@
 				4893F8EB182906D5008A0B6E /* CoreGraphics.framework in Frameworks */,
 				4893F8ED182906D5008A0B6E /* UIKit.framework in Frameworks */,
 				4893F8E9182906D5008A0B6E /* Foundation.framework in Frameworks */,
+				7F672D8CB9A5445A9B5D01C5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				4893F92918290DF6008A0B6E /* Controller */,
+				4893F95D182948F4008A0B6E /* Model */,
 				4893F93A18290E2E008A0B6E /* Main */,
 				4893F93018290DFD008A0B6E /* Resources */,
 				4893F8EE182906D5008A0B6E /* CookingRecipes */,
 				4893F90D182906D5008A0B6E /* CookingRecipesTests */,
 				4893F8E7182906D5008A0B6E /* Frameworks */,
 				4893F8E6182906D5008A0B6E /* Products */,
+				4BEDC58F1FEB485C9CE8BB1E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +151,7 @@
 				4893F8EA182906D5008A0B6E /* CoreGraphics.framework */,
 				4893F8EC182906D5008A0B6E /* UIKit.framework */,
 				4893F907182906D5008A0B6E /* XCTest.framework */,
+				73F458E641854C04A2A71C33 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,6 +202,8 @@
 				4893F92B18290DF6008A0B6E /* AGCookbookViewController.m */,
 				4893F92C18290DF6008A0B6E /* AGRecipeViewController.h */,
 				4893F92D18290DF6008A0B6E /* AGRecipeViewController.m */,
+				4893F95318294763008A0B6E /* AGAddRecipeViewController.h */,
+				4893F95418294763008A0B6E /* AGAddRecipeViewController.m */,
 			);
 			name = Controller;
 			path = CookingRecipes/Classes/Controller;
@@ -242,6 +257,16 @@
 			path = splash;
 			sourceTree = "<group>";
 		};
+		4893F95D182948F4008A0B6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4893F95E182948F4008A0B6E /* AGRecipe.h */,
+				4893F95F182948F4008A0B6E /* AGRecipe.m */,
+			);
+			name = Model;
+			path = CookingRecipes/Classes/Main/Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,9 +274,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4893F917182906D5008A0B6E /* Build configuration list for PBXNativeTarget "CookingRecipes" */;
 			buildPhases = (
+				FF2AB055F2AB4A19A98204B2 /* Check Pods Manifest.lock */,
 				4893F8E1182906D5008A0B6E /* Sources */,
 				4893F8E2182906D5008A0B6E /* Frameworks */,
 				4893F8E3182906D5008A0B6E /* Resources */,
+				35898D4C98214913A742609A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,13 +376,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35898D4C98214913A742609A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF2AB055F2AB4A19A98204B2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4893F8E1182906D5008A0B6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4893F95518294763008A0B6E /* AGAddRecipeViewController.m in Sources */,
 				4893F8F5182906D5008A0B6E /* main.m in Sources */,
 				4893F92E18290DF6008A0B6E /* AGCookbookViewController.m in Sources */,
+				4893F960182948F4008A0B6E /* AGRecipe.m in Sources */,
 				4893F93D18290E2E008A0B6E /* AGAppDelegate.m in Sources */,
 				4893F92F18290DF6008A0B6E /* AGRecipeViewController.m in Sources */,
 			);
@@ -481,6 +543,7 @@
 		};
 		4893F918182906D5008A0B6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BEDC58F1FEB485C9CE8BB1E /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookingRecipes/CookingRecipes-Prefix.pch";
@@ -492,6 +555,7 @@
 		};
 		4893F919182906D5008A0B6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BEDC58F1FEB485C9CE8BB1E /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookingRecipes/CookingRecipes-Prefix.pch";

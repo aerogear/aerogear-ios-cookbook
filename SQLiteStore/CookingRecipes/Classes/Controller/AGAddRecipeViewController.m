@@ -15,16 +15,13 @@
  * limitations under the License.
  */
 
-#import "AGRecipeViewController.h"
+#import "AGAddRecipeViewController.h"
 
-@interface AGRecipeViewController ()
+@interface AGAddRecipeViewController ()
 
 @end
 
-@implementation AGRecipeViewController
-@synthesize recipeTitle;
-@synthesize recipeDescription;
-@synthesize recipe = _recipe;
+@implementation AGAddRecipeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,8 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    recipeTitle.text = _recipe.recipeTitle;
-	recipeDescription.text = _recipe.recipeDescription;
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,5 +44,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+	for (UIView* view in self.view.subviews) {
+		if ([view isKindOfClass:[UITextField class]])
+			[view resignFirstResponder];
+	}
+}
 
 @end
