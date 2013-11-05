@@ -7,15 +7,24 @@
 //
 
 #import "AGAppDelegate.h"
+#import "AeroGear.h"
 
 @implementation AGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // initialize local store
+    AGDataManager *dm = [AGDataManager manager];
+    id<AGStore> store;
+    store = [dm store:^(id<AGStoreConfig> config) {
+        [config setName:@"Contacts"];
+        [config setType:@"MEMORY"];
+    }];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -1,8 +1,8 @@
 //
 //  main.m
-//  HowToUseSQLiteStorage
+//  CookingRecipes
 //
-//  Created by Corinne Krych on 10/10/13.
+//  Created by Corinne Krych on 11/5/13.
 //  Copyright (c) 2013 AeroGear. All rights reserved.
 //
 

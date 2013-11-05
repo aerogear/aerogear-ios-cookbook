@@ -1,18 +1,18 @@
 //
-//  HowToUseSQLiteStorageTests.m
-//  HowToUseSQLiteStorageTests
+//  CookingRecipesTests.m
+//  CookingRecipesTests
 //
-//  Created by Corinne Krych on 10/10/13.
+//  Created by Corinne Krych on 11/5/13.
 //  Copyright (c) 2013 AeroGear. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface HowToUseSQLiteStorageTests : XCTestCase
+@interface CookingRecipesTests : XCTestCase
 
 @end
 
-@implementation HowToUseSQLiteStorageTests
+@implementation CookingRecipesTests
 
 - (void)setUp
 {
