@@ -18,15 +18,11 @@
 #import "AGCookbookViewController.h"
 #import "AGRecipeViewController.h"
 #import "AGRecipe.h"
+#import "AGAddRecipeViewController.h"
 
-@interface AGCookbookViewController ()
 
-@end
-
-@implementation AGCookbookViewController {
-    NSArray* _recipes;
-}
-
+@implementation AGCookbookViewController
+@synthesize recipes =_recipes;
 @synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,7 +50,7 @@
     AGRecipe *applePie = [[AGRecipe alloc] initWithTitle:@"Apple Pie" andDescription:recipeWriting];
     AGRecipe *spinachCheeseManicotti = [[AGRecipe alloc] initWithTitle:@"Spinach & Cheese Manicotti" andDescription:recipeWriting];
     
-	_recipes = @[ratatouille, crumble, applePie, spinachCheeseManicotti];
+	_recipes = [@[ratatouille, crumble, applePie, spinachCheeseManicotti] mutableCopy];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,11 +78,20 @@
     return cell;
 }
 
+- (void)addRecipe:(AGRecipe *)recipe {
+    [self.recipes addObject:recipe];
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         AGRecipeViewController *recipeViewController = segue.destinationViewController;
         recipeViewController.recipe = [_recipes objectAtIndex:indexPath.row];
+    } else if ([segue.identifier isEqualToString:@"addRecipe"]) {
+        AGAddRecipeViewController *addRecipeViewController = segue.destinationViewController;
+        addRecipeViewController.delegate = self;
     }
 }
 

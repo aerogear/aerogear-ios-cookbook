@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Cookbook View Controller - Recipes book-->
+        <!--Cookbook View Controller - Recipes-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="AGCookbookViewController" sceneMemberID="viewController">
@@ -14,7 +14,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeCell" id="op3-UU-BJ6">
-                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="op3-UU-BJ6" id="7B1-ye-1d0">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="vXZ-lx-hvc" id="RhK-87-2WR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recipes book" id="LTA-Tu-N0U">
+                    <navigationItem key="navigationItem" title="Recipes" id="LTA-Tu-N0U">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3cZ-Kt-yJ9">
                             <connections>
                                 <segue destination="IEM-rl-NXb" kind="push" identifier="addRecipe" id="vO2-KR-9JK"/>
@@ -63,16 +63,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIs-BL-j4E">
-                                <rect key="frame" x="143" y="413" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="savedRecipe" id="4fJ-0Q-gd1"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBY-lQ-Ggv">
                                 <rect key="frame" x="20" y="153" width="280" height="234"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,11 +75,23 @@ and your recipe here</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YkK-6K-MKO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="YkK-6K-MKO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2Jq-H7-vY5">
+                            <connections>
+                                <action selector="done:" destination="IEM-rl-NXb" id="rxO-Xw-PhD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="description" destination="GBY-lQ-Ggv" id="kcX-8j-ISx"/>
+                        <outlet property="title" destination="b2T-G6-rzY" id="E1C-sK-Adf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPf-JC-N36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="627" y="1014"/>
+            <point key="canvasLocation" x="1085" y="867"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="Wx7-I1-cz4">
@@ -156,7 +158,4 @@ and your recipe here</string>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="4fJ-0Q-gd1"/>
-    </inferredMetricsTieBreakers>
 </document>

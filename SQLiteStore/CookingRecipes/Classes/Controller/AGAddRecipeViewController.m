@@ -16,12 +16,23 @@
  */
 
 #import "AGAddRecipeViewController.h"
+#import "AGCookbookViewController.h"
+#import "AGRecipe.h"
 
 @interface AGAddRecipeViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *title;
+@property (weak, nonatomic) IBOutlet UITextView *description;
 @end
 
 @implementation AGAddRecipeViewController
+@synthesize title;
+@synthesize description;
+@synthesize delegate;
+
+- (IBAction)done:(UIBarButtonItem *)sender {
+    AGRecipe *recipe = [[AGRecipe alloc] initWithTitle:title.text andDescription:description.text];
+    [self.delegate addRecipe:recipe];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +60,13 @@
 		if ([view isKindOfClass:[UITextField class]])
 			[view resignFirstResponder];
 	}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"savedRecipe"]) {
+        AGRecipe *recipe = [[AGRecipe alloc] initWithTitle:title.text andDescription:description.text];
+        [delegate addRecipe:recipe];
+    }
 }
 
 @end

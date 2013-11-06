@@ -16,7 +16,11 @@
  */
 
 #import <UIKit/UIKit.h>
+@class AGRecipe;
+@protocol AddToRecipesDelegate <NSObject>
+- (void)addRecipe:(AGRecipe *)recipe;
+@end
 
 @interface AGAddRecipeViewController : UIViewController
-
+@property (nonatomic, strong) id<AddToRecipesDelegate> delegate;
 @end

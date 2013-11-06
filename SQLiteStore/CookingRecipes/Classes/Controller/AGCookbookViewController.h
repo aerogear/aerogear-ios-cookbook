@@ -16,8 +16,12 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "AGAddRecipeViewController.h"
 
-@interface AGCookbookViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@class AGRecipe;
+
+
+@interface AGCookbookViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, AddToRecipesDelegate>
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-
+@property (nonatomic, strong) NSMutableArray* recipes;
 @end
