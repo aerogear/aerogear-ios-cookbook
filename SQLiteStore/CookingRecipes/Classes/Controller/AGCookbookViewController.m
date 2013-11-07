@@ -19,6 +19,7 @@
 #import "AGRecipeViewController.h"
 #import "AGRecipe.h"
 #import "AGAddRecipeViewController.h"
+#import "AeroGear.h"
 
 
 @implementation AGCookbookViewController
@@ -37,6 +38,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AGDataManager* dm = [AGDataManager manager];
+    // add a new (default) store object:
+    id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
+        [config setName:@"recipes"];
+        [config setType:@"PLIST"];
+    }];
+    
+    
     NSMutableString *recipeWriting = [[NSMutableString alloc] init];
     [recipeWriting appendString:@"300g plain flour\n"];
     [recipeWriting appendString:@"200g unsalted butter\n"];
@@ -51,6 +61,16 @@
     AGRecipe *spinachCheeseManicotti = [[AGRecipe alloc] initWithTitle:@"Spinach & Cheese Manicotti" andDescription:recipeWriting];
     
 	_recipes = [@[ratatouille, crumble, applePie, spinachCheeseManicotti] mutableCopy];
+    
+    NSMutableDictionary *ratatouilleMutableDic = [@{
+                                    @"title" : @"Ratatouille",
+                                    @"description" :recipeWriting} mutableCopy];
+    [store save:ratatouilleMutableDic error:nil];
+    NSMutableDictionary *ratatouilleMutableDic2 = [@{@"id" : @"1000",
+                                                    @"title" : @"Ratatouille",
+                                                    @"description" :recipeWriting} mutableCopy];
+    [store save:ratatouilleMutableDic2 error:nil];
+
 }
 
 - (void)didReceiveMemoryWarning
