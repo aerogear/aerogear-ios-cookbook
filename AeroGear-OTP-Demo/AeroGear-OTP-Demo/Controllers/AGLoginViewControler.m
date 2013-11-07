@@ -40,7 +40,7 @@
     [SVProgressHUD showWithStatus:@"Logging in"];
 
 
-    [AGOTPClient initSharedInstanceWithBaseURL:@"http://jaxrs-sblanc.rhcloud.com/rest/" username:self.username.text password:self.password.text success:^{
+    [AGOTPClient initSharedInstanceWithBaseURL:@"https://jaxrs-aerogear.rhcloud.com/aerogear-jaxrs-demo/rest/" username:self.username.text password:self.password.text success:^{
         [SVProgressHUD dismiss];
         
         AGOTPViewController *otpController = [[AGOTPViewController alloc] initWithNibName:@"AGOTPViewController" bundle:nil];
