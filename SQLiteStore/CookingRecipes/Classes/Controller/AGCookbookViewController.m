@@ -20,6 +20,7 @@
 #import "AGRecipe.h"
 #import "AGAddRecipeViewController.h"
 #import "AeroGear.h"
+//#import "AGPropertyListStorage.h"
 
 
 @implementation AGCookbookViewController
@@ -30,7 +31,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -46,31 +46,47 @@
         [config setType:@"PLIST"];
     }];
     
+    [[self bootstrapDataFrom:@"recipes" toStore:store] mutableCopy];
     
-    NSMutableString *recipeWriting = [[NSMutableString alloc] init];
-    [recipeWriting appendString:@"300g plain flour\n"];
-    [recipeWriting appendString:@"200g unsalted butter\n"];
-    [recipeWriting appendString:@"Knob of butter for greasing\n"];
-    [recipeWriting appendString:@"450g apples, peeled, cored and cut into pieces\n"];
-    [recipeWriting appendString:@"1. Preheat the oven to 180C\n"];
-    [recipeWriting appendString:@"2. Place the flour and sugar in a large bowl and mix well. Taking a few cubes of butter at a time rub into the flour mixture. Keep rubbing until the mixture resembles breadcrumbs."];
-    AGRecipe *ratatouille = [[AGRecipe alloc] initWithTitle:@"Ratatouille" andDescription:recipeWriting];
-    AGRecipe *crumble = [[AGRecipe alloc] initWithTitle:@"Crumble" andDescription:recipeWriting];
+    _recipes = [[NSMutableArray alloc] init];
+    
+    NSArray* myRecipes = [store readAll];
+    
+    for (id item in myRecipes) {
+        AGRecipe *rec = [[AGRecipe alloc] initWithDictionary:item];
+        
+        [_recipes addObject:rec];
+    }
+}
 
-    AGRecipe *applePie = [[AGRecipe alloc] initWithTitle:@"Apple Pie" andDescription:recipeWriting];
-    AGRecipe *spinachCheeseManicotti = [[AGRecipe alloc] initWithTitle:@"Spinach & Cheese Manicotti" andDescription:recipeWriting];
+/*
+ If no file is found with name in Document folder, check bundle
+ and if file found boostrap data into AGStore
+ */
+- (NSArray*) bootstrapDataFrom:(NSString*)name toStore:(id<AGStore>)store{
     
-	_recipes = [@[ratatouille, crumble, applePie, spinachCheeseManicotti] mutableCopy];
-    
-    NSMutableDictionary *ratatouilleMutableDic = [@{
-                                    @"title" : @"Ratatouille",
-                                    @"description" :recipeWriting} mutableCopy];
-    [store save:ratatouilleMutableDic error:nil];
-    NSMutableDictionary *ratatouilleMutableDic2 = [@{@"id" : @"1000",
-                                                    @"title" : @"Ratatouille",
-                                                    @"description" :recipeWriting} mutableCopy];
-    [store save:ratatouilleMutableDic2 error:nil];
-
+    NSString *errorDesc = nil;
+    NSPropertyListFormat format;
+    NSString *plistPath;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                              NSUserDomainMask, YES) objectAtIndex:0];
+    plistPath = [rootPath stringByAppendingPathComponent:name];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+        plistPath = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
+        
+        NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+        NSArray *recipesList = (NSArray *)[NSPropertyListSerialization
+                                    propertyListFromData:plistXML
+                                    mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                    format:&format
+                                    errorDescription:&errorDesc];
+        if (!recipesList) {
+            NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+        }
+        [store save:recipesList error:nil];
+        return recipesList;
+    }
+    return [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning

@@ -18,6 +18,7 @@
 #import "AGRecipe.h"
 
 @implementation AGRecipe
+@synthesize recipeId= _recipeId;
 @synthesize recipeTitle = _recipeTitle;
 @synthesize recipeDescription = _recipeDescription;
 
@@ -28,6 +29,16 @@
         _recipeDescription = description;
     }
     return self;
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super init]) {
+        self.recipeId = [dictionary objectForKey:@"id"];
+        self.recipeTitle = [dictionary objectForKey:@"title"];
+        self.recipeDescription = [dictionary objectForKey:@"description"];
+    }
+    
+    return (self);
 }
 
 @end

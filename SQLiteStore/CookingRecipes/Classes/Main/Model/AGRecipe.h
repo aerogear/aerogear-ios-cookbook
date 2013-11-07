@@ -18,7 +18,9 @@
 #import <Foundation/Foundation.h>
 
 @interface AGRecipe : NSObject
-@property (strong, nonatomic) NSString *recipeTitle;
-@property (strong, nonatomic) NSString *recipeDescription;
--(id)initWithTitle:(NSString*)title andDescription:(NSString*)description;
+@property (strong, nonatomic) NSString* recipeTitle;
+@property (strong, nonatomic) NSString* recipeDescription;
+@property (strong, nonatomic) NSString* recipeId;
+- (id)initWithTitle:(NSString*)title andDescription:(NSString*)description;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
 @end
