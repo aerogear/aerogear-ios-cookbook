@@ -23,4 +23,5 @@
 @property (strong, nonatomic) NSString* recipeId;
 - (id)initWithTitle:(NSString*)title andDescription:(NSString*)description;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+- (NSDictionary *)dictionary;
 @end

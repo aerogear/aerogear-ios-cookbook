@@ -23,7 +23,9 @@
 //#import "AGPropertyListStorage.h"
 
 
-@implementation AGCookbookViewController
+@implementation AGCookbookViewController {
+    id<AGStore> _store;
+}
 @synthesize recipes =_recipes;
 @synthesize tableView;
 
@@ -40,22 +42,21 @@
     [super viewDidLoad];
     
     AGDataManager* dm = [AGDataManager manager];
-    // add a new (default) store object:
-    id<AGStore> store = [dm store:^(id<AGStoreConfig> config) {
+    // Add a new (default) store object:
+    _store = [dm store:^(id<AGStoreConfig> config) {
         [config setName:@"recipes"];
         [config setType:@"PLIST"];
     }];
     
-    [[self bootstrapDataFrom:@"recipes" toStore:store] mutableCopy];
+    // When app is first launched read from bundle static file and store in PLIST store
+    [[self bootstrapDataFrom:@"recipes" toStore:_store] mutableCopy];
     
+    // Read from PLIST store and convert dictionary into array of AGRecipe
     _recipes = [[NSMutableArray alloc] init];
-    
-    NSArray* myRecipes = [store readAll];
-    
+    NSArray* myRecipes = [_store readAll];
     for (id item in myRecipes) {
         AGRecipe *rec = [[AGRecipe alloc] initWithDictionary:item];
-        
-        [_recipes addObject:rec];
+       [_recipes addObject:rec];
     }
 }
 
@@ -116,6 +117,7 @@
 
 - (void)addRecipe:(AGRecipe *)recipe {
     [self.recipes addObject:recipe];
+    [_store save:[recipe dictionary] error:nil];
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }

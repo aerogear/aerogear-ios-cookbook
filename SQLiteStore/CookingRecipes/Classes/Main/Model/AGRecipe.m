@@ -40,5 +40,13 @@
     
     return (self);
 }
-
+-(NSDictionary *)dictionary {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    //[dict setObject:self.recipeId forKey:@"id"];
+    [dict setObject:self.recipeDescription forKey:@"description"];
+    [dict setObject:self.recipeTitle forKey:@"title"];
+    
+    return dict;
+}
 @end
