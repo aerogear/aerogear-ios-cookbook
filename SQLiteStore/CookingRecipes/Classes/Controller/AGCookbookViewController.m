@@ -20,7 +20,7 @@
 #import "AGRecipe.h"
 #import "AGAddRecipeViewController.h"
 #import "AeroGear.h"
-//#import "AGPropertyListStorage.h"
+
 
 
 @implementation AGCookbookViewController {
@@ -49,7 +49,7 @@
     }];
     
     // When app is first launched read from bundle static file and store in PLIST store
-    [[self bootstrapDataFrom:@"recipes" toStore:_store] mutableCopy];
+    [self bootstrapDataFrom:@"recipes" toStore:_store];
     
     // Read from PLIST store and convert dictionary into array of AGRecipe
     _recipes = [[NSMutableArray alloc] init];
@@ -84,7 +84,7 @@
         if (!recipesList) {
             NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
         }
-        [store save:recipesList error:nil];
+        BOOL resp = [store save:recipesList error:nil];
         return recipesList;
     }
     return [[NSMutableArray alloc] init];
@@ -99,6 +99,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_recipes count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+         NSLog(@"Remove Recipe >>>>%d", [indexPath row]);
+        [self removeRecipe:[self.recipes objectAtIndex:[indexPath row]] withIndex:[indexPath row]];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)myTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,10 +127,19 @@
 }
 
 - (void)addRecipe:(AGRecipe *)recipe {
+    NSMutableDictionary *recipeDictionary = [recipe dictionary];
+    [_store save:recipeDictionary error:nil];
+    recipe.recipeId = recipeDictionary[@"id"];
     [self.recipes addObject:recipe];
-    [_store save:[recipe dictionary] error:nil];
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)removeRecipe:(AGRecipe *)recipe withIndex:(NSInteger)index{
+    NSLog(@"Remove Recipe >>>>%@", recipe.recipeId);
+    [_store remove:[recipe dictionary] error:nil];
+    [self.recipes removeObjectAtIndex:index];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

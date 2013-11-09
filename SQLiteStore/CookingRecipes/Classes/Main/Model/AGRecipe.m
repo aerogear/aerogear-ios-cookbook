@@ -40,10 +40,11 @@
     
     return (self);
 }
--(NSDictionary *)dictionary {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
-    //[dict setObject:self.recipeId forKey:@"id"];
+
+-(NSMutableDictionary *)dictionary {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    if (self.recipeId != nil)
+        [dict setObject:self.recipeId forKey:@"id"];
     [dict setObject:self.recipeDescription forKey:@"description"];
     [dict setObject:self.recipeTitle forKey:@"title"];
     
