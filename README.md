@@ -7,11 +7,10 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 ## Table of content
 
-| Recipe | Core | Push | Security |
-|:-------|:----|:----||----:|
--------------------------|---------------------------|-------------|-------------|
+| Recipe 	| Core 	| Push 	| Security 	|
+| ------------- |:-------------:| :-----:|:-----:|
 | [Cooking](SQLStorage/CookingRecipe.md) | **Store** | - | - |
-| Shoot'n upload | **File Upload** | - | - |
+| Shoot'n Share | **File Upload** | - | - |
 | [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios) | Store, Pipe | **Push** | Login |
 | [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo) | Store | - | **EncryptedStorage** |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo) | - | - | **Login** |
