@@ -170,6 +170,8 @@
         // and the failure callback is being invoked!
         [clientInfo setDeviceToken:self.deviceToken];
         
+        [clientInfo setCategories:@[@"lead"]];
+        
         UIDevice *currentDevice = [UIDevice currentDevice];
         [clientInfo setAlias: [[AeroDocAPIClient sharedInstance] loginName]];
         [clientInfo setOperatingSystem:[currentDevice systemName]];
