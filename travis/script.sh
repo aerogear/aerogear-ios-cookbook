@@ -4,4 +4,4 @@ set -e
 
 cd AeroGear-Crypto-Demo
 pod install
-xctool -workspace AeroGear-Crypto-Demo.xcworkspace -scheme AeroGear-Crypto-Demo -sdk iphonesimulator
+xctool clean build ONLY_ACTIVE_ARCH=NO
