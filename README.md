@@ -7,10 +7,13 @@ Enter your passphrase, all your existing passwords will be decrypted. AeroGear C
 
 The project requires [CocoaPods](http://cocoapods.org/) for dependency management;
 
-_BEFORE_ you can run the tests, you need to run the following command:
+_BEFORE_ you can run the application, you need to run the following command:
 
     pod install
 
 Now you are almost done! You just need to open the ```AeroGear-Crypto-Demo.xcworkspace``` in order to run the app!
+
+### Note
+Once you run the application for the first time, you will need to set an initial passphrase, which would be used in your subsequent logins.
 
 Enjoy!
