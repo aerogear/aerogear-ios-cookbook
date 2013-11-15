@@ -19,4 +19,6 @@
 
 @interface AGLoginViewController : UIViewController <UITextFieldDelegate>
 
+-(IBAction)reset:(UIStoryboardSegue *)segue;
+
 @end

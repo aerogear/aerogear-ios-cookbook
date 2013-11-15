@@ -16,7 +16,7 @@
  */
 
 #import "AGAddPasswordViewController.h"
-#import "AGInformation.h"
+#import "AGCredential.h"
 
 @interface AGAddPasswordViewController ()
 
@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    
     DLog(@"AGAddPasswordViewController viewDidLoad");
 }
 
@@ -44,13 +46,28 @@
     [self.delegate addPasswordViewControllerDidCancel:self];
 }
 
-- (IBAction)done:(id)sender {    
-    AGInformation *entry = [[AGInformation alloc] init];
-    entry.name = self.name.text;
-    entry.username = self.username.text;
-    entry.password = self.password.text;
+- (IBAction)done:(id)sender {
+    // validate form
+    if ( self.name.text.length == 0 ||
+         self.username.text.length == 0 ||
+         self.password.text.length == 0 ) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                        message:@"required fields are missing!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
-    [self.delegate addPasswordViewController:self didAddInformation:entry];
+    AGCredential *credential = [[AGCredential alloc] init];
+
+    credential.name = self.name.text;
+    credential.username = self.username.text;
+    credential.password = self.password.text;
+
+    [self.delegate addPasswordViewController:self didAddCredential:credential];
 }
 
 #pragma mark - UITextFieldDelegate methods
@@ -70,4 +87,9 @@
     return NO;
 }
 
+#pragma mark UIAppplicationBackground notification
+
+-(void)appWillResignActive:(NSNotification*)note {
+    [self performSegueWithIdentifier:@"logout" sender:self];
+}
 @end

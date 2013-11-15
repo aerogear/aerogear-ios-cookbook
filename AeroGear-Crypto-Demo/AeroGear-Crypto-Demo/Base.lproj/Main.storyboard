@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
@@ -72,6 +72,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="gZH-fT-8B4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-655" y="-14"/>
         </scene>
@@ -111,17 +112,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Password Manager" id="Z0p-6U-gcK">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="SAC-jT-MaX">
-                            <connections>
-                                <segue destination="vXZ-lx-hvc" kind="modal" modalTransitionStyle="flipHorizontal" id="pq5-gU-Qky"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mQ9-Wm-ULQ">
                             <connections>
                                 <segue destination="Lko-sO-pni" kind="modal" identifier="AddPassword" id="rmg-KG-BJj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="gZH-fT-8B4" kind="unwind" identifier="logout" unwindAction="reset:" id="MCq-SX-zoC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKL-P8-52x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,6 +189,7 @@
                         <outlet property="name" destination="Hb4-hZ-7w7" id="7t0-tr-oLp"/>
                         <outlet property="password" destination="XjK-sr-9Q7" id="UIr-Bd-Ube"/>
                         <outlet property="username" destination="XJj-RJ-TAo" id="vpC-1Q-eI9"/>
+                        <segue destination="gZH-fT-8B4" kind="unwind" identifier="logout" unwindAction="reset:" id="0Aj-hj-cNt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecz-Ie-GzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,6 +296,7 @@
                         <outlet property="name" destination="6Ph-BU-oLb" id="VP7-AR-WcB"/>
                         <outlet property="password" destination="cfV-ap-5wf" id="LH0-jw-ff8"/>
                         <outlet property="username" destination="BNJ-So-c8V" id="YEC-Bl-Wct"/>
+                        <segue destination="gZH-fT-8B4" kind="unwind" identifier="logout" unwindAction="reset:" id="J0o-rV-wUq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VrL-iI-SSf" userLabel="First Responder" sceneMemberID="firstResponder"/>

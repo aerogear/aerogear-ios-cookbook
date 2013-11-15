@@ -17,10 +17,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class AGInformation;
+@class AGCredential;
 
 @interface AGPasswordViewController : UIViewController
 
-@property(nonatomic, strong) AGInformation *entry;
+@property(nonatomic, strong) AGCredential *credential;
 
 @end

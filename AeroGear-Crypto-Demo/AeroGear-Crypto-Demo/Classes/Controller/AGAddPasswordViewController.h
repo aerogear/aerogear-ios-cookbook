@@ -18,14 +18,14 @@
 #import <UIKit/UIKit.h>
 
 @class AGAddPasswordViewController;
-@class AGInformation;
+@class AGCredential;
 
 @protocol AddPasswordViewControllerDelegate <NSObject>
 
 - (void)addPasswordViewControllerDidCancel:(AGAddPasswordViewController *)controller;
 
 - (void)addPasswordViewController:(AGAddPasswordViewController *)controller
-                   didAddInformation:(AGInformation *)information;
+                   didAddCredential:(AGCredential *)information;
 
 @end
 

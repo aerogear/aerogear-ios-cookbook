@@ -18,7 +18,10 @@
 #import <UIKit/UIKit.h>
 
 #import "AGAddPasswordViewController.h"
+#import <AeroGear/AGStore.h>
 
 @interface AGPasswordManagerViewController : UITableViewController <AddPasswordViewControllerDelegate>
+
+@property (nonatomic, strong) id<AGStore> store;
 
 @end

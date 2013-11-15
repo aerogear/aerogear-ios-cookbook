@@ -17,19 +17,26 @@
 
 #import "AGPasswordManagerViewController.h"
 #import "AGPasswordViewController.h"
-#import "AGInformation.h"
+#import "AGCredential.h"
 
-#import "UIActionSheet+Blocks.h"
+#import <UIActionSheet+Blocks.h>
 
 @implementation AGPasswordManagerViewController {
-    NSMutableArray *_entries;
+    NSMutableArray *_credentials;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // TODO reload from permanent strore
-    _entries = [[NSMutableArray alloc] init];
+    _credentials = [[NSMutableArray alloc] init];
+    
+    // grab a snapshot of the store
+    for (id obj in [self.store readAll]) {
+        AGCredential *credential = [[AGCredential alloc] initFromDictionary:obj];
+        [_credentials addObject:credential];
+    }
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     DLog(@"AGPasswordManagerViewController viewDidLoad");
 }
@@ -37,7 +44,7 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    _entries = nil;
+    _credentials = nil;
     
     DLog(@"AGPasswordManagerViewController viewDidUnLoad");
 }
@@ -45,15 +52,14 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_entries count];
+    return [_credentials count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
     
-    AGInformation *entry = [_entries objectAtIndex:[indexPath row]];
-    
-    cell.textLabel.text = entry.name;
+    AGCredential *credential = [_credentials objectAtIndex:[indexPath row]];
+    cell.textLabel.text = credential.name;
     
     return cell;
 }
@@ -71,7 +77,26 @@
                    destructiveButton:@"Yes" otherButtons:nil
                             onCancel:nil
                        onDestructive:^(UIActionSheet *actionSheet) {
-                           [_entries removeObjectAtIndex:[indexPath row]];
+                           
+                           AGCredential *credential = [_credentials objectAtIndex:indexPath.row];
+                           
+                           NSError *error;
+                           [self.store remove:[credential dictionary] error:&error];
+
+                           if (error) {
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operation Failed!"
+                                                                               message:error.localizedDescription
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"Bummer"
+                                                                     otherButtonTitles:nil];
+                               [alert show];
+                               return;
+                           }
+                           
+                           // update our local copy
+                           [_credentials removeObjectAtIndex:indexPath.row];
+                           
+                           // ok, time to remove from the list
                            [tableView deleteRowsAtIndexPaths:@[indexPath]
                                             withRowAnimation:UITableViewRowAnimationFade];
 
@@ -84,7 +109,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // prior to transition, assign delegates to
-    // self so we get get notified
+    // self so we can get notified
     
 	if ([segue.identifier isEqualToString:@"AddPassword"]) {  // Add Screen
         UINavigationController *navigationController = segue.destinationViewController;
@@ -95,7 +120,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
 		AGPasswordViewController *passwordViewController = segue.destinationViewController;
-        passwordViewController.entry = [_entries objectAtIndex:[indexPath row]];
+        passwordViewController.credential = [_credentials objectAtIndex:indexPath.row];
     }
 }
 
@@ -106,15 +131,43 @@
 }
 
 - (void)addPasswordViewController:(AGAddPasswordViewController *)controller
-                   didAddInformation:(AGInformation *)information {
+                   didAddCredential:(AGCredential *)credential {
+    NSError *error;
     
-    [_entries addObject:information];
+    // convert obj to dictionary as required by the store
+    id dict = [credential dictionary];
+    // save it
+    [self.store save:dict error:&error];
+
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operation Failed!"
+                                                        message:error.localizedDescription
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_entries count] - 1 inSection:0];
-	[self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject:indexPath]
+    // update our local copy
+    // set the ID of the object as generated from the store
+    credential.recId = dict[@"id"];
+    // add it to our local copy
+    [_credentials addObject:credential];
+    
+    // time to add on the table view
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_credentials count] - 1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject:indexPath]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 
+    // dismiss edit modal screen
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark UIAppplicationBackground notification
+
+-(void)appWillResignActive:(NSNotification*)note {
+    [self performSegueWithIdentifier:@"logout" sender:self];
 }
 
 @end

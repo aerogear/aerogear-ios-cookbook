@@ -16,9 +16,9 @@
  */
 
 #import "AGPasswordViewController.h"
-#import "AGInformation.h"
+#import "AGCredential.h"
 
-#import "SVProgressHUD.h"
+#import <SVProgressHUD.h>
 
 @interface AGPasswordViewController ()
 
@@ -34,13 +34,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.name.text = self.entry.name;
-    self.username.text = self.entry.username;
+    self.name.text = self.credential.name;
+    self.username.text = self.credential.username;
 
     // enable tap on the password label
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(passwordTap)];
     [self.password addGestureRecognizer:tapGesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     DLog(@"AGPasswordViewController viewDidUnLoad");
 }
@@ -55,14 +56,20 @@
 
 - (IBAction)passwordTap {
    _displayPass = !_displayPass;
-    self.password.text = _displayPass? self.entry.password: @"************";
+    self.password.text = _displayPass? self.credential.password: @"************";
 }
 
 - (IBAction)clipboardCopy:(id)sender {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    pb.string = self.entry.password;
+    pb.string = self.credential.password;
  
     [SVProgressHUD showSuccessWithStatus:@"Copied to clipboard!"];
+}
+
+#pragma mark UIAppplicationBackground notification
+
+-(void)appWillResignActive:(NSNotification*)note {
+    [self performSegueWithIdentifier:@"logout" sender:self];
 }
 
 @end

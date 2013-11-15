@@ -15,8 +15,32 @@
  * limitations under the License.
  */
 
-#import "AGInformation.h"
+#import "AGCredential.h"
 
-@implementation AGInformation
+@implementation AGCredential
+
+- (id)initFromDictionary:(NSDictionary *)dict {
+    if (self = [super init]) {
+        self.recId = dict[@"id"];
+        self.name =  dict[@"name"];
+        self.username = dict[@"username"];
+        self.password = dict[@"password"];
+    }
+    
+    return (self);
+}
+
+- (NSMutableDictionary *)dictionary {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.recId)
+        dict[@"id"] = self.recId;
+    
+    dict[@"name"] = self.name;
+    dict[@"username"] = self.username;
+    dict[@"password"] = self.password;
+
+    return dict;
+}
 
 @end
