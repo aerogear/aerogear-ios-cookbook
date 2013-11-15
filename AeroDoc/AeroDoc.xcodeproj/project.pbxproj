@@ -572,7 +572,7 @@
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
 				WRAPPER_EXTENSION = app;
 			};
@@ -586,7 +586,7 @@
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
 				WRAPPER_EXTENSION = app;
 			};
