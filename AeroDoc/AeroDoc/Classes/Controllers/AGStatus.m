@@ -53,17 +53,27 @@
 
 - (UIBarButtonItem*) changeStatusOnTarget:target {
     UIImage *statusImage;
-    
+    UIBarButtonItem *statusButton;
     if ([[AeroDocAPIClient sharedInstance].status isEqualToString:@"PTO"]) {
         statusImage = [UIImage imageNamed:@"orange.png"];
+        
+        statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:target
+                                                       action:@selector(changeStatus)];
+        statusButton.tintColor = [UIColor orangeColor];
     } else {
         statusImage = [UIImage imageNamed:@"green.png"];
+        
+        
+        statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:target
+                                                       action:@selector(changeStatus)];
+        statusButton.tintColor = [UIColor greenColor];
+        
     }
     
-    UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithImage:statusImage landscapeImagePhone:statusImage
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:target
-                                                                    action:@selector(changeStatus)];
     
     return statusButton;
 }
