@@ -1,4 +1,6 @@
 #!/bin/sh
 set -e
 
-xctool -workspace AeroDoc/AeroDoc.xcworkspace/ -scheme AeroDoc -sdk iphonesimulator
+cd AeroDoc
+pod install
+xctool clean build ONLY_ACTIVE_ARCH=NO
