@@ -6,8 +6,3 @@ pod 'AeroGear-Crypto', { :git => 'https://github.com/aerogear/aerogear-crypto-io
 pod 'UIActionSheet-Blocks'
 pod 'UIAlertView+Blocks'
 pod 'SVProgressHUD'
-
-
-target 'AeroGear-Crypto-DemoTests', :exclusive => true do
-    pod 'Kiwi', '2.1'
-end
