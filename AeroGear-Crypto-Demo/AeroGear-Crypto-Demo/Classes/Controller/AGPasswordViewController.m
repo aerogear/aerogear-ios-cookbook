@@ -37,10 +37,6 @@
     self.name.text = self.credential.name;
     self.username.text = self.credential.username;
 
-    // enable tap on the password label
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(passwordTap)];
-    [self.password addGestureRecognizer:tapGesture];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     DLog(@"AGPasswordViewController viewDidUnLoad");
@@ -53,8 +49,7 @@
 }
 
 #pragma mark - Action Methods
-
-- (IBAction)passwordTap {
+- (IBAction)handleGesture:(id)sender {
    _displayPass = !_displayPass;
     self.password.text = _displayPass? self.credential.password: @"************";
 }

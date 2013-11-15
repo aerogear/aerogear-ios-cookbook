@@ -171,8 +171,12 @@
                                     <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="************" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XjK-sr-9Q7">
                                         <rect key="frame" x="74" y="185" width="174" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="9ja-Xv-hkf" appends="YES" id="AEY-3N-IQu"/>
+                                        </connections>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" id="Aak-ua-3Pi">
                                         <rect key="frame" x="18" y="134" width="33" height="25"/>
@@ -193,6 +197,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecz-Ie-GzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9ja-Xv-hkf">
+                    <connections>
+                        <action selector="handleGesture:" destination="QvA-P1-asM" id="vsX-72-I4H"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="990" y="-14"/>
         </scene>

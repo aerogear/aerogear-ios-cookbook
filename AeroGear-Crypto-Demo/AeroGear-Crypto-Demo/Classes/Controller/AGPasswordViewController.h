@@ -23,4 +23,6 @@
 
 @property(nonatomic, strong) AGCredential *credential;
 
+- (IBAction)handleGesture:(id)sender;
+
 @end
