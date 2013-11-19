@@ -1,8 +1,8 @@
 xcodeproj 'AeroGear-Crypto-Demo.xcodeproj'
 platform :ios, '5.0'
          
-pod 'AeroGear', { :git => 'https://github.com/cvasilak/aerogear-ios', :branch => 'encstore' }
-pod 'AeroGear-Crypto', { :git => 'https://github.com/aerogear/aerogear-crypto-ios.git', :branch => 'master' }
+pod 'AeroGear', { :git => 'https://github.com/aerogear/aerogear-ios', :branch => 'master' }
+pod 'AeroGear-Crypto', '0.1.0'
 pod 'UIActionSheet-Blocks'
 pod 'UIAlertView+Blocks'
 pod 'SVProgressHUD'
