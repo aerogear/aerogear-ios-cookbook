@@ -19,8 +19,12 @@
 #import "AGPasswordManagerViewController.h"
 
 #import <AeroGear/AeroGear.h>
+#import <AGRandomGenerator.h>
 
 #import <UIAlertView+Blocks.h>
+
+// the salt
+static NSString *const kSalt = @"salt";
 
 @interface AGLoginViewController()
 
@@ -39,7 +43,7 @@
     // popup a small alert to give a small description for the user to create
     // the initial password when the app is launced for the first time
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL launched = [defaults boolForKey:@"launched"];
+    BOOL launched = [defaults boolForKey:@"isLaunched"];
     if (!launched) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!"
                                                         message:@"Since its the first time you are lunching the app, please enter a new password to use"
@@ -49,7 +53,9 @@
         [alert show];
         
         // update
-        [defaults setBool:YES forKey:@"launched"];
+        [defaults setBool:YES forKey:@"isLaunched"];
+        // set a default salt which will be used for encrypt/decrypt
+        [defaults setObject:[AGRandomGenerator randomBytes] forKey:kSalt];
         [defaults synchronize];
     }
     
@@ -80,19 +86,29 @@
         return;
     }
 
-    // access Data
-    AGDataManager *manager = [AGDataManager manager];
-    
-    // keychain crypto params
-    AGKeyStoreCryptoConfig *config = [[AGKeyStoreCryptoConfig alloc] init];
-    [config setAlias:@"credentials"];
-    [config setPassword:self.password.text];
-    
-    // initialize the keychain encryption service passing the crypto params
+    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:[[NSUserDefaults standardUserDefaults] objectForKey:kSalt]];
+    [config setPassphrase:self.password.text];
+
+    // initialize the encryption service passing the config
     id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];
     
-    // if the encryption service wasn't initialized (aka wrong crypto params) inform user
-    if (!encService) {
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];
+
+    // create store
+    store = [manager store:^(id<AGStoreConfig> config) {
+        [config setName:@"MyCredentialsStorage"];
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+    
+    // ok time to attempt reading..
+    // if the store returns 'nil' upon first read, then there
+    // was an error in the decryption of data, that is wrong
+    // passphrase entered from the user
+    if (![store readAll]) {
         [UIAlertView showWithTitle:@"Login failed!"
                            message:@"invalid credentials!"
                  cancelButtonTitle:@"Bummer"
@@ -102,14 +118,7 @@
         // can't do much
         return;
     }
-    
-    // create store
-    store = [manager store:^(id<AGStoreConfig> config) {
-        [config setName:@"CredentialsStorage"];
-        [config setType:@"ENCRYPTED_PLIST"];
-        [config setEncryptionService:encService];
-    }];
-    
+
     [self performSegueWithIdentifier:@"ValidationSucceeded" sender:self];
 }
 
