@@ -9,6 +9,7 @@
 #import "AGGiftCellView.h"
 
 @implementation AGGiftCellView
+@synthesize toWhomLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {

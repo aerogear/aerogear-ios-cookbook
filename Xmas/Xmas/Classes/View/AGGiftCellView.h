@@ -10,4 +10,7 @@
 
 @interface AGGiftCellView : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *toWhomLabel;
+
+
 @end

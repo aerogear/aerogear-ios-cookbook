@@ -13,19 +13,11 @@
 
 @synthesize gifts;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.gifts = [@[@{@"redId": @1, @"description": @"eweewe"}] mutableCopy];
+    self.gifts = [@[@{@"redId": @1, @"description": @"Mikado", @"toWhom": @"Emily"}, @{@"redId": @2, @"description": @"Barbie", @"toWhom": @"Barbara"}] mutableCopy];
 	// Do any additional setup after loading the view.
 }
 
@@ -48,7 +40,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return 1;//self.gifts.count;
+    return self.gifts.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -61,7 +53,7 @@
     UIImage *image;
     int row = [indexPath row];
     
-
+    myCell.toWhomLabel.text = [gifts[row] objectForKey:@"toWhom"];
     
     return myCell;
 }
