@@ -11,6 +11,7 @@
 @interface AGGiftCellView : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *toWhomLabel;
-
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *frontImageView;
 
 @end

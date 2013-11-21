@@ -27,13 +27,16 @@
 		484E9B52183BCC3C009E1314 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B42183BCC3C009E1314 /* Default.png */; };
 		484E9B53183BCC3C009E1314 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B43183BCC3C009E1314 /* Default@2x.png */; };
 		484E9B55183BCFA8009E1314 /* xmas.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B54183BCFA8009E1314 /* xmas.png */; };
-		484E9B57183BD424009E1314 /* present2.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B56183BD424009E1314 /* present2.png */; };
-		486CF264183CA493007ADDC7 /* xmas-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF263183CA493007ADDC7 /* xmas-40.png */; };
-		48FFBDAC183BD7950009B973 /* xmas-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDA9183BD7950009B973 /* xmas-29.png */; };
-		48FFBDAE183BD7950009B973 /* xmas-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDAB183BD7950009B973 /* xmas-60.png */; };
-		48FFBDB3183BF3900009B973 /* xmas-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDB0183BF3900009B973 /* xmas-80.png */; };
-		48FFBDB4183BF3900009B973 /* xmas-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDB1183BF3900009B973 /* xmas-120.png */; };
-		48FFBDB8183BF55D0009B973 /* xmas-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDB7183BF55D0009B973 /* xmas-58.png */; };
+		486CF268183E6259007ADDC7 /* Santa-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF267183E6259007ADDC7 /* Santa-icon.png */; };
+		486CF26A183E9C14007ADDC7 /* mistletoe-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF269183E9C14007ADDC7 /* mistletoe-icon.png */; };
+		486CF26C183EA207007ADDC7 /* snowman-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF26B183EA207007ADDC7 /* snowman-icon.png */; };
+		486CF26E183EA21D007ADDC7 /* tree-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF26D183EA21D007ADDC7 /* tree-icon.png */; };
+		486CF270183EA271007ADDC7 /* candycane-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF26F183EA271007ADDC7 /* candycane-icon.png */; };
+		486CF272183EA3B5007ADDC7 /* gift-icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF271183EA3B5007ADDC7 /* gift-icon1.png */; };
+		486CF276183EA590007ADDC7 /* Santa-icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF273183EA590007ADDC7 /* Santa-icon-58.png */; };
+		486CF277183EA590007ADDC7 /* Santa-icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF274183EA590007ADDC7 /* Santa-icon-80.png */; };
+		486CF278183EA590007ADDC7 /* Santa-icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF275183EA590007ADDC7 /* Santa-icon-120.png */; };
+		486CF27B183EB152007ADDC7 /* AGAddPresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 486CF27A183EB152007ADDC7 /* AGAddPresentViewController.m */; };
 		48FFBDBA183BF7790009B973 /* xmas-640*960.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDB9183BF7790009B973 /* xmas-640*960.png */; };
 		48FFBDBE183C0D0E0009B973 /* AGGiftListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FFBDBD183C0D0E0009B973 /* AGGiftListCollectionViewController.m */; };
 		48FFBDC2183C0F2D0009B973 /* AGGift.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FFBDC1183C0F2D0009B973 /* AGGift.m */; };
@@ -75,13 +78,17 @@
 		484E9B42183BCC3C009E1314 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		484E9B43183BCC3C009E1314 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		484E9B54183BCFA8009E1314 /* xmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xmas.png; sourceTree = "<group>"; };
-		484E9B56183BD424009E1314 /* present2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = present2.png; sourceTree = "<group>"; };
-		486CF263183CA493007ADDC7 /* xmas-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-40.png"; sourceTree = "<group>"; };
-		48FFBDA9183BD7950009B973 /* xmas-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-29.png"; sourceTree = "<group>"; };
-		48FFBDAB183BD7950009B973 /* xmas-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-60.png"; sourceTree = "<group>"; };
-		48FFBDB0183BF3900009B973 /* xmas-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-80.png"; sourceTree = "<group>"; };
-		48FFBDB1183BF3900009B973 /* xmas-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-120.png"; sourceTree = "<group>"; };
-		48FFBDB7183BF55D0009B973 /* xmas-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-58.png"; sourceTree = "<group>"; };
+		486CF267183E6259007ADDC7 /* Santa-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon.png"; sourceTree = "<group>"; };
+		486CF269183E9C14007ADDC7 /* mistletoe-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mistletoe-icon.png"; sourceTree = "<group>"; };
+		486CF26B183EA207007ADDC7 /* snowman-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowman-icon.png"; sourceTree = "<group>"; };
+		486CF26D183EA21D007ADDC7 /* tree-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree-icon.png"; sourceTree = "<group>"; };
+		486CF26F183EA271007ADDC7 /* candycane-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "candycane-icon.png"; sourceTree = "<group>"; };
+		486CF271183EA3B5007ADDC7 /* gift-icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-icon1.png"; sourceTree = "<group>"; };
+		486CF273183EA590007ADDC7 /* Santa-icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon-58.png"; sourceTree = "<group>"; };
+		486CF274183EA590007ADDC7 /* Santa-icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon-80.png"; sourceTree = "<group>"; };
+		486CF275183EA590007ADDC7 /* Santa-icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon-120.png"; sourceTree = "<group>"; };
+		486CF279183EB152007ADDC7 /* AGAddPresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAddPresentViewController.h; sourceTree = "<group>"; };
+		486CF27A183EB152007ADDC7 /* AGAddPresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAddPresentViewController.m; sourceTree = "<group>"; };
 		48FFBDB9183BF7790009B973 /* xmas-640*960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-640*960.png"; sourceTree = "<group>"; };
 		48FFBDBC183C0D0E0009B973 /* AGGiftListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGGiftListCollectionViewController.h; sourceTree = "<group>"; };
 		48FFBDBD183C0D0E0009B973 /* AGGiftListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGGiftListCollectionViewController.m; sourceTree = "<group>"; };
@@ -202,12 +209,6 @@
 		484E9B32183BCC3C009E1314 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				48FFBDA9183BD7950009B973 /* xmas-29.png */,
-				48FFBDAB183BD7950009B973 /* xmas-60.png */,
-				48FFBDB7183BF55D0009B973 /* xmas-58.png */,
-				48FFBDB0183BF3900009B973 /* xmas-80.png */,
-				486CF263183CA493007ADDC7 /* xmas-40.png */,
-				48FFBDB1183BF3900009B973 /* xmas-120.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -217,7 +218,15 @@
 			children = (
 				48FFBDB9183BF7790009B973 /* xmas-640*960.png */,
 				484E9B54183BCFA8009E1314 /* xmas.png */,
-				484E9B56183BD424009E1314 /* present2.png */,
+				486CF26F183EA271007ADDC7 /* candycane-icon.png */,
+				486CF271183EA3B5007ADDC7 /* gift-icon1.png */,
+				486CF26D183EA21D007ADDC7 /* tree-icon.png */,
+				486CF269183E9C14007ADDC7 /* mistletoe-icon.png */,
+				486CF26B183EA207007ADDC7 /* snowman-icon.png */,
+				486CF267183E6259007ADDC7 /* Santa-icon.png */,
+				486CF273183EA590007ADDC7 /* Santa-icon-58.png */,
+				486CF274183EA590007ADDC7 /* Santa-icon-80.png */,
+				486CF275183EA590007ADDC7 /* Santa-icon-120.png */,
 				484E9B3E183BCC3C009E1314 /* Default-568h@2x.png */,
 				484E9B3F183BCC3C009E1314 /* Default-Landscape~ipad.png */,
 				484E9B40183BCC3C009E1314 /* Default-Portrait@2x~ipad.png */,
@@ -233,6 +242,8 @@
 			children = (
 				48FFBDBC183C0D0E0009B973 /* AGGiftListCollectionViewController.h */,
 				48FFBDBD183C0D0E0009B973 /* AGGiftListCollectionViewController.m */,
+				486CF279183EB152007ADDC7 /* AGAddPresentViewController.h */,
+				486CF27A183EB152007ADDC7 /* AGAddPresentViewController.m */,
 			);
 			name = Controller;
 			path = Classes/Controller;
@@ -337,19 +348,21 @@
 			files = (
 				484E9B52183BCC3C009E1314 /* Default.png in Resources */,
 				484E9B15183BC566009E1314 /* Images.xcassets in Resources */,
-				48FFBDAE183BD7950009B973 /* xmas-60.png in Resources */,
-				48FFBDB8183BF55D0009B973 /* xmas-58.png in Resources */,
-				484E9B57183BD424009E1314 /* present2.png in Resources */,
-				486CF264183CA493007ADDC7 /* xmas-40.png in Resources */,
-				48FFBDB3183BF3900009B973 /* xmas-80.png in Resources */,
+				486CF278183EA590007ADDC7 /* Santa-icon-120.png in Resources */,
 				484E9B51183BCC3C009E1314 /* Default-Portrait~ipad.png in Resources */,
 				484E9B4E183BCC3C009E1314 /* Default-568h@2x.png in Resources */,
 				48FFBDBA183BF7790009B973 /* xmas-640*960.png in Resources */,
-				48FFBDAC183BD7950009B973 /* xmas-29.png in Resources */,
+				486CF276183EA590007ADDC7 /* Santa-icon-58.png in Resources */,
+				486CF272183EA3B5007ADDC7 /* gift-icon1.png in Resources */,
 				484E9B4F183BCC3C009E1314 /* Default-Landscape~ipad.png in Resources */,
 				484E9B55183BCFA8009E1314 /* xmas.png in Resources */,
+				486CF26A183E9C14007ADDC7 /* mistletoe-icon.png in Resources */,
+				486CF277183EA590007ADDC7 /* Santa-icon-80.png in Resources */,
 				484E9B07183BC566009E1314 /* InfoPlist.strings in Resources */,
-				48FFBDB4183BF3900009B973 /* xmas-120.png in Resources */,
+				486CF268183E6259007ADDC7 /* Santa-icon.png in Resources */,
+				486CF26E183EA21D007ADDC7 /* tree-icon.png in Resources */,
+				486CF270183EA271007ADDC7 /* candycane-icon.png in Resources */,
+				486CF26C183EA207007ADDC7 /* snowman-icon.png in Resources */,
 				484E9B50183BCC3C009E1314 /* Default-Portrait@2x~ipad.png in Resources */,
 				484E9B10183BC566009E1314 /* Main.storyboard in Resources */,
 				484E9B53183BCC3C009E1314 /* Default@2x.png in Resources */,
@@ -371,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				486CF27B183EB152007ADDC7 /* AGAddPresentViewController.m in Sources */,
 				48FFBDC9183C17990009B973 /* AGGiftCellView.m in Sources */,
 				48FFBDBE183C0D0E0009B973 /* AGGiftListCollectionViewController.m in Sources */,
 				48FFBDC2183C0F2D0009B973 /* AGGift.m in Sources */,

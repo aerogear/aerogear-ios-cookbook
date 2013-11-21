@@ -10,6 +10,8 @@
 
 @implementation AGGiftCellView
 @synthesize toWhomLabel;
+@synthesize descriptionTextView;
+@synthesize frontImageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
