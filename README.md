@@ -3,15 +3,16 @@ AeroGear iOS Cookbook
 
 The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. This is a live version of the exact source code you can find [iOS cookbook documentation](http://aerogear.org/docs/guides/iOSCookbook/).
 
-Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear and how it helps to keep a clean code base. The app features are very lean and most of UI is kept to basics in order to not clutter code and keep the focus on AeroGear library usage. 
+Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear libraries and how it helps to achieve clean code. The app features are very lean and most of UI is kept to basics in order to focus on AeroGear library usage. 
 
 ## Table of content
 
 | Recipe 	| Core 	| Push 	| Security 	|
 | ------------- |:-------------:| :-----:|:-----:|
-| [Cooking](SQLStorage/CookingRecipe.md) | **Store** | - | - |
+| [Cooking](Recipe/CookingRecipe.md) | **Store** | - | - |
 | Shoot'n Share | **File Upload** | - | - |
 | [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios) | Store, Pipe | **Push** | Login |
+| [Xmas](Xmas/Xmas.md) | Store | - | **Encrypted API** |
 | [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo) | Store | - | **EncryptedStorage** |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo) | - | - | **Login** |
 | [TODO Demo](https://github.com/aerogear/aerogear-todo-ios) | Store, **Pipe** | - | Login |
@@ -20,7 +21,7 @@ Most of the recipes illustrate one main topic which is listed in bold in the tab
 
 AeroGear features can be splitted into three main topics: 
 * AeroGear Core: Store, Pipe, Paging, File upload etc...
-* AeroGear Push
+* AeroGear Push: APN/GCM push notification, SimplePush
 * AeroGear Security
 For more details, please visit on [web site](http://aerogear.org/).
 
