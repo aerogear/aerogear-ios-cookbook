@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Gift List Collection View Controller-->
+        <!--Gift List Collection View Controller - Santa-Klaus memo-->
         <scene sceneID="O2a-4d-OIi">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OX6-EP-Ruy" customClass="AGGiftListCollectionViewController" sceneMemberID="viewController">
@@ -59,8 +59,9 @@
                             <outlet property="delegate" destination="OX6-EP-Ruy" id="aYN-Ad-wBt"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="6YH-Us-09A">
+                    <navigationItem key="navigationItem" title="Santa-Klaus memo" id="6YH-Us-09A">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OSV-Fd-tch">
+                            <color key="tintColor" red="0.84313732389999996" green="0.066666670139999995" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <segue destination="zne-xo-dBT" kind="push" identifier="addPresent:" id="Svg-lC-jli"/>
                             </connections>
@@ -101,10 +102,36 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="SECRET" id="woz-eB-nT0">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="l8e-WO-qQS">
+                                        <rect key="frame" x="0.0" y="217" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l8e-WO-qQS" id="gkj-eQ-r5r">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-uI-fL7">
+                                                    <rect key="frame" x="20" y="20" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="onTintColor" red="0.84313732389999996" green="0.066666670139999995" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                                                </switch>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHJ-y3-4K8">
+                                                    <rect key="frame" x="86" y="21" width="214" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="GIFT" id="4U5-pg-Dh5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="105" id="WRt-4h-Cgv">
-                                        <rect key="frame" x="0.0" y="217" width="320" height="105"/>
+                                        <rect key="frame" x="0.0" y="335" width="320" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WRt-4h-Cgv" id="kdy-b8-kGP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
@@ -117,31 +144,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="SECRET" id="woz-eB-nT0">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="288" id="l8e-WO-qQS">
-                                        <rect key="frame" x="0.0" y="370" width="320" height="288"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l8e-WO-qQS" id="gkj-eQ-r5r">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="287"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-uI-fL7">
-                                                    <rect key="frame" x="20" y="20" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </switch>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHJ-y3-4K8">
-                                                    <rect key="frame" x="86" y="21" width="214" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -192,6 +194,7 @@
             <point key="canvasLocation" x="381" y="-279"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.84313732389999996" green="0.066666670139999995" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
