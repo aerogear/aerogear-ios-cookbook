@@ -98,23 +98,30 @@
     _currentGiftId = gift[@"id"];
     _isCellSelected[row] = [NSNumber numberWithBool:YES];
     
+    [self showAlert];
+}
+
+- (void)showAlert {
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Password needed" message:@"to access this information" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
     [alert show];
-
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"Password Entered...");
     _password = [[alertView textFieldAtIndex:0] text];
-    // decrypt description
-    NSData* key = [self getKeyFromPassword:_password];
-    NSData* IV = [self getIV];
-    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
-    NSMutableDictionary* gift = [_store read:_currentGiftId];
-    NSString* decryptedDescription = [[NSString alloc] initWithData:[cryptoBox decrypt:gift[@"description"] IV:IV] encoding:NSUTF8StringEncoding];
-    gift[@"description"] = decryptedDescription;
-    [self.collectionView reloadData];
+    if (_password == nil || [_password length] == 0) {
+
+    } else {
+        // decrypt description
+        NSData* key = [self getKeyFromPassword:_password];
+        NSData* IV = [self getIV];
+        AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+        NSMutableDictionary* gift = [_store read:_currentGiftId];
+        NSString* decryptedDescription = [[NSString alloc] initWithData:[cryptoBox decrypt:gift[@"description"] IV:IV] encoding:NSUTF8StringEncoding];
+        gift[@"description"] = decryptedDescription;
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {

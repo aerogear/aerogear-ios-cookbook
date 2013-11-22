@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Gift List Collection View Controller - Santa-Klaus memo-->
+        <!--Gift List Collection View Controller - Santa Claus Memo-->
         <scene sceneID="O2a-4d-OIi">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OX6-EP-Ruy" customClass="AGGiftListCollectionViewController" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                             <outlet property="delegate" destination="OX6-EP-Ruy" id="aYN-Ad-wBt"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Santa-Klaus memo" id="6YH-Us-09A">
+                    <navigationItem key="navigationItem" title="Santa Claus Memo" id="6YH-Us-09A">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OSV-Fd-tch">
                             <color key="tintColor" red="0.84313732389999996" green="0.066666670139999995" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
@@ -91,7 +91,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-Yy-V5L">
-                                                    <rect key="frame" x="9" y="13" width="303" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>

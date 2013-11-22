@@ -34,11 +34,25 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
-	for (UIView* view in self.view.subviews) {
-		if ([view isKindOfClass:[UITextField class]])
-			[view resignFirstResponder];
-	}
+- (BOOL) validate {
+    if ([toWhomTextField.text length] != 0 &&
+        [description.text length] !=0 &&
+        [password.text length] != 0) {
+        return YES;
+    } else {
+        toWhomTextField.layer.borderColor = [[UIColor redColor]CGColor];
+        toWhomTextField.layer.borderWidth = 1.0;
+        description.layer.borderColor = [[UIColor redColor]CGColor];
+        description.layer.borderWidth = 1.0;
+        password.layer.borderColor = [[UIColor redColor]CGColor];
+        password.layer.borderWidth = 1.0;
+        return NO;
+    }
 }
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return  [self validate];
+}
+
 
 @end
