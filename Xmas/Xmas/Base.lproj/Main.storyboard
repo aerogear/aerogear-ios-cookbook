@@ -70,7 +70,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8y-0w-wbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907" y="-279"/>
+            <point key="canvasLocation" x="1083" y="-295"/>
         </scene>
         <!--Add Present View Controller-->
         <scene sceneID="I2k-Vc-VMd">
@@ -173,7 +173,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyl-gf-acT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Fic-pD-Kxo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1356" y="-279"/>
+            <point key="canvasLocation" x="1532" y="-295"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iGu-qx-3oL">
@@ -191,7 +191,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RC1-1m-MxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="-279"/>
+            <point key="canvasLocation" x="557" y="-295"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.84313732389999996" green="0.066666670139999995" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
