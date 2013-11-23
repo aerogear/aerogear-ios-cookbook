@@ -38,7 +38,7 @@ For random generation of key, salt or IV, use [AGRandomGenerator](http://aerogea
 
 You need to store your **salt** to be able to regenerate the exact same key when you want to decript this description information. In this example, we've chosen to store this information in NSUserDefaults.
 
-## Encrypt
+### Encrypt
 Once you've got your encryption key, use [AGCryptoBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html) to do the actual encryption.
 
 With [AGCryptoBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html), you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
@@ -64,7 +64,7 @@ With [AGCryptoBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AG
 
 Same as for the salt, IV need to be store to be able to decrypt the encrypted data. Salt and IV are not security sensitive in the sense that they can be stored. Do not store password or encryption key.
 
-## Decrypt
+### Decrypt
 
 To be able to decrypt, you need the randomly generated IV so that you can regenerate the key with the salt and the password (prompted on the fly). You also need the randomly generated IV.
 It is not recommended to store either password or derived key. Salt and IV are not security sensitive in the sense that they can be stored.
