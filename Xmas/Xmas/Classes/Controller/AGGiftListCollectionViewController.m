@@ -17,6 +17,8 @@
     NSMutableArray* _isCellSelected;
     id<AGStore> _store;
     NSString* _password;
+    NSData *_salt;
+    NSData *_IV;
 }
 
 @synthesize gifts = _gifts;
@@ -40,6 +42,22 @@
     }
     for (int i = 0; i < [self.gifts count]; i++) {
         _isCellSelected[i] = [NSNumber numberWithBool:NO];
+    }
+    // initialize crypto params;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    _salt = [defaults objectForKey:@"xmas.salt"];
+    _IV = [defaults objectForKey:@"xmas.iv"];
+    
+    if(!_salt) { // if first launch, initialize params for subsequent reads
+        _salt = [AGRandomGenerator randomBytes];
+        [defaults setObject:_salt forKey:@"xmas.salt"];
+        [defaults synchronize];
+    }
+    if(!_IV) { // if first lunch, initialize params for subsequent reads
+        _IV =  [AGRandomGenerator randomBytes];
+        [defaults setObject:_IV forKey:@"xmas.iv"];
+        [defaults synchronize];
     }
 
 }
@@ -114,18 +132,11 @@
 
     } else {
         // decrypt description
-        NSData* key = [self getKeyFromPassword:_password];
-        NSData* IV = [self getIV];
-        AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
         NSMutableDictionary* gift = [_store read:_currentGiftId];
-        NSString* decryptedDescription = [[NSString alloc] initWithData:[cryptoBox decrypt:gift[@"description"] IV:IV] encoding:NSUTF8StringEncoding];
-        gift[@"description"] = decryptedDescription;
+        gift[@"description"] = [self decrypt:gift[@"description"]];
+        
         [self.collectionView reloadData];
     }
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-
 }
 
 #pragma mark - Navigation
@@ -146,56 +157,38 @@
     [self.collectionView reloadData];
 }
 
--(void) saveAndEncryptData:(NSMutableDictionary*)dataDict withPassword:(NSString*)password {
+#pragma mark - Encryption / Decryption
+
+-(NSData*) getKeyFromPassword:(NSString*)password {
+    AGPBKDF2* derivator = [[AGPBKDF2 alloc] init];
+    
+    return [derivator deriveKey:password salt:_salt];
+}
+
+-(void) saveAndEncryptData:(id)gift withPassword:password {
     // Generate key from pasword
     NSData* key = [self getKeyFromPassword:password];
     
     // Use CryptoBox to encrypt/decrypt data
     AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
     
-    // Get a random IV
-    NSData* IV = [self getIV];
-    
     // transform string to data
-    NSData* dataToEncrypt = [dataDict[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* dataToEncrypt = [gift[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
     
     // encrypt data
-    dataDict[@"description"] = [cryptoBox encrypt:dataToEncrypt IV:IV];
+    gift[@"description"] = [cryptoBox encrypt:dataToEncrypt IV:_IV];
     
     // Store data with encrypted description
-    [_store save:dataDict error:nil];
-    [self.gifts addObject:dataDict];
-}
-
--(NSData*) getKeyFromPassword:(NSString*)password {
-    NSData* salt;
-    AGPBKDF2* derivator = [[AGPBKDF2 alloc] init];
-   
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:@"xmas.salt"] == nil) {
-        salt = [AGRandomGenerator randomBytes];
-        [defaults setObject:salt forKey:@"xmas.salt"];
-        [defaults synchronize];
-    } else {
-        salt = [defaults objectForKey:@"xmas.salt"];
-    }
-    NSData* key = [derivator deriveKey:password salt:salt];
+    [_store save:gift error:nil];
     
-    return key;
+    [self.gifts addObject:gift];
 }
 
--(NSData*) getIV {
-    NSData* IV;
-    // Store IV (needed to decrypt encrypted data)
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:@"xmas.IV"] == nil) {
-        IV = [AGRandomGenerator randomBytes];
-        [defaults setObject:IV forKey:@"xmas.IV"];
-        [defaults synchronize];
-    } else {
-        IV =[defaults objectForKey:@"xmas.IV"];
-    }
-    return IV;
+-(NSString*)decrypt:(NSData*)data {
+    NSData* key = [self getKeyFromPassword:_password];
+    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+    
+    return [[NSString alloc] initWithData:[cryptoBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
 }
 
 @end
