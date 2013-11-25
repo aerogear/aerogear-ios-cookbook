@@ -13,6 +13,7 @@
 
 @implementation AGGiftListCollectionViewController {
     NSString* _currentGiftId;
+    int _currentRowSelected;
     NSArray* _images;
     NSMutableArray* _isCellSelected;
     id<AGStore> _store;
@@ -21,7 +22,7 @@
     NSData *_IV;
 }
 
-@synthesize gifts = _gifts;
+@synthesize gifts;
 
 - (void)viewDidLoad
 {
@@ -34,8 +35,8 @@
         [config setName:@"xmas"];
         [config setType:@"PLIST"];
     }];
-    
-    _gifts = [[_store readAll] mutableCopy];
+
+    self.gifts = [[_store readAll] mutableCopy];
     
 	if (!_isCellSelected){
         _isCellSelected = [[NSMutableArray alloc] init];
@@ -114,9 +115,10 @@
     
     NSMutableDictionary* gift = self.gifts[row];
     _currentGiftId = gift[@"id"];
-    _isCellSelected[row] = [NSNumber numberWithBool:YES];
-    
-    [self showAlert];
+    _currentRowSelected = row;
+    if (_isCellSelected[_currentRowSelected] == [NSNumber numberWithBool:NO]) {
+        [self showAlert];
+    }
 }
 
 - (void)showAlert {
@@ -134,6 +136,8 @@
         // decrypt description
         NSMutableDictionary* gift = [_store read:_currentGiftId];
         gift[@"description"] = [self decrypt:gift[@"description"]];
+        _isCellSelected[_currentRowSelected] = [NSNumber numberWithBool:YES];
+        _currentRowSelected = -1;
         
         [self.collectionView reloadData];
     }
