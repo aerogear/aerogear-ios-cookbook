@@ -36,7 +36,7 @@
         [config setType:@"PLIST"];
     }];
 
-    self.gifts = [[_store readAll] mutableCopy];
+    self.gifts = [self deepMutableCopy:[_store readAll]];
     
 	if (!_isCellSelected){
         _isCellSelected = [[NSMutableArray alloc] init];
@@ -61,6 +61,19 @@
         [defaults synchronize];
     }
 
+}
+
+- (id)deepMutableCopy:(NSArray*) list {
+    NSData *binData = [NSPropertyListSerialization dataWithPropertyList:list
+                                                                 format:NSPropertyListBinaryFormat_v1_0
+                                                                options:0
+                                                                  error:nil];
+    
+    NSMutableArray* mutableArray = [NSPropertyListSerialization propertyListFromData:binData
+                                                              mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                                                        format:NULL
+                                                              errorDescription:nil];
+    return mutableArray;
 }
 
 - (NSString*)randomImage {
@@ -134,13 +147,22 @@
 
     } else {
         // decrypt description
-        NSMutableDictionary* gift = [_store read:_currentGiftId];
+        NSMutableDictionary* gift = [self getGiftwithId:_currentGiftId within:self.gifts]; 
         gift[@"description"] = [self decrypt:gift[@"description"]];
         _isCellSelected[_currentRowSelected] = [NSNumber numberWithBool:YES];
         _currentRowSelected = -1;
         
         [self.collectionView reloadData];
     }
+}
+
+-(NSMutableDictionary*) getGiftwithId:(NSString*)identifier within:(NSArray*)list {
+    for (NSMutableDictionary* field in list) {
+        if([identifier isEqual:field[@"id"]]) {
+            return field;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Navigation
