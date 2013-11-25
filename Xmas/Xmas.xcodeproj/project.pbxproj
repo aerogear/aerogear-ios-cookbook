@@ -26,7 +26,6 @@
 		484E9B51183BCC3C009E1314 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B41183BCC3C009E1314 /* Default-Portrait~ipad.png */; };
 		484E9B52183BCC3C009E1314 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B42183BCC3C009E1314 /* Default.png */; };
 		484E9B53183BCC3C009E1314 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B43183BCC3C009E1314 /* Default@2x.png */; };
-		484E9B55183BCFA8009E1314 /* xmas.png in Resources */ = {isa = PBXBuildFile; fileRef = 484E9B54183BCFA8009E1314 /* xmas.png */; };
 		486CF268183E6259007ADDC7 /* Santa-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF267183E6259007ADDC7 /* Santa-icon.png */; };
 		486CF26A183E9C14007ADDC7 /* mistletoe-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF269183E9C14007ADDC7 /* mistletoe-icon.png */; };
 		486CF26C183EA207007ADDC7 /* snowman-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF26B183EA207007ADDC7 /* snowman-icon.png */; };
@@ -37,7 +36,8 @@
 		486CF277183EA590007ADDC7 /* Santa-icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF274183EA590007ADDC7 /* Santa-icon-80.png */; };
 		486CF278183EA590007ADDC7 /* Santa-icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 486CF275183EA590007ADDC7 /* Santa-icon-120.png */; };
 		486CF27B183EB152007ADDC7 /* AGAddPresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 486CF27A183EB152007ADDC7 /* AGAddPresentViewController.m */; };
-		48FFBDBA183BF7790009B973 /* xmas-640*960.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFBDB9183BF7790009B973 /* xmas-640*960.png */; };
+		4876B0CA1843915500849159 /* xmas-lauch-640*960.png in Resources */ = {isa = PBXBuildFile; fileRef = 4876B0C81843915500849159 /* xmas-lauch-640*960.png */; };
+		4876B0CB1843915500849159 /* xmas-lauch-640*1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 4876B0C91843915500849159 /* xmas-lauch-640*1136.png */; };
 		48FFBDBE183C0D0E0009B973 /* AGGiftListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FFBDBD183C0D0E0009B973 /* AGGiftListCollectionViewController.m */; };
 		48FFBDC9183C17990009B973 /* AGGiftCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FFBDC8183C17990009B973 /* AGGiftCellView.m */; };
 		78614DB55CF645BDB3A0B08C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFB598E3DB54BE89B0311BF /* libPods.a */; };
@@ -78,7 +78,6 @@
 		484E9B41183BCC3C009E1314 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		484E9B42183BCC3C009E1314 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		484E9B43183BCC3C009E1314 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		484E9B54183BCFA8009E1314 /* xmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xmas.png; sourceTree = "<group>"; };
 		486CF267183E6259007ADDC7 /* Santa-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon.png"; sourceTree = "<group>"; };
 		486CF269183E9C14007ADDC7 /* mistletoe-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mistletoe-icon.png"; sourceTree = "<group>"; };
 		486CF26B183EA207007ADDC7 /* snowman-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowman-icon.png"; sourceTree = "<group>"; };
@@ -90,7 +89,8 @@
 		486CF275183EA590007ADDC7 /* Santa-icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Santa-icon-120.png"; sourceTree = "<group>"; };
 		486CF279183EB152007ADDC7 /* AGAddPresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAddPresentViewController.h; sourceTree = "<group>"; };
 		486CF27A183EB152007ADDC7 /* AGAddPresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAddPresentViewController.m; sourceTree = "<group>"; };
-		48FFBDB9183BF7790009B973 /* xmas-640*960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-640*960.png"; sourceTree = "<group>"; };
+		4876B0C81843915500849159 /* xmas-lauch-640*960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-lauch-640*960.png"; sourceTree = "<group>"; };
+		4876B0C91843915500849159 /* xmas-lauch-640*1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmas-lauch-640*1136.png"; sourceTree = "<group>"; };
 		48FFBDBC183C0D0E0009B973 /* AGGiftListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGGiftListCollectionViewController.h; sourceTree = "<group>"; };
 		48FFBDBD183C0D0E0009B973 /* AGGiftListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGGiftListCollectionViewController.m; sourceTree = "<group>"; };
 		48FFBDC7183C17990009B973 /* AGGiftCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGGiftCellView.h; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 		484E9B3B183BCC3C009E1314 /* splash */ = {
 			isa = PBXGroup;
 			children = (
-				48FFBDB9183BF7790009B973 /* xmas-640*960.png */,
-				484E9B54183BCFA8009E1314 /* xmas.png */,
+				4876B0C81843915500849159 /* xmas-lauch-640*960.png */,
+				4876B0C91843915500849159 /* xmas-lauch-640*1136.png */,
 				486CF26F183EA271007ADDC7 /* candycane-icon.png */,
 				486CF271183EA3B5007ADDC7 /* gift-icon1.png */,
 				486CF26D183EA21D007ADDC7 /* tree-icon.png */,
@@ -345,11 +345,10 @@
 				486CF278183EA590007ADDC7 /* Santa-icon-120.png in Resources */,
 				484E9B51183BCC3C009E1314 /* Default-Portrait~ipad.png in Resources */,
 				484E9B4E183BCC3C009E1314 /* Default-568h@2x.png in Resources */,
-				48FFBDBA183BF7790009B973 /* xmas-640*960.png in Resources */,
+				4876B0CB1843915500849159 /* xmas-lauch-640*1136.png in Resources */,
 				486CF276183EA590007ADDC7 /* Santa-icon-58.png in Resources */,
 				486CF272183EA3B5007ADDC7 /* gift-icon1.png in Resources */,
 				484E9B4F183BCC3C009E1314 /* Default-Landscape~ipad.png in Resources */,
-				484E9B55183BCFA8009E1314 /* xmas.png in Resources */,
 				486CF26A183E9C14007ADDC7 /* mistletoe-icon.png in Resources */,
 				486CF277183EA590007ADDC7 /* Santa-icon-80.png in Resources */,
 				484E9B07183BC566009E1314 /* InfoPlist.strings in Resources */,
@@ -358,6 +357,7 @@
 				486CF270183EA271007ADDC7 /* candycane-icon.png in Resources */,
 				486CF26C183EA207007ADDC7 /* snowman-icon.png in Resources */,
 				484E9B50183BCC3C009E1314 /* Default-Portrait@2x~ipad.png in Resources */,
+				4876B0CA1843915500849159 /* xmas-lauch-640*960.png in Resources */,
 				484E9B10183BC566009E1314 /* Main.storyboard in Resources */,
 				484E9B53183BCC3C009E1314 /* Default@2x.png in Resources */,
 			);
@@ -547,6 +547,7 @@
 				GCC_PREFIX_HEADER = "Xmas/Xmas-Prefix.pch";
 				INFOPLIST_FILE = "Xmas/Xmas-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -561,6 +562,7 @@
 				GCC_PREFIX_HEADER = "Xmas/Xmas-Prefix.pch";
 				INFOPLIST_FILE = "Xmas/Xmas-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
