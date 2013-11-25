@@ -40,17 +40,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NSString* type = @"SQLITE"; //@"PLIST";
     AGDataManager* dm = [AGDataManager manager];
     // Add a new (default) store object:
     _store = [dm store:^(id<AGStoreConfig> config) {
         [config setName:@"recipes"];
-        [config setType:@"PLIST"];
+        [config setType:type];
     }];
     
-    // When app is first launched read from bundle static file and store in PLIST store
-    [self bootstrapDataFrom:@"recipes" toStore:_store];
-    
+    // When app is first launched read from bundle static file and store in PLIST or SQLITE store
+    [self bootstrapDataFromFileName:@"recipes" toStore:_store];
+
     // Read from PLIST store and convert dictionary into array of AGRecipe
     _recipes = [[NSMutableArray alloc] init];
     NSArray* myRecipes = [_store readAll];
@@ -64,14 +64,22 @@
  If no file is found with name in Document folder, check bundle
  and if file found boostrap data into AGStore
  */
-- (NSArray*) bootstrapDataFrom:(NSString*)name toStore:(id<AGStore>)store{
+- (NSArray*) bootstrapDataFromFileName:(NSString*)name toStore:(id<AGStore>)store {
     
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
     NSString *plistPath;
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                              NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingPathComponent:name];
+    NSString *rootPath;
+    
+    if ([store.type isEqualToString:@"PLIST"]) {
+        rootPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
+                                                                  NSUserDomainMask, YES) objectAtIndex:0];
+        plistPath = [rootPath stringByAppendingPathComponent:name];
+    } else if ([store.type isEqualToString:@"SQLITE"]) {
+        rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask, YES) objectAtIndex:0];
+        plistPath = [rootPath stringByAppendingPathComponent:[name stringByAppendingString:@".sqlite3"]];
+    }
     if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
         plistPath = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
         
