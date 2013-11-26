@@ -6,6 +6,14 @@ Let's help Santa Claus to keep his gifts list secure. We want to achieve local e
 
 Xmas app shows you how to use [aerogear-crypto-ios](https://github.com/aerogear/aerogear-crypto-ios). Using AeroGear crypto lib, you can easily do private key encryption (also called symmetric encryption).
 
+## Install
+All our project require [CocoaPods](http://cocoapods.org/) for dependency management;
+
+**Before**, you can run the apps, you need to run the following command:
+
+    pod install
+
+After that you just need to open the ```Xmas.xcworkspace``` file in XCode and you're all set.
 ## UI Fow 
 When you start the application you will first see a collection list of cards (with ramdom xmas images on the back). If the app is launched for the first time the list is empty. 
 
