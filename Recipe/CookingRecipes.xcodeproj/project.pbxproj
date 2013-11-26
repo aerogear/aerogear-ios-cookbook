@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4830C5D01844BCFD0082FDEA /* AGRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4830C5CF1844BCFD0082FDEA /* AGRecipe.m */; };
 		4893F8E9182906D5008A0B6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4893F8E8182906D5008A0B6E /* Foundation.framework */; };
 		4893F8EB182906D5008A0B6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4893F8EA182906D5008A0B6E /* CoreGraphics.framework */; };
 		4893F8ED182906D5008A0B6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4893F8EC182906D5008A0B6E /* UIKit.framework */; };
@@ -23,7 +24,6 @@
 		4893F92F18290DF6008A0B6E /* AGRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F92D18290DF6008A0B6E /* AGRecipeViewController.m */; };
 		4893F93D18290E2E008A0B6E /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F93C18290E2E008A0B6E /* AGAppDelegate.m */; };
 		4893F95518294763008A0B6E /* AGAddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F95418294763008A0B6E /* AGAddRecipeViewController.m */; };
-		4893F960182948F4008A0B6E /* AGRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4893F95F182948F4008A0B6E /* AGRecipe.m */; };
 		4893F97B182BD63E008A0B6E /* ios-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F96B182BD63E008A0B6E /* ios-114.png */; };
 		4893F97C182BD63E008A0B6E /* ios-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F96C182BD63E008A0B6E /* ios-120.png */; };
 		4893F97D182BD63E008A0B6E /* ios-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893F96D182BD63E008A0B6E /* ios-144.png */; };
@@ -53,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4830C5CE1844BCFD0082FDEA /* AGRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRecipe.h; sourceTree = "<group>"; };
+		4830C5CF1844BCFD0082FDEA /* AGRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRecipe.m; sourceTree = "<group>"; };
 		4893F8E5182906D5008A0B6E /* CookingRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4893F8E8182906D5008A0B6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4893F8EA182906D5008A0B6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,8 +78,6 @@
 		4893F93C18290E2E008A0B6E /* AGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAppDelegate.m; sourceTree = "<group>"; };
 		4893F95318294763008A0B6E /* AGAddRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAddRecipeViewController.h; sourceTree = "<group>"; };
 		4893F95418294763008A0B6E /* AGAddRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAddRecipeViewController.m; sourceTree = "<group>"; };
-		4893F95E182948F4008A0B6E /* AGRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRecipe.h; sourceTree = "<group>"; };
-		4893F95F182948F4008A0B6E /* AGRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRecipe.m; sourceTree = "<group>"; };
 		4893F96B182BD63E008A0B6E /* ios-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-114.png"; sourceTree = "<group>"; };
 		4893F96C182BD63E008A0B6E /* ios-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-120.png"; sourceTree = "<group>"; };
 		4893F96D182BD63E008A0B6E /* ios-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-144.png"; sourceTree = "<group>"; };
@@ -122,11 +122,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4830C5CD1844BCFD0082FDEA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4830C5CE1844BCFD0082FDEA /* AGRecipe.h */,
+				4830C5CF1844BCFD0082FDEA /* AGRecipe.m */,
+			);
+			name = Model;
+			path = CookingRecipes/Classes/Controller/Model;
+			sourceTree = "<group>";
+		};
 		4893F8DC182906D5008A0B6E = {
 			isa = PBXGroup;
 			children = (
+				4830C5CD1844BCFD0082FDEA /* Model */,
 				4893F92918290DF6008A0B6E /* Controller */,
-				4893F95D182948F4008A0B6E /* Model */,
 				4893F93A18290E2E008A0B6E /* Main */,
 				4893F969182BD63E008A0B6E /* Resources */,
 				4893F8EE182906D5008A0B6E /* CookingRecipes */,
@@ -219,16 +229,6 @@
 			);
 			name = Main;
 			path = CookingRecipes/Classes/Main;
-			sourceTree = "<group>";
-		};
-		4893F95D182948F4008A0B6E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4893F95E182948F4008A0B6E /* AGRecipe.h */,
-				4893F95F182948F4008A0B6E /* AGRecipe.m */,
-			);
-			name = Model;
-			path = CookingRecipes/Classes/Main/Model;
 			sourceTree = "<group>";
 		};
 		4893F969182BD63E008A0B6E /* Resources */ = {
@@ -421,7 +421,7 @@
 				4893F95518294763008A0B6E /* AGAddRecipeViewController.m in Sources */,
 				4893F8F5182906D5008A0B6E /* main.m in Sources */,
 				4893F92E18290DF6008A0B6E /* AGCookbookViewController.m in Sources */,
-				4893F960182948F4008A0B6E /* AGRecipe.m in Sources */,
+				4830C5D01844BCFD0082FDEA /* AGRecipe.m in Sources */,
 				4893F93D18290E2E008A0B6E /* AGAppDelegate.m in Sources */,
 				4893F92F18290DF6008A0B6E /* AGRecipeViewController.m in Sources */,
 			);
