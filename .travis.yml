@@ -1,7 +1,17 @@
 language: objective-c
 
-before_script: travis/before_script.sh
-script: travis/script.sh
+before_install:
+    - gem install cocoapods
+    - brew update
+    - brew uninstall xctool && brew install xctool
+    - cd AeroDoc
+
+script:
+    - xctool -workspace AeroDoc.xcworkspace -scheme AeroDoc -sdk iphonesimulator -configuration Release
 
 notifications:
   irc: "irc.freenode.org#aerogear"
+
+branches:
+  only:
+    - master
