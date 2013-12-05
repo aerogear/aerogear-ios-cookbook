@@ -1,0 +1,17 @@
+language: objective-c
+
+before_install:
+    - gem install cocoapods
+    - brew update
+    - brew uninstall xctool && brew install xctool
+    - cd AeroGear-OTP-Demo
+
+script:
+    - xctool -workspace AeroGear-OTP-Demo.xcworkspace -scheme AeroGear-OTP-Demo -sdk iphonesimulator -configuration Release
+
+notifications:
+  irc: "irc.freenode.org#aerogear"
+  
+branches:
+  only:
+    - master
