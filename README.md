@@ -1,4 +1,5 @@
-# AeroGear-OTP-iOS-Demo
+# aerogear-otp-ios-demo [![Build Status](https://travis-ci.org/aerogear/aerogear-otp-ios-demo.png)](https://travis-ci.org/aerogear/aerogear-otp-ios-demo)
+
 a simple example testing AeroGear-OTP library
 
 ## Getting started
