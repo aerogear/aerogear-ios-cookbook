@@ -1,7 +1,13 @@
 language: objective-c
 
-before_script: travis/before_script.sh
-script: travis/script.sh
+before_install:
+    - gem install cocoapods
+    - brew update
+    - brew uninstall xctool && brew install xctool
+    - cd AeroGear-Crypto-Demo
+
+script:
+    - xctool -workspace AeroGear-Crypto-Demo.xcworkspace -scheme AeroGear-Crypto-Demo -sdk iphonesimulator -configuration Release
 
 notifications:
   irc: "irc.freenode.org#aerogear"
