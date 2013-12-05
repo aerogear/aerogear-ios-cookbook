@@ -1,3 +1,5 @@
+# aerogear-aerodoc-ios [![Build Status](https://travis-ci.org/aerogear/aerogear-aerodoc-ios.png)](https://travis-ci.org/aerogear/aerogear-aerodoc-ios)
+
 What's in aerogear-aerodoc-ios?
 ============================
 AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. To get the big picture:
