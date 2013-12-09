@@ -1,6 +1,0 @@
-[
-  "-workspace", "AeroGear-Crypto-Demo.xcworkspace",
-  "-scheme", "AeroGear-Crypto-Demo",
-  "-sdk", "iphonesimulator",
-  "-arch", "i386"
-]
