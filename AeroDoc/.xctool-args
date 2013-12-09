@@ -1,6 +1,0 @@
-[
-  "-workspace", "AeroDoc.xcworkspace",
-  "-scheme", "AeroDoc",
-  "-sdk", "iphonesimulator",
-  "-arch", "i386"
-]
