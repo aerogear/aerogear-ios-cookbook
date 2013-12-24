@@ -17,20 +17,20 @@
 
 #import "AGShootViewController.h"
 #import "AeroGear.h"
-#import "AGAuthenticationModule.h"
-#import "AGAppDelegate.h"
-#import "AGOAuth1Configuration.h"
 
-NSString *kFetchRequestTokenStep = @"kFetchRequestTokenStep";
-NSString *kGetUserInfoStep = @"kGetUserInfoStep";
+#import "AGAppDelegate.h"
+
+
 
 @interface AGShootViewController ()
 
 @end
 
-@implementation AGShootViewController
+@implementation AGShootViewController {
+    id<AGAuthzModule> _restAuthzModule;
+}
 @synthesize imageView = _imageView;
-@synthesize flickrClient = _flickrClient;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,128 +75,48 @@ static inline NSString * AFNounce() {
     
     return (NSString *)CFBridgingRelease(string);
 }
-- (NSDictionary *)generateOAuthParametersWithToken:(AFOAuth1Token*)token {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"oauth_version"] = @"1.0";
-    parameters[@"oauth_signature_method"] = @"HMAC-SHA1";
-    parameters[@"oauth_consumer_key"] = FLICKR_SAMPLE_API_KEY;
-    parameters[@"oauth_timestamp"] = [@(floor([[NSDate date] timeIntervalSince1970])) stringValue];
-    parameters[@"oauth_nonce"] = AFNounce();
-    parameters[@"is_public"] = @"0";
-    parameters[@"oauth_token"] = token.key;
+
+
+
+-(void)upload:(id<AGAuthzModule>) authzModule {
+    NSString* readGoogleDriveURL = @"https://www.googleapis.com/drive/v2";
+    NSURL* serverURL = [NSURL URLWithString:readGoogleDriveURL];
+    AGPipeline* googleDocuments = [AGPipeline pipelineWithBaseURL:serverURL];
     
-    return parameters;
+    id<AGPipe> documents = [googleDocuments pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"files"];
+        [config setAuthzModule:authzModule];
+    }];
+    
+//    [documents read:^(id responseObject) {
+//        _documents = [[self buildDocumentList:responseObject[0]] copy];
+//        [self.tableView reloadData];
+//    } failure:^(NSError *error) {
+//        // when an error occurs... at least log it to the console..
+//        NSLog(@"Read: An error occured! \n%@", error);
+//    }];
 }
 
 - (IBAction)share:(id)sender {
     NSLog(@"Sharing...");
-   
-//    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
-//    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"tempImage.jpeg"]; //Add the file name
-//    [imageData writeToFile:filePath atomically:YES]; //Write the file
-//    NSURL *file1 = [NSURL fileURLWithPath:filePath];
     
-    AGAuthenticator* authenticator = [AGAuthenticator authenticator];
-    id<AGOAuth1Config> config = [[AGOAuth1Configuration alloc] init];
-    [config setName:@"restAuthMod"];
-    [config setType:@"AG_OAUTH1"];
-    [config setKey:FLICKR_SAMPLE_API_KEY];
-    [config setSecret:FLICKR_SAMPLE_API_SHARED_SECRET];
-    [config setRequestTokenEndpoint:@"/services/oauth/request_token"];
-    [config setAuthEndpoint:@"/services/oauth/authorize"];
-    [config setCallbackAuthEndpoint:@"shootnshare://auth"];
-    [config setAccessTokenEndpoint:@"/services/oauth/access_token"];
-    [config setBaseURL:[NSURL URLWithString:@"http://www.flickr.com/"]];
+    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
     
-    id<AGBaseAuthenticationModule> myOAuthModule = [authenticator auth:config];
-    
-    id<AGOAuth1AuthenticationModule> myOAuth1Module = (id<AGOAuth1AuthenticationModule>)myOAuthModule;
-    [myOAuth1Module authorize:nil success:^(id token, id object) {
-        NSLog(@"Success: Logged ");
-        // construct the data to sent with the files added
-//        NSDictionary *parameters = [self generateOAuthParametersWithToken:(AFOAuth1Token *)token];
-//        NSMutableDictionary *files = [[NSMutableDictionary alloc] init];
-//        [files addEntriesFromDictionary:parameters];
-//        [files addEntriesFromDictionary:@{@"photo":file1}];
-//        
-//        
-//        
-//        AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://api.flickr.com"]];
-//        id<AGPipe> photos = [pipeline pipe:^(id<AGPipeConfig> config) {
-//            
-//            [config setName:@"upload"];
-//            [config setBaseURL:[NSURL URLWithString:@"http://api.flickr.com"]];
-//            [config setEndpoint:@"/services/upload/"];
-//            [config setAuthModule:myOAuth1Module];
-//
-//        }];
-//        
-//        // save the 'new' project:
-//        [photos save:files success:^(id responseObject) {
-//             // LOG the JSON response, returned from the server:
-//             NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
-//         } failure:^(NSError *error) {
-//             // when an error occurs... at least log it to the console..
-//             NSLog(@"SAVE: An error occured! \n%@", error);
-//         }];
-        
-        
-    } failure:^(NSError *error) {
-        NSLog(@"Failure to OAuth1 authorize");
+    _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+        config.authzEndpoint = @"/o/oauth2/auth";
+        config.accessTokenEndpoint = @"/o/oauth2/token";
+        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
-
-
-
-
-
-
-
-
-
-//    self.flickrClient = [[AFOAuth1Client alloc] initWithBaseURL:[NSURL URLWithString:@"http://www.flickr.com/"] key:FLICKR_SAMPLE_API_KEY secret:FLICKR_SAMPLE_API_SHARED_SECRET];
-//    
-//
-//    
-//    [self.flickrClient authorizeUsingOAuthWithRequestTokenPath:@"/services/oauth/request_token" userAuthorizationPath:@"/services/oauth/authorize" callbackURL:[NSURL URLWithString:@"shootnshare://auth"] accessTokenPath:@"/services/oauth/access_token" accessMethod:@"POST" scope:nil success:^(AFOAuth1Token *accessToken, id responseObject) {
-//        //[self.flickrClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
-//        NSLog(@"Success: %@ Logged ", accessToken.userInfo[@"fullname"]);
-//        [AFOAuth1Token storeCredential:accessToken withIdentifier:@"shootnshare"];
-//        
-//        NSDictionary *parameters = [self generateOAuthParametersWithToken:accessToken];
-//        
-//        // construct the data to sent with the files added
-//        NSMutableDictionary *files = [[NSMutableDictionary alloc] init];
-//        [files addEntriesFromDictionary:parameters];
-//        [files addEntriesFromDictionary:@{@"photo":file1}];
-//        
-//        // Upload with AEroGEar failing with 401
-//        AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://api.flickr.com"]];
-//        
-//        id<AGPipe> photos = [pipeline pipe:^(id<AGPipeConfig> config) {
-//            [config setName:@"upload"];
-//            [config setBaseURL:[NSURL URLWithString:@"http://api.flickr.com"]];
-//            [config setEndpoint:@"/services/upload/"];
-//        }];
-//        
-//        
-//        // save the 'new' project:
-//        [photos save:files success:^(id responseObject) {
-//            // LOG the JSON response, returned from the server:
-//            NSLog(@"CREATE RESPONSE\n%@", [responseObject description]);
-//            
-//        } failure:^(NSError *error) {
-//            // when an error occurs... at least log it to the console..
-//            NSLog(@"SAVE: An error occured! \n%@", error);
-//        }];
-//
-//
-//    } failure:^(NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
     
-
+    [_restAuthzModule requestAccessSuccess:^(id object) {
+        [self upload:_restAuthzModule];
+    } failure:^(NSError *error) {
+    }];
+    
 }
 
 #pragma mark -

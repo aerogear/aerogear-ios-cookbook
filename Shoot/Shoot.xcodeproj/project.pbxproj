@@ -102,6 +102,13 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		48C4F0011869D38D0020AE51 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		48E865C618400931001FAE73 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +145,7 @@
 		48E865D818400931001FAE73 /* Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				48C4F0011869D38D0020AE51 /* iPad */,
 				48E865E118400931001FAE73 /* AGAppDelegate.h */,
 				48E865E218400931001FAE73 /* AGAppDelegate.m */,
 				48E865E418400931001FAE73 /* Main.storyboard */,
@@ -445,7 +453,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoot/Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Shoot/Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -459,7 +469,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoot/Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Shoot/Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
