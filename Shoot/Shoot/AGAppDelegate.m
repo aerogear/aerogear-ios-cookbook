@@ -18,11 +18,6 @@
 #import "AGShootViewController.h"
 
 @implementation AGAppDelegate
-#warning ENTER YOUR FLICKR API_KEY
-NSString* FLICKR_SAMPLE_API_KEY = @"b666b8c9c8b48098cae3bacbb135980a";
-#warning ENTER YOUR FLICKR API_SHARED_SECRET
-NSString* FLICKR_SAMPLE_API_SHARED_SECRET = @"ca4551d49068396b";
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -34,11 +29,10 @@ NSString* FLICKR_SAMPLE_API_SHARED_SECRET = @"ca4551d49068396b";
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:kAFApplicationLaunchOptionsURLKey]];
+    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:@"UIApplicationLaunchOptionsURLKey"]];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     return YES;
 }
-
 
 @end
