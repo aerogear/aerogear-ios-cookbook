@@ -16,6 +16,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo) | Store | - | **EncryptedStorage** |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo) | - | - | **Login** |
 | [TODO Demo](https://github.com/aerogear/aerogear-todo-ios) | Store, **Pipe** | - | Login |
+| [GoogleDrive](GoogleDrive/GoogleDrive.md) | Pipe | - | **OAuth2** |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. For example, AeroDoc demo main purpose is to show you Push notifications, but it also uses Pipes, Stores and Login.
 
