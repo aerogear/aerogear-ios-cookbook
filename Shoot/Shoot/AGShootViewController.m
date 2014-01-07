@@ -68,55 +68,78 @@
         _newMedia = NO;
     }
 }
-static inline NSString * AFNounce() {
-    CFUUIDRef uuid = CFUUIDCreate(NULL);
-    CFStringRef string = CFUUIDCreateString(NULL, uuid);
-    CFRelease(uuid);
-    
-    return (NSString *)CFBridgingRelease(string);
-}
-
-
 
 -(void)upload:(id<AGAuthzModule>) authzModule {
     NSString* readGoogleDriveURL = @"https://www.googleapis.com/drive/v2";
-    NSURL* serverURL = [NSURL URLWithString:readGoogleDriveURL];
+    NSString* uploadGoogleDriveURL = @"https://www.googleapis.com/upload/drive/v2";
+    //NSURL* serverURL = [NSURL URLWithString:readGoogleDriveURL];
+    NSURL* serverURL = [NSURL URLWithString:uploadGoogleDriveURL];
+    
     AGPipeline* googleDocuments = [AGPipeline pipelineWithBaseURL:serverURL];
     
-    id<AGPipe> documents = [googleDocuments pipe:^(id<AGPipeConfig> config) {
+    id<AGPipe> pipe = [googleDocuments pipe:^(id<AGPipeConfig> config) {
         [config setName:@"files"];
         [config setAuthzModule:authzModule];
     }];
+    // Get image with high compression
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    AGFileDataPart *dataPart2 = [[AGFileDataPart alloc] initWithFileData:imageData
+                                                                    name:@"image"
+                                                                fileName:@"image.png" mimeType:@"image/jpeg"];
+    // set up payload
+    NSDictionary *dict = @{@"somekey": @"somevalue", @"uploadType": @"multipart",
+                           @"data2:": dataPart2};
+    // Read data => ok
+    //    [pipe read:^(id responseObject) {
+    //        NSLog(@"::Successfully read!");
+    //
+    //    } failure:^(NSError *error) {
+    //        NSLog(@"::An error has occured during read! \n%@", error);
+    //    }];
     
-//    [documents read:^(id responseObject) {
-//        _documents = [[self buildDocumentList:responseObject[0]] copy];
-//        [self.tableView reloadData];
-//    } failure:^(NSError *error) {
-//        // when an error occurs... at least log it to the console..
-//        NSLog(@"Read: An error occured! \n%@", error);
-//    }];
+    
+    // upload data => 401
+    // check google Drive API reference
+    // https://developers.google.com/drive/v2/reference/
+    [pipe save:dict success:^(id responseObject) {
+        NSLog(@"Successfully uploaded!");
+        
+    } failure:^(NSError *error) {
+        NSLog(@"An error has occured during upload! \n%@", error);
+    }];
+    
 }
 
 - (IBAction)share:(id)sender {
     NSLog(@"Sharing...");
-    
-    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
-    
-    _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
-        config.name = @"restAuthMod";
-        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
-        config.authzEndpoint = @"/o/oauth2/auth";
-        config.accessTokenEndpoint = @"/o/oauth2/token";
-        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
-        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
-        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
-    }];
-    
-    [_restAuthzModule requestAccessSuccess:^(id object) {
-        [self upload:_restAuthzModule];
-    } failure:^(NSError *error) {
-    }];
-    
+    if (_imageView.image == nil) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Missing image!"
+                              message: @"Please select an image before sharing it"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+        
+        _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+            config.name = @"restAuthMod";
+            config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+            config.authzEndpoint = @"/o/oauth2/auth";
+            config.accessTokenEndpoint = @"/o/oauth2/token";
+            config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+            config.clientSecret = @"EpnzZE9D-8TI1z8-U2ClizPq";
+            config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+            config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+        }];
+        
+        [_restAuthzModule requestAccessSuccess:^(id object) {
+            [self upload:_restAuthzModule];
+        } failure:^(NSError *error) {
+        }];
+        
+    }
 }
 
 #pragma mark -
