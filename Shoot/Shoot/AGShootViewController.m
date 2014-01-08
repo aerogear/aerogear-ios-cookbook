@@ -21,7 +21,6 @@
 #import "AGAppDelegate.h"
 
 
-
 @interface AGShootViewController ()
 
 @end
@@ -69,10 +68,8 @@
     }
 }
 
--(void)upload:(id<AGAuthzModule>) authzModule {
-    NSString* readGoogleDriveURL = @"https://www.googleapis.com/drive/v2";
+-(void)upload:(id<AGAuthzModule>) authzModule token:(NSString*)object{
     NSString* uploadGoogleDriveURL = @"https://www.googleapis.com/upload/drive/v2";
-    //NSURL* serverURL = [NSURL URLWithString:readGoogleDriveURL];
     NSURL* serverURL = [NSURL URLWithString:uploadGoogleDriveURL];
     
     AGPipeline* googleDocuments = [AGPipeline pipelineWithBaseURL:serverURL];
@@ -85,28 +82,16 @@
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
     AGFileDataPart *dataPart2 = [[AGFileDataPart alloc] initWithFileData:imageData
                                                                     name:@"image"
-                                                                fileName:@"image.png" mimeType:@"image/jpeg"];
+                                                                fileName:@"image.jpeg" mimeType:@"image/jpeg"];
     // set up payload
-    NSDictionary *dict = @{@"somekey": @"somevalue", @"uploadType": @"multipart",
-                           @"data2:": dataPart2};
-    // Read data => ok
-    //    [pipe read:^(id responseObject) {
-    //        NSLog(@"::Successfully read!");
-    //
-    //    } failure:^(NSError *error) {
-    //        NSLog(@"::An error has occured during read! \n%@", error);
-    //    }];
-    
-    
-    // upload data => 401
-    // check google Drive API reference
-    // https://developers.google.com/drive/v2/reference/
+    NSDictionary *dict = @{@"data2:": dataPart2};
     [pipe save:dict success:^(id responseObject) {
         NSLog(@"Successfully uploaded!");
         
     } failure:^(NSError *error) {
         NSLog(@"An error has occured during upload! \n%@", error);
     }];
+    
     
 }
 
@@ -129,13 +114,12 @@
             config.authzEndpoint = @"/o/oauth2/auth";
             config.accessTokenEndpoint = @"/o/oauth2/token";
             config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
-            config.clientSecret = @"EpnzZE9D-8TI1z8-U2ClizPq";
             config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
             config.scopes = @[@"https://www.googleapis.com/auth/drive"];
         }];
         
         [_restAuthzModule requestAccessSuccess:^(id object) {
-            [self upload:_restAuthzModule];
+            [self upload:_restAuthzModule token:object];
         } failure:^(NSError *error) {
         }];
         
