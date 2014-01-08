@@ -47,6 +47,7 @@
 		48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C58177622A000043C05 /* topAndBottomRow.png */; };
 		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
 		6F016811177A142200601E7A /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680F177A142200601E7A /* orange.png */; };
+		B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */; };
 		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
 		6F01680F177A142200601E7A /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = Resources/images/orange.png; sourceTree = "<group>"; };
 		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				481BE870176F155A00960BDF /* Foundation.framework in Frameworks */,
 				481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */,
 				CCB432686BC74882B5C55932 /* libPods.a in Frameworks */,
+				B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +173,7 @@
 				481BE871176F155A00960BDF /* CoreGraphics.framework */,
 				481BE897176F155A00960BDF /* SenTestingKit.framework */,
 				3ED1957D45914DBAA7632452 /* libPods.a */,
+				B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -574,6 +578,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -588,6 +593,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
