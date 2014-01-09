@@ -80,19 +80,17 @@
     }];
     // Get image with high compression
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-    AGFileDataPart *dataPart2 = [[AGFileDataPart alloc] initWithFileData:imageData
+    AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
                                                                     name:@"image"
                                                                 fileName:@"image.jpeg" mimeType:@"image/jpeg"];
     // set up payload
-    NSDictionary *dict = @{@"data2:": dataPart2};
+    NSDictionary *dict = @{@"data:": dataPart};
     [pipe save:dict success:^(id responseObject) {
         NSLog(@"Successfully uploaded!");
         
     } failure:^(NSError *error) {
         NSLog(@"An error has occured during upload! \n%@", error);
     }];
-    
-    
 }
 
 - (IBAction)share:(id)sender {
