@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48BB322E18464E83007530FA /* AGBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB322D18464E83007530FA /* AGBrowseViewController.m */; };
 		48BB32321846520E007530FA /* jboss2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48BB32311846520E007530FA /* jboss2.jpg */; };
 		48E865D318400931001FAE73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E865D218400931001FAE73 /* Foundation.framework */; };
 		48E865D518400931001FAE73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E865D418400931001FAE73 /* CoreGraphics.framework */; };
@@ -38,8 +37,6 @@
 
 /* Begin PBXFileReference section */
 		4312327CC3F4417F9B710B14 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		48BB322C18464E83007530FA /* AGBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGBrowseViewController.h; sourceTree = "<group>"; };
-		48BB322D18464E83007530FA /* AGBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGBrowseViewController.m; sourceTree = "<group>"; };
 		48BB32311846520E007530FA /* jboss2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jboss2.jpg; sourceTree = "<group>"; };
 		48E865CF18400931001FAE73 /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E865D218400931001FAE73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,6 +102,13 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		48C4F0011869D38D0020AE51 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		48E865C618400931001FAE73 = {
 			isa = PBXGroup;
 			children = (
@@ -141,11 +145,10 @@
 		48E865D818400931001FAE73 /* Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				48C4F0011869D38D0020AE51 /* iPad */,
 				48E865E118400931001FAE73 /* AGAppDelegate.h */,
 				48E865E218400931001FAE73 /* AGAppDelegate.m */,
 				48E865E418400931001FAE73 /* Main.storyboard */,
-				48BB322C18464E83007530FA /* AGBrowseViewController.h */,
-				48BB322D18464E83007530FA /* AGBrowseViewController.m */,
 				48E865E718400931001FAE73 /* AGShootViewController.h */,
 				48E865E818400931001FAE73 /* AGShootViewController.m */,
 				48E865EA18400931001FAE73 /* Images.xcassets */,
@@ -317,7 +320,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BB322E18464E83007530FA /* AGBrowseViewController.m in Sources */,
 				48E865E318400931001FAE73 /* AGAppDelegate.m in Sources */,
 				48E865E918400931001FAE73 /* AGShootViewController.m in Sources */,
 				48E865DF18400931001FAE73 /* main.m in Sources */,
@@ -451,7 +453,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoot/Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Shoot/Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -465,13 +469,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoot/Shoot-Prefix.pch";
 				INFOPLIST_FILE = "Shoot/Shoot-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		48E8660518400931001FAE73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4312327CC3F4417F9B710B14 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Shoot.app/Shoot";
@@ -495,6 +502,7 @@
 		};
 		48E8660618400931001FAE73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4312327CC3F4417F9B710B14 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Shoot.app/Shoot";

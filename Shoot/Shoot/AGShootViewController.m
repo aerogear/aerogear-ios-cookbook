@@ -1,36 +1,43 @@
-//
-//  AGViewController.m
-//  Shoot
-//
-//  Created by Corinne Krych on 11/22/13.
-//  Copyright (c) 2013 AeroGear. All rights reserved.
-//
+/*
+ * JBoss, Home of Professional Open Source.
+ * Copyright Red Hat, Inc., and individual contributors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #import "AGShootViewController.h"
+#import "AeroGear.h"
+
+#import "AGAppDelegate.h"
+
 
 @interface AGShootViewController ()
 
 @end
 
-@implementation AGShootViewController
+@implementation AGShootViewController {
+    id<AGAuthzModule> _restAuthzModule;
+}
 @synthesize imageView = _imageView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-#if !TARGET_IPHONE_SIMULATOR
-    NSLog(@"Running on device");
-#endif
-#if TARGET_IPHONE_SIMULATOR
-    NSLog(@"Running on simulator");
-#endif
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) useCamera:(id)sender
@@ -44,9 +51,76 @@
         imagePicker.allowsEditing = NO;
         [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = YES;
-    } else {
-        // TODO display warning and mock photo
+    }
+}
+
+- (void) useCameraRoll:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        _newMedia = NO;
+    }
+}
+
+-(void)upload:(id<AGAuthzModule>) authzModule token:(NSString*)object{
+    NSString* uploadGoogleDriveURL = @"https://www.googleapis.com/upload/drive/v2";
+    NSURL* serverURL = [NSURL URLWithString:uploadGoogleDriveURL];
     
+    AGPipeline* googleDocuments = [AGPipeline pipelineWithBaseURL:serverURL];
+    
+    id<AGPipe> pipe = [googleDocuments pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"files"];
+        [config setAuthzModule:authzModule];
+    }];
+    // Get image with high compression
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
+                                                                    name:@"image"
+                                                                fileName:@"image.jpeg" mimeType:@"image/jpeg"];
+    // set up payload
+    NSDictionary *dict = @{@"data:": dataPart};
+    [pipe save:dict success:^(id responseObject) {
+        NSLog(@"Successfully uploaded!");
+        
+    } failure:^(NSError *error) {
+        NSLog(@"An error has occured during upload! \n%@", error);
+    }];
+}
+
+- (IBAction)share:(id)sender {
+    NSLog(@"Sharing...");
+    if (_imageView.image == nil) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Missing image!"
+                              message: @"Please select an image before sharing it"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+        
+        _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+            config.name = @"restAuthMod";
+            config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+            config.authzEndpoint = @"/o/oauth2/auth";
+            config.accessTokenEndpoint = @"/o/oauth2/token";
+            config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+            config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+            config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+        }];
+        
+        [_restAuthzModule requestAccessSuccess:^(id object) {
+            [self upload:_restAuthzModule token:object];
+        } failure:^(NSError *error) {
+        }];
+        
     }
 }
 
@@ -92,5 +166,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end
