@@ -46,7 +46,7 @@ static NSString *const kSalt = @"salt";
     BOOL launched = [defaults boolForKey:@"isLaunched"];
     if (!launched) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!"
-                                                        message:@"Since its the first time you are lunching the app, please enter a new password to use"
+                                                        message:@"Since its the first time you are launching the app, please enter a new password to use"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
