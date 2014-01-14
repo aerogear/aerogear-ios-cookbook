@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define URL_AERODOC @"http://192.168.0.13:8080/aerodoc/"
+#define URL_AERODOC @"http://localhost:8080/aerodoc/"
 #define URL_UNIFIED_PUSH @"http://192.168.0.13:8080/ag-push/"
 #define VARIANT_ID @"9ec0fbe3-ed83-4ec1-89df-5c46d7734d42"
 #define VARIANT_SECRET @"3394b71b-239c-4d0c-be6b-b2c61582445a"

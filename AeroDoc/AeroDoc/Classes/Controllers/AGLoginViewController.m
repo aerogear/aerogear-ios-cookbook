@@ -229,32 +229,20 @@
     [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
     myLeadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:myLeadsController];
 
-    AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
-    locationViewController.delegate = leadsController;
-    locationViewController.title = @"AeroGear AeroDoc";
-    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
-    [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
-    locationViewController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:locationViewController];
-    
     self.tabController = [[UITabBarController alloc] init];
-    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, settingsNavController, nil];
+    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, nil];
     self.tabController.viewControllers = controllers;
    
     UITabBar *tabBar = self.tabController.tabBar;
     UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-    //[tabBarItem1 setBadgeValue:@"2"];
-    
+
     tabBarItem1.title = @"Available Leads";
     tabBarItem2.title = @"My Leads";
-    tabBarItem3.title = @"Location";
-    
+
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"aero_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"aero_greyed.png"]];
     [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"user_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"user_greyed.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"pink_marker_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"pink_marker_greyed.png"]];
-    
+
     [self presentViewController:self.tabController animated:YES completion:^{
 
     }];

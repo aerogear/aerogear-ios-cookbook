@@ -30,7 +30,6 @@
 		48C4A9981796F595000108DF /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9971796F595000108DF /* AGLead.m */; };
 		48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */; };
 		48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99D1796F5B2000108DF /* AGLeadViewController.m */; };
-		48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99F1796F5B2000108DF /* AGLocationViewController.m */; };
 		48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A11796F5B2000108DF /* AGLoginViewController.m */; };
 		48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */; };
 		48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */; };
@@ -90,8 +89,6 @@
 		48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGLeadsViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A99C1796F5B2000108DF /* AGLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadViewController.h; path = AeroDoc/Classes/Controllers/AGLeadViewController.h; sourceTree = SOURCE_ROOT; };
 		48C4A99D1796F5B2000108DF /* AGLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadViewController.m; path = AeroDoc/Classes/Controllers/AGLeadViewController.m; sourceTree = SOURCE_ROOT; };
-		48C4A99E1796F5B2000108DF /* AGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLocationViewController.h; path = AeroDoc/Classes/Controllers/AGLocationViewController.h; sourceTree = SOURCE_ROOT; };
-		48C4A99F1796F5B2000108DF /* AGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLocationViewController.m; path = AeroDoc/Classes/Controllers/AGLocationViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A9A01796F5B2000108DF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = AeroDoc/Classes/Controllers/AGLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		48C4A9A11796F5B2000108DF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = AeroDoc/Classes/Controllers/AGLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGMyLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.h; sourceTree = SOURCE_ROOT; };
@@ -226,8 +223,6 @@
 				48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */,
 				48C4A99C1796F5B2000108DF /* AGLeadViewController.h */,
 				48C4A99D1796F5B2000108DF /* AGLeadViewController.m */,
-				48C4A99E1796F5B2000108DF /* AGLocationViewController.h */,
-				48C4A99F1796F5B2000108DF /* AGLocationViewController.m */,
 				48C4A9A01796F5B2000108DF /* AGLoginViewController.h */,
 				48C4A9A11796F5B2000108DF /* AGLoginViewController.m */,
 				48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */,
@@ -463,7 +458,6 @@
 				48C4A9981796F595000108DF /* AGLead.m in Sources */,
 				48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */,
 				48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */,
-				48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */,
 				48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */,
 				48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */,
 				48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */,

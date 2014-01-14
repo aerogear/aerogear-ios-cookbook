@@ -141,19 +141,6 @@
 
 }
 
-- (void)didChangeLocation:(AGLocationViewController *)controller location:(NSString*)location {
-    [[AeroDocAPIClient sharedInstance] changeLocation:location success:^{
-        
-    } failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:@"An error has occured changing status!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Bummer"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }];
-}
-
 - (BOOL) isLead:(AGLead*)lead in:(NSArray*)list {
     int i;
     for(i=0; i<[list count]; i++) {
@@ -234,16 +221,6 @@
 }
 
 #pragma mark - Navigation Button
-
-- (void)showLocationChooser {
-    AGLocationViewController *locController = [[AGLocationViewController alloc] initWithStyle:UITableViewStylePlain];
-    
-    locController.location = [AeroDocAPIClient sharedInstance].location;
-    locController.delegate = self;
-    
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:locController];
-    [self.navigationController presentModalViewController:controller animated:YES];
-}
 
 - (void)changeStatus {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
