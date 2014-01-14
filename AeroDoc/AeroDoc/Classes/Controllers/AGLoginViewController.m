@@ -127,7 +127,7 @@
     NSString *longitude = [NSString stringWithFormat:@"%g", location.coordinate.longitude];
 
     [apiClient changeLocationWithLatitude:latitude longitude:longitude success:^{
-        DLog(@"Sucessussfully updated posistion");
+        DLog(@"Sucessussfully updated position");
     } failure:^(NSError *error) {
         ALog(@"An error has occured during login! \n%@", error);
     }];
