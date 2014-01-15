@@ -58,7 +58,7 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:@"UIApplicationLaunchOptionsURLKey"]];
+    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:UIApplicationLaunchOptionsURLKey]];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     return YES;
