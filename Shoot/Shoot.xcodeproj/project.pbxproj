@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48BB32321846520E007530FA /* jboss2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48BB32311846520E007530FA /* jboss2.jpg */; };
 		48E865D318400931001FAE73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E865D218400931001FAE73 /* Foundation.framework */; };
 		48E865D518400931001FAE73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E865D418400931001FAE73 /* CoreGraphics.framework */; };
 		48E865D718400931001FAE73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E865D618400931001FAE73 /* UIKit.framework */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		4312327CC3F4417F9B710B14 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		48BB32311846520E007530FA /* jboss2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jboss2.jpg; sourceTree = "<group>"; };
 		48E865CF18400931001FAE73 /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E865D218400931001FAE73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		48E865D418400931001FAE73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,7 +95,6 @@
 		48BB32301846520E007530FA /* images */ = {
 			isa = PBXGroup;
 			children = (
-				48BB32311846520E007530FA /* jboss2.jpg */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -265,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BB32321846520E007530FA /* jboss2.jpg in Resources */,
 				48E865EB18400931001FAE73 /* Images.xcassets in Resources */,
 				48E865DD18400931001FAE73 /* InfoPlist.strings in Resources */,
 				48E865E618400931001FAE73 /* Main.storyboard in Resources */,
