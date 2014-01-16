@@ -31,6 +31,7 @@
     UITextField *_username;
     UITextField *_password;
     UIButton *_login;
+    CLLocationManager *_locationManager;
 }
 
 @synthesize deviceToken = _deviceToken;
@@ -47,7 +48,9 @@
     DLog(@"AGLoginViewController start viewDidLoad");
     self.view.backgroundColor = [UIColor clearColor];
 
-
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _illustration = [[UIImageView alloc] initWithImage:background];
     _illustration.center = CGPointMake(160, 120);
@@ -117,6 +120,19 @@
     return button;
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation* location = [locations lastObject];
+    AeroDocAPIClient *apiClient = [AeroDocAPIClient sharedInstance];
+    NSString *latitude = [NSString stringWithFormat:@"%g", location.coordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%g", location.coordinate.longitude];
+
+    [apiClient changeLocationWithLatitude:latitude longitude:longitude success:^{
+        DLog(@"Sucessussfully updated position");
+    } failure:^(NSError *error) {
+        ALog(@"An error has occured during login! \n%@", error);
+    }];
+}
+
 # pragma mark - Action Methods
 //--------------------------------------------------------------------
 // Login button action. Once successfully logged we register device
@@ -145,6 +161,7 @@
         // a successful login means we can trigger the device registration
         // against the AeroGear UnifiedPush Server:
         [self deviceRegistration];
+        [_locationManager startMonitoringSignificantLocationChanges];
         [self initUINavigation];
     } failure:^(NSError *error) {
         ALog(@"An error has occured during login! \n%@", error);
@@ -212,32 +229,20 @@
     [myLeadsNavController.navigationBar setTintColor:[UIColor blackColor]];
     myLeadsController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:myLeadsController];
 
-    AGLocationViewController *locationViewController = [[AGLocationViewController alloc] init];
-    locationViewController.delegate = leadsController;
-    locationViewController.title = @"AeroGear AeroDoc";
-    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
-    [settingsNavController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [settingsNavController.navigationBar setTintColor:[UIColor blackColor]];
-    locationViewController.navigationItem.leftBarButtonItem = [[AGStatus sharedInstance] registerStatusItemOnTarget:locationViewController];
-    
     self.tabController = [[UITabBarController alloc] init];
-    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, settingsNavController, nil];
+    NSArray *controllers = [NSArray arrayWithObjects:navController, myLeadsNavController, nil];
     self.tabController.viewControllers = controllers;
    
     UITabBar *tabBar = self.tabController.tabBar;
     UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
-    //[tabBarItem1 setBadgeValue:@"2"];
-    
+
     tabBarItem1.title = @"Available Leads";
     tabBarItem2.title = @"My Leads";
-    tabBarItem3.title = @"Location";
-    
+
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"aero_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"aero_greyed.png"]];
     [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"user_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"user_greyed.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"pink_marker_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"pink_marker_greyed.png"]];
-    
+
     [self presentViewController:self.tabController animated:YES completion:^{
 
     }];

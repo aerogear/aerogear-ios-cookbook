@@ -18,6 +18,7 @@
 #import "AeroDocAPIClient.h"
 #import "AGLead.h"
 #import "AGConfig.h"
+#import "AGPipe.h"
 
 @implementation AeroDocAPIClient
 
@@ -26,8 +27,9 @@
 
 @synthesize userId = _userId;
 @synthesize loginName = _loginName;
-@synthesize location = _location;
 @synthesize status = _status;
+@synthesize latitude = _latitude;
+@synthesize longitude = _longitude;
 
 @synthesize localStore = _localStore;
 @synthesize pushedLocalStore = _pushedLocalStore;
@@ -74,8 +76,9 @@
         // authenticated against the remote endpoints.
         _userId = object[@"id"];
         _loginName = object[@"loginName"];
-        _location = object[@"location"];
         _status = object[@"status"];
+        _latitude = object[@"latitude"];
+        _longitude = object[@"longitude"];
         
         _leadsPipe = [pipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"leads"];
@@ -152,30 +155,32 @@
              success:(void (^)())success
              failure:(void (^)(NSError *error))failure {
     
-    [self changeAgentWithStatus:status location:_location success:success failure:failure];
+    [self changeAgentWithStatus:status latitude:_latitude longitude:_longitude success:success failure:failure];
 }
 
-- (void)changeLocation:(NSString*) location
-               success:(void (^)())success
-               failure:(void (^)(NSError *error))failure {
-    
-    [self changeAgentWithStatus:_status location:location success:success failure:failure];
+- (void)changeLocationWithLatitude:(NSString *)latitude
+                         longitude:(NSString *)longitude
+                           success:(void (^)())success
+                           failure:(void (^)(NSError *error))failure {
+    [self changeAgentWithStatus:_status latitude:latitude longitude:longitude success:success failure:failure];
 }
-
 
 - (void)changeAgentWithStatus:(NSString*)status
-                     location:(NSString*)location
+                     latitude:(NSString*)latitude
+                    longitude:(NSString *)longitude
                       success:(void (^)())success
                       failure:(void (^)(NSError *error))failure {
-    
+
     NSDictionary *params = @{@"id": _userId, @"loginName": _loginName,
                              @"status": status,
-                             @"location": location};
+                             @"latitude": latitude,
+                             @"longitude": longitude};
     
     [_agentPipe save:params success:^(id responseObject) {
         // update local status on success
         _status = status;
-        _location = location;
+        _latitude = latitude;
+        _longitude = longitude;
         
         success();
     } failure:^(NSError *error) {

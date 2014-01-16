@@ -29,8 +29,9 @@
 
 @property(readonly, nonatomic) NSNumber *userId;
 @property(readonly, nonatomic) NSString *loginName;
-@property(readonly, nonatomic) NSString *location;
 @property(readonly, nonatomic) NSString *status;
+@property(readonly, nonatomic) NSString *latitude;
+@property(readonly, nonatomic) NSString *longitude;
 
 + (AeroDocAPIClient *)sharedInstance;
 
@@ -50,8 +51,9 @@
              success:(void (^)())success
              failure:(void (^)(NSError *error))failure;
 
-- (void)changeLocation:(NSString*) location
-               success:(void (^)())success
-               failure:(void (^)(NSError *error))failure;
+- (void)changeLocationWithLatitude:(NSString *)latitude
+                         longitude:(NSString *)longitude
+                           success:(void (^)())success
+                           failure:(void (^)(NSError *error))failure;
 
 @end

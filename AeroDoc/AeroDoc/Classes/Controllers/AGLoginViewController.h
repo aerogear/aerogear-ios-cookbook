@@ -15,9 +15,10 @@
  * limitations under the License.
  */
 
+#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
-@interface AGLoginViewController : UIViewController <UITextFieldDelegate>
+@interface AGLoginViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) NSData *deviceToken;
 @property (strong, nonatomic) UITabBarController *tabController;
 @end

@@ -22,15 +22,12 @@
 		481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE8A0176F155A00960BDF /* InfoPlist.strings */; };
 		4885A24817C4C5C600CD6B02 /* aero_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4885A24617C4C5C600CD6B02 /* aero_greyed.png */; };
 		4885A24917C4C5C600CD6B02 /* aero_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4885A24717C4C5C600CD6B02 /* aero_selected.png */; };
-		48C139BC17C66AA900449D3C /* pink_marker_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139BA17C66AA900449D3C /* pink_marker_greyed.png */; };
-		48C139BD17C66AA900449D3C /* pink_marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139BB17C66AA900449D3C /* pink_marker_selected.png */; };
 		48C139C117C66C7D00449D3C /* user_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139BF17C66C7D00449D3C /* user_selected.png */; };
 		48C139C317C66CDB00449D3C /* user_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139C217C66CDB00449D3C /* user_greyed.png */; };
 		48C139C517C6714A00449D3C /* notification_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139C417C6714A00449D3C /* notification_red.png */; };
 		48C4A9981796F595000108DF /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9971796F595000108DF /* AGLead.m */; };
 		48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */; };
 		48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99D1796F5B2000108DF /* AGLeadViewController.m */; };
-		48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99F1796F5B2000108DF /* AGLocationViewController.m */; };
 		48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A11796F5B2000108DF /* AGLoginViewController.m */; };
 		48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */; };
 		48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */; };
@@ -47,6 +44,7 @@
 		48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C58177622A000043C05 /* topAndBottomRow.png */; };
 		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
 		6F016811177A142200601E7A /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680F177A142200601E7A /* orange.png */; };
+		B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */; };
 		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +75,6 @@
 		481BE8A1176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4885A24617C4C5C600CD6B02 /* aero_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aero_greyed.png; path = Resources/images/aero_greyed.png; sourceTree = "<group>"; };
 		4885A24717C4C5C600CD6B02 /* aero_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aero_selected.png; path = Resources/images/aero_selected.png; sourceTree = "<group>"; };
-		48C139BA17C66AA900449D3C /* pink_marker_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pink_marker_greyed.png; path = Resources/images/pink_marker_greyed.png; sourceTree = "<group>"; };
-		48C139BB17C66AA900449D3C /* pink_marker_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pink_marker_selected.png; path = Resources/images/pink_marker_selected.png; sourceTree = "<group>"; };
 		48C139BF17C66C7D00449D3C /* user_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_selected.png; path = Resources/images/user_selected.png; sourceTree = "<group>"; };
 		48C139C217C66CDB00449D3C /* user_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_greyed.png; path = Resources/images/user_greyed.png; sourceTree = "<group>"; };
 		48C139C417C6714A00449D3C /* notification_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notification_red.png; path = Resources/images/notification_red.png; sourceTree = "<group>"; };
@@ -89,8 +85,6 @@
 		48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGLeadsViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A99C1796F5B2000108DF /* AGLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadViewController.h; path = AeroDoc/Classes/Controllers/AGLeadViewController.h; sourceTree = SOURCE_ROOT; };
 		48C4A99D1796F5B2000108DF /* AGLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadViewController.m; path = AeroDoc/Classes/Controllers/AGLeadViewController.m; sourceTree = SOURCE_ROOT; };
-		48C4A99E1796F5B2000108DF /* AGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLocationViewController.h; path = AeroDoc/Classes/Controllers/AGLocationViewController.h; sourceTree = SOURCE_ROOT; };
-		48C4A99F1796F5B2000108DF /* AGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLocationViewController.m; path = AeroDoc/Classes/Controllers/AGLocationViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A9A01796F5B2000108DF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = AeroDoc/Classes/Controllers/AGLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		48C4A9A11796F5B2000108DF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = AeroDoc/Classes/Controllers/AGLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGMyLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.h; sourceTree = SOURCE_ROOT; };
@@ -115,6 +109,7 @@
 		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
 		6F01680F177A142200601E7A /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = Resources/images/orange.png; sourceTree = "<group>"; };
 		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +121,7 @@
 				481BE870176F155A00960BDF /* Foundation.framework in Frameworks */,
 				481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */,
 				CCB432686BC74882B5C55932 /* libPods.a in Frameworks */,
+				B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +166,7 @@
 				481BE871176F155A00960BDF /* CoreGraphics.framework */,
 				481BE897176F155A00960BDF /* SenTestingKit.framework */,
 				3ED1957D45914DBAA7632452 /* libPods.a */,
+				B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -222,8 +219,6 @@
 				48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */,
 				48C4A99C1796F5B2000108DF /* AGLeadViewController.h */,
 				48C4A99D1796F5B2000108DF /* AGLeadViewController.m */,
-				48C4A99E1796F5B2000108DF /* AGLocationViewController.h */,
-				48C4A99F1796F5B2000108DF /* AGLocationViewController.m */,
 				48C4A9A01796F5B2000108DF /* AGLoginViewController.h */,
 				48C4A9A11796F5B2000108DF /* AGLoginViewController.m */,
 				48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */,
@@ -274,8 +269,6 @@
 				48C139C417C6714A00449D3C /* notification_red.png */,
 				48C139C217C66CDB00449D3C /* user_greyed.png */,
 				48C139BF17C66C7D00449D3C /* user_selected.png */,
-				48C139BA17C66AA900449D3C /* pink_marker_greyed.png */,
-				48C139BB17C66AA900449D3C /* pink_marker_selected.png */,
 				4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */,
 				4810B5CF17C3ACF700E72BFD /* ic_launcher.png */,
 				4885A24617C4C5C600CD6B02 /* aero_greyed.png */,
@@ -389,8 +382,6 @@
 				4810B5D217C3AD5100E72BFD /* ic_launcher_114.png in Resources */,
 				4885A24817C4C5C600CD6B02 /* aero_greyed.png in Resources */,
 				4885A24917C4C5C600CD6B02 /* aero_selected.png in Resources */,
-				48C139BC17C66AA900449D3C /* pink_marker_greyed.png in Resources */,
-				48C139BD17C66AA900449D3C /* pink_marker_selected.png in Resources */,
 				48C139C117C66C7D00449D3C /* user_selected.png in Resources */,
 				48C139C317C66CDB00449D3C /* user_greyed.png in Resources */,
 				48C139C517C6714A00449D3C /* notification_red.png in Resources */,
@@ -459,7 +450,6 @@
 				48C4A9981796F595000108DF /* AGLead.m in Sources */,
 				48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */,
 				48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */,
-				48C4A9A61796F5B2000108DF /* AGLocationViewController.m in Sources */,
 				48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */,
 				48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */,
 				48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */,
@@ -574,6 +564,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -588,6 +579,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
