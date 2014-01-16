@@ -30,7 +30,7 @@
     
     self.title = @"Developers";
     
-    NSURL* projectsURL = [NSURL URLWithString:@"http://localhost:8080/aerogear-integration-tests-server/rest"];
+    NSURL* projectsURL = [NSURL URLWithString:@"http://igtests-cvasilak.rhcloud.com/rest"];
     
     // create the server 'Pipeline'
     AGPipeline *server = [AGPipeline pipelineWithBaseURL:projectsURL];
