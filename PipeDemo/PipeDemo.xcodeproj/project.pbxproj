@@ -19,7 +19,6 @@
 		6FCE66711887F96100607C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCE66561887F96100607C43 /* Foundation.framework */; };
 		6FCE66721887F96100607C43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCE665A1887F96100607C43 /* UIKit.framework */; };
 		6FCE667A1887F96100607C43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE66781887F96100607C43 /* InfoPlist.strings */; };
-		6FCE667C1887F96100607C43 /* PipeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE667B1887F96100607C43 /* PipeDemoTests.m */; };
 		6FCE66871887F9C800607C43 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE66861887F9C800607C43 /* AGViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 		6FCE666F1887F96100607C43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6FCE66771887F96100607C43 /* PipeDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PipeDemoTests-Info.plist"; sourceTree = "<group>"; };
 		6FCE66791887F96100607C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6FCE667B1887F96100607C43 /* PipeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PipeDemoTests.m; sourceTree = "<group>"; };
 		6FCE66851887F9C800607C43 /* AGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
 		6FCE66861887F9C800607C43 /* AGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
 		90586636B37343BDBB10D9DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +138,6 @@
 		6FCE66751887F96100607C43 /* PipeDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				6FCE667B1887F96100607C43 /* PipeDemoTests.m */,
 				6FCE66761887F96100607C43 /* Supporting Files */,
 			);
 			path = PipeDemoTests;
@@ -296,7 +293,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FCE667C1887F96100607C43 /* PipeDemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
