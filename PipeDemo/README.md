@@ -8,10 +8,10 @@ The project requires [CocoaPods](http://cocoapods.org/) for dependency managemen
 
 ### SETUP
 
-_BEFORE_ you can run the app, you need to run the following command inside of the AeroGear-TODO folder:
+_BEFORE_ you can run the app, you need to run the following command:
 
     pod install
 
-Now you are almost done! You just need to open the AeroGear-TODO.xcworkspace in order to run the TODO app!
+Now you are almost done! You just need to open the PipeDemo.xcworkspace in order to run the demo!
 
 Enjoy!
