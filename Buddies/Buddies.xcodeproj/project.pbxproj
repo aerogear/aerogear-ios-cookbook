@@ -28,26 +28,26 @@
 			containerPortal = 6FCE664B1887F96100607C43 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6FCE66521887F96100607C43;
-			remoteInfo = PipeDemo;
+			remoteInfo = Buddies;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		30D0F3B2CE8045BCBA16E00A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		6FCE66531887F96100607C43 /* PipeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PipeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCE66531887F96100607C43 /* Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCE66561887F96100607C43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6FCE66581887F96100607C43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6FCE665A1887F96100607C43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6FCE665E1887F96100607C43 /* PipeDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PipeDemo-Info.plist"; sourceTree = "<group>"; };
+		6FCE665E1887F96100607C43 /* Buddies-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Buddies-Info.plist"; sourceTree = "<group>"; };
 		6FCE66601887F96100607C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6FCE66621887F96100607C43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6FCE66641887F96100607C43 /* PipeDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PipeDemo-Prefix.pch"; sourceTree = "<group>"; };
+		6FCE66641887F96100607C43 /* Buddies-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Buddies-Prefix.pch"; sourceTree = "<group>"; };
 		6FCE66651887F96100607C43 /* AGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGAppDelegate.h; sourceTree = "<group>"; };
 		6FCE66661887F96100607C43 /* AGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGAppDelegate.m; sourceTree = "<group>"; };
 		6FCE66681887F96100607C43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6FCE666E1887F96100607C43 /* PipeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCE666E1887F96100607C43 /* BuddiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCE666F1887F96100607C43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6FCE66771887F96100607C43 /* PipeDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PipeDemoTests-Info.plist"; sourceTree = "<group>"; };
+		6FCE66771887F96100607C43 /* BuddiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BuddiesTests-Info.plist"; sourceTree = "<group>"; };
 		6FCE66791887F96100607C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6FCE66851887F9C800607C43 /* AGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
 		6FCE66861887F9C800607C43 /* AGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		6FCE664A1887F96100607C43 = {
 			isa = PBXGroup;
 			children = (
-				6FCE665C1887F96100607C43 /* PipeDemo */,
-				6FCE66751887F96100607C43 /* PipeDemoTests */,
+				6FCE665C1887F96100607C43 /* Buddies */,
+				6FCE66751887F96100607C43 /* BuddiesTests */,
 				6FCE66551887F96100607C43 /* Frameworks */,
 				6FCE66541887F96100607C43 /* Products */,
 				30D0F3B2CE8045BCBA16E00A /* Pods.xcconfig */,
@@ -93,8 +93,8 @@
 		6FCE66541887F96100607C43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FCE66531887F96100607C43 /* PipeDemo.app */,
-				6FCE666E1887F96100607C43 /* PipeDemoTests.xctest */,
+				6FCE66531887F96100607C43 /* Buddies.app */,
+				6FCE666E1887F96100607C43 /* BuddiesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6FCE665C1887F96100607C43 /* PipeDemo */ = {
+		6FCE665C1887F96100607C43 /* Buddies */ = {
 			isa = PBXGroup;
 			children = (
 				6FCE66651887F96100607C43 /* AGAppDelegate.h */,
@@ -121,32 +121,32 @@
 				6FCE66681887F96100607C43 /* Images.xcassets */,
 				6FCE665D1887F96100607C43 /* Supporting Files */,
 			);
-			path = PipeDemo;
+			path = Buddies;
 			sourceTree = "<group>";
 		};
 		6FCE665D1887F96100607C43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FCE665E1887F96100607C43 /* PipeDemo-Info.plist */,
+				6FCE665E1887F96100607C43 /* Buddies-Info.plist */,
 				6FCE665F1887F96100607C43 /* InfoPlist.strings */,
 				6FCE66621887F96100607C43 /* main.m */,
-				6FCE66641887F96100607C43 /* PipeDemo-Prefix.pch */,
+				6FCE66641887F96100607C43 /* Buddies-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6FCE66751887F96100607C43 /* PipeDemoTests */ = {
+		6FCE66751887F96100607C43 /* BuddiesTests */ = {
 			isa = PBXGroup;
 			children = (
 				6FCE66761887F96100607C43 /* Supporting Files */,
 			);
-			path = PipeDemoTests;
+			path = BuddiesTests;
 			sourceTree = "<group>";
 		};
 		6FCE66761887F96100607C43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FCE66771887F96100607C43 /* PipeDemoTests-Info.plist */,
+				6FCE66771887F96100607C43 /* BuddiesTests-Info.plist */,
 				6FCE66781887F96100607C43 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -155,9 +155,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FCE66521887F96100607C43 /* PipeDemo */ = {
+		6FCE66521887F96100607C43 /* Buddies */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FCE667F1887F96100607C43 /* Build configuration list for PBXNativeTarget "PipeDemo" */;
+			buildConfigurationList = 6FCE667F1887F96100607C43 /* Build configuration list for PBXNativeTarget "Buddies" */;
 			buildPhases = (
 				93D97C5819904268A3A79144 /* Check Pods Manifest.lock */,
 				6FCE664F1887F96100607C43 /* Sources */,
@@ -169,14 +169,14 @@
 			);
 			dependencies = (
 			);
-			name = PipeDemo;
-			productName = PipeDemo;
-			productReference = 6FCE66531887F96100607C43 /* PipeDemo.app */;
+			name = Buddies;
+			productName = Buddies;
+			productReference = 6FCE66531887F96100607C43 /* Buddies.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6FCE666D1887F96100607C43 /* PipeDemoTests */ = {
+		6FCE666D1887F96100607C43 /* BuddiesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FCE66821887F96100607C43 /* Build configuration list for PBXNativeTarget "PipeDemoTests" */;
+			buildConfigurationList = 6FCE66821887F96100607C43 /* Build configuration list for PBXNativeTarget "BuddiesTests" */;
 			buildPhases = (
 				6FCE666A1887F96100607C43 /* Sources */,
 				6FCE666B1887F96100607C43 /* Frameworks */,
@@ -187,9 +187,9 @@
 			dependencies = (
 				6FCE66741887F96100607C43 /* PBXTargetDependency */,
 			);
-			name = PipeDemoTests;
-			productName = PipeDemoTests;
-			productReference = 6FCE666E1887F96100607C43 /* PipeDemoTests.xctest */;
+			name = BuddiesTests;
+			productName = BuddiesTests;
+			productReference = 6FCE666E1887F96100607C43 /* BuddiesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6FCE664E1887F96100607C43 /* Build configuration list for PBXProject "PipeDemo" */;
+			buildConfigurationList = 6FCE664E1887F96100607C43 /* Build configuration list for PBXProject "Buddies" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -219,8 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FCE66521887F96100607C43 /* PipeDemo */,
-				6FCE666D1887F96100607C43 /* PipeDemoTests */,
+				6FCE66521887F96100607C43 /* Buddies */,
+				6FCE666D1887F96100607C43 /* BuddiesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,7 +301,7 @@
 /* Begin PBXTargetDependency section */
 		6FCE66741887F96100607C43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FCE66521887F96100607C43 /* PipeDemo */;
+			target = 6FCE66521887F96100607C43 /* Buddies */;
 			targetProxy = 6FCE66731887F96100607C43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -405,8 +405,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PipeDemo/PipeDemo-Prefix.pch";
-				INFOPLIST_FILE = "PipeDemo/PipeDemo-Info.plist";
+				GCC_PREFIX_HEADER = "Buddies/Buddies-Prefix.pch";
+				INFOPLIST_FILE = "Buddies/Buddies-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -419,8 +419,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PipeDemo/PipeDemo-Prefix.pch";
-				INFOPLIST_FILE = "PipeDemo/PipeDemo-Info.plist";
+				GCC_PREFIX_HEADER = "Buddies/Buddies-Prefix.pch";
+				INFOPLIST_FILE = "Buddies/Buddies-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -430,19 +430,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PipeDemo.app/PipeDemo";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Buddies.app/Buddies";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PipeDemo/PipeDemo-Prefix.pch";
+				GCC_PREFIX_HEADER = "Buddies/Buddies-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "PipeDemoTests/PipeDemoTests-Info.plist";
+				INFOPLIST_FILE = "BuddiesTests/BuddiesTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -453,15 +453,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PipeDemo.app/PipeDemo";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Buddies.app/Buddies";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PipeDemo/PipeDemo-Prefix.pch";
-				INFOPLIST_FILE = "PipeDemoTests/PipeDemoTests-Info.plist";
+				GCC_PREFIX_HEADER = "Buddies/Buddies-Prefix.pch";
+				INFOPLIST_FILE = "BuddiesTests/BuddiesTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -471,7 +471,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6FCE664E1887F96100607C43 /* Build configuration list for PBXProject "PipeDemo" */ = {
+		6FCE664E1887F96100607C43 /* Build configuration list for PBXProject "Buddies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FCE667D1887F96100607C43 /* Debug */,
@@ -480,7 +480,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FCE667F1887F96100607C43 /* Build configuration list for PBXNativeTarget "PipeDemo" */ = {
+		6FCE667F1887F96100607C43 /* Build configuration list for PBXNativeTarget "Buddies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FCE66801887F96100607C43 /* Debug */,
@@ -489,7 +489,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FCE66821887F96100607C43 /* Build configuration list for PBXNativeTarget "PipeDemoTests" */ = {
+		6FCE66821887F96100607C43 /* Build configuration list for PBXNativeTarget "BuddiesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FCE66831887F96100607C43 /* Debug */,
