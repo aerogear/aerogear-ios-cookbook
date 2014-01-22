@@ -18,6 +18,6 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface AGShootViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AGShootViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @end
