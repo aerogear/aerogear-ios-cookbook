@@ -20,55 +20,26 @@
 
 #import "AGAppDelegate.h"
 
-
 @interface AGShootViewController ()
+    @property BOOL newMedia;
+    @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
+    - (IBAction)useCamera:(id)sender;
+    - (IBAction)useCameraRoll:(id)sender;
+    - (IBAction)share:(id)sender;
 @end
 
 @implementation AGShootViewController {
     id<AGAuthzModule> _restAuthzModule;
 }
-@synthesize imageView = _imageView;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+#pragma mark - OAuth2
 
-- (void) useCamera:(id)sender
-{
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        _newMedia = YES;
-    }
-}
-
-- (void) useCameraRoll:(id)sender
-{
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        _newMedia = NO;
-    }
-}
-
--(void)upload:(id<AGAuthzModule>) authzModule token:(NSString*)object{
+-(void)upload:(id<AGAuthzModule>) authzModule token:(NSString*)object {
     NSString* uploadGoogleDriveURL = @"https://www.googleapis.com/upload/drive/v2";
     NSURL* serverURL = [NSURL URLWithString:uploadGoogleDriveURL];
     
@@ -81,8 +52,8 @@
     // Get image with high compression
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
     AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
-                                                                    name:@"image"
-                                                                fileName:@"image.jpeg" mimeType:@"image/jpeg"];
+                                                                   name:@"image"
+                                                               fileName:@"image.jpeg" mimeType:@"image/jpeg"];
     // set up payload
     NSDictionary *dict = @{@"data:": dataPart};
     [pipe save:dict success:^(id responseObject) {
@@ -93,8 +64,35 @@
     }];
 }
 
+#pragma mark - Toolbar Actions
+
+- (void) useCamera:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        _newMedia = YES;
+    }
+}
+
+- (void) useCameraRoll:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        _newMedia = NO;
+    }
+}
+
 - (IBAction)share:(id)sender {
     NSLog(@"Sharing...");
+    
     if (_imageView.image == nil) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Missing image!"
@@ -124,11 +122,9 @@
     }
 }
 
-#pragma mark -
-#pragma mark UIImagePickerControllerDelegate
+#pragma mark - UIImagePickerControllerDelegate
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -142,15 +138,12 @@
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
+    } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         // Code here to support video if enabled
     }
 }
 
--(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
+-(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Save failed"
@@ -162,10 +155,8 @@
     }
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end

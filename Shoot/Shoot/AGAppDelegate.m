@@ -19,8 +19,7 @@
 
 @implementation AGAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return YES;
 }
 
@@ -29,7 +28,7 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:@"UIApplicationLaunchOptionsURLKey"]];
+    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:UIApplicationLaunchOptionsURLKey]];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     return YES;
