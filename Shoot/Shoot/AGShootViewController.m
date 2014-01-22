@@ -18,6 +18,8 @@
 #import "AGShootViewController.h"
 #import "AeroGear.h"
 
+#import "SVProgressHUD.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "AGAppDelegate.h"
 
 @interface AGShootViewController ()
@@ -39,28 +41,60 @@
 
 #pragma mark - OAuth2
 
--(void)upload:(id<AGAuthzModule>) authzModule token:(NSString*)object {
-    NSString* uploadGoogleDriveURL = @"https://www.googleapis.com/upload/drive/v2";
-    NSURL* serverURL = [NSURL URLWithString:uploadGoogleDriveURL];
+-(void)upload:(id<AGAuthzModule>)authzModule token:(NSString*)object {
+    // the Google API base URL
+    NSURL *gUrl = [NSURL URLWithString:@"https://www.googleapis.com"];
     
-    AGPipeline* googleDocuments = [AGPipeline pipelineWithBaseURL:serverURL];
+    AGPipeline* gPipeline = [AGPipeline pipelineWithBaseURL:gUrl];
     
-    id<AGPipe> pipe = [googleDocuments pipe:^(id<AGPipeConfig> config) {
-        [config setName:@"files"];
+    // set up upload pipe
+    id<AGPipe> uploadPipe = [gPipeline pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"upload/drive/v2/files"];
         [config setAuthzModule:authzModule];
     }];
-    // Get image with high compression
+    
+    // set up metadata pipe
+    id<AGPipe> metaPipe = [gPipeline pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"drive/v2/files"];
+        [config setAuthzModule:authzModule];
+    }];
+    
+    // Get currently displayed image
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    
+    // set up payload with the image
+    NSString *filename = self.imageView.accessibilityIdentifier;
     AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
                                                                    name:@"image"
-                                                               fileName:@"image.jpeg" mimeType:@"image/jpeg"];
-    // set up payload
+                                                               fileName:filename
+                                                               mimeType:@"image/jpeg"];
+
     NSDictionary *dict = @{@"data:": dataPart};
-    [pipe save:dict success:^(id responseObject) {
-        NSLog(@"Successfully uploaded!");
+    
+    // show a progress indicator
+    [uploadPipe setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        [SVProgressHUD showProgress:(totalBytesWritten/(float)totalBytesExpectedToWrite)
+                             status:@"uploading, please wait"];
+    }];
+    
+    // upload file
+    [uploadPipe save:dict success:^(id responseObject) {
+        // time to set metadata
+        
+        // extract the "id" assigned from the response
+        NSString *fileId = [responseObject objectForKey:@"id"];
+        // set the filename
+        NSDictionary *params = @{ @"id":fileId, @"title": filename};
+        
+        // set metadata
+        [metaPipe save:params success:^(id responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
+        } failure:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"Failed to set metadata!"];
+        }];
         
     } failure:^(NSError *error) {
-        NSLog(@"An error has occured during upload! \n%@", error);
+            [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
     }];
 }
 
@@ -91,8 +125,6 @@
 }
 
 - (IBAction)share:(id)sender {
-    NSLog(@"Sharing...");
-    
     if (_imageView.image == nil) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Missing image!"
@@ -132,12 +164,30 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
-        _imageView.image = image;
-        if (_newMedia)
+        if (_newMedia) {
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
+            self.imageView.accessibilityIdentifier = @"Untitled.jpg";
+                
+        } else {
+            NSURL *imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
+            ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset) {
+                ALAssetRepresentation *representation = [myasset defaultRepresentation];
+                self.imageView.accessibilityIdentifier = [representation filename];
+            };
+            
+            ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+            [assetslibrary assetForURL:imageURL
+                           resultBlock:resultblock
+                          failureBlock:nil];
+        }
+        
+        self.imageView.image = image;
+
+        [SVProgressHUD showSuccessWithStatus:@"image added!"];
+        
     } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         // Code here to support video if enabled
     }
