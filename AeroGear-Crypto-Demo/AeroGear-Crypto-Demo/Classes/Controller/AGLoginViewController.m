@@ -100,6 +100,7 @@ static NSString *const kSalt = @"salt";
     // create store
     store = [manager store:^(id<AGStoreConfig> config) {
         [config setName:@"MyCredentialsStorage"];
+        // can also be set to "ENCRYPTED_SQLITE" for the encrypted sqlite variant
         [config setType:@"ENCRYPTED_PLIST"];
         [config setEncryptionService:encService];
     }];
