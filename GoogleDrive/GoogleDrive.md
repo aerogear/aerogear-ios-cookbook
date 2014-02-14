@@ -36,7 +36,7 @@ You get :
 
 Open Xcode, go to GoogleDrive-Info.plist and add an new URL schema entry as shown below:
 
-![GoogleDrive URL Scheme](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/GoogleDrive/GoogleDrive/Resources/images/callback-URL.png "GoogleDrive URL Scheme")
+![GoogleDrive URL Scheme](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/GoogleDrive/GoogleDrive/Resources/images/callback_URL.png "GoogleDrive URL Scheme")
 
 ## OAuth2 Flow
 
