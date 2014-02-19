@@ -1,7 +1,7 @@
 GoogleDrive
 ==============
 
-GoogleDrive app displays, in a TableView, the documents in your Google Drive using OAuth2 to authenticate and authorize. The main purpose of this demo app is to show you how to use [aerogear-ios](https://github.com/aerogear/aerogear-ios) to manage OAuth2 transparently. 
+GoogleDrive app displays in a TableView, all your documents in your Google Drive using OAuth2 to authenticate and authorize. The main purpose of this demo app is to show you how to use [aerogear-ios](https://github.com/aerogear/aerogear-ios) to manage OAuth2 transparently. 
 
 ## Install
 All our project require [CocoaPods](http://cocoapods.org/) for dependency management;
@@ -12,8 +12,12 @@ All our project require [CocoaPods](http://cocoapods.org/) for dependency manage
 
 After that you just need to open the ```GoogleDrive.xcworkspace``` file in XCode and you're all set.
 
-## Google setup
-We're using Google Drive as an example, similar code could be used for facebook or any OAuth2 provider. To set up you environment, refer to your provider. I give you the links and detailled setup for GoogleDrive however as I noticed it is quite pooly documented for iOS app.
+## Google setup (optional)
+We're using Google Drive as an example, similar code could be used for facebook or any OAuth2 provider. To set up you environment, refer to your provider. 
+
+Here is the links and detailled setup instructions for GoogleDrive however as I noticed it is quite pooly documented for iOS app.
+
+NOTES: This step is optional if your want to try the GoogleDrive app out of the box. The client id for 'GoogleDrive' has already been generated and [is available in the app](https://github.com/aerogear/aerogear-ios-cookbook/blob/master/GoogleDrive/GoogleDrive/AGViewController.m#L75). However if you want to create your own app, you will have to go through your provider setup instruction. Here's how to do it for Google Drive.
 
 1. Have a Google account
 2. Go to [Google cloud console](https://cloud.google.com/console#/project), create a new project
