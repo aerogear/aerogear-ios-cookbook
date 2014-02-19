@@ -13,14 +13,19 @@ All our project require [CocoaPods](http://cocoapods.org/) for dependency manage
 
 After that you just need to open the ```Shoot.xcworkspace``` file in XCode and you're all set.
 
-## Google setup
+## Google setup (optional)
 
-Similar set up than GoogleDrive app please refer to its configuration section.
+Similar set up than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
+NOTES: Google setup has already been done for ShootnShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
 ## UI Fow 
 When you start the application you can take picture or select one from your camera roll.
 
-Once an image is selected, you can share it. Ding so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
+Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
+
+![Shoot'nShare app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/Shoot/Resources/shootupload.png "Shoot")
+
+NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
 
 ## AeroGear upload
 
