@@ -15,7 +15,7 @@ After that you just need to open the ```Shoot.xcworkspace``` file in XCode and y
 
 ## Google setup (optional)
 
-Similar set up than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
+Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
 NOTES: Google setup has already been done for ShootnShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
 ## UI Fow 
