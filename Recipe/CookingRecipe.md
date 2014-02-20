@@ -17,13 +17,13 @@ When you first launch the Recipes app, you will bootstrap data from plist proper
 
 To navigate from 'recipes list' to 'add new recipe', we use push segue. Once the recipe is saved, delegate protocol is called.
 
-![Cooking app](https://github.com/corinnekrych/aerogear-ios-cookbook/raw/master/Recipes/CookingRecipes/Resources/images/recipes-flow.png "Cooking")
+![Cooking app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Recipes/CookingRecipes/Resources/images/recipes-flow.png "Cooking")
 
 ## Code Snippets 
 Let's see how to use Store in AeroGear libraries.
 ### Create Store
 
-In [AGCookbookViewController.m](https://github.com/corinnekrych/aerogear-ios-cookbook/blob/master/Recipe/CookingRecipes/Classes/Controller/AGCookbookViewController.m), we initialize either SQLITE or PLIST store via the DataManager:
+In [AGCookbookViewController.m](https://github.com/aerogear/aerogear-ios-cookbook/blob/master/Recipe/CookingRecipes/Classes/Controller/AGCookbookViewController.m), we initialize either SQLITE or PLIST store via the DataManager:
 
     // parameter type is here to switch database type for your testing
     NSString* type = @"SQLITE"; //@"PLIST";
