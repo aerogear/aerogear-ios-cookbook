@@ -18,7 +18,7 @@ After that you just need to open the ```Shoot.xcworkspace``` file in XCode and y
 Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
 NOTES: Google setup has already been done for ShootnShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
-## UI Fow 
+## UI Flow 
 When you start the application you can take picture or select one from your camera roll.
 
 Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
