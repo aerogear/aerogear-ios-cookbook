@@ -60,7 +60,7 @@
 
        AGPipeline *databasePipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://localhost:8080/database"]];
         
-        id<AGPipe> products = [databasePipeline pipe:^(id<AGPipeConfig> config) {
+        products = [databasePipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"products"];
             [config setAuthzModule:_restAuthzModule];
         }];
