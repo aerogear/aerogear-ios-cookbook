@@ -47,22 +47,22 @@ For random generation of key, salt or IV, use [AGRandomGenerator](http://aerogea
 You need to store your **salt** to be able to regenerate the exact same key when you want to decript this description information. In this example, we've chosen to store this information in NSUserDefaults.
 
 ### Encrypt
-Once you've got your encryption key, use [AGCryptoBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html) to do the actual encryption.
+Once you've got your encryption key, use [AGSecretBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGSecretBox.html) to do the actual encryption.
 
-With [AGCryptoBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGCryptoBox.html), you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
+With [AGSecretBox](http://aerogear.org/docs/specs/aerogear-crypto-ios/Classes/AGSecretBox.html), you can encrypt/decrypt data using your encryption key and a randomly generated IV (Initialization Vector) as shown below:
 
 	-(void) saveAndEncryptData:(id)gift withPassword:password {
 	    // Generate key from pasword
 	    NSData* key = [self getKeyFromPassword:password];
 	    
-	    // Use CryptoBox to encrypt/decrypt data
-	    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+	    // Use AGSecretBox to encrypt/decrypt data
+	    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
 	    
 	    // transform string to data
 	    NSData* dataToEncrypt = [gift[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
 	    
 	    // encrypt data
-	    gift[@"description"] = [cryptoBox encrypt:dataToEncrypt IV:_IV];
+	    gift[@"description"] = [secretBox encrypt:dataToEncrypt IV:_IV];
 	    
 	    // Store data with encrypted description
 	    [_store save:gift error:nil];
@@ -79,10 +79,10 @@ It is not recommended to store either password or derived key. Salt and IV are n
 
 	-(NSString*)decrypt:(NSData*)data {
 	    NSData* key = [self getKeyFromPassword:_password];
-	    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+	    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
 
 	    return [[NSString alloc]
-	            initWithData:[cryptoBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
+	            initWithData:[secretBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
 	}
 
 
