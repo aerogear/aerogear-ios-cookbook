@@ -1,15 +1,24 @@
-//
-//  AGGiftListCollectionViewController.m
-//  Xmas
-//
-//  Created by Corinne Krych on 11/19/13.
-//  Copyright (c) 2013 AeroGear. All rights reserved.
-//
+/**
+ * JBoss, Home of Professional Open Source
+ * Copyright Red Hat, Inc., and individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #import "AGGiftListCollectionViewController.h"
 #import "AGAddPresentViewController.h"
 #import "AeroGear.h"
-#import "AeroGearCrypto.h"
+#import <AeroGearCrypto.h>
 
 @implementation AGGiftListCollectionViewController {
     NSString* _currentGiftId;
@@ -195,14 +204,14 @@
     // Generate key from pasword
     NSData* key = [self getKeyFromPassword:password];
     
-    // Use CryptoBox to encrypt/decrypt data
-    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+    // Use AGSecretBox to encrypt/decrypt data
+    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
     
     // transform string to data
     NSData* dataToEncrypt = [gift[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
     
     // encrypt data
-    gift[@"description"] = [cryptoBox encrypt:dataToEncrypt IV:_IV];
+    gift[@"description"] = [secretBox encrypt:dataToEncrypt IV:_IV];
     
     // Store data with encrypted description
     [_store save:gift error:nil];
@@ -212,9 +221,9 @@
 
 -(NSString*)decrypt:(NSData*)data {
     NSData* key = [self getKeyFromPassword:_password];
-    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
     
-    return [[NSString alloc] initWithData:[cryptoBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
+    return [[NSString alloc] initWithData:[secretBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
 }
 
 @end
