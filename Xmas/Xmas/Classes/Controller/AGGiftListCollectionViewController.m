@@ -9,7 +9,7 @@
 #import "AGGiftListCollectionViewController.h"
 #import "AGAddPresentViewController.h"
 #import "AeroGear.h"
-#import "AeroGearCrypto.h"
+#import <AeroGearCrypto.h>
 
 @implementation AGGiftListCollectionViewController {
     NSString* _currentGiftId;
@@ -195,14 +195,14 @@
     // Generate key from pasword
     NSData* key = [self getKeyFromPassword:password];
     
-    // Use CryptoBox to encrypt/decrypt data
-    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+    // Use AGSecretBox to encrypt/decrypt data
+    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
     
     // transform string to data
     NSData* dataToEncrypt = [gift[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
     
     // encrypt data
-    gift[@"description"] = [cryptoBox encrypt:dataToEncrypt IV:_IV];
+    gift[@"description"] = [secretBox encrypt:dataToEncrypt IV:_IV];
     
     // Store data with encrypted description
     [_store save:gift error:nil];
@@ -212,9 +212,9 @@
 
 -(NSString*)decrypt:(NSData*)data {
     NSData* key = [self getKeyFromPassword:_password];
-    AGCryptoBox* cryptoBox = [[AGCryptoBox alloc] initWithKey:key];
+    AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
     
-    return [[NSString alloc] initWithData:[cryptoBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
+    return [[NSString alloc] initWithData:[secretBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
 }
 
 @end
