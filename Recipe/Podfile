@@ -1,4 +1,4 @@
 xcodeproj 'CookingRecipes.xcodeproj'
-platform :ios, '5.0'
+platform :ios, '7.0'
          
-pod 'AeroGear', '1.4.0'
+pod 'AeroGear',  '1.5.0'
