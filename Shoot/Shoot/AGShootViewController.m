@@ -121,9 +121,10 @@
     NSDictionary *dict = @{@"data:": dataPart};
     
     // show a progress indicator
-    [uploadPipe setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        [SVProgressHUD showProgress:(totalBytesWritten/(float)totalBytesExpectedToWrite)
-                             status:@"uploading, please wait"];
+    [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"uploading, please wait"];
+        });
     }];
     
     // upload file

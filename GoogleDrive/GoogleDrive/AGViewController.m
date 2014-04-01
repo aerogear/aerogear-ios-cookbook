@@ -17,7 +17,6 @@
 
 #import "AGViewController.h"
 #import "AeroGear.h"
-#import "AFHTTPClient.h"
 
 @interface AGViewController ()
 
