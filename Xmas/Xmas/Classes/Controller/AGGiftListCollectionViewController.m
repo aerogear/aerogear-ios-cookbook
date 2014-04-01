@@ -17,8 +17,10 @@
 
 #import "AGGiftListCollectionViewController.h"
 #import "AGAddPresentViewController.h"
-#import "AeroGear.h"
-#import <AeroGearCrypto.h>
+#import <AeroGear/AeroGear.h>
+#import <AeroGear-Crypto/AGSecretBox.h>
+#import <AeroGear-Crypto/AGRandomGenerator.h>
+#import <AeroGear-Crypto/AGPBKDF2.h>
 
 @implementation AGGiftListCollectionViewController {
     NSString* _currentGiftId;
@@ -28,7 +30,7 @@
     id<AGStore> _store;
     NSString* _password;
     NSData *_salt;
-    NSData *_IV;
+    NSData *_nonce;
 }
 
 @synthesize gifts;
@@ -37,14 +39,14 @@
 {
     [super viewDidLoad];
     _images = @[@"Santa-icon.png", @"mistletoe-icon.png", @"snowman-icon.png", @"tree-icon.png", @"candycane-icon.png", @"gift-icon1.png"];
-
+    
     // Initialize storage
     AGDataManager* dm = [AGDataManager manager];
     _store = [dm store:^(id<AGStoreConfig> config) {
         [config setName:@"xmas"];
         [config setType:@"PLIST"];
     }];
-
+    
     self.gifts = [self deepMutableCopy:[_store readAll]];
     
 	if (!_isCellSelected){
@@ -57,19 +59,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     _salt = [defaults objectForKey:@"xmas.salt"];
-    _IV = [defaults objectForKey:@"xmas.iv"];
+    _nonce = [defaults objectForKey:@"xmas.nonce"];
     
     if(!_salt) { // if first launch, initialize params for subsequent reads
         _salt = [AGRandomGenerator randomBytes];
         [defaults setObject:_salt forKey:@"xmas.salt"];
         [defaults synchronize];
     }
-    if(!_IV) { // if first lunch, initialize params for subsequent reads
-        _IV =  [AGRandomGenerator randomBytes];
-        [defaults setObject:_IV forKey:@"xmas.iv"];
+    if(!_nonce) { // if first lunch, initialize params for subsequent reads
+        _nonce =  [AGRandomGenerator randomBytes:24];
+        [defaults setObject:_nonce forKey:@"xmas.nonce"];
         [defaults synchronize];
     }
-
+    
 }
 
 - (id)deepMutableCopy:(NSArray*) list {
@@ -79,9 +81,9 @@
                                                                   error:nil];
     
     NSMutableArray* mutableArray = [NSPropertyListSerialization propertyListFromData:binData
-                                                              mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                                                        format:NULL
-                                                              errorDescription:nil];
+                                                                    mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                                                              format:NULL
+                                                                    errorDescription:nil];
     return mutableArray;
 }
 
@@ -115,8 +117,8 @@
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AGGiftCellView *myCell = [collectionView
-                                    dequeueReusableCellWithReuseIdentifier:@"MyCell"
-                                    forIndexPath:indexPath];
+                              dequeueReusableCellWithReuseIdentifier:@"MyCell"
+                              forIndexPath:indexPath];
     int row = [indexPath row];
     
     myCell.toWhomLabel.text = [self.gifts[row] objectForKey:@"toWhom"];
@@ -132,7 +134,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     int row = [indexPath row];
     
     NSMutableDictionary* gift = self.gifts[row];
@@ -153,10 +155,11 @@
     NSLog(@"Password Entered...");
     _password = [[alertView textFieldAtIndex:0] text];
     if (_password == nil || [_password length] == 0) {
-
+        
     } else {
         // decrypt description
-        NSMutableDictionary* gift = [self getGiftwithId:_currentGiftId within:self.gifts]; 
+        NSMutableDictionary* gift = [self getGiftwithId:_currentGiftId within:self.gifts];
+        
         gift[@"description"] = [self decrypt:gift[@"description"]];
         _isCellSelected[_currentRowSelected] = [NSNumber numberWithBool:YES];
         _currentRowSelected = -1;
@@ -178,7 +181,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"addPresent:"]) {
-       
+        
 	}
 }
 
@@ -211,9 +214,23 @@
     NSData* dataToEncrypt = [gift[@"description"] dataUsingEncoding:NSUTF8StringEncoding];
     
     // encrypt data
-    gift[@"description"] = [secretBox encrypt:dataToEncrypt IV:_IV];
+    NSError *error;
+    NSData *encryptedData = [secretBox encrypt:dataToEncrypt nonce:_nonce error:&error];
+    
+    if (error) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"An error has occured"
+                                                          message:[error description]
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Bummer!"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+        
+        return;
+    }
     
     // Store data with encrypted description
+    gift[@"description"] = encryptedData;
     [_store save:gift error:nil];
     
     [self.gifts addObject:gift];
@@ -223,7 +240,22 @@
     NSData* key = [self getKeyFromPassword:_password];
     AGSecretBox* secretBox = [[AGSecretBox alloc] initWithKey:key];
     
-    return [[NSString alloc] initWithData:[secretBox decrypt:data IV:_IV] encoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSString *decryptedData = [[NSString alloc] initWithData:[secretBox decrypt:data nonce:_nonce error:&error] encoding:NSUTF8StringEncoding];
+    
+    if (error) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"An error has occured!"
+                                                          message:[error description]
+                                                         delegate:nil
+                                                cancelButtonTitle:@"Bummer!"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+        
+        return @""; // return empty upon error
+    }
+    
+    return decryptedData;
 }
 
 @end
