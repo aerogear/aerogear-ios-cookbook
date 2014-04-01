@@ -1,13 +1,12 @@
 language: objective-c
 
 before_install:
-    - gem install cocoapods
-    - brew update
-    - brew uninstall xctool && brew install xctool
+    - gem install cocoapods -v 0.29.0 --no-rdoc --no-ri --no-document --quiet
+    - gem install xcpretty -v 0.1.4 --no-rdoc --no-ri --no-document --quiet
     - cd AeroDoc
 
 script:
-    - xctool -workspace AeroDoc.xcworkspace -scheme AeroDoc -sdk iphonesimulator -configuration Release
+    - set -o pipefail && xcodebuild -workspace AeroDoc.xcworkspace -scheme AeroDoc -sdk iphonesimulator -configuration Release clean build | xcpretty -c
 
 notifications:
   irc: "irc.freenode.org#aerogear"
