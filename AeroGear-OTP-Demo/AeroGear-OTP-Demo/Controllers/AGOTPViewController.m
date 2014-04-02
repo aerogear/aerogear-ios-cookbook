@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [SVProgressHUD showWithStatus:@"Retrieving secret"];
+    [SVProgressHUD showWithStatus:@"Retrieving secret" maskType:SVProgressHUDMaskTypeGradient];
     
     secs = 30;
     self.status.text = @"";
@@ -76,7 +76,7 @@
 - (IBAction)checkPressed:(id)sender {
     NSDictionary *params = @{@"secret": self.otp.text};
     
-    [SVProgressHUD showWithStatus:@"Validating OTP"];
+    [SVProgressHUD showWithStatus:@"Validating OTP" maskType:SVProgressHUDMaskTypeGradient];
     
     
     [[AGOTPClient sharedInstance] verifyOTP:params success:^(id responseObject) {
@@ -121,7 +121,7 @@
         secs = 30;
     }
     
-    self.timer.text = [NSString stringWithFormat:@"%d", secs];
+    self.timer.text = [NSString stringWithFormat:@"%ld", (long)secs];
 }
 
 - (void)startTimer {
