@@ -37,7 +37,7 @@
 
 - (IBAction)buttonPressed:(id)sender {
     
-    [SVProgressHUD showWithStatus:@"Logging in"];
+    [SVProgressHUD showWithStatus:@"Logging in" maskType:SVProgressHUDMaskTypeGradient];
 
 
     [AGOTPClient initSharedInstanceWithBaseURL:@"https://jaxrs-aerogear.rhcloud.com/aerogear-jaxrs-demo/rest/" username:self.username.text password:self.password.text success:^{
