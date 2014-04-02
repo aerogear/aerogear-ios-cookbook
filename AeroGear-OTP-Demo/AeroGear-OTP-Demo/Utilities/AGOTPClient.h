@@ -17,7 +17,7 @@
 
 #import "AFNetworking.h"
 
-@interface AGOTPClient : AFHTTPClient
+@interface AGOTPClient : NSObject
 
 
 + (void)initSharedInstanceWithBaseURL:(NSString *)baseURL
