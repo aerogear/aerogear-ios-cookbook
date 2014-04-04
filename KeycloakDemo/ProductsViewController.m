@@ -51,9 +51,7 @@
         config.authzEndpoint = @"/rest/realms/demo/tokens/login";
         config.accessTokenEndpoint = @"/rest/realms/demo/tokens/access/codes";
         config.clientId = @"third-party";
-        config.clientSecret = @"password";
-        config.redirectURL = @"org.aerogear.KeycloakDemo:/oauth2Callback";
-        config.scopes = @[@"user"];
+        config.redirectURL = @"org.aerogear.KeycloakDemo://oauth2Callback";
     }];
 
    [_restAuthzModule requestAccessSuccess:^(id object) {
