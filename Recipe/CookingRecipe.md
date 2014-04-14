@@ -17,7 +17,7 @@ When you first launch the Recipes app, you will bootstrap data from plist proper
 
 To navigate from 'recipes list' to 'add new recipe', we use push segue. Once the recipe is saved, delegate protocol is called.
 
-![Cooking app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Recipes/CookingRecipes/Resources/images/recipes-flow.png "Cooking")
+![Cooking app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Recipe/CookingRecipes/Resources/images/recipes-flow.png "Cooking")
 
 ## Code Snippets 
 Let's see how to use Store in AeroGear libraries.

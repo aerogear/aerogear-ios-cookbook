@@ -9,26 +9,34 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe 	| Core 	| Push 	| Security 	|
 | ------------- |:-------------:| :-----:|:-----:|
-| [Cooking](Recipe/CookingRecipe.md) | **Store** | - | - |
-| [Shoot'n Share](Shoot/Shoot.md) | **File Upload** | - | OAuth2 |
-| [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios) | Store, Pipe | **Push** | Login |
-| [Xmas](Xmas/Xmas.md) | Store | - | **Encrypted API** |
-| [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo) | Store | - | **EncryptedStorage** |
-| [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo) | - | - | **Login** |
-| [Buddies](Buddies/README.md) | **Pipe** | - | - |
-| [GoogleDrive](GoogleDrive/GoogleDrive.md) | Pipe | - | **OAuth2** |
+| [Cooking](Recipe/CookingRecipe.md): CRUD made easy with SQLite store | **Store** | - | - |
+| [Shoot'n Share](Shoot/Shoot.md): Upload file to OAuth2 GoogleDrive | **File Upload** | - | OAuth2 |
+| [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios): Full exemple on how to register, received notification with Java backend | Store, Pipe | **Push** | Login |
+| [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **Push** | - |
+| [PushDemo](https://github.com/aerogear/aerogear-push-ios-demo): Simple demo of Push client registration with cocopods| - | **Push** | - |
+| [Xmas](Xmas/Xmas.md): Demo how to encrypt/decrypt with crypto-lib | Store | - | **Encrypted API** |
+| [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo): Demo how to use Encrypted Storage | Store | - | **EncryptedStorage** |
+| [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo): How to use OTP client lib with a Java backend | - | - | **Login** |
+| [Buddies](Buddies/README.md): Easy usage of Pipe with REST Java backend | **Pipe** | - | - |
+| [GoogleDrive](GoogleDrive/GoogleDrive.md): OAuth2 to list all GoogleDrive documents | Pipe | - | **OAuth2** |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. For example, AeroDoc demo main purpose is to show you Push notifications, but it also uses Pipes, Stores and Login.
 
+Some of the demos uses a [backend](https://github.com/aerogear/aerogear-integration-tests-server).
+
 AeroGear features can be splitted into three main topics: 
+
 * AeroGear Core: Store, Pipe, Paging, File upload etc...
 * AeroGear Push: APN/GCM push notification, SimplePush
 * AeroGear Security
+
 For more details, please visit on [web site](http://aerogear.org/).
 
-Some of the demos listed below are hold in separate repo, but as they follow the same philosophy (illustrate AeroGear libraries usage) we put a placeholder in the recipe cookbook for completeness.
+Some of the demos listed below are hold in separate repo, but as they follow the same philosophy (illustrate AeroGear libraries usage) we put a placeholder in the recipe cookbook for completeness. AeroDoc, HelloWorld, PushDemo have been added as git submodule, to fetch them:
 
-	NOTE: This is a work in progress more recipe app will be added shortly. Stay tuned. 
+    $ git submodule init
+
+    $ git submodule update
 
 ## Building and installing each app
 
