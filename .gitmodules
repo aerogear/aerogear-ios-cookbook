@@ -1,0 +1,15 @@
+[submodule "OTP"]
+	path = OTP
+	url = https://github.com/aerogear/aerogear-otp-ios-demo.git
+[submodule "AeroDoc"]
+	path = AeroDoc
+	url = https://github.com/aerogear/aerogear-aerodoc-ios.git
+[submodule "CryptoDemo"]
+	path = CryptoDemo
+	url = https://github.com/aerogear/aerogear-crypto-ios-demo.git
+[submodule "PushDemo"]
+	path = PushDemo
+	url = https://github.com/aerogear/aerogear-push-ios-demo.git
+[submodule "HelloWorld"]
+	path = HelloWorld
+	url = https://github.com/aerogear/aerogear-push-helloworld.git
