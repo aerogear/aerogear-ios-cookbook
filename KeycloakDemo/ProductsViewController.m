@@ -48,18 +48,18 @@
     id<AGAuthzModule> _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
         config.name = @"keycloak";
         config.baseURL = [[NSURL alloc] initWithString:@"http://localhost:8080/auth"];
-        config.authzEndpoint = @"/rest/realms/demo/tokens/login";
-        config.accessTokenEndpoint = @"/rest/realms/demo/tokens/access/codes";
-        config.clientId = @"third-party";
+        config.authzEndpoint = @"/rest/realms/product-inventory/tokens/login";
+        config.accessTokenEndpoint = @"/rest/realms/product-inventory/tokens/access/codes";
+        config.clientId = @"product-inventory";
         config.redirectURL = @"org.aerogear.KeycloakDemo://oauth2Callback";
     }];
 
-   [_restAuthzModule requestAccessSuccess:^(id object) {
-
-       AGPipeline *databasePipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://localhost:8080/database"]];
+    [_restAuthzModule requestAccessSuccess:^(id object) {
+        
+        AGPipeline *databasePipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://localhost:8080/aerogear-integration-tests-server/rest"]];
         
         products = [databasePipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"products"];
+            [config setName:@"/portal/products"];
             [config setAuthzModule:_restAuthzModule];
         }];
         
@@ -90,8 +90,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSString *name = _products[indexPath.row];
-    cell.textLabel.text = name;
+    NSDictionary *element = _products[indexPath.row];
+    cell.textLabel.text = element[@"name"];
     return cell;
 }
 
