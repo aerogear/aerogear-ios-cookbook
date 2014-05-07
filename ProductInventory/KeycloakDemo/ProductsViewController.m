@@ -21,10 +21,9 @@
 #import <SVProgressHUD.h>
 
 @interface ProductsViewController () {
-    id<AGPipe> products;
-
     NSArray *_products;
 }
+
 @end
 
 @implementation ProductsViewController
@@ -58,7 +57,7 @@
         
         AGPipeline *databasePipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"http://localhost:8080/aerogear-integration-tests-server/rest"]];
         
-        products = [databasePipeline pipe:^(id<AGPipeConfig> config) {
+        id<AGPipe> products = [databasePipeline pipe:^(id<AGPipeConfig> config) {
             [config setName:@"/portal/products"];
             [config setAuthzModule:_restAuthzModule];
         }];
