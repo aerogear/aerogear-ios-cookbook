@@ -141,3 +141,18 @@ In AGViewController.m:
 
 [7]: read the pipe as usual.
 
+### Step5 (optional): renewal of accessToken via refresh token
+What about if you want to ba able to refresh the list of document? it's ok if it's within the 1 hour time frame of access token validity, you can just add a new refresh button which will do another read on your pipe. But if the token is expired you will end up in the failure callback of the read. To transparently read from you pipe, first request an access token [1], if the token is still valid it will be returned otherwise a renewal will be asked and upon completion [2] you can read documents pipe.
+
+In AGViewController.m:
+
+	- (IBAction)refreshDocument:(id)sender {
+	    // Refresh token if exprired
+	    [_restAuthzModule requestAccessSuccess:^(id object) { 		// [1]
+	        NSLog(@"Success fetching document");
+	        [self fetchGoogleDriveDocuments:_restAuthzModule];  	// [2]
+	    } failure:^(NSError *error) {
+	        
+	    }];
+	}
+

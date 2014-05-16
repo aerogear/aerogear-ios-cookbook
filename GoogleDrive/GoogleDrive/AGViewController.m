@@ -79,6 +79,17 @@
     [_restAuthzModule requestAccessSuccess:^(id object) {
         [self fetchGoogleDriveDocuments:_restAuthzModule];
     } failure:^(NSError *error) {
+        NSLog(@"Failure in getting access token");
+    }];
+}
+
+- (IBAction)refreshDocument:(id)sender {
+    // Refresh token if exprired
+    [_restAuthzModule requestAccessSuccess:^(id object) {
+        NSLog(@"Success fetching document");
+        [self fetchGoogleDriveDocuments:_restAuthzModule];
+    } failure:^(NSError *error) {
+        
     }];
 }
 
