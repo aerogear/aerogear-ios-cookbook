@@ -28,6 +28,8 @@
 }
 @synthesize documents = _documents;
 @synthesize tableView;
+@synthesize accessButton;
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_documents count];
@@ -46,24 +48,18 @@
     return cell;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Initialize pop-up warning to start OAuth2 authz
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Authorize GoogleDrive" message:@"Do you want to authorize GoogleDrive to access your Google Drive data? You will be redirected to Google login to authenticate and grant access." delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
-    [alert show];
+    [self configOAuth2];
+    [self.accessButton setTitle:@"Grant"];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    [self authorize:nil];
-}
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (IBAction)authorize:(UIButton *)sender {
+
+- (void)configOAuth2 {
     AGAuthorizer* authorizer = [AGAuthorizer authorizer];
     
     _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
@@ -71,27 +67,46 @@
         config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
         config.authzEndpoint = @"/o/oauth2/auth";
         config.accessTokenEndpoint = @"/o/oauth2/token";
+        config.revokeTokenEndpoint = @"/o/oauth2/revoke";
         config.clientId = @"241956090675-gkeh47arq23mdise57kf3abecte7i5km.apps.googleusercontent.com";
         config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
     
-    [_restAuthzModule requestAccessSuccess:^(id object) {
-        [self fetchGoogleDriveDocuments:_restAuthzModule];
-    } failure:^(NSError *error) {
-        NSLog(@"Failure in getting access token");
-    }];
 }
 
 - (IBAction)refreshDocument:(id)sender {
     // Refresh token if exprired
     [_restAuthzModule requestAccessSuccess:^(id object) {
         NSLog(@"Success fetching document");
+        [self.accessButton setTitle:@"Revoke"];
         [self fetchGoogleDriveDocuments:_restAuthzModule];
     } failure:^(NSError *error) {
         
     }];
 }
+
+- (IBAction)revokeOrGrantAccess:(UIBarButtonItem *)sender {
+    if ([self.accessButton.title isEqualToString:@"Grant"]) {
+        [_restAuthzModule requestAccessSuccess:^(id object) {
+            NSLog(@"Success access token");
+            [self.accessButton setTitle:@"Revoke"];
+            [self fetchGoogleDriveDocuments:_restAuthzModule];
+        } failure:^(NSError *error) {
+            NSLog(@"Failure access token");
+        }];
+    } else {
+        [_restAuthzModule revokeAccessSuccess:^(id object) {
+            NSLog(@"Success revoke");
+            [self.accessButton setTitle:@"Grant"];
+            [self clearDocuments];
+        } failure:^(NSError *error) {
+            NSLog(@"Success revoke document");
+        }];
+    }
+}
+
+
 
 -(void)fetchGoogleDriveDocuments:(id<AGAuthzModule>) authzModule {
     NSString* readGoogleDriveURL = @"https://www.googleapis.com/drive/v2";
@@ -110,6 +125,11 @@
         // when an error occurs... at least log it to the console..
         NSLog(@"Read: An error occured! \n%@", error);
     }];
+}
+
+-(void)clearDocuments {
+    _documents = nil;
+    [self.tableView reloadData];
 }
 
 -(NSArray*)buildDocumentList:(NSDictionary*)items {
