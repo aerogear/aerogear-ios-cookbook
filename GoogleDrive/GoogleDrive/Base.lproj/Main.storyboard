@@ -58,9 +58,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Google Drive Document Preview" id="78x-bv-HMw">
-                        <barButtonItem key="leftBarButtonItem" title="Revoke" id="zL1-1v-7g6">
+                        <barButtonItem key="leftBarButtonItem" title="Revoke" id="ULa-hH-fPj">
                             <connections>
-                                <action selector="revokeOrGrantAccess:" destination="X5y-4P-BcZ" id="IYu-dq-SGJ"/>
+                                <action selector="revoke:" destination="X5y-4P-BcZ" id="3Ru-nr-UdD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="muz-P9-veK">
@@ -70,7 +70,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="accessButton" destination="zL1-1v-7g6" id="95Q-9J-q11"/>
+                        <outlet property="revokeButton" destination="ULa-hH-fPj" id="TDn-3C-tzT"/>
                         <outlet property="tableView" destination="ZhO-ie-DB4" id="VhC-Ed-78n"/>
                     </connections>
                 </tableViewController>
