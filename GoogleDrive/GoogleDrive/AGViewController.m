@@ -28,6 +28,8 @@
 }
 @synthesize documents = _documents;
 @synthesize tableView;
+@synthesize revokeButton;
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_documents count];
@@ -49,6 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [revokeButton setEnabled:NO];
     // Initialize pop-up warning to start OAuth2 authz
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Authorize GoogleDrive" message:@"Do you want to authorize GoogleDrive to access your Google Drive data? You will be redirected to Google login to authenticate and grant access." delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
@@ -71,22 +74,41 @@
         config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
         config.authzEndpoint = @"/o/oauth2/auth";
         config.accessTokenEndpoint = @"/o/oauth2/token";
+        config.revokeTokenEndpoint = @"/o/oauth2/revoke";
         config.clientId = @"241956090675-gkeh47arq23mdise57kf3abecte7i5km.apps.googleusercontent.com";
         config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
     
     [_restAuthzModule requestAccessSuccess:^(id object) {
+        [revokeButton setEnabled:YES];
         [self fetchGoogleDriveDocuments:_restAuthzModule];
     } failure:^(NSError *error) {
-        NSLog(@"Failure in getting access token");
+
     }];
+}
+- (IBAction)revoke:(id)sender {
+    
+    [_restAuthzModule revokeAccessSuccess:^(id object) {
+        NSLog(@"Success revoke");
+        [revokeButton setEnabled:NO];
+        [self clearDocuments];
+    } failure:^(NSError *error) {
+        NSLog(@"Success revoke document");
+    }];
+}
+
+
+-(void)clearDocuments {
+    _documents = nil;
+    [self.tableView reloadData];
 }
 
 - (IBAction)refreshDocument:(id)sender {
     // Refresh token if exprired
     [_restAuthzModule requestAccessSuccess:^(id object) {
         NSLog(@"Success fetching document");
+        [revokeButton setEnabled:YES];
         [self fetchGoogleDriveDocuments:_restAuthzModule];
     } failure:^(NSError *error) {
         
@@ -114,7 +136,7 @@
 
 -(NSArray*)buildDocumentList:(NSDictionary*)items {
     NSMutableArray* list = [NSMutableArray array];
-
+    
     for (NSDictionary *item in items[@"items"]) {
         if(![item[@"title"] isEqualToString:@"Untitled"]) {
             [list addObject:item];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="piX-NI-Gsr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="piX-NI-Gsr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -58,6 +58,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Google Drive Document Preview" id="78x-bv-HMw">
+                        <barButtonItem key="leftBarButtonItem" title="Revoke" id="ULa-hH-fPj">
+                            <connections>
+                                <action selector="revoke:" destination="X5y-4P-BcZ" id="3Ru-nr-UdD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="muz-P9-veK">
                             <connections>
                                 <action selector="refreshDocument:" destination="X5y-4P-BcZ" id="Msi-hM-2dm"/>
@@ -65,6 +70,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="revokeButton" destination="ULa-hH-fPj" id="TDn-3C-tzT"/>
                         <outlet property="tableView" destination="ZhO-ie-DB4" id="VhC-Ed-78n"/>
                     </connections>
                 </tableViewController>

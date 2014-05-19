@@ -18,6 +18,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AGViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *revokeButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray* documents;
 @end

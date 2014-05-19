@@ -48,17 +48,25 @@ Open Xcode, go to GoogleDrive-Info.plist and add an new URL schema entry as show
 - The app calls authorization URL _https://accounts.google.com/o/oauth2/auth_ 
 - The user is prompted to authenticate and authorize
 
-## Step2: user login & consent
+### Step2: user login & consent
 - Once successfully authenticated and granted access, the app is given an __access code__
 
 ### Step3: Exchange access code for access token
 - Doing a call to _https://accounts.google.com/o/oauth2/token_
 - Access code get exchanged with access token
+- access and refresh tokens are returned.
 
 ### Step4: Call Google Drive API
 Once authorization is done, you can do anything you wish, refer to the [Google Drive API](https://developers.google.com/drive/v2/reference/).
 
+### Step5 (optional): Renewal of access token via refresh token
+What about if you want to be able to refresh the list of document? After 1h the access token expired. Using the refresh token returned
+
+### Step6 (optional): Revoke access/refresh token
+Rekoving action will invalidate both access token and refresh token.
+
 ![Google OAuth2](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/GoogleDrive/GoogleDrive/Resources/images/OAuth2_flow.png "Google OAuth2")
+
 
 ## AeroGear OAuth2
 
@@ -66,24 +74,29 @@ Let's delve into the code an get a step by step approach:
 
 In AGViewController.m:
 
-	- (IBAction)authorize:(UIButton *)sender {
-	    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
-	    
-	    _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {				[1]
-	        config.name = @"restAuthMod";
-	        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
-	        config.authzEndpoint = @"/o/oauth2/auth";
-	        config.accessTokenEndpoint = @"/o/oauth2/token";
-	        config.clientId = @"XXXXX";
-	        config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
-	        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
-	    }];
-	    
-	    [_restAuthzModule requestAccessSuccess:^(id object) {							[2]
-	        [self fetchGoogleDriveDocuments:_restAuthzModule];							[4]
-	    } failure:^(NSError *error) {
-	    }];
+	- (void)configOAuth2 {
+    	AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+    
+    	_restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {				[1]
+        	config.name = @"restAuthMod";
+        	config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+        	config.authzEndpoint = @"/o/oauth2/auth";
+        	config.accessTokenEndpoint = @"/o/oauth2/token";
+        	config.revokeTokenEndpoint = @"/o/oauth2/revoke";
+        	config.clientId = @"241956090675-gkeh47arq23mdise57kf3abecte7i5km.apps.googleusercontent.com";
+        	config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
+        	config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+    	}];    
 	}
+
+To request access
+
+	[_restAuthzModule requestAccessSuccess:^(id object) {							[2]
+	    [self fetchGoogleDriveDocuments:_restAuthzModule];							[4]
+	} failure:^(NSError *error) {
+		 // do something
+	}];
+
 
 In AGAppDelegate.m:
 
@@ -120,6 +133,29 @@ In AGViewController.m:
 	    }];
 	}
 
+To refresh your access token
+
+In AGViewController.m:
+
+	- (IBAction)refreshDocument:(id)sender {
+	    // Refresh token if exprired
+	    [_restAuthzModule requestAccessSuccess:^(id object) { 							[8]
+	        NSLog(@"Success fetching document");
+	        [self fetchGoogleDriveDocuments:_restAuthzModule];							[9]
+	    } failure:^(NSError *error) {
+	        
+	    }];
+	}
+
+To revoke access: 
+
+	[_restAuthzModule revokeAccessSuccess:^(id object) {								[10]
+	    // do something																	
+	} failure:^(NSError *error) {
+		 // do something
+	}];
+
+
 
 [1]: configuration with all required URLs and endpoints.
 
@@ -141,18 +177,10 @@ In AGViewController.m:
 
 [7]: read the pipe as usual.
 
-### Step5 (optional): renewal of accessToken via refresh token
-What about if you want to ba able to refresh the list of document? it's ok if it's within the 1 hour time frame of access token validity, you can just add a new refresh button which will do another read on your pipe. But if the token is expired you will end up in the failure callback of the read. To transparently read from you pipe, first request an access token [1], if the token is still valid it will be returned otherwise a renewal will be asked and upon completion [2] you can read documents pipe.
+[8]: to transparently read from you pipe, first request an access token. If the token is still valid it will be returned otherwise a renewal will be asked.
 
-In AGViewController.m:
+[9]: upon completion you can read documents pipe.
 
-	- (IBAction)refreshDocument:(id)sender {
-	    // Refresh token if exprired
-	    [_restAuthzModule requestAccessSuccess:^(id object) { 		// [1]
-	        NSLog(@"Success fetching document");
-	        [self fetchGoogleDriveDocuments:_restAuthzModule];  	// [2]
-	    } failure:^(NSError *error) {
-	        
-	    }];
-	}
+[10]: note that revoking action will invalidate both access token and refresh token. Complete flow, prompting for user grant will be required when issuing again a requestAccessSuccess:failure: message.
+
 
