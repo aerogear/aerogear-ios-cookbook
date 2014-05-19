@@ -149,7 +149,7 @@ In AGViewController.m:
 
 To revoke access: 
 
-	[_restAuthzModule reqvokeAccessSuccess:^(id object) {								[10]
+	[_restAuthzModule revokeAccessSuccess:^(id object) {								[10]
 	    // do something																	
 	} failure:^(NSError *error) {
 		 // do something
@@ -181,6 +181,6 @@ To revoke access:
 
 [9]: upon completion you can read documents pipe.
 
-[10]: note that rekoving action will invalidate both access token and refresh token. Complete flow, prompting for user grant will be required when issueing again a requestAccessSuccess:failure: message.
+[10]: note that revoking action will invalidate both access token and refresh token. Complete flow, prompting for user grant will be required when issuing again a requestAccessSuccess:failure: message.
 
 
