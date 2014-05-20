@@ -209,14 +209,25 @@
     // start up the authorization process
     AGAuthorizer* authorizer = [AGAuthorizer authorizer];
     
+//    _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+//        config.name = @"restAuthMod";
+//        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+//        config.authzEndpoint = @"/o/oauth2/auth";
+//        config.accessTokenEndpoint = @"/o/oauth2/token";
+//        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+//        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+//        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+//    }];
+    // TODO repalce XXX -> secret and YYY->appid in this file + plist file
     _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
         config.name = @"restAuthMod";
-        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
-        config.authzEndpoint = @"/o/oauth2/auth";
-        config.accessTokenEndpoint = @"/o/oauth2/token";
-        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
-        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
-        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+        config.baseURL = [[NSURL alloc] init];
+        config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
+        config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
+        config.clientId = @"YYY";
+        config.clientSecret = @"XXX"; //required although stated shouldn't be asked for authorization grant as per Oauth2 spec
+        config.redirectURL = @"fbYYY://authorize/";
+        config.scopes = @[@"user_friends, public_profile"];
     }];
     
     [_restAuthzModule requestAccessSuccess:^(id response) {

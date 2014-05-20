@@ -13,6 +13,62 @@ All our project require [CocoaPods](http://cocoapods.org/) for dependency manage
 
 After that you just need to open the ```Shoot.xcworkspace``` file in XCode and you're all set.
 
+
+## Facebook setup 
+
+### Step1: Setup facebook to ba a facebook developer:
+
+- Go to [Facebook dev console](https://developers.facebook.com/products/login/)
+- Click Apps->Register as a Developper
+- enter password
+- accept policy
+- send confirmation code to SMS
+- once recieved enter code
+
+### Step2: Create a new app on facebook console
+
+- Click apps-> Create a new app
+- add display name: Shoot
+- deal with difficult catch
+- configure Advanced setup:
+	- Native or desktop app? NO
+	- Client OAuth Login YES
+	- Embedded browser OAuth Login YES
+
+### Step3: Configure Shoot app iOS client
+
+In Shoot-Info.plist
+
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLName</key>
+                <string>fb240176532852375</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>fb240176532852375</string>
+                </array>
+            </dict>
+        </array>
+
+Replace by fbYYY where YYY is your app id.
+
+In AGShootViewController.m:
+
+    // TODO repalce XXX -> secret and YYY->appid in this file + plist file
+    _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] init];
+        config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
+        config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
+        config.clientId = @"YYY";
+        config.clientSecret = @"XXX"; //required although stated shouldn't be asked for authorization grant as per Oauth2 spec
+        config.redirectURL = @"fbYYY://authorize/";
+        config.scopes = @[@"user_friends, public_profile"];
+    }];
+
+with YYY with you appId and XXX with your client secret.
+
 ## Google setup (optional)
 
 Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
