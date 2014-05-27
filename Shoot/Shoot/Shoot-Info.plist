@@ -32,7 +32,17 @@
                     <string>org.aerogear.Shoot</string>
                 </array>
             </dict>
+            <dict>
+                <key>CFBundleURLName</key>
+                <string>fb765891443445434</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>fb765891443445434</string>
+                </array>
+            </dict>
         </array>
+
+        
         <key>CFBundleVersion</key>
         <string>1.0</string>
         <key>LSRequiresIPhoneOS</key>
