@@ -34,12 +34,15 @@
 @implementation AGShootViewController {
     id<AGAuthzModule> _googleAuthzModule;
     id<AGAuthzModule> _facebookAuthzModule;
-    NSMutableDictionary *_tokens;
+    NSMutableDictionary *_accounts;
+    AGAccountManager* accountManager;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tokens = [NSMutableDictionary dictionary];
+    _accounts = [NSMutableDictionary dictionary];
+    accountManager = [AGAccountManager manager:@"PLIST"];
 }
 
 #pragma mark - Toolbar Actions
@@ -96,36 +99,44 @@
 }
 
 -(void)oauthFacebook {
-    // start up the authorization process
-    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *accountId = [prefs stringForKey:@"facebook"];
     
-    // TODO replace XXX -> secret and 765891443445434 -> your app id in this file + plist file
-    _facebookAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+    // Create an accoutn and an authzmodule
+    _facebookAuthzModule = [accountManager authz:^(id<AGAuthzConfig> config) {
+        config.accountId = accountId;
         config.name = @"restAuthMod";
         config.baseURL = [[NSURL alloc] init];
         config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
         config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
-        config.clientId = @"765891443445434";
-        config.clientSecret = @"XXX";
-        config.redirectURL = @"fb765891443445434://authorize/";
-        config.scopes = @[@"user_friends, public_profile, publish_stream,user_photos,user_photo_video_tags, photo_upload, publish_actions"];
+        config.clientId = @"XXX";
+        config.clientSecret = @"27c1f30169956c38169e668345b35229";
+        config.redirectURL = @"fb240176532852375://authorize/";
+        config.scopes = @[@"photo_upload, publish_actions"];
         config.type = @"AG_OAUTH2_FACEBOOK";
+
     }];
+    _accounts[@"facebook"] = _facebookAuthzModule.accountId;
+    [prefs setObject:_facebookAuthzModule.accountId forKey:@"facebook"];
+    
     [_facebookAuthzModule requestAccessSuccess:^(id response) {
-        _tokens[@"Facebook"] = response;
+        
         [self shareWithFacebook];
         NSLog(@"Success to authorize %@", response);
         
     } failure:^(NSError *error) {
         NSLog(@"Failure to authorize");
     }];
+    
+
 }
 
 -(void)oauthGoogle {
-    // start up the authorization process
-    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *accountId = [prefs stringForKey:@"google"];
     
-    _googleAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
+    _googleAuthzModule = [accountManager authz:^(id<AGAuthzConfig> config) {
+        config.accountId = accountId;
         config.name = @"restAuthMod";
         config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
         config.authzEndpoint = @"/o/oauth2/auth";
@@ -135,8 +146,10 @@
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
         config.type = @"AG_OAUTH2";
     }];
+    _accounts[@"google"] = _googleAuthzModule.accountId;
+    [prefs setObject:_googleAuthzModule.accountId forKey:@"google"];
+    
     [_googleAuthzModule requestAccessSuccess:^(id response) {
-        _tokens[@"Google"] = response;
         [self shareWithGoogleDrive];
         NSLog(@"Success to authorize %@", response);
         
@@ -146,7 +159,7 @@
 }
 
 - (void)shareWithGoogleDrive {
-    if (!_tokens[@"Google"]) {
+    if (!_accounts[@"google"]) {
         [self oauthGoogle];
     } else {
         // extract the image filename
@@ -210,7 +223,7 @@
 }
 
 -(void)shareWithFacebook {
-    if (!_tokens[@"Facebook"]) {
+    if (!_accounts[@"facebook"]) {
         [self oauthFacebook];
     } else {
         

@@ -16,7 +16,7 @@ After that you just need to open the ```Shoot.xcworkspace``` file in XCode and y
 
 ## Facebook setup 
 
-### Step1: Setup facebook to ba a facebook developer:
+### Step1: Setup facebook to be a facebook developer:
 
 - Go to [Facebook dev console](https://developers.facebook.com/products/login/)
 - Click Apps->Register as a Developper
@@ -27,9 +27,8 @@ After that you just need to open the ```Shoot.xcworkspace``` file in XCode and y
 
 ### Step2: Create a new app on facebook console
 
-- Click apps-> Create a new app
+- Click apps -> Create a new app
 - add display name: Shoot
-- deal with difficult catch
 - configure Advanced setup:
 	- Native or desktop app? NO
 	- Client OAuth Login YES
@@ -77,11 +76,57 @@ NOTES: Google setup has already been done for ShootnShare app. You can use out o
 ## UI Flow 
 When you start the application you can take picture or select one from your camera roll.
 
-Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
+Once an image is selected, you can share it. You can select either Google or Facebook social network.
+
+Because Shoot uses a permanent storage account manager, you will be prompted for access grant once per provider.
+
+NOTES: Be aware that the storeage type is PLIST therefore your access and refresh token will be stored in clear. For a more secure flow choose, an encrypted storage.
+
+Once successfully authorized, your image will be uploaded.
 
 ![Shoot'nShare app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/Shoot/Resources/shootupload.png "Shoot")
 
 NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
+
+## AeroGear Account Manager
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *accountId = [prefs stringForKey:@"facebook"];
+    
+    // Create a permanent (non-encrypted) Account Manager
+    AGAccountManager* accountManager = [AGAccountManager manager:@"PLIST"];		// [1]
+    // Create an account and an authzmodule
+    _facebookAuthzModule = [accountManager authz:^(id<AGAuthzConfig> config) {	// [2]
+        config.accountId = accountId;											// [3]
+        config.name = @"restAuthMod";
+        config.baseURL = [[NSURL alloc] init];
+        config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
+        config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
+        config.clientId = @"XXX";
+        config.clientSecret = @"27c1f30169956c38169e668345b35229";
+        config.redirectURL = @"fb240176532852375://authorize/";
+        config.scopes = @[@"photo_upload, publish_actions"];
+        config.type = @"AG_OAUTH2_FACEBOOK";
+
+    }];
+    _accounts[@"facebook"] = _facebookAuthzModule.accountId;
+    [prefs setObject:_facebookAuthzModule.accountId forKey:@"facebook"];		// [4]
+    
+    [_facebookAuthzModule requestAccessSuccess:^(id response) {
+        
+        [self shareWithFacebook];
+        NSLog(@"Success to authorize %@", response);
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Failure to authorize");
+    }];
+
+[1] Create an AGAccountManager that will store access token and refresh token in a PLIST
+[2] Ask AGAccountManager for an authorization module, if accountId [3] is nil in the configuration, a new one will be created and assigned an UUID.
+[4] Store AccountId to be able to retrieve it when you launch your app a second time
+[5] From the authorization module request access. If the account already contain access code, do no ask for grant, if no access code, user will be prompt to grant access. Once access and refresh tokens are given to authzModule, they will be transparently refreshed and stored in AGAccountManager.
+
+
 
 ## AeroGear upload
 
