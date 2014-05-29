@@ -1,8 +1,8 @@
 Shoot'nShare
 ==============
-You want to shoot cool photos and share them with friends using GoogleDrive.
+You want to shoot cool photos and share them with friends using GoogleDrive and Facebook.
 With ShootnShare you can take picture, browse your camera roll, pick a picture to share and share it!
-Picture get uploaded to your GoogleDrive.
+Picture get uploaded to your favorite social network.
 
 ## Install
 All our project require [CocoaPods](http://cocoapods.org/) for dependency management;
@@ -71,7 +71,8 @@ with YYY with you appId and XXX with your client secret.
 ## Google setup (optional)
 
 Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
-NOTES: Google setup has already been done for ShootnShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
+
+*NOTES*: Google setup has already been done for ShootnShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
 ## UI Flow 
 When you start the application you can take picture or select one from your camera roll.
@@ -80,13 +81,13 @@ Once an image is selected, you can share it. You can select either Google or Fac
 
 Because Shoot uses a permanent storage account manager, you will be prompted for access grant once per provider.
 
-NOTES: Be aware that the storeage type is PLIST therefore your access and refresh token will be stored in clear. For a more secure flow choose, an encrypted storage.
+*NOTES*: Be aware that the storeage type is PLIST therefore your access and refresh token will be stored in clear. For a more secure flow choose, an encrypted storage.
 
 Once successfully authorized, your image will be uploaded.
 
 ![Shoot'nShare app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/Shoot/Resources/shootupload.png "Shoot")
 
-NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
+*NOTES*: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
 
 ## AeroGear Account Manager
 
@@ -122,8 +123,11 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
     }];
 
 [1] Create an AGAccountManager that will store access token and refresh token in a PLIST
+
 [2] Ask AGAccountManager for an authorization module, if accountId [3] is nil in the configuration, a new one will be created and assigned an UUID.
+
 [4] Store AccountId to be able to retrieve it when you launch your app a second time
+
 [5] From the authorization module request access. If the account already contain access code, do no ask for grant, if no access code, user will be prompt to grant access. Once access and refresh tokens are given to authzModule, they will be transparently refreshed and stored in AGAccountManager.
 
 
