@@ -80,12 +80,9 @@
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
     
-    [_restAuthzModule requestAccessSuccess:^(id object) {
-        [revokeButton setEnabled:YES];
-        [self fetchGoogleDriveDocuments:_restAuthzModule];
-    } failure:^(NSError *error) {
-
-    }];
+    [revokeButton setEnabled:YES];
+    [self fetchGoogleDriveDocuments:_restAuthzModule];
+    
 }
 - (IBAction)revoke:(id)sender {
     
@@ -105,14 +102,8 @@
 }
 
 - (IBAction)refreshDocument:(id)sender {
-    // Refresh token if exprired
-    [_restAuthzModule requestAccessSuccess:^(id object) {
-        NSLog(@"Success fetching document");
-        [revokeButton setEnabled:YES];
-        [self fetchGoogleDriveDocuments:_restAuthzModule];
-    } failure:^(NSError *error) {
-        
-    }];
+    [revokeButton setEnabled:YES];
+    [self fetchGoogleDriveDocuments:_restAuthzModule];
 }
 
 -(void)fetchGoogleDriveDocuments:(id<AGAuthzModule>) authzModule {
@@ -128,9 +119,10 @@
     [documents read:^(id responseObject) {
         _documents = [[self buildDocumentList:responseObject[0]] copy];
         [self.tableView reloadData];
+        NSLog(@"READ: Success fetching document");
     } failure:^(NSError *error) {
         // when an error occurs... at least log it to the console..
-        NSLog(@"Read: An error occured! \n%@", error);
+        NSLog(@"READ: An error occured! \n%@", error);
     }];
 }
 
