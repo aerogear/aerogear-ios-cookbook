@@ -160,8 +160,9 @@ To revoke access:
 [1]: configuration with all required URLs and endpoints.
 
 
-[2]: requestAccessSuccess:failure: is the method dealing with all the steps needed to authorize.
+[2]: requestAccessSuccess:failure: is the method dealing with all the steps needed to authorize. the first time this method is called, it will trigger "authorization grant flow". An external browser will be opened asking you to login (if not already logged in) and then prompt you to grant access for a list of permissions.
 
+**NOTES:** You don't have to explicitly call ```requestAccessSuccess:failure:``` before reading a Pipe associated to an authzModule. If you don't call it the request will be done on your first CRUD operation on the pipe. However if you prefer to contol when you want to ask the end-user for grant permission, you can call it explicitly.
 
 [3]: once popup has been answered, go back to GoogleDrive app and notified AeroGear framework. If this method is not well implemented, the browser won't be able to callback the application. Back to the app, access code is excahnge with access token (step 2).
 
