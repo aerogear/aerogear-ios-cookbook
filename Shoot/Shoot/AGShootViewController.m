@@ -32,14 +32,15 @@
 @end
 
 @implementation AGShootViewController {
-    id<AGAuthzModule> _googleAuthzModule;
-    id<AGAuthzModule> _facebookAuthzModule;
-    NSMutableDictionary *_tokens;
+    AGAuthorizer* _authorizer;
+    AGPipeline* _pipeline;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tokens = [NSMutableDictionary dictionary];
+    
+    _authorizer = [AGAuthorizer authorizer];
+    _pipeline = [AGPipeline pipeline];
 }
 
 #pragma mark - Toolbar Actions
@@ -95,165 +96,126 @@
     }
 }
 
--(void)oauthFacebook {
-    // start up the authorization process
-    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
-    
-    // TODO replace XXX -> secret and 765891443445434 -> your app id in this file + plist file
-    _facebookAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
-        config.name = @"restAuthMod";
-        config.baseURL = [[NSURL alloc] init];
-        config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
-        config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
-        config.clientId = @"765891443445434";
-        config.clientSecret = @"XXX";
-        config.redirectURL = @"fb765891443445434://authorize/";
-        config.scopes = @[@"user_friends, public_profile, publish_stream,user_photos,user_photo_video_tags, photo_upload, publish_actions"];
-        config.type = @"AG_OAUTH2_FACEBOOK";
-    }];
-    [_facebookAuthzModule requestAccessSuccess:^(id response) {
-        _tokens[@"Facebook"] = response;
-        [self shareWithFacebook];
-        NSLog(@"Success to authorize %@", response);
-        
-    } failure:^(NSError *error) {
-        NSLog(@"Failure to authorize");
-    }];
-}
+-(void)shareWithFacebook {
+    id<AGAuthzModule> facebookAuthzModule = [_authorizer authzModuleWithName:@"facebook"];
 
--(void)oauthGoogle {
-    // start up the authorization process
-    AGAuthorizer* authorizer = [AGAuthorizer authorizer];
+    if (!facebookAuthzModule) {
+        // TODO replace XXX -> secret and 765891443445434 -> your app id in this file + plist file
+        facebookAuthzModule = [_authorizer authz:^(id<AGAuthzConfig> config) {
+            config.name = @"facebook";
+            config.baseURL = [[NSURL alloc] init];
+            config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
+            config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
+            config.clientId = @"765891443445434";
+            config.clientSecret = @"XXX";
+            config.redirectURL = @"fb765891443445434://authorize/";
+            config.scopes = @[@"user_friends, public_profile, publish_stream,user_photos,user_photo_video_tags, photo_upload, publish_actions"];
+            config.type = @"AG_OAUTH2_FACEBOOK";
+        }];
+    }
     
-    _googleAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
-        config.name = @"restAuthMod";
-        config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
-        config.authzEndpoint = @"/o/oauth2/auth";
-        config.accessTokenEndpoint = @"/o/oauth2/token";
-        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
-        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
-        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
-        config.type = @"AG_OAUTH2";
-    }];
-    [_googleAuthzModule requestAccessSuccess:^(id response) {
-        _tokens[@"Google"] = response;
-        [self shareWithGoogleDrive];
-        NSLog(@"Success to authorize %@", response);
-        
+    id<AGPipe> fbUploadPipe = [_pipeline pipeWithName:@"facebook"];
+    
+    if (!fbUploadPipe) {
+        fbUploadPipe =  [_pipeline pipe:^(id<AGPipeConfig> config) {
+            [config setName:@"facebook"];
+            // the Facebook API base URL, you need to
+            [config setBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
+            [config setEndpoint:@"photos"];
+            [config setAuthzModule:facebookAuthzModule];
+        }];
+    }
+    
+    [self performUploadWithPipe:fbUploadPipe success:^(id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
     } failure:^(NSError *error) {
-        NSLog(@"Failure to authorize");
+         [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
     }];
 }
 
 - (void)shareWithGoogleDrive {
-    if (!_tokens[@"Google"]) {
-        [self oauthGoogle];
-    } else {
-        // extract the image filename
-        NSString *filename = self.imageView.accessibilityIdentifier;
-        
-        
-        // the Google API base URL
-        NSURL *gUrl = [NSURL URLWithString:@"https://www.googleapis.com"];
-        
-        AGPipeline* gPipeline = [AGPipeline pipelineWithBaseURL:gUrl];
-        
-        // set up upload pipe
-        id<AGPipe> uploadPipe = [gPipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"upload/drive/v2/files"];
-            [config setAuthzModule:_googleAuthzModule];
-        }];
-        
-        // set up metadata pipe
-        id<AGPipe> metaPipe = [gPipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"drive/v2/files"];
-            [config setAuthzModule:_googleAuthzModule];
-        }];
-        
-        // Get currently displayed image
-        NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-        
-        // set up payload with the image
-        AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
-                                                                       name:@"image"
-                                                                   fileName:filename
-                                                                   mimeType:@"image/jpeg"];
-        NSDictionary *dict = @{@"data:": dataPart};
-        
-        // show a progress indicator
-        [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"uploading, please wait"];
-            });
-        }];
-        
-        // upload file
-        [uploadPipe save:dict success:^(id responseObject) {
-            // time to set metadata
-            
-            // extract the "id" assigned from the response
-            NSString *fileId = [responseObject objectForKey:@"id"];
-            // set the filename
-            NSDictionary *params = @{ @"id":fileId, @"title": filename};
-            
-            // set metadata
-            [metaPipe save:params success:^(id responseObject) {
-                [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
-            } failure:^(NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"Failed to set metadata!"];
+    id<AGAuthzModule> googleAuthzModule = [_authorizer authzModuleWithName:@"google"];
+    
+    if (!googleAuthzModule) {
+        googleAuthzModule = [_authorizer authz:^(id<AGAuthzConfig> config) {
+                config.name = @"google";
+                config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
+                config.authzEndpoint = @"/o/oauth2/auth";
+                config.accessTokenEndpoint = @"/o/oauth2/token";
+                config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+                config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+                config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+                config.type = @"AG_OAUTH2";
             }];
-            
-        } failure:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
+    }
+    
+    id<AGPipe> googleUploadPipe = [_pipeline pipeWithName:@"googleUploadPipe"];
+    id<AGPipe> metaPipe = [_pipeline pipeWithName:@"googleMetaPipe"];
+    
+    if (!googleUploadPipe) {
+        googleUploadPipe = [_pipeline pipe:^(id<AGPipeConfig> config) {
+            [config setBaseURL:[NSURL URLWithString:@"https://www.googleapis.com"]];
+            [config setName:@"googleUploadPipe"];
+            [config setEndpoint:@"upload/drive/v2/files"];
+            [config setAuthzModule:googleAuthzModule];
+        }];
+        
+        metaPipe = [_pipeline pipe:^(id<AGPipeConfig> config) {
+            [config setBaseURL:[NSURL URLWithString:@"https://www.googleapis.com"]];            
+            [config setName:@"googleMetaPipe"];
+            [config setEndpoint:@"drive/v2/files"];
+            [config setAuthzModule:googleAuthzModule];
         }];
     }
-}
-
--(void)shareWithFacebook {
-    if (!_tokens[@"Facebook"]) {
-        [self oauthFacebook];
-    } else {
+    
+    [self performUploadWithPipe:googleUploadPipe success:^(id responseObject) {
+         // time to set metadata
         
-        // extract the image filename
-        NSString *filename = self.imageView.accessibilityIdentifier;;
+        // extract the "id" assigned from the response
+        NSString *fileId = [responseObject objectForKey:@"id"];
+        // set the filename
+        NSDictionary *params = @{ @"id":fileId, @"title": self.imageView.accessibilityIdentifier};
         
-        // the Facebook API base URL, you need to
-        NSURL *gUrl = [NSURL URLWithString:@"https://graph.facebook.com/me/"];
-        
-        AGPipeline* gPipeline = [AGPipeline pipelineWithBaseURL:gUrl];
-        
-        // set up upload pipe
-        id<AGPipe> uploadPipe = [gPipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"photos"];
-            [config setAuthzModule:_facebookAuthzModule];
-        }];
-        
-        // Get currently displayed image
-        NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-        
-        // set up payload with the image
-        AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
-                                                                       name:@"image"
-                                                                   fileName:filename
-                                                                   mimeType:@"image/jpeg"];
-        NSDictionary *dict = @{@"data:": dataPart};
-        
-        // show a progress indicator
-        [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"uploading, please wait"];
-            });
-        }];
-        
-        // upload file
-        [uploadPipe save:dict success:^(id responseObject) {
+        // set metadata
+        [metaPipe save:params success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
         } failure:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
+            [SVProgressHUD showErrorWithStatus:@"Failed to set metadata!"];
         }];
-    }
+
+    } failure:^(NSError *error) {
+         [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
+    }];
 }
 
+- (void)performUploadWithPipe:(id<AGPipe>)pipe
+                      success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure {
+    
+    // extract the image filename
+    NSString *filename = self.imageView.accessibilityIdentifier;
+    
+    // Get currently displayed image
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    
+    // set up payload with the image
+    AGFileDataPart *dataPart = [[AGFileDataPart alloc] initWithFileData:imageData
+                                                                   name:@"image"
+                                                               fileName:filename
+                                                               mimeType:@"image/jpeg"];
+    NSDictionary *dict = @{@"data:": dataPart};
+    
+    // show a progress indicator
+    [pipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"uploading, please wait"];
+        });
+    }];
+    
+    // upload file
+    [pipe save:dict success:success failure:failure];
+}
+    
 #pragma mark - UIImagePickerControllerDelegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 #import "AGAppDelegate.h"
-#import "AGShootViewController.h"
+#import <AeroGear.h>
 
 @implementation AGAppDelegate
 
@@ -23,12 +23,17 @@
     return YES;
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:AGAppDidBecomeActiveNotification object:nil];
+}
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    NSNotification *notification = [NSNotification notificationWithName:@"AGAppLaunchedWithURLNotification" object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:UIApplicationLaunchOptionsURLKey]];
+    NSNotification *notification = [NSNotification notificationWithName:AGAppLaunchedWithURLNotification object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:UIApplicationLaunchOptionsURLKey]];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     return YES;

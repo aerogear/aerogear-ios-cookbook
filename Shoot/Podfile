@@ -1,5 +1,5 @@
 xcodeproj 'Shoot.xcodeproj'
 platform :ios, '7.0'
          
-pod 'AeroGear',  :git => 'https://github.com/aerogear/aerogear-ios.git'
+pod 'AeroGear',  :git => 'https://github.com/cvasilak/aerogear-ios.git', :branch => 'AGIOS-195.fluid.refresh.review'
 pod 'SVProgressHUD', '1.0'
