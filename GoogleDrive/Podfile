@@ -1,4 +1,4 @@
 xcodeproj 'GoogleDrive.xcodeproj'
 platform :ios, '7.0'
          
-pod 'AeroGear',  :git => 'https://github.com/corinnekrych/aerogear-ios.git', :branch => 'AGIOS-195.fluid.refresh'
+pod 'AeroGear',  :git => 'https://github.com/cvasilak/aerogear-ios.git', :branch => 'AGIOS-195.fluid.refresh.review'
