@@ -45,16 +45,10 @@ static NSString *const kSalt = @"nsalt";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // show the password screen for user to enter his password
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Enter passphrase"
-                                                     message:@"Enter your passphrase:" delegate:self
-                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    [alert show];    
+    [self showPasswordScreenWithError:NO];
 }
 
-- (void)setup:(NSString *)passphrase {
+- (BOOL)setup:(NSString *)passphrase {
     // set up crypto params configuration object
     AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
     [config setSalt:[self salt]];
@@ -73,6 +67,11 @@ static NSString *const kSalt = @"nsalt";
         [config setType:@"ENCRYPTED_PLIST"];
         [config setEncryptionService:encService];
     }];
+    
+    // can't proceed if wrong passphrase
+    if (![store readAll]) {
+        return NO;
+    }
     
     // initialize account manager with encrypted store backend
     _acctManager = [AGAccountManager manager:store];
@@ -129,6 +128,8 @@ static NSString *const kSalt = @"nsalt";
         [config setEndpoint:@"drive/v2/files"];
         [config setAuthzModule:googleAuthzModule];
     }];
+    
+    return YES;
 }
 
 #pragma mark - Toolbar Actions
@@ -306,10 +307,18 @@ static NSString *const kSalt = @"nsalt";
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-   [self setup:[[alertView textFieldAtIndex:0] text]];
+   BOOL success =[self setup:[[alertView textFieldAtIndex:0] text]];
+    
+    if (!success) { // an error has happened
+        // redisplay passphrase screen
+        [self showPasswordScreenWithError:YES];
+    }
+    
+    return;
 }
 
 #pragma mark - Utility methods
+
 - (NSData *)salt {
     // retrieve or create salt
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -322,6 +331,17 @@ static NSString *const kSalt = @"nsalt";
     }
     
     return salt;
+}
+
+- (void)showPasswordScreenWithError:(BOOL)error {
+    // show the password screen for user to enter his password
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:error?@"Error!":@"Enter passphrase"
+                                                     message:error?@"Wrong passphrase entered, please try again:" :
+                                                                    @"Enter your passphrase:" delegate:self
+                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    [alert show];
 }
 
 @end
