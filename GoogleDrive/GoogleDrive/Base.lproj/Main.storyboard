@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="piX-NI-Gsr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="piX-NI-Gsr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -43,12 +43,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" rowHeight="91" id="ayW-EL-Sba">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" textLabel="Mno-md-Hsf" detailTextLabel="Ekd-Vj-4i6" rowHeight="91" style="IBUITableViewCellStyleSubtitle" id="ayW-EL-Sba">
                                 <rect key="frame" x="0.0" y="86" width="768" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayW-EL-Sba" id="15F-mk-O5c">
                                     <rect key="frame" x="0.0" y="0.0" width="735" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mno-md-Hsf">
+                                            <rect key="frame" x="15" y="27" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ekd-Vj-4i6">
+                                            <rect key="frame" x="15" y="49" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -57,6 +73,19 @@
                             <outlet property="delegate" destination="X5y-4P-BcZ" id="KkP-8w-3aA"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="camera" id="lIy-kw-0ij">
+                            <connections>
+                                <action selector="useCamera:" destination="X5y-4P-BcZ" id="4YM-C7-ST1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="uOD-K5-hSl"/>
+                        <barButtonItem title="Roll" id="SFD-3S-zUc">
+                            <connections>
+                                <action selector="useCameraRoll:" destination="X5y-4P-BcZ" id="zWp-wP-Y6l"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="My Google Drive Document Preview" id="78x-bv-HMw">
                         <barButtonItem key="leftBarButtonItem" title="Revoke" id="ULa-hH-fPj">
                             <connections>
@@ -72,6 +101,7 @@
                     <connections>
                         <outlet property="revokeButton" destination="ULa-hH-fPj" id="TDn-3C-tzT"/>
                         <outlet property="tableView" destination="ZhO-ie-DB4" id="VhC-Ed-78n"/>
+                        <outlet property="uploadButton" destination="SFD-3S-zUc" id="a69-RZ-4Dh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDo-Es-yaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,13 +111,17 @@
         <!--Navigation Controller-->
         <scene sceneID="t3q-dT-Dx5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="piX-NI-Gsr" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="piX-NI-Gsr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhT-af-m5G">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7Zl-G5-lhr">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="X5y-4P-BcZ" kind="relationship" relationship="rootViewController" id="dwJ-Kf-Le5"/>
                     </connections>
