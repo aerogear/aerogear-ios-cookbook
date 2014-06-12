@@ -16,11 +16,15 @@
  */
 
 #import "AGShootViewController.h"
-#import "AeroGear.h"
-
 #import "SVProgressHUD.h"
+
+#import <AeroGear/AeroGear.h>
+#import <AeroGear-Crypto/AeroGearCrypto.h>
+
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "AGAppDelegate.h"
+
+// the salt
+static NSString *const kSalt = @"nsalt";
 
 @interface AGShootViewController ()
     @property BOOL newMedia;
@@ -32,15 +36,99 @@
 @end
 
 @implementation AGShootViewController {
-    AGAuthorizer* _authorizer;
-    AGPipeline* _pipeline;
+    AGAccountManager *_acctManager;
+    
+    AGPipeline *_fbPipeline;
+    AGPipeline *_gPipeline;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _authorizer = [AGAuthorizer authorizer];
-    _pipeline = [AGPipeline pipeline];
+    // show the password screen for user to enter his password
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Enter passphrase"
+                                                     message:@"Enter your passphrase:" delegate:self
+                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    [alert show];    
+}
+
+- (void)setup:(NSString *)passphrase {
+    // set up crypto params configuration object
+    AGPassphraseCryptoConfig *config = [[AGPassphraseCryptoConfig alloc] init];
+    [config setSalt:[self salt]];
+    [config setPassphrase:passphrase];
+    
+    // initialize the encryption service passing the config
+    id<AGEncryptionService> encService = [[AGKeyManager manager] keyService:config];
+    
+    // access Store Manager
+    AGDataManager *manager = [AGDataManager manager];
+    
+    // create store
+    id<AGStore> store = [manager store:^(id<AGStoreConfig> config) {
+        [config setName:@"OAuthStorage"];
+        // can also be set to "ENCRYPTED_SQLITE" for the encrypted sqlite variant
+        [config setType:@"ENCRYPTED_PLIST"];
+        [config setEncryptionService:encService];
+    }];
+    
+    // initialize account manager with encrypted store backend
+    _acctManager = [AGAccountManager manager:store];
+
+    // set up facebook and google authz modules
+
+    // TODO replace XXX -> client_id, YYY -> client_secret,  ZZZ -> your app id in this file + plist file
+    id<AGAuthzModule> facebookAuthzModule = [_acctManager authz:^(id<AGAuthzConfig> config) {
+        config.accountId = @"my_facebook_account";
+        config.name = @"facebook";
+        config.baseURL = [NSURL URLWithString:@"https://www.facebook.com"];
+        config.authzEndpoint = @"/dialog/oauth";
+        config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
+        config.clientId = @"XXX";
+        config.clientSecret = @"YYY";
+        config.redirectURL = @"fbZZZ://authorize/";
+        config.scopes = @[@"user_friends, public_profile, publish_stream,user_photos,user_photo_video_tags, photo_upload, publish_actions"];
+        config.type = @"AG_OAUTH2_FACEBOOK";
+    }];
+    
+    id<AGAuthzModule> googleAuthzModule = [_acctManager authz:^(id<AGAuthzConfig> config) {
+        config.accountId = @"my_google_account";
+        config.name = @"google";
+        config.baseURL = [NSURL URLWithString:@"https://accounts.google.com"];
+        config.authzEndpoint = @"/o/oauth2/auth";
+        config.accessTokenEndpoint = @"/o/oauth2/token";
+        config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
+        config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
+        config.scopes = @[@"https://www.googleapis.com/auth/drive"];
+        config.type = @"AG_OAUTH2";
+    }];
+    
+    // set up our facebook pipeline and pipes
+    _fbPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
+
+    [_fbPipeline pipe:^(id<AGPipeConfig> config) {
+            [config setName:@"facebookUploadPipe"];
+            // the Facebook API base URL, you need to
+            [config setEndpoint:@"photos"];
+            [config setAuthzModule:facebookAuthzModule];
+        }];
+    
+    // set up our google pipeline and pipes
+    _gPipeline = [AGPipeline pipelineWithBaseURL:[NSURL URLWithString:@"https://www.googleapis.com"]];
+    
+    [_gPipeline pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"googleUploadPipe"];
+        [config setEndpoint:@"upload/drive/v2/files"];
+        [config setAuthzModule:googleAuthzModule];
+    }];
+    
+    [_gPipeline pipe:^(id<AGPipeConfig> config) {
+        [config setName:@"googleMetaPipe"];
+        [config setEndpoint:@"drive/v2/files"];
+        [config setAuthzModule:googleAuthzModule];
+    }];
 }
 
 #pragma mark - Toolbar Actions
@@ -82,11 +170,13 @@
         [alert show];
         return;
     }
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:(id<UIActionSheetDelegate>)self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Google", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Google", nil];
     
     [actionSheet showInView:self.view];
 
 }
+
+#pragma mark - ActionSheet Actions
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Facebook"]) {
@@ -97,35 +187,8 @@
 }
 
 -(void)shareWithFacebook {
-    id<AGAuthzModule> facebookAuthzModule = [_authorizer authzModuleWithName:@"facebook"];
+    id<AGPipe> fbUploadPipe = [_fbPipeline pipeWithName:@"facebookUploadPipe"];
 
-    if (!facebookAuthzModule) {
-        // TODO replace XXX -> secret and 765891443445434 -> your app id in this file + plist file
-        facebookAuthzModule = [_authorizer authz:^(id<AGAuthzConfig> config) {
-            config.name = @"facebook";
-            config.baseURL = [[NSURL alloc] init];
-            config.authzEndpoint = @"https://www.facebook.com/dialog/oauth";
-            config.accessTokenEndpoint = @"https://graph.facebook.com/oauth/access_token";
-            config.clientId = @"765891443445434";
-            config.clientSecret = @"XXX";
-            config.redirectURL = @"fb765891443445434://authorize/";
-            config.scopes = @[@"user_friends, public_profile, publish_stream,user_photos,user_photo_video_tags, photo_upload, publish_actions"];
-            config.type = @"AG_OAUTH2_FACEBOOK";
-        }];
-    }
-    
-    id<AGPipe> fbUploadPipe = [_pipeline pipeWithName:@"facebook"];
-    
-    if (!fbUploadPipe) {
-        fbUploadPipe =  [_pipeline pipe:^(id<AGPipeConfig> config) {
-            [config setName:@"facebook"];
-            // the Facebook API base URL, you need to
-            [config setBaseURL:[NSURL URLWithString:@"https://graph.facebook.com/me/"]];
-            [config setEndpoint:@"photos"];
-            [config setAuthzModule:facebookAuthzModule];
-        }];
-    }
-    
     [self performUploadWithPipe:fbUploadPipe success:^(id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
     } failure:^(NSError *error) {
@@ -134,39 +197,7 @@
 }
 
 - (void)shareWithGoogleDrive {
-    id<AGAuthzModule> googleAuthzModule = [_authorizer authzModuleWithName:@"google"];
-    
-    if (!googleAuthzModule) {
-        googleAuthzModule = [_authorizer authz:^(id<AGAuthzConfig> config) {
-                config.name = @"google";
-                config.baseURL = [[NSURL alloc] initWithString:@"https://accounts.google.com"];
-                config.authzEndpoint = @"/o/oauth2/auth";
-                config.accessTokenEndpoint = @"/o/oauth2/token";
-                config.clientId = @"873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com";
-                config.redirectURL = @"org.aerogear.Shoot:/oauth2Callback";
-                config.scopes = @[@"https://www.googleapis.com/auth/drive"];
-                config.type = @"AG_OAUTH2";
-            }];
-    }
-    
-    id<AGPipe> googleUploadPipe = [_pipeline pipeWithName:@"googleUploadPipe"];
-    id<AGPipe> metaPipe = [_pipeline pipeWithName:@"googleMetaPipe"];
-    
-    if (!googleUploadPipe) {
-        googleUploadPipe = [_pipeline pipe:^(id<AGPipeConfig> config) {
-            [config setBaseURL:[NSURL URLWithString:@"https://www.googleapis.com"]];
-            [config setName:@"googleUploadPipe"];
-            [config setEndpoint:@"upload/drive/v2/files"];
-            [config setAuthzModule:googleAuthzModule];
-        }];
-        
-        metaPipe = [_pipeline pipe:^(id<AGPipeConfig> config) {
-            [config setBaseURL:[NSURL URLWithString:@"https://www.googleapis.com"]];            
-            [config setName:@"googleMetaPipe"];
-            [config setEndpoint:@"drive/v2/files"];
-            [config setAuthzModule:googleAuthzModule];
-        }];
-    }
+    id<AGPipe> googleUploadPipe = [_gPipeline pipeWithName:@"googleUploadPipe"];
     
     [self performUploadWithPipe:googleUploadPipe success:^(id responseObject) {
          // time to set metadata
@@ -177,7 +208,8 @@
         NSDictionary *params = @{ @"id":fileId, @"title": self.imageView.accessibilityIdentifier};
         
         // set metadata
-        [metaPipe save:params success:^(id responseObject) {
+        id<AGPipe> googleMetaPipe = [_gPipeline pipeWithName:@"googleMetaPipe"];
+        [googleMetaPipe save:params success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:@"Successfully uploaded!"];
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"Failed to set metadata!"];
@@ -271,5 +303,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+   [self setup:[[alertView textFieldAtIndex:0] text]];
+}
+
+#pragma mark - Utility methods
+- (NSData *)salt {
+    // retrieve or create salt
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *salt = [defaults objectForKey:kSalt];
+    
+    if (!salt) {
+        salt = [AGRandomGenerator randomBytes];
+        [defaults setObject:salt forKey:kSalt];
+        [defaults synchronize];
+    }
+    
+    return salt;
+}
 
 @end
