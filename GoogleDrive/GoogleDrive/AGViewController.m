@@ -24,13 +24,11 @@
 @interface AGViewController ()
 @end
 
-static NSUInteger _docCount;
-
 @implementation AGViewController {
     id<AGAuthzModule> _restAuthzModule;
     NSMutableArray* _documents;
     NSString* _userName;
-    NSIndexPath* _indexPathToDelete;
+    NSIndexPath* _indexPathToActOn;
     
     id<AGPipe> _gdAboutPipe;
     id<AGPipe> _gdFilesPipe;
@@ -67,7 +65,13 @@ static NSUInteger _docCount;
     NSArray* ownerNames = [[_documents objectAtIndex:indexPath.row] objectForKey:@"ownerNames"];
     //We shall make those documents editable that belongs only to current user.
     if (ownerNames.count == 1 && [ownerNames[0] isEqualToString:_userName]) {
-        [self updateDocumentAtIndexPath:indexPath];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Update title?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+        
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        alert.tag = 3;
+        [[alert textFieldAtIndex:0] setText:[[_documents objectAtIndex:indexPath.row] objectForKey:@"title"]];
+        _indexPathToActOn = indexPath;
+        [alert show];
     }
 }
 
@@ -85,7 +89,7 @@ static NSUInteger _docCount;
     
     alert.alertViewStyle = UIAlertViewStyleDefault;
     alert.tag = 2;  //Not nice to use magic numbers but just for the sake of this example
-    _indexPathToDelete = indexPath;
+    _indexPathToActOn = indexPath;
     [alert show];
 }
 
@@ -108,7 +112,16 @@ static NSUInteger _docCount;
             
         case 2:
             if (buttonIndex == 1) {
-                [self deleteDocumentAtIndexPath:_indexPathToDelete];
+                [self deleteDocumentAtIndexPath:_indexPathToActOn];
+                _indexPathToActOn = nil;
+            }
+            break;
+        
+        case 3:
+            if (buttonIndex == 1) {
+                NSString* newTitle = [alertView textFieldAtIndex:0].text;
+                [self updateDocumentAtIndexPath:_indexPathToActOn withTitle:newTitle];
+                _indexPathToActOn = nil;
             }
             break;
             
@@ -153,13 +166,14 @@ static NSUInteger _docCount;
     [self loadAll];
 }
 
+#pragma mark - Button Actions
 - (IBAction)revoke:(id)sender {
     [_restAuthzModule revokeAccessSuccess:^(id object) {
         [revokeButton setEnabled:NO];
         _userName = nil;
         [self clearDocuments];
     } failure:^(NSError *error) {
-        NSLog(@"Revoke failed with error: \n%@", error.description);
+        NSLog(@"%s: Revoke failed with error: \n%@",__PRETTY_FUNCTION__, error.description);
     }];
 }
 
@@ -178,13 +192,37 @@ static NSUInteger _docCount;
     }
 }
 
+- (IBAction)useCamera:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (IBAction)useCameraRoll:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
 #pragma mark - Utility methods for core calls
 - (void)loadAll {
     [SVProgressHUD showWithStatus:@"Fetching user info..." maskType:SVProgressHUDMaskTypeBlack];
     
-    [self getUserInfo:^{
+    [self getUserInfo:^(id responseObj) {
+        _userName = responseObj[@"name"];
         [SVProgressHUD showWithStatus:@"Fetching documents..." maskType:SVProgressHUDMaskTypeBlack];
-        [self fetchGoogleDriveDocuments:^{
+        [self fetchGoogleDriveDocuments:^(id responseObj) {
+            _documents = [responseObj[@"items"] copy];
             [SVProgressHUD showSuccessWithStatus:@"Successfully fetched!"];
             [self.tableView reloadData];
         } failure:^(NSError *error) {
@@ -197,7 +235,8 @@ static NSUInteger _docCount;
 
 - (void)loadDocuments {
     [SVProgressHUD showWithStatus:@"Fetching documents..." maskType:SVProgressHUDMaskTypeBlack];
-    [self fetchGoogleDriveDocuments:^{
+    [self fetchGoogleDriveDocuments:^(id responseObj) {
+        _documents = [responseObj[@"items"] copy];
         [SVProgressHUD showSuccessWithStatus:@"Successfully fetched!"];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
@@ -207,9 +246,12 @@ static NSUInteger _docCount;
 
 - (void)deleteDocumentAtIndexPath:(NSIndexPath*)indexPath {
     [SVProgressHUD showWithStatus:@"Deleting document..." maskType:SVProgressHUDMaskTypeBlack];
-    [self deleteGoogleDriveDocumentAtIndexPath:indexPath success:^{
+    
+    NSString* docId = [[_documents objectAtIndex:indexPath.row] objectForKey:@"id"];
+    [self deleteGoogleDriveDocumentOfId:docId success:^{
         [SVProgressHUD showWithStatus:@"Deleted successfully! Reloading documents now..." maskType:SVProgressHUDMaskTypeBlack];
-        [self fetchGoogleDriveDocuments:^{
+        [self fetchGoogleDriveDocuments:^(id responseObj) {
+            _documents = [responseObj[@"items"] copy];
             [SVProgressHUD showSuccessWithStatus:@"Successfully loaded!"];
             [self.tableView reloadData];
         } failure:^(NSError *error) {
@@ -220,11 +262,14 @@ static NSUInteger _docCount;
     }];
 }
 
-- (void)updateDocumentAtIndexPath:(NSIndexPath*)indexPath {
+- (void)updateDocumentAtIndexPath:(NSIndexPath*)indexPath withTitle:(NSString*)title {
     [SVProgressHUD showWithStatus:@"Updating document title..." maskType:SVProgressHUDMaskTypeBlack];
-    [self updateGoogleDriveDocumentAtIndexPath:indexPath withTitle:nil success:^{
+    
+    NSString* docId = [[_documents objectAtIndex:indexPath.row] objectForKey:@"id"];
+    [self updateGoogleDriveDocumentOfId:docId withTitle:title success:^{
         [SVProgressHUD showWithStatus:@"Updated successfully! Reloading documents now..." maskType:SVProgressHUDMaskTypeBlack];
-        [self fetchGoogleDriveDocuments:^{
+        [self fetchGoogleDriveDocuments:^(id responseObj) {
+            _documents = [responseObj[@"items"] copy];
             [SVProgressHUD showSuccessWithStatus:@"Successfully loaded!"];
             [self.tableView reloadData];
             [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
@@ -237,43 +282,37 @@ static NSUInteger _docCount;
 }
 
 #pragma mark - Core Google Drive Pipe methods
-- (void)getUserInfo:(void (^)())success
+- (void)getUserInfo:(void (^)(id responseObj))success
                        failure:(void (^)(NSError *error))failure {
     
     [_gdAboutPipe read:^(id responseObject) {
-        _userName = responseObject[0][@"name"];
-        success();
+        success(responseObject[0]);
     } failure:^(NSError *error) {
         failure(error);
     }];
 }
 
--(void)fetchGoogleDriveDocuments:(void (^)())success
+-(void)fetchGoogleDriveDocuments:(void (^)(id responseObj))success
                          failure:(void (^)(NSError *error))failure {
     [_gdFilesPipe read:^(id responseObject) {
-        [SVProgressHUD showSuccessWithStatus:@"Successfully fetched!"];
-        _documents = [responseObject[0][@"items"] copy];
-        success();
+        success(responseObject[0]);
     } failure:^(NSError *error) {
         failure(error);
     }];
 }
 
-- (void)deleteGoogleDriveDocumentAtIndexPath:(NSIndexPath*)indexPath success:(void (^)())success
-                                failure:(void (^)(NSError *error))failure {
-    [_gdFilesPipe remove:@{@"id": [[_documents objectAtIndex:indexPath.row] objectForKey:@"id"]} success:^(id responseObject) {
-        success();
-    } failure:^(NSError *error) {
-        failure(error);
-    }];
-}
-
-- (void)updateGoogleDriveDocumentAtIndexPath:(NSIndexPath*)indexPath withTitle:(NSString*)title success:(void (^)())success
+- (void)deleteGoogleDriveDocumentOfId:(NSString*)docId success:(void (^)())success
                                      failure:(void (^)(NSError *error))failure {
-    
-    NSDictionary* paramsDict = @{@"id": [[_documents objectAtIndex:indexPath.row] objectForKey:@"id"],
-                                 @"title": [NSString stringWithFormat:@"%@_Yaggy",[[_documents objectAtIndex:indexPath.row] objectForKey:@"title"]]};
-    [_gdFilesPipe save:paramsDict success:^(id responseObject) {
+    [_gdFilesPipe remove:@{@"id": docId} success:^(id responseObject) {
+        success();
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)updateGoogleDriveDocumentOfId:(NSString*)docId withTitle:(NSString*)title success:(void (^)())success
+                                     failure:(void (^)(NSError *error))failure {
+    [_gdFilesPipe save:@{@"id": docId, @"title": title} success:^(id responseObject) {
         success();
     } failure:^(NSError *error) {
         failure(error);
@@ -325,9 +364,11 @@ static NSUInteger _docCount;
         // set metadata
         [metaPipe save:params success:^(id responseObject) {
             [SVProgressHUD showWithStatus:@"Uploaded Successfully! Reloading documents now..." maskType:SVProgressHUDMaskTypeBlack];
-            [self fetchGoogleDriveDocuments:^{
+            [self fetchGoogleDriveDocuments:^(id responseObj){
                 [SVProgressHUD showSuccessWithStatus:@"Successfully loaded!"];
+                _documents = [responseObj[@"items"] copy];
                 [self.tableView reloadData];
+                [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
             } failure:^(NSError *error) {
                 [SVProgressHUD showErrorWithStatus:@"Failed to fetch documents!"];
             }];
@@ -340,6 +381,7 @@ static NSUInteger _docCount;
     }];
 }
 
+// TODO: This is still not working. Need to fix.
 - (void)multiPartUploadImage:(UIImage*)image {
     
     NSData *imgData = UIImageJPEGRepresentation(image, 0.2);
@@ -377,39 +419,19 @@ static NSUInteger _docCount;
     
     [uploadPipe save:dict  success:^(id responseObject) {
         [SVProgressHUD showWithStatus:@"Uploaded Successfully! Reloading documents now..." maskType:SVProgressHUDMaskTypeBlack];
-        [self fetchGoogleDriveDocuments:^{
+        [self fetchGoogleDriveDocuments:^(id responseObj){
             [SVProgressHUD showSuccessWithStatus:@"Successfully loaded!"];
+            
+            _documents = [responseObj[@"items"] copy];
             [self.tableView reloadData];
+            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         } failure:^(NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"Failed to fetch documents!"];
         }];
     } failure:^(NSError *error) {
-        NSLog(@"Uploading document failed with error: \n%@", error.description);
+        NSLog(@"%s: Uploading document failed with error: \n%@", __PRETTY_FUNCTION__, error.description);
         [SVProgressHUD showErrorWithStatus:@"Failed to upload!"];
     }];
-}
-
-#pragma mark - Toolbar Actions
-- (IBAction)useCamera:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
-- (IBAction)useCameraRoll:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -430,8 +452,18 @@ static NSUInteger _docCount;
                 // This is camera image
                 image.accessibilityIdentifier = @"Untitled.jpg";
             }
+            
             // Let's upload now
-            [self uploadImage:image];
+            if (!_userName) {
+                [self getUserInfo:^(id responseObj) {
+                    [revokeButton setEnabled:YES];
+                    _userName = responseObj[@"name"];
+                    [self uploadImage:image];
+                } failure:^(NSError *error) {
+                    NSLog(@"%s: Failed to load user info with: \n%@", __PRETTY_FUNCTION__, error.description);
+                }];
+            }
+            
         };
         
         ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
