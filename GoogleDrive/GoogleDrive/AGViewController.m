@@ -102,6 +102,16 @@
     alert.alertViewStyle = UIAlertViewStyleDefault;
     alert.tag = 1;
     [alert show];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:AGAppLaunchedWithURLNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
+        NSURL *url = [[notification userInfo] valueForKey:UIApplicationLaunchOptionsURLKey];
+        //org.aerogear.googledrive:/oauth2Callback?error=access_denied
+        NSRange range = [url.query rangeOfString:@"error=access_denied"];
+        if (range.length > 0) {
+            [SVProgressHUD showErrorWithStatus:@"Access is denied!!!"];
+            [revokeButton setEnabled:NO];
+        }
+    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -348,7 +358,7 @@
     // show a progress indicator
     [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait..."];
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait..." maskType:SVProgressHUDMaskTypeBlack];
         });
     }];
     
@@ -409,7 +419,7 @@
     // show a progress indicator
     [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait"];
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait" maskType:SVProgressHUDMaskTypeBlack];
         });
     }];
     
