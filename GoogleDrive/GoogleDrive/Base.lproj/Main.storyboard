@@ -101,7 +101,6 @@
                     <connections>
                         <outlet property="revokeButton" destination="ULa-hH-fPj" id="TDn-3C-tzT"/>
                         <outlet property="tableView" destination="ZhO-ie-DB4" id="VhC-Ed-78n"/>
-                        <outlet property="uploadButton" destination="SFD-3S-zUc" id="a69-RZ-4Dh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDo-Es-yaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
