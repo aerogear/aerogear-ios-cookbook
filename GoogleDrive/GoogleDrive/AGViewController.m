@@ -102,16 +102,6 @@
     alert.alertViewStyle = UIAlertViewStyleDefault;
     alert.tag = 1;
     [alert show];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:AGAppLaunchedWithURLNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
-        NSURL *url = [[notification userInfo] valueForKey:UIApplicationLaunchOptionsURLKey];
-        //org.aerogear.googledrive:/oauth2Callback?error=access_denied
-        NSRange range = [url.query rangeOfString:@"error=access_denied"];
-        if (range.length > 0) {
-            [SVProgressHUD showErrorWithStatus:@"Access is denied!!!"];
-            [revokeButton setEnabled:NO];
-        }
-    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -158,8 +148,6 @@
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
     
-    [revokeButton setEnabled:YES];
-    
     NSURL* googleDriveURL = [NSURL URLWithString:@"https://www.googleapis.com/drive/v2"];
     AGPipeline* gdPipeline = [AGPipeline pipelineWithBaseURL:googleDriveURL];
     
@@ -193,8 +181,6 @@
 }
 
 - (IBAction)refreshDocument:(id)sender {
-    [revokeButton setEnabled:YES];
-    
     if (!_userName) {
         [self loadAll];
     }else {
@@ -229,6 +215,7 @@
     [SVProgressHUD showWithStatus:@"Fetching user info..." maskType:SVProgressHUDMaskTypeBlack];
     
     [self getUserInfo:^(id responseObj) {
+        [revokeButton setEnabled:YES];
         _userName = responseObj[@"name"];
         [SVProgressHUD showWithStatus:@"Fetching documents..." maskType:SVProgressHUDMaskTypeBlack];
         [self fetchGoogleDriveDocuments:^(id responseObj) {
@@ -246,6 +233,7 @@
 - (void)loadDocuments {
     [SVProgressHUD showWithStatus:@"Fetching documents..." maskType:SVProgressHUDMaskTypeBlack];
     [self fetchGoogleDriveDocuments:^(id responseObj) {
+        [revokeButton setEnabled:YES];
         _documents = [responseObj[@"items"] copy];
         [SVProgressHUD showSuccessWithStatus:@"Successfully fetched!"];
         [self.tableView reloadData];
