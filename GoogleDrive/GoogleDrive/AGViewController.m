@@ -460,6 +460,8 @@
                 } failure:^(NSError *error) {
                     NSLog(@"%s: Failed to load user info with: \n%@", __PRETTY_FUNCTION__, error.description);
                 }];
+            }else {
+                [self uploadImage:image];
             }
             
         };
