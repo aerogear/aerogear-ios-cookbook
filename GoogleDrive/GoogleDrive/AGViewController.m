@@ -30,6 +30,8 @@
     NSString* _userName;
     NSIndexPath* _indexPathToActOn;
     
+    UISegmentedControl *_segmentedControl;
+    
     id<AGPipe> _gdAboutPipe;
     id<AGPipe> _gdFilesPipe;
 }
@@ -97,6 +99,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [revokeButton setEnabled:NO];
+    
+    //Set up segmenteed control
+    NSArray *segItemsArray = [NSArray arrayWithObjects: @"Simple", @"Multipart", nil];
+    _segmentedControl = [[UISegmentedControl alloc] initWithItems:segItemsArray];
+    _segmentedControl.frame = CGRectMake(0, 0, 150, 30);
+    _segmentedControl.selectedSegmentIndex = 1;
+    [self.barButtonChoice setCustomView:_segmentedControl];
+    
     // Initialize pop-up warning to start OAuth2 authz
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Authorize GoogleDrive" message:@"Do you want to authorize GoogleDrive to access your Google Drive data? You will be redirected to Google login to authenticate and grant access." delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
@@ -279,6 +289,14 @@
     }];
 }
 
+- (void)uploadImage:(UIImage*)image {
+    if (_segmentedControl.selectedSegmentIndex == 0) {
+        [self simpleUploadImage:image];
+    }else {
+        [self multiPartUploadImage:image];
+    }
+}
+
 #pragma mark - Core Google Drive Pipe methods
 - (void)getUserInfo:(void (^)(id responseObj))success
                        failure:(void (^)(NSError *error))failure {
@@ -317,7 +335,7 @@
     }];
 }
 
-- (void)uploadImage:(UIImage*)image {
+- (void)simpleUploadImage:(UIImage*)image {
     
     NSData *imgData = UIImageJPEGRepresentation(image, 0.2);
     // set up payload with the image
@@ -346,7 +364,7 @@
     // show a progress indicator
     [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait..." maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Simple uploading, please wait..." maskType:SVProgressHUDMaskTypeBlack];
         });
     }];
     
@@ -391,8 +409,9 @@
     
     NSDictionary* metaDataDict = @{@"title": image.accessibilityIdentifier,
                                    @"mimeType" : @"image/jpeg"};
-    AGFileDataPart *metaDataPart = [[AGFileDataPart alloc] initWithFileData:[NSKeyedArchiver archivedDataWithRootObject:metaDataDict] name:@"image" fileName:@"image.jpg" mimeType:@"application/json"];
     
+    NSData* metaDataData = [NSJSONSerialization dataWithJSONObject:metaDataDict options:0 error:nil];
+    AGFileDataPart *metaDataPart = [[AGFileDataPart alloc] initWithFileData:metaDataData name:@"image" fileName:@"image.jpg" mimeType:@"application/json"];
     
     //Now let's try to upload this file
     NSURL* serverURL = [NSURL URLWithString:@"https://www.googleapis.com/upload/drive/v2"];
@@ -407,13 +426,14 @@
     // show a progress indicator
     [uploadPipe setUploadProgressBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Uploading, please wait" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showProgress:(totalBytesSent/(float)totalBytesExpectedToSend) status:@"Multipart uploading, please wait" maskType:SVProgressHUDMaskTypeBlack];
         });
     }];
     
     // set up payload
-    NSDictionary *dict = @{@"data":metaDataPart,
-                           @"data1":imageDataPart};
+    NSDictionary *dict = @{@"data1":metaDataPart,
+                           @"data2":imageDataPart
+                           };
     
     [uploadPipe save:dict  success:^(id responseObject) {
         [SVProgressHUD showWithStatus:@"Uploaded Successfully! Reloading documents now..." maskType:SVProgressHUDMaskTypeBlack];
