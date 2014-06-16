@@ -79,6 +79,8 @@
                                 <action selector="useCamera:" destination="X5y-4P-BcZ" id="4YM-C7-ST1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Hv1-U6-kqw"/>
+                        <barButtonItem title="Item" style="plain" id="xEM-W7-iXk"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="uOD-K5-hSl"/>
                         <barButtonItem title="Roll" id="SFD-3S-zUc">
                             <connections>
@@ -99,6 +101,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barButtonChoice" destination="xEM-W7-iXk" id="FlQ-Za-gcW"/>
                         <outlet property="revokeButton" destination="ULa-hH-fPj" id="TDn-3C-tzT"/>
                         <outlet property="tableView" destination="ZhO-ie-DB4" id="VhC-Ed-78n"/>
                     </connections>

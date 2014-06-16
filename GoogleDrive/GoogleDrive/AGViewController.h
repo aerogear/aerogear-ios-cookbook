@@ -23,5 +23,6 @@
 @property (nonatomic, strong) NSMutableArray* documents;
 - (IBAction)useCamera:(id)sender;
 - (IBAction)useCameraRoll:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonChoice;
 
 @end
