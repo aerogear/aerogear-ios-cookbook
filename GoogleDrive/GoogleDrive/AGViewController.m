@@ -397,7 +397,6 @@
     }];
 }
 
-// TODO: This is still not working. Need to fix.
 - (void)multiPartUploadImage:(UIImage*)image {
     
     NSData *imgData = UIImageJPEGRepresentation(image, 0.2);
