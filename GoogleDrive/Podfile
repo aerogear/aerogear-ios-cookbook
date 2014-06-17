@@ -2,3 +2,4 @@ xcodeproj 'GoogleDrive.xcodeproj'
 platform :ios, '7.0'
          
 pod 'AeroGear',  :git => 'https://github.com/aerogear/aerogear-ios.git'
+pod 'SVProgressHUD', '1.0'

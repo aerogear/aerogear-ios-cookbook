@@ -17,8 +17,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AGViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AGViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revokeButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray* documents;
+- (IBAction)useCamera:(id)sender;
+- (IBAction)useCameraRoll:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonChoice;
+
 @end
