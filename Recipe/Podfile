@@ -1,4 +1,4 @@
 xcodeproj 'CookingRecipes.xcodeproj'
 platform :ios, '7.0'
          
-pod 'AeroGear',  '1.5.0'
+pod 'AeroGear', :git => 'https://github.com/aerogear/aerogear-ios.git', :branch => 'master'
