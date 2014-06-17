@@ -261,6 +261,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AG;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 6F8075C3166E122A003CF5DB /* Build configuration list for PBXProject "AeroGear-OTP-Demo" */;

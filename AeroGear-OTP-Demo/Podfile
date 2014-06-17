@@ -2,7 +2,7 @@ xcodeproj 'AeroGear-OTP-Demo.xcodeproj'
 
 platform :ios, '7.0'
 
-pod 'AeroGear', '1.5.0'
+pod 'AeroGear', :git => 'https://github.com/aerogear/aerogear-ios.git', :branch => 'master'
 pod 'AeroGear-OTP', '1.0.1'
 pod 'SVProgressHUD', '1.0'
 pod 'OCHamcrest', '1.9'
