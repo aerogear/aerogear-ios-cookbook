@@ -13,6 +13,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Shoot'n Share](Shoot/Shoot.md): Upload file to OAuth2 GoogleDrive | **File Upload** | - | OAuth2 |
 | [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios): Full exemple on how to register, received notification with Java backend | Store, Pipe | **Push** | Login |
 | [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **Push** | - |
+| [PushQuickstarts](https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server | - | **Push** | - |
 | [PushDemo](https://github.com/aerogear/aerogear-push-ios-demo): Simple demo of Push client registration with cocopods| - | **Push** | - |
 | [Xmas](Xmas/Xmas.md): Demo how to encrypt/decrypt with crypto-lib | Store | - | **Encrypted API** |
 | [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo): Demo how to use Encrypted Storage | Store | - | **EncryptedStorage** |
@@ -33,7 +34,7 @@ AeroGear features can be splitted into three main topics:
 
 For more details, please visit on [web site](http://aerogear.org/).
 
-Some of the demos listed below are hold in separate repo, but as they follow the same philosophy (illustrate AeroGear libraries usage) we put a placeholder in the recipe cookbook for completeness. AeroDoc, HelloWorld, PushDemo have been added as git submodule, to fetch them:
+Some of the demos listed below are hold in separate repo, but as they follow the same philosophy (illustrate AeroGear libraries usage) we put a placeholder in the recipe cookbook for completeness. AeroDoc, HelloWorld, PushDemo, Push-Quickstarts have been added as git submodule, to fetch them:
 
     $ git submodule init
 
