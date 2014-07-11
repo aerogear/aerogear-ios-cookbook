@@ -26,7 +26,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var temperature : UILabel
     @IBOutlet var loading : UILabel
     @IBOutlet var location : UILabel
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -43,14 +43,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /* NSURLSession
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let manager = NSURLSession.sharedSession()
         var url = "http://api.openweathermap.org/data/2.5/weather"
         url = "\(url)?lat=\(latitude)&lon=\(longitude)&cnt=0"
-        println(url)
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
-        
+
         let task = manager.dataTaskWithRequest(request, completionHandler:{(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
             if error {
                 println(error)
@@ -65,7 +64,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
         
         task.resume()
+
     }
+    */
+    
+    
+    func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+
+        var url = "http://api.openweathermap.org/data/2.5/weather"
+        let session = AGSessionImpl(url:url)
+
+        var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
+        session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
+            if response {
+                println("JSON: " + response.description)
+                self.updateUISuccess(response as NSDictionary!)
+            }
+            }
+            , failure: {(error: NSError) -> Void in
+                println("failure")
+            })
+    }
+    
     
     func updateUISuccess(jsonResult: NSDictionary!) {
         self.loading.text = nil
@@ -165,7 +185,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation()
-            println(location.coordinate)
+            println(">>\(location.coordinate)")
             updateWeatherInfo(location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
