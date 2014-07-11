@@ -59,7 +59,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 var responseObject: AnyObject = data
                 let object: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)
                 println("JSON: " + object.description!)
-                self.updateUISuccess(object as NSDictionary!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.updateUISuccess(object as NSDictionary!)
+                })
             }
             })
         
@@ -70,15 +72,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-
+        
         var url = "http://api.openweathermap.org/data/2.5/weather"
         let session = AGSessionImpl(url:url)
-
+        
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
         session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
             if response {
                 println("JSON: " + response.description)
-                self.updateUISuccess(response as NSDictionary!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.updateUISuccess(response as NSDictionary!)
+                    })
             }
             }
             , failure: {(error: NSError) -> Void in
@@ -123,7 +127,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     if (now < sunrise || now > sunset) {
                         nightTime = true
                     }
-                    updateWeatherIcon(condition, nightTime: nightTime)
+                    println("before icon update")
+                    //updateWeatherIcon(condition, nightTime: nightTime)
+                    println("after icon update")
                     return
                 }
             }
