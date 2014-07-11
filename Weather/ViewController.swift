@@ -127,9 +127,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     if (now < sunrise || now > sunset) {
                         nightTime = true
                     }
-                    println("before icon update")
-                    //updateWeatherIcon(condition, nightTime: nightTime)
-                    println("after icon update")
+                    updateWeatherIcon(condition, nightTime: nightTime)
                     return
                 }
             }
