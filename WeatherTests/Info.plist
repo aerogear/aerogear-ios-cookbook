@@ -20,13 +20,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-    <key>NSLocationUsageDescription</key>
-    <string>Your location is needed to fetch local weather.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is needed to fetch local weather.</string>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-        <string>UIInterfaceOrientationPortrait</string>
-    </array>
+
 </dict>
 </plist>

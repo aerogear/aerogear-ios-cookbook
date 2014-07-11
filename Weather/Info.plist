@@ -28,5 +28,13 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    <key>NSLocationUsageDescription</key>
+    <string>Your location is needed to fetch local weather.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is needed to fetch local weather.</string>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
 </dict>
 </plist>
