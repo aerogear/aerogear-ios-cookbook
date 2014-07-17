@@ -86,7 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             }
             , failure: {(error: NSError) -> Void in
-                println("failure")
+                println("failure with \(error)")
             })
     }
     
