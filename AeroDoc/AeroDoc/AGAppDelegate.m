@@ -40,7 +40,10 @@
     
     [self.window makeKeyAndVisible];
 #ifdef __IPHONE_8_0
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    UIUserNotificationCategory* category = [self registerActions];
+    NSMutableSet* categories = [NSMutableSet set];
+    [categories addObject:category];
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
     [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 #else
@@ -76,6 +79,35 @@
     // something went wrong, while talking to APNs
     // for now we simply log the error
     NSLog(@"APNs Error: %@", error);
+}
+
+- (UIMutableUserNotificationCategory*)registerActions {
+    UIMutableUserNotificationAction* acceptLeadAction = [[UIMutableUserNotificationAction alloc] init];
+    acceptLeadAction.identifier = @"Accept";
+    acceptLeadAction.title = @"Accept";
+    acceptLeadAction.activationMode = UIUserNotificationActivationModeBackground;
+    acceptLeadAction.destructive = false;
+    acceptLeadAction.authenticationRequired = true;
+    
+    UIMutableUserNotificationAction* deleteLeadAction = [[UIMutableUserNotificationAction alloc] init];
+    deleteLeadAction.identifier = @"Delete";
+    deleteLeadAction.title = @"Delete";
+    deleteLeadAction.activationMode = UIUserNotificationActivationModeBackground;
+    deleteLeadAction.destructive = true;
+    deleteLeadAction.authenticationRequired = true;
+    
+    UIMutableUserNotificationAction* displayLeadAction = [[UIMutableUserNotificationAction alloc] init];
+    displayLeadAction.identifier = @"Display";
+    displayLeadAction.title = @"Display";
+    deleteLeadAction.activationMode = UIUserNotificationActivationModeBackground;
+    displayLeadAction.destructive = true;
+    displayLeadAction.authenticationRequired = true;
+    
+    UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = @"acceptLead";
+    [category setActions:@[acceptLeadAction, deleteLeadAction, displayLeadAction] forContext: UIUserNotificationActionContextDefault];
+    [category setActions:@[acceptLeadAction, deleteLeadAction] forContext: UIUserNotificationActionContextMinimal];
+    return category;
 }
 
 // When the program is in the foreground, this callback receives the Payload of the received Push Notification message
