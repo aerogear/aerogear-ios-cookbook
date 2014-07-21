@@ -338,7 +338,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = AeroGear;
 			};
-			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */;
+			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "aerodoc" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -556,7 +556,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
@@ -571,7 +571,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
 				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AeroDoc;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
@@ -616,7 +616,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */ = {
+		481BE865176F155900960BDF /* Build configuration list for PBXProject "aerodoc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				481BE8A6176F155A00960BDF /* Debug */,
