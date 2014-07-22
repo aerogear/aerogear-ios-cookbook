@@ -85,28 +85,14 @@
     UIMutableUserNotificationAction* acceptLeadAction = [[UIMutableUserNotificationAction alloc] init];
     acceptLeadAction.identifier = @"Accept";
     acceptLeadAction.title = @"Accept";
-    acceptLeadAction.activationMode = UIUserNotificationActivationModeBackground;
+    acceptLeadAction.activationMode = UIUserNotificationActivationModeForeground;
     acceptLeadAction.destructive = false;
-    acceptLeadAction.authenticationRequired = true;
-    
-    UIMutableUserNotificationAction* deleteLeadAction = [[UIMutableUserNotificationAction alloc] init];
-    deleteLeadAction.identifier = @"Delete";
-    deleteLeadAction.title = @"Delete";
-    deleteLeadAction.activationMode = UIUserNotificationActivationModeBackground;
-    deleteLeadAction.destructive = true;
-    deleteLeadAction.authenticationRequired = true;
-    
-    UIMutableUserNotificationAction* displayLeadAction = [[UIMutableUserNotificationAction alloc] init];
-    displayLeadAction.identifier = @"Display";
-    displayLeadAction.title = @"Display";
-    deleteLeadAction.activationMode = UIUserNotificationActivationModeBackground;
-    displayLeadAction.destructive = true;
-    displayLeadAction.authenticationRequired = true;
+    acceptLeadAction.authenticationRequired = false;
+
     
     UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
     category.identifier = @"acceptLead";
-    [category setActions:@[acceptLeadAction, deleteLeadAction, displayLeadAction] forContext: UIUserNotificationActionContextDefault];
-    [category setActions:@[acceptLeadAction, deleteLeadAction] forContext: UIUserNotificationActionContextMinimal];
+    [category setActions:@[acceptLeadAction] forContext: UIUserNotificationActionContextDefault];
     return category;
 }
 
@@ -141,5 +127,17 @@
         DLog(@"Lead pushed: id=%@ name=%@ location=%@ phone=%@ messageType=%@", recId, name, location, phone, messageType);
     }
 }
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
+    if([identifier isEqualToString: @"Accept"]) {
+        NSNotification *notification = [NSNotification notificationWithName:@"AcceptNotification"
+                                                                     object:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        DLog(@"Lead accepted via interactive notification: id=%@", userInfo);
+    }
+    completionHandler();
+}
+#endif
 
 @end

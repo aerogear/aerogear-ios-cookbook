@@ -43,7 +43,8 @@
         addObserver:self selector:@selector(leadPushed:) name:@"LeadAddedNotification" object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(leadAccepted:) name:@"LeadAcceptedNotification" object:nil];
-    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(acceptLead:) name:@"AcceptNotification" object:nil];
     [self displayLeads];
 }
 
@@ -55,6 +56,8 @@
      removeObserver:self name:@"LeadAddedNotification" object:nil];
     [[NSNotificationCenter defaultCenter]
      removeObserver:self name:@"LeadAcceptedNotification" object:nil];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self name:@"AcceptNotification" object:nil];
 }
 
 - (void) displayLeads {
@@ -193,6 +196,27 @@
     [self.tableView reloadData];
     
     DLog(@"leadPushed on notification called for lead %@", leadName);
+}
+
+- (void)acceptLead:(NSNotification *)notification {
+    AGLead *lead = [[AGLead alloc] initWithDictionary:notification.object];
+    
+    [[AeroDocAPIClient sharedInstance] postLead:lead success:^{
+        // add it to the local store
+        NSError *error = nil;
+        if (![[AeroDocAPIClient sharedInstance].localStore save:[lead dictionary] error:&error]) {
+            DLog(@"Save: An error occured during save! \n");
+        }
+        
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"An error has occured during save!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Bummer"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+    
 }
 
 //------------------------------------------------------
