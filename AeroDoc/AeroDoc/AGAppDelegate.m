@@ -39,13 +39,18 @@
     [self.window addSubview:backgroundView];
     
     [self.window makeKeyAndVisible];
-#ifdef __IPHONE_8_0
-    UIUserNotificationCategory* category = [self registerActions];
-    NSMutableSet* categories = [NSMutableSet set];
-    [categories addObject:category];
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        
+        UIUserNotificationCategory* category = [self registerActions];
+        NSMutableSet* categories = [NSMutableSet set];
+        [categories addObject:category];
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:categories];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
@@ -81,7 +86,7 @@
     NSLog(@"APNs Error: %@", error);
 }
 
-#ifdef __IPHONE_8_0
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 - (UIMutableUserNotificationCategory*)registerActions {
     UIMutableUserNotificationAction* acceptLeadAction = [[UIMutableUserNotificationAction alloc] init];
     acceptLeadAction.identifier = @"Accept";
@@ -130,7 +135,7 @@
     }
 }
 
-#ifdef __IPHONE_8_0
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler {
     if([identifier isEqualToString: @"Accept"]) {
         NSNotification *notification = [NSNotification notificationWithName:@"AcceptNotification"
