@@ -53,21 +53,21 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 #pragma mark - Push Notification handling
 
- // Here we need to register this "Mobile Variant Instance"
+// Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-
+    
     // this delegate is invoked in a case of a successful registration with the APNs servers. The 'deviceToken'
     // argument passed into the function is used to identify this iOS device within APNs.
-
+    
     // For simple applications it is reasonable to 'store' the deviceToken with a 3rd party server, like the
     // AeroGear UnifiedPush Server.
-
+    
     // However since this application requires a logged-in user, we simply stash the deviceToken on the
     // AGLoginViewController. After a successful login the deviceToken is used to register this device against
     // the AeroGear UnifiedPush Server.
@@ -81,6 +81,7 @@
     NSLog(@"APNs Error: %@", error);
 }
 
+#ifdef __IPHONE_8_0
 - (UIMutableUserNotificationCategory*)registerActions {
     UIMutableUserNotificationAction* acceptLeadAction = [[UIMutableUserNotificationAction alloc] init];
     acceptLeadAction.identifier = @"Accept";
@@ -88,30 +89,31 @@
     acceptLeadAction.activationMode = UIUserNotificationActivationModeForeground;
     acceptLeadAction.destructive = false;
     acceptLeadAction.authenticationRequired = false;
-
+    
     
     UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
     category.identifier = @"acceptLead";
     [category setActions:@[acceptLeadAction] forContext: UIUserNotificationActionContextDefault];
     return category;
 }
+#endif
 
 // When the program is in the foreground, this callback receives the Payload of the received Push Notification message
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-
+    
     NSString *recId = userInfo[@"id"];
     NSString *name = userInfo[@"name"];
     NSString *phone = userInfo[@"phone"];
     NSString *location = userInfo[@"location"];
     NSString *messageType = userInfo[@"messageType"];
-
+    
     if ([messageType isEqual:@"accepted_lead"]) {
         // send to interest parties
         NSNotification *notification = [NSNotification notificationWithName:@"LeadAcceptedNotification"
                                                                      object:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         DLog(@"Lead accepted: id=%@ name=%@ location=%@ phone=%@ messageType=%@", recId, name, location, phone, messageType);
-
+        
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @""

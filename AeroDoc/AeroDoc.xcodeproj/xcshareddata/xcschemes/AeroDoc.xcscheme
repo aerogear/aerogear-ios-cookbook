@@ -17,7 +17,7 @@
                BlueprintIdentifier = "481BE869176F155A00960BDF"
                BuildableName = "AeroDoc.app"
                BlueprintName = "AeroDoc"
-               ReferencedContainer = "container:AeroDoc.xcodeproj">
+               ReferencedContainer = "container:aerodoc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "481BE895176F155A00960BDF"
-               BuildableName = "AeroDocTests.octest"
+               BuildableName = "AeroDocTests.xctest"
                BlueprintName = "AeroDocTests"
-               ReferencedContainer = "container:AeroDoc.xcodeproj">
+               ReferencedContainer = "container:aerodoc.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "481BE869176F155A00960BDF"
             BuildableName = "AeroDoc.app"
             BlueprintName = "AeroDoc"
-            ReferencedContainer = "container:AeroDoc.xcodeproj">
+            ReferencedContainer = "container:aerodoc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "481BE869176F155A00960BDF"
             BuildableName = "AeroDoc.app"
             BlueprintName = "AeroDoc"
-            ReferencedContainer = "container:AeroDoc.xcodeproj">
+            ReferencedContainer = "container:aerodoc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "481BE869176F155A00960BDF"
             BuildableName = "AeroDoc.app"
             BlueprintName = "AeroDoc"
-            ReferencedContainer = "container:AeroDoc.xcodeproj">
+            ReferencedContainer = "container:aerodoc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
