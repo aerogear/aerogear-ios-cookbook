@@ -39,6 +39,7 @@
     [self.window addSubview:backgroundView];
     
     [self.window makeKeyAndVisible];
+    
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         
@@ -54,6 +55,7 @@
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
+    
     return YES;
 }
 
