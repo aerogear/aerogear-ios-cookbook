@@ -21,18 +21,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager:CLLocationManager = CLLocationManager()
     
-    @IBOutlet var loadingIndicator : UIActivityIndicatorView = nil
-    @IBOutlet var icon : UIImageView
-    @IBOutlet var temperature : UILabel
-    @IBOutlet var loading : UILabel
-    @IBOutlet var location : UILabel
+    @IBOutlet var loadingIndicator : UIActivityIndicatorView? = nil
+    @IBOutlet var icon : UIImageView?
+    @IBOutlet var temperature : UILabel?
+    @IBOutlet var loading : UILabel?
+    @IBOutlet var location : UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        self.loadingIndicator.startAnimating()
+        self.loadingIndicator?.startAnimating()
         self.view.backgroundColor = UIColor.whiteColor()
         if locationManager.respondsToSelector(Selector("requestAlwaysAuthorization")) {
             locationManager.requestAlwaysAuthorization()
@@ -43,33 +43,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    /* NSURLSession
-    func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let manager = NSURLSession.sharedSession()
-        var url = "http://api.openweathermap.org/data/2.5/weather"
-        url = "\(url)?lat=\(latitude)&lon=\(longitude)&cnt=0"
-        var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
-
-        let task = manager.dataTaskWithRequest(request, completionHandler:{(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-            if error {
-                println(error)
-                return
-            }
-            if data {
-                var responseObject: AnyObject = data
-                let object: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)
-                println("JSON: " + object.description!)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.updateUISuccess(object as NSDictionary!)
-                })
-            }
-            })
-        
-        task.resume()
-
-    }
-    */
-    
     
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
@@ -78,11 +51,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
         session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
-            if response {
-                println("JSON: " + response.description)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.updateUISuccess(response as NSDictionary!)
+            if response != nil {
+                if var resp = response as? NSDictionary! {
+                    println("JSON: " + resp.description)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.updateUISuccess(resp)
                     })
+                }
+
             }
             }
             , failure: {(error: NSError) -> Void in
@@ -92,9 +68,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func updateUISuccess(jsonResult: NSDictionary!) {
-        self.loading.text = nil
-        self.loadingIndicator.hidden = true
-        self.loadingIndicator.stopAnimating()
+        self.loading?.text = nil
+        self.loadingIndicator?.hidden = true
+        self.loadingIndicator?.stopAnimating()
         
         func temperatureUnit(country: String, temperature: Double) -> Double {
             if (country == "US") {
@@ -111,11 +87,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let sys = (jsonResult["sys"]? as? NSDictionary) {
                 if let country = (sys["country"] as? String) {
                     let temperature = temperatureUnit(country, temperatureResult)
-                    self.temperature.text = "\(temperature)°"
+                    self.temperature?.text = "\(temperature)°"
                 }
                 
                 if let name = jsonResult["name"] as? String {
-                    self.location.text = name
+                    self.location?.text = name
                 }
                 
                 if let weather = jsonResult["weather"]? as? NSArray {
@@ -132,7 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
-        self.loading.text = "Weather info is not available!"
+        self.loading?.text = "Weather info is not available!"
     }
     
     /*
@@ -181,7 +157,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case let (x, y): imageName = "dunno"
         }
 
-        self.icon.image = UIImage(named: "\(imageName).png")
+        self.icon?.image = UIImage(named: "\(imageName).png")
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -196,7 +172,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println(error)
-        self.loading.text = "Can't get your location!"
+        self.loading?.text = "Can't get your location!"
     }
 }
 
