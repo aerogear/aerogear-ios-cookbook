@@ -47,7 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
         var url = "http://api.openweathermap.org/data/2.5/weather"
-        let session = AGSessionImpl(url:url)
+        let session = SessionImpl(url:url)
         
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
         session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
