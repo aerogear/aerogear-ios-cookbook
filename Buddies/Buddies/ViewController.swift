@@ -20,25 +20,24 @@ import AeroGearHttp
 
 class MasterViewController: UITableViewController {
 
-    var data: [Developer] = [Developer]()
+    var data = [Developer]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = AGSessionImpl(url: "http://igtests-cvasilak.rhcloud.com/rest", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var http = SessionImpl(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         http.GET(nil, success: {(response: AnyObject?) in
-            for developer in (response!) as [AnyObject] {
-                self.data.append(Developer(name: developer["name"] as String, twitter: developer["twitter"] as String, image: NSURL(string: developer["photoURL"] as String)))
+            if (response != nil) {
+                for developer in (response!) as [AnyObject] {
+                    // TODO with object serialization AGIOS-13 replace this code to plugin serializer
+                    self.data.append(Developer(name: developer["name"] as String, twitter: developer["twitter"] as String, image: NSURL(string: developer["photoURL"] as String)))
+                }
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
-            }, failure: {(error: NSError) in
-                println("An error has occured during read!", error)
+        }, failure: {(error: NSError) in
+            println("An error has occured during read!", error)
         })
-    }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +54,7 @@ class MasterViewController: UITableViewController {
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0), {
-            var imageData: NSData = NSData(contentsOfURL: developer.image)
+            var imageData = NSData(contentsOfURL: developer.image)
             
             dispatch_async(dispatch_get_main_queue(), {
                 if cell.tag == indexPath.row {
