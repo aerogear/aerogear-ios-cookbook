@@ -5,7 +5,7 @@ What's in aerogear-aerodoc-ios?
 AeroDoc is an tutorial application to demonstrate how to build an application using Unified Push server. To get the big picture:
 
 
-![Unified Push Server big picture](https://raw.github.com/aerogear/aerogear.org/master/docs/specs/aerogear-server-push/aerogear_unified_push_server.png "Unified Push Server big picture")
+![Unified Push Server big picture](https://github.com/aerogear/aerogear.org/blob/master/docs/unifiedpush/ups_userguide/img/aerogear_unified_push_server.png "Unified Push Server big picture")
 
 
 You're a developper and you want to use AeroGear Unified Push Server to develop AeroDoc, a backend RESTful application with iOS client to create new leads and send them as push notifications to sale agents. 
@@ -17,7 +17,7 @@ This repo focus on iOS client app. But before running the app, you'll need some 
 Prerequisites
 =============
 * This application is using Push notifications from APNS, it required setup of Provisioning Profile. 
-Please follow the steps explained in [aerogear tutorial](http://aerogear.org/docs/guides/aerogear-push-ios/)
+Please follow the steps explained in [aerogear tutorial](http://aerogear.org/docs/unifiedpush/aerogear-push-ios/)
 
 * Unified Push server should be deployed. Follow instructions from [aerogear unified push server](https://github.com/aerogear/aerogear-unifiedpush-server)
 
@@ -25,13 +25,13 @@ Please follow the steps explained in [aerogear tutorial](http://aerogear.org/doc
 
 Setup
 ======
-* [Login](https://github.com/aerogear/aerogear-unifiedpush-server#login) (reset password if needed) 
+* [Login](http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/#_login_and_landing_page) (reset password if needed) 
 
-* [Register your application](https://github.com/aerogear/aerogear-unifiedpush-server#register-push-app) to get: 
+* [Register your application](http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/#_create_and_manage_pushapplication) to get: 
  * your **pushApplicationID** 
  * and a **masterSecret** 
 
-* [Register your iOS variant](https://github.com/aerogear/aerogear-unifiedpush-server#ios-variant). Start with development one. You will need your apple provisionning as explained in prerequisites. You should get:
+* [Register your iOS variant](http://aerogear.org/docs/unifiedpush/ups_userguide/admin-ui/#_create_and_manage_variants). Start with development one. You will need your apple provisionning as explained in prerequisites. You should get:
  * **variantID** 
  * and a **secret**
 
