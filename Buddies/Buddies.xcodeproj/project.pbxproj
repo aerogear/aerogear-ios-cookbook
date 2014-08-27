@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D993275519ACBDA40050E352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993275419ACBDA40050E352 /* AppDelegate.swift */; };
+		D993275719ACBDA40050E352 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993275619ACBDA40050E352 /* ViewController.swift */; };
+		D993275C19ACBDA40050E352 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D993275A19ACBDA40050E352 /* Main.storyboard */; };
+		D993275E19ACBDA40050E352 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D993275D19ACBDA40050E352 /* Images.xcassets */; };
+		D993276A19ACBDA40050E352 /* BuddiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993276919ACBDA40050E352 /* BuddiesTests.swift */; };
+		D993278719ACF3450050E352 /* AeroGearHttp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D993278419ACF32C0050E352 /* AeroGearHttp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D993276419ACBDA40050E352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D993274719ACBDA40050E352 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D993274E19ACBDA40050E352;
+			remoteInfo = Buddies;
+		};
+		D993278319ACF32C0050E352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D993277D19ACF32C0050E352 /* AeroGearHttp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 488B6B5C196B19BC000297C9;
+			remoteInfo = AeroGearHttp;
+		};
+		D993278519ACF32C0050E352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D993277D19ACF32C0050E352 /* AeroGearHttp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 488B6B67196B19BC000297C9;
+			remoteInfo = AeroGearHttpTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D993274F19ACBDA40050E352 /* Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D993275319ACBDA40050E352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D993275419ACBDA40050E352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D993275619ACBDA40050E352 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D993275B19ACBDA40050E352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D993275D19ACBDA40050E352 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D993276319ACBDA40050E352 /* BuddiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D993276819ACBDA40050E352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D993276919ACBDA40050E352 /* BuddiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiesTests.swift; sourceTree = "<group>"; };
+		D993277D19ACF32C0050E352 /* AeroGearHttp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AeroGearHttp.xcodeproj; path = "../aerogear-ios-http/AeroGearHttp.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D993274C19ACBDA40050E352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D993278719ACF3450050E352 /* AeroGearHttp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D993276019ACBDA40050E352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D993274619ACBDA40050E352 = {
+			isa = PBXGroup;
+			children = (
+				D993277D19ACF32C0050E352 /* AeroGearHttp.xcodeproj */,
+				D993275119ACBDA40050E352 /* Buddies */,
+				D993276619ACBDA40050E352 /* BuddiesTests */,
+				D993275019ACBDA40050E352 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D993275019ACBDA40050E352 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D993274F19ACBDA40050E352 /* Buddies.app */,
+				D993276319ACBDA40050E352 /* BuddiesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D993275119ACBDA40050E352 /* Buddies */ = {
+			isa = PBXGroup;
+			children = (
+				D993275419ACBDA40050E352 /* AppDelegate.swift */,
+				D993275619ACBDA40050E352 /* ViewController.swift */,
+				D993275A19ACBDA40050E352 /* Main.storyboard */,
+				D993275D19ACBDA40050E352 /* Images.xcassets */,
+				D993275219ACBDA40050E352 /* Supporting Files */,
+			);
+			path = Buddies;
+			sourceTree = "<group>";
+		};
+		D993275219ACBDA40050E352 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D993275319ACBDA40050E352 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D993276619ACBDA40050E352 /* BuddiesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D993276919ACBDA40050E352 /* BuddiesTests.swift */,
+				D993276719ACBDA40050E352 /* Supporting Files */,
+			);
+			path = BuddiesTests;
+			sourceTree = "<group>";
+		};
+		D993276719ACBDA40050E352 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D993276819ACBDA40050E352 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D993277E19ACF32C0050E352 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D993278419ACF32C0050E352 /* AeroGearHttp.framework */,
+				D993278619ACF32C0050E352 /* AeroGearHttpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D993274E19ACBDA40050E352 /* Buddies */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D993276D19ACBDA40050E352 /* Build configuration list for PBXNativeTarget "Buddies" */;
+			buildPhases = (
+				D993274B19ACBDA40050E352 /* Sources */,
+				D993274C19ACBDA40050E352 /* Frameworks */,
+				D993274D19ACBDA40050E352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Buddies;
+			productName = Buddies;
+			productReference = D993274F19ACBDA40050E352 /* Buddies.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D993276219ACBDA40050E352 /* BuddiesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D993277019ACBDA40050E352 /* Build configuration list for PBXNativeTarget "BuddiesTests" */;
+			buildPhases = (
+				D993275F19ACBDA40050E352 /* Sources */,
+				D993276019ACBDA40050E352 /* Frameworks */,
+				D993276119ACBDA40050E352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D993276519ACBDA40050E352 /* PBXTargetDependency */,
+			);
+			name = BuddiesTests;
+			productName = BuddiesTests;
+			productReference = D993276319ACBDA40050E352 /* BuddiesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D993274719ACBDA40050E352 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Red Hat";
+				TargetAttributes = {
+					D993274E19ACBDA40050E352 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					D993276219ACBDA40050E352 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = D993274E19ACBDA40050E352;
+					};
+				};
+			};
+			buildConfigurationList = D993274A19ACBDA40050E352 /* Build configuration list for PBXProject "Buddies" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D993274619ACBDA40050E352;
+			productRefGroup = D993275019ACBDA40050E352 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D993277E19ACF32C0050E352 /* Products */;
+					ProjectRef = D993277D19ACF32C0050E352 /* AeroGearHttp.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D993274E19ACBDA40050E352 /* Buddies */,
+				D993276219ACBDA40050E352 /* BuddiesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D993278419ACF32C0050E352 /* AeroGearHttp.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AeroGearHttp.framework;
+			remoteRef = D993278319ACF32C0050E352 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D993278619ACF32C0050E352 /* AeroGearHttpTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AeroGearHttpTests.xctest;
+			remoteRef = D993278519ACF32C0050E352 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D993274D19ACBDA40050E352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D993275C19ACBDA40050E352 /* Main.storyboard in Resources */,
+				D993275E19ACBDA40050E352 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D993276119ACBDA40050E352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D993274B19ACBDA40050E352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D993275719ACBDA40050E352 /* ViewController.swift in Sources */,
+				D993275519ACBDA40050E352 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D993275F19ACBDA40050E352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D993276A19ACBDA40050E352 /* BuddiesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D993276519ACBDA40050E352 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D993274E19ACBDA40050E352 /* Buddies */;
+			targetProxy = D993276419ACBDA40050E352 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D993275A19ACBDA40050E352 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D993275B19ACBDA40050E352 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D993276B19ACBDA40050E352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D993276C19ACBDA40050E352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D993276E19ACBDA40050E352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Buddies/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D993276F19ACBDA40050E352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Buddies/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D993277119ACBDA40050E352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BuddiesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buddies.app/Buddies";
+			};
+			name = Debug;
+		};
+		D993277219ACBDA40050E352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BuddiesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buddies.app/Buddies";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D993274A19ACBDA40050E352 /* Build configuration list for PBXProject "Buddies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D993276B19ACBDA40050E352 /* Debug */,
+				D993276C19ACBDA40050E352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D993276D19ACBDA40050E352 /* Build configuration list for PBXNativeTarget "Buddies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D993276E19ACBDA40050E352 /* Debug */,
+				D993276F19ACBDA40050E352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D993277019ACBDA40050E352 /* Build configuration list for PBXNativeTarget "BuddiesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D993277119ACBDA40050E352 /* Debug */,
+				D993277219ACBDA40050E352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D993274719ACBDA40050E352 /* Project object */;
+}
