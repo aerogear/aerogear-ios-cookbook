@@ -52,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
         session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
             if response != nil {
-                if var resp = response as? NSDictionary! {
+                if var resp = response as? Dictionary<String, AnyObject> {
                     println("JSON: " + resp.description)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateUISuccess(resp)
@@ -90,9 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.temperature?.text = "\(temperature)°"
                 }
                 
-                if let name = jsonResult["name"] as? String {
-                    self.location?.text = name
-                }
+                self.location?.text =  jsonResult["name"] as? String
                 
                 if let weather = jsonResult["weather"]? as? NSArray {
                     let condition = (weather[0] as NSDictionary)["id"] as Int
@@ -117,47 +115,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     */
     func updateWeatherIcon(condition: Int, nightTime: Bool) {
         var imageName: String
-        switch (condition, nightTime) {
-        case let (x, y) where x < 300 && y == true:     imageName = "11n"
-        case let (x, y) where x < 300 && y == false:    imageName = "11d"
-            
-        case let (x, y) where x < 500 && y == true:     imageName = "09n"
-        case let (x, y) where x < 500 && y == false:    imageName = "09d"
-            
-        case let (x, y) where x < 504 && y == true:     imageName = "10n"
-        case let (x, y) where x < 504 && y == false:    imageName = "10d"
-            
-        case let (x, y) where x < 532 && y == true:     imageName = "09n"
-        case let (x, y) where x < 532 && y == false:    imageName = "09d"
-            
-        case let (x, y) where x < 623 && y == true:     imageName = "13n"
-        case let (x, y) where x < 623 && y == false:    imageName = "13d"
-            
-        case let (x, y) where x < 800 && y == true:     imageName = "50n"
-        case let (x, y) where x < 800 && y == false:    imageName = "50d"
-            
-        case let (x, y) where x == 800 && y == true:    imageName = "01n"
-        case let (x, y) where x == 800 && y == false:   imageName = "01d"
-            
-        case let (x, y) where x == 801 && y == true:    imageName = "02n"
-        case let (x, y) where x == 801 && y == false:   imageName = "02d"
-            
-        case let (x, y) where x == 802 && y == true:    imageName = "03n"
-        case let (x, y) where x == 802 && y == false:   imageName = "03d"
-            
-        case let (x, y) where x == 803 && y == true:    imageName = "03n"
-        case let (x, y) where x == 803 && y == false:   imageName = "03d"
-            
-        case let (x, y) where x == 804 && y == true:    imageName = "04n"
-        case let (x, y) where x == 804 && y == false:   imageName = "04d"
-            
-        case let (x, y) where x < 1000 && y == true:    imageName = "11n"
-        case let (x, y) where x < 1000 && y == false:   imageName = "11d"
-            
-        case let (x, y): imageName = "dunno"
+        switch (condition) {
+        case let x where x < 300: imageName = "11"
+        case let x where x < 500: imageName = "09"
+        case let x where x < 504: imageName = "10"
+        case let x where x < 532: imageName = "09"
+        case let x where x < 623: imageName = "13"
+        case let x where x < 800: imageName = "50"
+        case let x where x == 800: imageName = "01"
+        case let x where x == 801: imageName = "02"
+        case let x where x == 802: imageName = "03"
+        case let x where x == 803: imageName = "03"
+        case let x where x == 804: imageName = "04"
+        case let x where x < 1000: imageName = "11"
+        case let x: imageName = "dunno"
         }
-
-        self.icon?.image = UIImage(named: "\(imageName).png")
+        let night = "n"
+        let day = "d"
+        self.icon?.image = UIImage(named: "\(imageName)\(nightTime ? night : day ).png")
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
