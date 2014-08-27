@@ -24,7 +24,5 @@ DerivedData
 Podfile.lock
 Pods/
 
-temp/
-
 #Docset/AppleDoc
 */Docset/*
