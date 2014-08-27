@@ -52,7 +52,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
         session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
             if response != nil {
-                if var resp = response as? Dictionary<String, AnyObject> {
+                // TODO refactor once AGIOS-13 is ready (object serialization)
+                if var resp = response as? NSDictionary! {
                     println("JSON: " + resp.description)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateUISuccess(resp)
@@ -72,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.loadingIndicator?.hidden = true
         self.loadingIndicator?.stopAnimating()
         
-        func temperatureUnit(country: String, temperature: Double) -> Double {
+        func temperatureUnit(country: String?, temperature: Double) -> Double {
             if (country == "US") {
                 // Convert temperature to Fahrenheit if user is within the US
                 return round(((temperature - 273.15) * 1.8) + 32)
@@ -85,11 +86,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if let temperatureResult = ((jsonResult["main"]? as NSDictionary)["temp"] as? Double) {
             if let sys = (jsonResult["sys"]? as? NSDictionary) {
-                if let country = (sys["country"] as? String) {
-                    let temperature = temperatureUnit(country, temperatureResult)
-                    self.temperature?.text = "\(temperature)°"
-                }
-                
+                let temperature = temperatureUnit(sys["country"] as? String, temperatureResult)
+                self.temperature?.text = "\(temperature)°"
                 self.location?.text =  jsonResult["name"] as? String
                 
                 if let weather = jsonResult["weather"]? as? NSArray {
