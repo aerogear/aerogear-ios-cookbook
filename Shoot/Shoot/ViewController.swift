@@ -50,7 +50,7 @@ UIActionSheetDelegate, UIAlertViewDelegate {
             imagePicker.sourceType = .Camera
             imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
             imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated:true, completion:nil)
+            self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
         }
         
@@ -63,7 +63,7 @@ UIActionSheetDelegate, UIAlertViewDelegate {
             imagePicker.sourceType = .PhotoLibrary
             imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
             imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated:true, completion:nil)
+            self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = false
         }
     }
@@ -75,7 +75,6 @@ UIActionSheetDelegate, UIAlertViewDelegate {
         var image: UIImage = info[UIImagePickerControllerOriginalImage] as UIImage
         if (newMedia == true) {
             UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
-            self.imageView.accessibilityIdentifier = "Untitled.jpg";
         } else {
             var imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as NSURL
             var assetslibrary = ALAssetsLibrary()
@@ -84,6 +83,7 @@ UIActionSheetDelegate, UIAlertViewDelegate {
                 if asset != nil {
                     var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
                     self.imageView.accessibilityIdentifier = assetRep.filename()
+                    self.imageView.image = image;
                 }
             }, failureBlock: {
                 (error: NSError!) in
@@ -91,7 +91,19 @@ UIActionSheetDelegate, UIAlertViewDelegate {
             }
             )
         }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafePointer<Void>) {
         self.imageView.image = image;
+        self.imageView.accessibilityIdentifier = "Untitled.jpg";
+        if let error = didFinishSavingWithError {
+            let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+                alert.show()
+        }
+   }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion:nil)
     }
 
 }
