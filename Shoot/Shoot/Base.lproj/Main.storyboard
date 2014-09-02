@@ -24,19 +24,19 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="camera" id="KAf-Zb-HxJ">
                                         <connections>
-                                            <action selector="useCamera:" destination="vXZ-lx-hvc" id="NnY-RG-DHW"/>
+                                            <action selector="useCamera:" destination="vXZ-lx-hvc" id="UzW-zc-Do5"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gR7-um-zzj"/>
                                     <barButtonItem systemItem="add" id="2l8-Dn-jeh">
                                         <connections>
-                                            <action selector="useCameraRoll:" destination="vXZ-lx-hvc" id="n5W-Nq-ZoN"/>
+                                            <action selector="useCameraRoll:" destination="vXZ-lx-hvc" id="cMl-cw-l7b"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ryE-Nb-IgS"/>
                                     <barButtonItem systemItem="action" id="8ZC-dX-U3i">
                                         <connections>
-                                            <action selector="share:" destination="vXZ-lx-hvc" id="zfa-Qi-S9h"/>
+                                            <action selector="share:" destination="vXZ-lx-hvc" id="XU8-ii-ecX"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -54,6 +54,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shoot" id="XOs-rP-loq"/>
+                    <connections>
+                        <outlet property="imageView" destination="tim-6x-e6f" id="cv5-Eh-rM7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
