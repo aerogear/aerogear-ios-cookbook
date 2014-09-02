@@ -36,7 +36,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ryE-Nb-IgS"/>
                                     <barButtonItem systemItem="action" id="8ZC-dX-U3i">
                                         <connections>
-                                            <action selector="share:" destination="vXZ-lx-hvc" id="XU8-ii-ecX"/>
+                                            <action selector="share:" destination="vXZ-lx-hvc" id="MzE-Wq-yGZ"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
