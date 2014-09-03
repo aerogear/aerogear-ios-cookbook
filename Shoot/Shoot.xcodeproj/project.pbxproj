@@ -12,6 +12,18 @@
 		48F70A0619B59E9800DDB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0419B59E9800DDB152 /* Main.storyboard */; };
 		48F70A0819B59E9800DDB152 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0719B59E9800DDB152 /* Images.xcassets */; };
 		48F70A1419B59E9800DDB152 /* ShootTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A1319B59E9800DDB152 /* ShootTests.swift */; };
+		48F70A7919B6F13000DDB152 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7219B6F13000DDB152 /* HttpMethod.swift */; };
+		48F70A7A19B6F13000DDB152 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A7319B6F13000DDB152 /* Info.plist */; };
+		48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7419B6F13000DDB152 /* JsonRequestSerializer.swift */; };
+		48F70A7C19B6F13000DDB152 /* JsonResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7519B6F13000DDB152 /* JsonResponseSerializer.swift */; };
+		48F70A7D19B6F13000DDB152 /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7619B6F13000DDB152 /* RequestSerializer.swift */; };
+		48F70A7E19B6F13000DDB152 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7719B6F13000DDB152 /* ResponseSerializer.swift */; };
+		48F70A7F19B6F13000DDB152 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7819B6F13000DDB152 /* Session.swift */; };
+		48F70A8619B6F13D00DDB152 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A8019B6F13D00DDB152 /* AccountManager.swift */; };
+		48F70A8719B6F13D00DDB152 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A8219B6F13D00DDB152 /* Config.swift */; };
+		48F70A8819B6F13D00DDB152 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A8319B6F13D00DDB152 /* Info.plist */; };
+		48F70A8919B6F13D00DDB152 /* OAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A8419B6F13D00DDB152 /* OAuth2Module.swift */; };
+		48F70A8A19B6F13D00DDB152 /* OAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +46,20 @@
 		48F70A0D19B59E9800DDB152 /* ShootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F70A1219B59E9800DDB152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F70A1319B59E9800DDB152 /* ShootTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootTests.swift; sourceTree = "<group>"; };
+		48F70A7119B6F13000DDB152 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearHttp.h; path = ../../libs/AeroGearHttp/AeroGearHttp.h; sourceTree = "<group>"; };
+		48F70A7219B6F13000DDB152 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpMethod.swift; path = ../../libs/AeroGearHttp/HttpMethod.swift; sourceTree = "<group>"; };
+		48F70A7319B6F13000DDB152 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../libs/AeroGearHttp/Info.plist; sourceTree = "<group>"; };
+		48F70A7419B6F13000DDB152 /* JsonRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonRequestSerializer.swift; path = ../../libs/AeroGearHttp/JsonRequestSerializer.swift; sourceTree = "<group>"; };
+		48F70A7519B6F13000DDB152 /* JsonResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonResponseSerializer.swift; path = ../../libs/AeroGearHttp/JsonResponseSerializer.swift; sourceTree = "<group>"; };
+		48F70A7619B6F13000DDB152 /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestSerializer.swift; path = ../../libs/AeroGearHttp/RequestSerializer.swift; sourceTree = "<group>"; };
+		48F70A7719B6F13000DDB152 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseSerializer.swift; path = ../../libs/AeroGearHttp/ResponseSerializer.swift; sourceTree = "<group>"; };
+		48F70A7819B6F13000DDB152 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = ../../libs/AeroGearHttp/Session.swift; sourceTree = "<group>"; };
+		48F70A8019B6F13D00DDB152 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = ../../libs/AeroGearOAuth2/AccountManager.swift; sourceTree = "<group>"; };
+		48F70A8119B6F13D00DDB152 /* AeroGearOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearOAuth2.h; path = ../../libs/AeroGearOAuth2/AeroGearOAuth2.h; sourceTree = "<group>"; };
+		48F70A8219B6F13D00DDB152 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../../libs/AeroGearOAuth2/Config.swift; sourceTree = "<group>"; };
+		48F70A8319B6F13D00DDB152 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../libs/AeroGearOAuth2/Info.plist; sourceTree = "<group>"; };
+		48F70A8419B6F13D00DDB152 /* OAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2Module.swift; path = ../../libs/AeroGearOAuth2/OAuth2Module.swift; sourceTree = "<group>"; };
+		48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2Session.swift; path = ../../libs/AeroGearOAuth2/OAuth2Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +113,8 @@
 		48F709FE19B59E9800DDB152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48F70A7019B6F11700DDB152 /* AeroGearOAuth2 */,
+				48F70A6F19B6F10C00DDB152 /* AeroGearHttp */,
 				48F709FF19B59E9800DDB152 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -107,6 +135,34 @@
 				48F70A1219B59E9800DDB152 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48F70A6F19B6F10C00DDB152 /* AeroGearHttp */ = {
+			isa = PBXGroup;
+			children = (
+				48F70A7119B6F13000DDB152 /* AeroGearHttp.h */,
+				48F70A7219B6F13000DDB152 /* HttpMethod.swift */,
+				48F70A7319B6F13000DDB152 /* Info.plist */,
+				48F70A7419B6F13000DDB152 /* JsonRequestSerializer.swift */,
+				48F70A7519B6F13000DDB152 /* JsonResponseSerializer.swift */,
+				48F70A7619B6F13000DDB152 /* RequestSerializer.swift */,
+				48F70A7719B6F13000DDB152 /* ResponseSerializer.swift */,
+				48F70A7819B6F13000DDB152 /* Session.swift */,
+			);
+			name = AeroGearHttp;
+			sourceTree = "<group>";
+		};
+		48F70A7019B6F11700DDB152 /* AeroGearOAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				48F70A8019B6F13D00DDB152 /* AccountManager.swift */,
+				48F70A8119B6F13D00DDB152 /* AeroGearOAuth2.h */,
+				48F70A8219B6F13D00DDB152 /* Config.swift */,
+				48F70A8319B6F13D00DDB152 /* Info.plist */,
+				48F70A8419B6F13D00DDB152 /* OAuth2Module.swift */,
+				48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */,
+			);
+			name = AeroGearOAuth2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,8 +245,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F70A8819B6F13D00DDB152 /* Info.plist in Resources */,
 				48F70A0619B59E9800DDB152 /* Main.storyboard in Resources */,
 				48F70A0819B59E9800DDB152 /* Images.xcassets in Resources */,
+				48F70A7A19B6F13000DDB152 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +267,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F70A0319B59E9800DDB152 /* ViewController.swift in Sources */,
+				48F70A8A19B6F13D00DDB152 /* OAuth2Session.swift in Sources */,
+				48F70A7919B6F13000DDB152 /* HttpMethod.swift in Sources */,
 				48F70A0119B59E9800DDB152 /* AppDelegate.swift in Sources */,
+				48F70A7D19B6F13000DDB152 /* RequestSerializer.swift in Sources */,
+				48F70A8919B6F13D00DDB152 /* OAuth2Module.swift in Sources */,
+				48F70A7F19B6F13000DDB152 /* Session.swift in Sources */,
+				48F70A8619B6F13D00DDB152 /* AccountManager.swift in Sources */,
+				48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */,
+				48F70A8719B6F13D00DDB152 /* Config.swift in Sources */,
+				48F70A7C19B6F13000DDB152 /* JsonResponseSerializer.swift in Sources */,
+				48F70A7E19B6F13000DDB152 /* ResponseSerializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

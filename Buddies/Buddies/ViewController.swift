@@ -16,7 +16,7 @@
 */
 
 import UIKit
-import AeroGearHttp
+//import AeroGearHttp
 
 class MasterViewController: UITableViewController {
 
@@ -25,9 +25,9 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = SessionImpl(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var http = Session(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         
-        http.GET(nil, success: {(response: AnyObject?) in
+        http.GET(success: {(response: AnyObject?) in
             if (response != nil) {
                 for developer in (response!) as [AnyObject] {
                     // TODO with object serialization AGIOS-13 replace this code to plugin serializer

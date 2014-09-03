@@ -79,6 +79,58 @@ UIActionSheetDelegate, UIAlertViewDelegate {
         actionSheet.showInView(self.view)
     }
     
+    
+    // MARK - ActionSheet Actions
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex:NSInteger) {
+        if (actionSheet.buttonTitleAtIndex(clickedButtonAtIndex) == "Facebook") {
+            self.shareWithFacebook()
+        } else if(actionSheet.buttonTitleAtIndex(clickedButtonAtIndex) == "Google") {
+            self.shareWithGoogleDrive()
+        }
+    }
+    
+    func shareWithFacebook() {
+        println("Perform photo upload with Facebook")
+        performUpload()
+    }
+    
+    func shareWithGoogleDrive() {
+        println("Perform photo upload with Google")
+        
+        let googleConfig = Config(base: "https://accounts.google.com",
+                                    authzEndpoint: "o/oauth2/auth",
+                                    redirectURL: "org.aerogear.Shoot:/oauth2Callback",
+                                    accessTokenEndpoint: "o/oauth2/token",
+                                    clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+                                    revokeTokenEndpoint: "rest/revoke",
+                                    scopes:["https://www.googleapis.com/auth/drive"],
+                                    accountId: "my_google_account")
+        
+        var oauth2Module = OAuth2Module(config: googleConfig)
+        oauth2Module.requestAccessSuccess({(object: AnyObject?)->() in
+                println("sucess")
+            }, failure: { (error: NSError) -> () in
+                println("error")
+        })
+
+        performUpload()
+    }
+
+    func performUpload() {
+        // extract the image filename
+        let filename = self.imageView.accessibilityIdentifier;
+    
+        // Get currently displayed image
+        let imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+    
+        // set up payload with the image
+        //TODO
+   
+        // upload file
+        // TODO
+    }
+    
     // MARK - UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
