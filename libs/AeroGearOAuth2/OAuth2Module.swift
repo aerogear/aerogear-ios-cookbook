@@ -42,7 +42,7 @@ public class OAuth2Module {
     var state: AuthorizationState
     
     // used without AccountManager, default accountId, not really usefull
-    public convenience init(config:Config) {
+    public convenience init(config: Config) {
         if (config.accountId != nil) {
             self.init(config: config, accountId:config.accountId!)
         } else {
@@ -51,7 +51,7 @@ public class OAuth2Module {
     }
     
     // used by AccountManager with a user given accountId
-    public init(config:Config, accountId: String) {
+    public init(config: Config, accountId: String) {
         self.config = config
         // TODO use timeout config paramter
         self.httpSession = Session(url: config.base, sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -61,7 +61,7 @@ public class OAuth2Module {
     
     // MARK: Public API - To be overriden if necessary by OAuth2 specific adapter
     
-    public func requestAuthorizationCodeSuccess(success:SuccessType, failure:FailureType) {
+    public func requestAuthorizationCodeSuccess(success: SuccessType, failure: FailureType) {
         
         let urlString = self.urlAsString();
         println("URL==\(urlString)")
@@ -75,8 +75,8 @@ public class OAuth2Module {
         // register with the notification system in order to be notified when the 'authorization' process completes in the
         // external browser, and the oauth code is available so that we can then proceed to request the 'access_token'
         // from the server.
-        applicationLaunchNotificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AGAppLaunchedWithURLNotification, object:nil, queue:nil, usingBlock: { (notification: NSNotification!) -> Void in
-            self.extractCode(notification, success:success, failure:failure)
+        applicationLaunchNotificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AGAppLaunchedWithURLNotification, object: nil, queue: nil, usingBlock: { (notification: NSNotification!) -> Void in
+            self.extractCode(notification, success: success, failure: failure)
         })
         
         // register to receive notification when the application becomes active so we
@@ -99,14 +99,29 @@ public class OAuth2Module {
         UIApplication.sharedApplication().openURL(url);
     }
     
-    public func refreshAccessTokenSuccess(success:SuccessType, failure:FailureType) {
+    public func refreshAccessTokenSuccess(success: SuccessType, failure: FailureType) {
     }
     
-    public func exchangeAuthorizationCodeForAccessToken(code: String, success:SuccessType, failure:FailureType) {
-
+    public func exchangeAuthorizationCodeForAccessToken(code: String, success: SuccessType, failure: FailureType) {
+        var paramDict: [String: String] = ["code": code, "client_id": config.clientId, "redirect_uri": config.redirectURL, "grant_type":"authorization_code"]
+        
+        if let unwrapped = config.clientSecret {
+            paramDict["client_secret"] = unwrapped
+        }
+        
+        httpSession.baseURL = config.accessTokenEndpointURL
+        println(">>\(config.accessTokenEndpointURL)")
+        httpSession.POST(parameters: paramDict, success: {(responseObject: AnyObject?) -> () in
+            if let unwrappedResponse = responseObject as? [String: String] {
+                self.oauth2Session.saveAccessToken(accessToken: unwrappedResponse["access_token"], refreshToken: unwrappedResponse["refresh_token"], expiration: unwrappedResponse["expires_in"])
+                success(unwrappedResponse["access_token"])
+            }
+        }, failure: {(error: NSError) -> () in
+                failure(error)
+        })
     }
 
-    public func requestAccessSuccess(success:SuccessType, failure:FailureType) {
+    public func requestAccessSuccess(success: SuccessType, failure: FailureType) {
         if (self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()) {
             // we already have a valid access token, nothing more to be done
             success(self.oauth2Session.accessToken!);
@@ -119,7 +134,7 @@ public class OAuth2Module {
         }
     }
     
-    public func revokeAccessSuccess(success:SuccessType, failure:FailureType) {
+    public func revokeAccessSuccess(success: SuccessType, failure: FailureType) {
         // return if not yet initialized
         if (self.oauth2Session.accessToken == nil) {
             return;
@@ -139,7 +154,47 @@ public class OAuth2Module {
 
     // MARK: Internal Methods
     
-    func extractCode(notification:NSNotification, success:AnyObject->(), failure:NSError->()) {
+    func extractCode(notification: NSNotification, success: SuccessType, failure: FailureType) {
+        let url: NSURL? = (notification.userInfo as [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
+        
+        // extract the code from the URL
+        let code = self.parametersFromQueryString(url?.query)["code"]
+        // if exists perform the exchange
+        if (code != nil) {
+            println("authz code=\(code!)")
+            self.exchangeAuthorizationCodeForAccessToken(code!, success: success, failure: failure)
+            // update state
+            state = .AuthorizationStateApproved
+        } else {
+            failure(NSError(domain:AGAuthzErrorDomain, code:0, userInfo:["NSLocalizedDescriptionKey": "User cancelled authorization."]))
+        }
+        // finally, unregister
+        self.stopObserving()
+    }
+    
+    func parametersFromQueryString(queryString: String?) -> [String: String] {
+        var parameters = [String: String]()
+        if (queryString != nil) {
+            var parameterScanner: NSScanner = NSScanner(string: queryString!)
+            var name:NSString? = nil
+            var value:NSString? = nil
+    
+            while (parameterScanner.atEnd != true) {
+                name = nil;
+                parameterScanner.scanUpToString("=", intoString: &name)
+                parameterScanner.scanString("=", intoString:nil)
+    
+                value = nil
+                parameterScanner.scanUpToString("&", intoString:&value)
+                parameterScanner.scanString("&", intoString:nil)
+    
+                if (name != nil && value != nil) {
+                    parameters[name!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!] = value!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+                }
+            }
+    }
+    
+    return parameters;
     }
     
     deinit {
@@ -191,7 +246,7 @@ public class OAuth2Module {
         return scopeString
     }
     
-    func urlEncodeString(stringToURLEncode:String) -> String {
+    func urlEncodeString(stringToURLEncode: String) -> String {
         let encodedURL = CFURLCreateStringByAddingPercentEscapes(nil,
                                         stringToURLEncode as NSString,
                                         nil,
