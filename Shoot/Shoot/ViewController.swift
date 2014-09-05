@@ -24,21 +24,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 UIActionSheetDelegate, UIAlertViewDelegate {
 
     var newMedia: Bool = true
+    var google: OAuth2Module
+    var facebook: OAuth2Module
     
     @IBOutlet weak var imageView: UIImageView!
     
     required init(coder aDecoder: NSCoder) {
+        let googleConfig = Config(base: "https://accounts.google.com",
+            authzEndpoint: "o/oauth2/auth",
+            redirectURL: "org.aerogear.Shoot:/oauth2Callback",
+            accessTokenEndpoint: "o/oauth2/token",
+            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+            revokeTokenEndpoint: "rest/revoke",
+            scopes:["https://www.googleapis.com/auth/drive"],
+            accountId: "my_google_account")
+        self.google = OAuth2Module(config: googleConfig)
+        
+        let facebookConfig = Config(base: "",
+            authzEndpoint: "https://www.facebook.com/dialog/oauth",
+            redirectURL: "fbYYY://authorize/",
+            accessTokenEndpoint: "https://graph.facebook.com/oauth/access_token",
+            clientId: "YYY",
+            clientSecret: "XXX",
+            revokeTokenEndpoint: "https://www.facebook.com/me/permissions",
+            scopes:["photo_upload, publish_actions"],
+            accountId: "my_facebook_account")
+        self.facebook = FacebookOAuth2Module(config: facebookConfig)
         super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK - Toolbar Actions
@@ -71,7 +91,7 @@ UIActionSheetDelegate, UIAlertViewDelegate {
     @IBAction func share(sender: UIBarButtonItem) {
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
-            let alert = UIAlertView(title: "Error", message: "Please select an image first!", delegate: nil, cancelButtonTitle:"OK",            otherButtonTitles:"")
+            let alert = UIAlertView(title: "Error", message: "Please select an image first!", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
             alert.show()
             return;
         }
@@ -92,43 +112,63 @@ UIActionSheetDelegate, UIAlertViewDelegate {
     
     func shareWithFacebook() {
         println("Perform photo upload with Facebook")
-        performUpload()
+        
+        facebook.requestAccessSuccess({(object: AnyObject?)->() in
+            println("Facebook Success in OAuth2 grant")
+            let http = self.google.http
+            
+            // TODO AGIOS-229 upload
+            http.baseURL = NSURL(string: "https://graph.facebook.com/me/photos")
+            self.performUpload(http)
+            }, failure: { (error: NSError) -> () in
+                println("Facebook Error in OAuth2 grant")
+        })
     }
     
     func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
-        
-        let googleConfig = Config(base: "https://accounts.google.com",
-                                    authzEndpoint: "o/oauth2/auth",
-                                    redirectURL: "org.aerogear.Shoot:/oauth2Callback",
-                                    accessTokenEndpoint: "o/oauth2/token",
-                                    clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
-                                    revokeTokenEndpoint: "rest/revoke",
-                                    scopes:["https://www.googleapis.com/auth/drive"],
-                                    accountId: "my_google_account")
-        
-        var oauth2Module = OAuth2Module(config: googleConfig)
-        oauth2Module.requestAccessSuccess({(object: AnyObject?)->() in
-                println("sucess")
-            }, failure: { (error: NSError) -> () in
-                println("error")
-        })
 
-        performUpload()
+        google.requestAccessSuccess({(object: AnyObject?)->() in
+            println("Google Success in OAuth2 grant")
+            let http = self.google.http
+            
+            // TODO AGIOS-229 upload
+            http.baseURL = NSURL(string: "https://www.googleapis.com/upload/drive/v2/files")
+            self.performUpload(http)
+            
+            // TODO to be removed onde upload works
+            // GET with authz token working ok
+            http.baseURL = NSURL(string: "https://www.googleapis.com/drive/v2/files")
+            http.GET(success: { (object: AnyObject?) -> Void in
+                if let mine: AnyObject = object {
+                    println("Success using http GET")
+                }
+                
+            }) { (error: NSError) -> Void in
+                    println("Error getting files")
+            }
+            
+        }, failure: { (error: NSError) -> () in
+            println("Google Error in OAuth2 grant")
+        })
     }
 
-    func performUpload() {
+    func performUpload(http: Http) {
         // extract the image filename
         let filename = self.imageView.accessibilityIdentifier;
     
         // Get currently displayed image
         let imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
-    
-        // set up payload with the image
-        //TODO
-   
-        // upload file
-        // TODO
+        
+        // TODO as part of AGIOS-229
+        http.multiPartUpload(http.baseURL!, parameters: ["mypersonal": imageData], success: {(response: AnyObject?) -> Void in
+            if (response != nil) {
+                println("Successful upload: " + response!.description)
+            }
+        }
+        , failure: {(error: NSError) -> Void in
+            println("Failed upload \(error)")
+        })
     }
     
     // MARK - UIImagePickerControllerDelegate
@@ -150,7 +190,7 @@ UIActionSheetDelegate, UIAlertViewDelegate {
                 }
             }, failureBlock: {
                 (error: NSError!) in
-                println("Error\(error)")
+                println("Error \(error)")
             }
             )
         }
