@@ -20,8 +20,7 @@ import UIKit
 import MobileCoreServices
 import AssetsLibrary
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-UIActionSheetDelegate, UIAlertViewDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var newMedia: Bool = true
     var google: OAuth2Module
