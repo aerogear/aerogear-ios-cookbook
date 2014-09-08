@@ -91,23 +91,25 @@ UIActionSheetDelegate, UIAlertViewDelegate {
     @IBAction func share(sender: UIBarButtonItem) {
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
-            let alert = UIAlertView(title: "Error", message: "Please select an image first!", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
-            alert.show()
+            let alertController = UIAlertController(title: "Error", message: "Please select an image first!", preferredStyle: .Alert)
+            presentViewController(alertController, animated: true, completion: nil)
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            })
+            alertController.addAction(ok)
             return;
         }
-        let actionSheet = UIActionSheet(title:nil, delegate:self, cancelButtonTitle:"Cancel", destructiveButtonTitle:nil, otherButtonTitles:"Facebook", "Google")
-        actionSheet.showInView(self.view)
-    }
-    
-    
-    // MARK - ActionSheet Actions
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex:NSInteger) {
-        if (actionSheet.buttonTitleAtIndex(clickedButtonAtIndex) == "Facebook") {
-            self.shareWithFacebook()
-        } else if(actionSheet.buttonTitleAtIndex(clickedButtonAtIndex) == "Google") {
+        
+        let alertController = UIAlertController(title: "Share with", message: nil, preferredStyle: .ActionSheet)
+        presentViewController(alertController, animated: true, completion: nil)
+        let google = UIAlertAction(title: "Google", style: .Default, handler: { (action) -> Void in
             self.shareWithGoogleDrive()
-        }
+        })
+        alertController.addAction(google)
+        let facebook = UIAlertAction(title: "Facebook", style: .Default, handler: { (action) -> Void in
+            self.self.shareWithFacebook()
+        })
+        alertController.addAction(facebook)
+        
     }
     
     func shareWithFacebook() {
