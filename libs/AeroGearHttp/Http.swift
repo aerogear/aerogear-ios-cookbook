@@ -20,15 +20,14 @@ import Foundation
 public class Http {
     public var baseURL: NSURL?
     var session: NSURLSession
-    var requestSerializer: RequestSerializer!
-    var responseSerializer: ResponseSerializer!
+    public var requestSerializer: RequestSerializer
+    public var responseSerializer: ResponseSerializer
     
     public convenience init() {
         self.init(url: nil)
     }
     
     public convenience init(url: String?) {
-        let baseURL = url == nil ? nil : NSURL.URLWithString(url!)
         self.init(url: url, sessionConfig: nil)
     }
     
@@ -37,7 +36,7 @@ public class Http {
         self.init(url: url, sessionConfig: sessionConfig, requestSerializer: JsonRequestSerializer(url: baseURL, headers: headers), responseSerializer: JsonResponseSerializer())
     }
     
-    init(url: String?, sessionConfig: NSURLSessionConfiguration?, requestSerializer: RequestSerializer, responseSerializer: ResponseSerializer) {
+    public init(url: String?, sessionConfig: NSURLSessionConfiguration?, requestSerializer: RequestSerializer, responseSerializer: ResponseSerializer) {
         self.baseURL = url == nil ? nil : NSURL.URLWithString(url!)
         self.session = (sessionConfig == nil) ? NSURLSession.sharedSession() : NSURLSession(configuration: sessionConfig!)
         self.requestSerializer = requestSerializer
@@ -56,13 +55,13 @@ public class Http {
                         return
                     }
                     var myError = NSError()
-                    var isValid = self.responseSerializer?.validateResponse(response, data: data, error: &myError)
+                    var isValid = self.responseSerializer.validateResponse(response, data: data, error: &myError)
                     if (isValid == false) {
                         failure(myError)
                         return
                     }
                     if data != nil {
-                        var responseObject: AnyObject? = self.responseSerializer?.response(data)
+                        var responseObject: AnyObject? = self.responseSerializer.response(data)
                         success(responseObject)
                     }
             })
@@ -114,13 +113,13 @@ public class Http {
                         return
                     }
                     var myError = NSError()
-                    var isValid = self.responseSerializer?.validateResponse(response, data: data, error: &myError)
+                    var isValid = self.responseSerializer.validateResponse(response, data: data, error: &myError)
                     if (isValid == false) {
                         failure(myError)
                         return
                     }
                     if data != nil {
-                        var responseObject: AnyObject? = self.responseSerializer?.response(data)
+                        var responseObject: AnyObject? = self.responseSerializer.response(data)
                         success(responseObject)
                     }
             })

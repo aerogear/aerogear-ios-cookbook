@@ -23,34 +23,13 @@ import AssetsLibrary
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var newMedia: Bool = true
-    var google: OAuth2Module
-    var facebook: OAuth2Module
     
     @IBOutlet weak var imageView: UIImageView!
     
     required init(coder aDecoder: NSCoder) {
-        let googleConfig = Config(base: "https://accounts.google.com",
-            authzEndpoint: "o/oauth2/auth",
-            redirectURL: "org.aerogear.Shoot:/oauth2Callback",
-            accessTokenEndpoint: "o/oauth2/token",
-            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
-            revokeTokenEndpoint: "rest/revoke",
-            scopes:["https://www.googleapis.com/auth/drive"],
-            accountId: "my_google_account")
-        self.google = OAuth2Module(config: googleConfig)
-        
-        let facebookConfig = Config(base: "",
-            authzEndpoint: "https://www.facebook.com/dialog/oauth",
-            redirectURL: "fbYYY://authorize/",
-            accessTokenEndpoint: "https://graph.facebook.com/oauth/access_token",
-            clientId: "YYY",
-            clientSecret: "XXX",
-            revokeTokenEndpoint: "https://www.facebook.com/me/permissions",
-            scopes:["photo_upload, publish_actions"],
-            accountId: "my_facebook_account")
-        self.facebook = FacebookOAuth2Module(config: facebookConfig)
         super.init(coder: aDecoder)
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,14 +92,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func shareWithFacebook() {
         println("Perform photo upload with Facebook")
+        let facebookConfig = FacebookConfig(
+            clientId: "765891443445434",
+            clientSecret: "e489a7b0a034df9e57bf8c2a9d74fd26",
+            scopes:["photo_upload, publish_actions"])
         
-        facebook.requestAccessSuccess({(object: AnyObject?)->() in
-            println("Facebook Success in OAuth2 grant")
-            let http = self.google.http
-            
-            // TODO AGIOS-229 upload
-            http.baseURL = NSURL(string: "https://graph.facebook.com/me/photos")
-            self.performUpload(http)
+        AccountManager.addFacebookAccount(facebookConfig).requestAccessSuccess({(object: AnyObject?)->() in
+                println("Facebook Success in OAuth2 grant")
+                let http = AccountManager.getAccountByConfig(facebookConfig)?.http
+                if let unwrappedHttp = http {
+                    // TODO AGIOS-229 upload
+                    unwrappedHttp.baseURL = NSURL(string: "https://graph.facebook.com/me/photos")
+                    self.performUpload(unwrappedHttp)
+                }
             }, failure: { (error: NSError) -> () in
                 println("Facebook Error in OAuth2 grant")
         })
@@ -128,25 +112,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
+        let googleConfig = GoogleConfig(
+            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+            scopes:["https://www.googleapis.com/auth/drive"])
 
-        google.requestAccessSuccess({(object: AnyObject?)->() in
+        AccountManager.addGoogleAccount(googleConfig).requestAccessSuccess({(object: AnyObject?)->() in
             println("Google Success in OAuth2 grant")
-            let http = self.google.http
+            // TODO what about if success callback of requestAccessSuccess would return an ttp object with proper authz header setup?
+            let http = AccountManager.getAccountByConfig(googleConfig)?.http
+            if let unwrappedHttp = http {
+                // TODO AGIOS-229 upload
+                //http.baseURL = NSURL(string: "https://www.googleapis.com/upload/drive/v2/files")
+                //self.performUpload(http)
             
-            // TODO AGIOS-229 upload
-            http.baseURL = NSURL(string: "https://www.googleapis.com/upload/drive/v2/files")
-            self.performUpload(http)
-            
-            // TODO to be removed onde upload works
-            // GET with authz token working ok
-            http.baseURL = NSURL(string: "https://www.googleapis.com/drive/v2/files")
-            http.GET(success: { (object: AnyObject?) -> Void in
-                if let mine: AnyObject = object {
-                    println("Success using http GET")
-                }
-                
-            }) { (error: NSError) -> Void in
-                    println("Error getting files")
+                // TODO to be removed onde upload works
+                // GET with authz token working ok
+                unwrappedHttp.baseURL = NSURL(string: "https://www.googleapis.com/drive/v2/files")
+                unwrappedHttp.GET(success: { (object: AnyObject?) -> Void in
+                    if let mine: AnyObject = object {
+                        println("Success using http GET")
+                    }
+                }, failure: { (error: NSError) -> Void in
+                    println("Error getting files: \(error)")
+                })
             }
             
         }, failure: { (error: NSError) -> () in

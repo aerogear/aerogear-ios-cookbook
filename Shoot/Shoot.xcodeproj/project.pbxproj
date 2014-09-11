@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */; };
+		48478CB619BF26FF00983D79 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48478CB519BF26FF00983D79 /* Security.framework */; };
+		48478CBA19C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */; };
 		48BC695119B9FC2B00497B4E /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */; };
 		48BC695319B9FDAE00497B4E /* FacebookOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */; };
 		48F70A0119B59E9800DDB152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0019B59E9800DDB152 /* AppDelegate.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrustedPersistantOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
+		48478CB519BF26FF00983D79 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UntrustedMemoryOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
 		48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringResponseSerializer.swift; path = ../../libs/AeroGearHttp/StringResponseSerializer.swift; sourceTree = "<group>"; };
 		48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/FacebookOAuth2Module.swift; sourceTree = "<group>"; };
 		48F709FB19B59E9800DDB152 /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48478CB619BF26FF00983D79 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +94,7 @@
 		48F709F219B59E9800DDB152 = {
 			isa = PBXGroup;
 			children = (
+				48478CB519BF26FF00983D79 /* Security.framework */,
 				48F709FD19B59E9800DDB152 /* Shoot */,
 				48F70A1019B59E9800DDB152 /* ShootTests */,
 				48F709FC19B59E9800DDB152 /* Products */,
@@ -167,6 +175,8 @@
 				48F70A8419B6F13D00DDB152 /* OAuth2Module.swift */,
 				48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */,
 				48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */,
+				48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */,
+				48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */,
 			);
 			name = AeroGearOAuth2;
 			sourceTree = "<group>";
@@ -276,6 +286,7 @@
 				48F70A8A19B6F13D00DDB152 /* OAuth2Session.swift in Sources */,
 				48F70A7919B6F13000DDB152 /* HttpMethod.swift in Sources */,
 				48F70A0119B59E9800DDB152 /* AppDelegate.swift in Sources */,
+				48478CBA19C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift in Sources */,
 				48BC695319B9FDAE00497B4E /* FacebookOAuth2Module.swift in Sources */,
 				48BC695119B9FC2B00497B4E /* StringResponseSerializer.swift in Sources */,
 				48F70A7D19B6F13000DDB152 /* RequestSerializer.swift in Sources */,
@@ -285,6 +296,7 @@
 				48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */,
 				48F70A8719B6F13D00DDB152 /* Config.swift in Sources */,
 				48F70A7C19B6F13000DDB152 /* JsonResponseSerializer.swift in Sources */,
+				48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */,
 				48F70A7E19B6F13000DDB152 /* ResponseSerializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
