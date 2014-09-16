@@ -16,7 +16,6 @@
 		48F70A0319B59E9800DDB152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0219B59E9800DDB152 /* ViewController.swift */; };
 		48F70A0619B59E9800DDB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0419B59E9800DDB152 /* Main.storyboard */; };
 		48F70A0819B59E9800DDB152 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0719B59E9800DDB152 /* Images.xcassets */; };
-		48F70A1419B59E9800DDB152 /* ShootTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A1319B59E9800DDB152 /* ShootTests.swift */; };
 		48F70A7919B6F13000DDB152 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7219B6F13000DDB152 /* HttpMethod.swift */; };
 		48F70A7A19B6F13000DDB152 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A7319B6F13000DDB152 /* Info.plist */; };
 		48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A7419B6F13000DDB152 /* JsonRequestSerializer.swift */; };
@@ -55,7 +54,6 @@
 		48F70A0719B59E9800DDB152 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48F70A0D19B59E9800DDB152 /* ShootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F70A1219B59E9800DDB152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48F70A1319B59E9800DDB152 /* ShootTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootTests.swift; sourceTree = "<group>"; };
 		48F70A7119B6F13000DDB152 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearHttp.h; path = ../../libs/AeroGearHttp/AeroGearHttp.h; sourceTree = "<group>"; };
 		48F70A7219B6F13000DDB152 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpMethod.swift; path = ../../libs/AeroGearHttp/HttpMethod.swift; sourceTree = "<group>"; };
 		48F70A7319B6F13000DDB152 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../libs/AeroGearHttp/Info.plist; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 		48F70A1019B59E9800DDB152 /* ShootTests */ = {
 			isa = PBXGroup;
 			children = (
-				48F70A1319B59E9800DDB152 /* ShootTests.swift */,
 				48F70A1119B59E9800DDB152 /* Supporting Files */,
 			);
 			path = ShootTests;
@@ -305,7 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48F70A1419B59E9800DDB152 /* ShootTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

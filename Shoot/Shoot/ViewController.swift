@@ -71,19 +71,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (filename == nil) { // nothing was selected
             let alertController = UIAlertController(title: "Error", message: "Please select an image first!", preferredStyle: .Alert)
             presentViewController(alertController, animated: true, completion: nil)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            })
+            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
             alertController.addAction(ok)
             return;
         }
         
         let alertController = UIAlertController(title: "Share with", message: nil, preferredStyle: .ActionSheet)
         presentViewController(alertController, animated: true, completion: nil)
-        let google = UIAlertAction(title: "Google", style: .Default, handler: { (action) -> Void in
+        let google = UIAlertAction(title: "Google", style: .Default, handler: { (action) in
             self.shareWithGoogleDrive()
         })
         alertController.addAction(google)
-        let facebook = UIAlertAction(title: "Facebook", style: .Default, handler: { (action) -> Void in
+        let facebook = UIAlertAction(title: "Facebook", style: .Default, handler: { (action) in
             self.self.shareWithFacebook()
         })
         alertController.addAction(facebook)
