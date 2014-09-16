@@ -16,7 +16,6 @@
 */
 
 import Foundation
-//import AeroGearHttp
 
 public class FacebookOAuth2Module: OAuth2Module {
 

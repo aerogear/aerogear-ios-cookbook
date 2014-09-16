@@ -15,7 +15,6 @@
 * limitations under the License.
 */
 
-//import AeroGearHttp
 import Foundation
 import UIKit
 
