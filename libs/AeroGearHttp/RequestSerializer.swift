@@ -25,6 +25,6 @@ public protocol RequestSerializer {
     var timeoutInterval: NSTimeInterval {get set}
     var boundary: String {get}
     
-    func request(url: NSURL, method: HttpMethod, parameters: [String: AnyObject]?) -> NSURLRequest?
-    func multiPartRequest(url:NSURL, method: HttpMethod) -> NSURLRequest?
+    func request(url: NSURL, method: HttpMethod, parameters: [String: AnyObject]?, headers: [String: String]?) -> NSURLRequest?
+    func multiPartRequest(url:NSURL, method: HttpMethod, headers: [String: String]?) -> NSURLRequest?
 }
