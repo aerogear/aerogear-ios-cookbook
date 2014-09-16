@@ -22,7 +22,6 @@ public typealias FailureType = NSError->()
 
 public protocol AuthzModule {
     var http: Http {get}
-    init(config: Config, accountId: String, session: OAuth2Session)
     func requestAccessSuccess(success: SuccessType, failure: FailureType)
     func requestAuthorizationCodeSuccess(success: SuccessType, failure: FailureType)
     func exchangeAuthorizationCodeForAccessToken(code: String, success: SuccessType, failure: FailureType)

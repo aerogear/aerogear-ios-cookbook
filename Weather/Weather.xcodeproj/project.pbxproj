@@ -50,6 +50,7 @@
 		48AA2C6D196ECE0F005F0F2F /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA2C6C196ECE0F005F0F2F /* WeatherTests.swift */; };
 		48BC696119BA179F00497B4E /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC696019BA179F00497B4E /* StringResponseSerializer.swift */; };
 		48BC696319BA17A600497B4E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC696219BA17A600497B4E /* Http.swift */; };
+		48DB691F19C884CF00452837 /* AuthzModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB691E19C884CF00452837 /* AuthzModule.swift */; };
 		48F70A6819B6F03100DDB152 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A6119B6F03100DDB152 /* HttpMethod.swift */; };
 		48F70A6919B6F03100DDB152 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A6219B6F03100DDB152 /* Info.plist */; };
 		48F70A6A19B6F03100DDB152 /* JsonRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A6319B6F03100DDB152 /* JsonRequestSerializer.swift */; };
@@ -97,6 +98,7 @@
 		48AA2C6C196ECE0F005F0F2F /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		48BC696019BA179F00497B4E /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringResponseSerializer.swift; sourceTree = "<group>"; };
 		48BC696219BA17A600497B4E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		48DB691E19C884CF00452837 /* AuthzModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthzModule.swift; sourceTree = "<group>"; };
 		48F70A6019B6F03100DDB152 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AeroGearHttp.h; sourceTree = "<group>"; };
 		48F70A6119B6F03100DDB152 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		48F70A6219B6F03100DDB152 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				48F70A6519B6F03100DDB152 /* RequestSerializer.swift */,
 				48F70A6619B6F03100DDB152 /* ResponseSerializer.swift */,
 				48BC696219BA17A600497B4E /* Http.swift */,
+				48DB691E19C884CF00452837 /* AuthzModule.swift */,
 			);
 			name = AeroGearHttp;
 			path = ../../libs/AeroGearHttp;
@@ -375,6 +378,7 @@
 				48F70A6B19B6F03100DDB152 /* JsonResponseSerializer.swift in Sources */,
 				48BC696119BA179F00497B4E /* StringResponseSerializer.swift in Sources */,
 				48F70A6D19B6F03100DDB152 /* ResponseSerializer.swift in Sources */,
+				48DB691F19C884CF00452837 /* AuthzModule.swift in Sources */,
 				48BC696319BA17A600497B4E /* Http.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
