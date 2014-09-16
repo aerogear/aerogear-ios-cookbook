@@ -47,10 +47,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
         var url = "http://api.openweathermap.org/data/2.5/weather"
-        let session = SessionImpl(url:url)
+        let session = Http(url:url)
         
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
-        session.GET(["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
+        session.GET(parameters: ["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
             if response != nil {
                 // TODO refactor once AGIOS-13 is ready (object serialization)
                 if var resp = response as? NSDictionary! {

@@ -16,7 +16,6 @@
 */
 
 import UIKit
-import AeroGearHttp
 
 class MasterViewController: UITableViewController {
 
@@ -25,9 +24,9 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = SessionImpl(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var http = Http(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         
-        http.GET(nil, success: {(response: AnyObject?) in
+        http.GET(success: {(response: AnyObject?) in
             if (response != nil) {
                 for developer in (response!) as [AnyObject] {
                     // TODO with object serialization AGIOS-13 replace this code to plugin serializer
@@ -48,8 +47,8 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
         let developer = data[indexPath.row]
-        cell.textLabel.text = developer.name
-        cell.detailTextLabel.text = developer.twitter
+        cell.textLabel?.text = developer.name
+        cell.detailTextLabel?.text = developer.twitter
         cell.tag = indexPath.row
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
@@ -58,7 +57,7 @@ class MasterViewController: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue(), {
                 if cell.tag == indexPath.row {
-                    cell.imageView.image = UIImage(data: imageData)
+                    cell.imageView?.image = UIImage(data: imageData)
                     cell.setNeedsLayout()
                 }
             })
@@ -66,7 +65,7 @@ class MasterViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView!, didDeselectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let developer = data[indexPath.row]
         let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")
         UIApplication.sharedApplication().openURL(twitterURL)

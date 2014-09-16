@@ -17,15 +17,15 @@
 
 import Foundation
 
-public class RequestSerializerImpl  : RequestSerializer {
-    var url: NSURL
-    var headers: [String: String]
-    var stringEncoding: NSNumber
-    var cachePolicy: NSURLRequestCachePolicy
-    var timeoutInterval: NSTimeInterval
-    var boundary = "BOUNDARY_STRING"
+public class JsonRequestSerializer  : RequestSerializer {
+    public var url: NSURL?
+    public var headers: [String: String]?
+    public var stringEncoding: NSNumber
+    public var cachePolicy: NSURLRequestCachePolicy
+    public var timeoutInterval: NSTimeInterval
+    public var boundary = "BOUNDARY_STRING"
     
-    public init(url: NSURL, headers: [String: String]) {
+    public init(url: NSURL? = nil, headers: [String: String]? = nil) {
         self.url = url
         self.headers = headers
         self.stringEncoding = NSUTF8StringEncoding
@@ -33,13 +33,15 @@ public class RequestSerializerImpl  : RequestSerializer {
         self.cachePolicy = .UseProtocolCachePolicy
     }
     
-    public func request(method: HttpMethod, parameters: [String: AnyObject]?) -> NSURLRequest? {
+    public func request(url: NSURL, method: HttpMethod, parameters: [String: AnyObject]?) -> NSURLRequest? {
         var request = NSMutableURLRequest(URL: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
         request.HTTPMethod = method.toRaw()
         
         // apply headers to new request
-        for (key,val) in self.headers {
-            request.addValue(val, forHTTPHeaderField: key)
+        if(headers != nil) {
+            for (key,val) in self.headers! {
+                request.addValue(val, forHTTPHeaderField: key)
+            }
         }
         var queryString = ""
         if parameters != nil {
@@ -47,10 +49,10 @@ public class RequestSerializerImpl  : RequestSerializer {
         }
 
         if method == HttpMethod.GET || method == HttpMethod.HEAD || method == HttpMethod.DELETE {
-            var paramSeparator = request.URL.query != nil ? "&" : "?"
+            var paramSeparator = request.URL?.query != nil ? "&" : "?"
             var newUrl:String
             if (request.URL?.absoluteString != nil) {
-                newUrl = "\(request.URL.absoluteString!)\(paramSeparator)\(queryString)"
+                newUrl = "\(request.URL!.absoluteString!)\(paramSeparator)\(queryString)"
                 request.URL = NSURL.URLWithString(newUrl)
             }
         } else {
@@ -64,12 +66,14 @@ public class RequestSerializerImpl  : RequestSerializer {
         return request
     }
     
-    public func multiPartRequest(method: HttpMethod) -> NSURLRequest? {
+    public func multiPartRequest(url:NSURL, method: HttpMethod) -> NSURLRequest? {
         assert(method == .POST || method == .PUT, "PUT or POST only")
         var request = NSMutableURLRequest(URL: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
         request.HTTPMethod = method.toRaw()
-        for (key,val) in self.headers {
-            request.addValue(val, forHTTPHeaderField: key)
+        if(headers != nil) {
+            for (key,val) in self.headers! {
+                request.addValue(val, forHTTPHeaderField: key)
+            }
         }
         var contentType = "multipart/form-data; boundary=\(boundary)"
         request.addValue(contentType, forHTTPHeaderField:"Content-Type")
