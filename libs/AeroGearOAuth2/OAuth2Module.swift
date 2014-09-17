@@ -18,13 +18,9 @@
 import Foundation
 import UIKit
 
-public typealias SuccessType = AnyObject?->()
-public typealias FailureType = NSError->()
-
 public let AGAppLaunchedWithURLNotification = "AGAppLaunchedWithURLNotification"
 public let AGAppDidBecomeActiveNotification = "AGAppDidBecomeActiveNotification"
-let AGAuthzErrorDomain = "AGAuthzErrorDomain"
-
+public let AGAuthzErrorDomain = "AGAuthzErrorDomain"
 
 enum AuthorizationState {
     case AuthorizationStatePendingExternalApproval
@@ -32,20 +28,10 @@ enum AuthorizationState {
     case AuthorizationStateUnknown
 }
 
-public class OAuth2Module {
+public class OAuth2Module: AuthzModule {
     let config: Config
-    var httpAuthz: Http
+    var http: Http
 
-    public var http: Http {
-        get {
-            var headerFields: [String: String]?
-            if (self.isAuthorized()) {
-                headerFields = self.authorizationFields()
-                return Http(url: nil, sessionConfig: nil, headers: headerFields != nil ? headerFields! : [String: String]())
-            }
-            return Http()
-        }
-    }
     var oauth2Session: OAuth2Session
     var applicationLaunchNotificationObserver: NSObjectProtocol?
     var applicationDidBecomeActiveNotificationObserver: NSObjectProtocol?
@@ -64,7 +50,7 @@ public class OAuth2Module {
     public required init(config: Config, accountId: String, session: OAuth2Session) {
         self.config = config
         // TODO use timeout config paramter
-        self.httpAuthz = Http(url: config.base, sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        self.http = Http(url: config.base, sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         self.oauth2Session = session
         self.state = .AuthorizationStateUnknown
     }
@@ -107,8 +93,8 @@ public class OAuth2Module {
             if (config.clientSecret != nil) {
                 paramDict["client_secret"] = config.clientSecret!
             }
-            httpAuthz.baseURL = config.accessTokenEndpointURL
-            httpAuthz.POST(parameters: paramDict, success: { (responseObject: AnyObject?) -> Void in
+            http.baseURL = config.accessTokenEndpointURL
+            http.POST(parameters: paramDict, success: { (responseObject: AnyObject?) -> Void in
                 if let unwrappedResponse = responseObject as? [String: AnyObject] {
                     let accessToken: String = unwrappedResponse["access_token"] as NSString
                     let expiration = unwrappedResponse["expires_in"] as NSNumber
@@ -130,8 +116,8 @@ public class OAuth2Module {
             paramDict["client_secret"] = unwrapped
         }
         
-        httpAuthz.baseURL = config.accessTokenEndpointURL
-        httpAuthz.POST(parameters: paramDict, success: {(responseObject: AnyObject?) -> () in
+        http.baseURL = config.accessTokenEndpointURL
+        http.POST(parameters: paramDict, success: {(responseObject: AnyObject?) -> () in
             if let unwrappedResponse = responseObject as? [String: AnyObject] {
                 
                 let accessToken: String = unwrappedResponse["access_token"] as NSString
@@ -166,9 +152,9 @@ public class OAuth2Module {
             return;
         }
         let paramDict:[String:String] = ["token":self.oauth2Session.accessToken!]
-        httpAuthz.baseURL = config.revokeTokenEndpointURL!
-        
-        httpAuthz.POST(parameters: paramDict, success: { (param: AnyObject?) -> () in
+
+        http.baseURL = config.revokeTokenEndpointURL!
+        http.POST(parameters: paramDict, success: { (param: AnyObject?) -> () in
                 self.oauth2Session.saveAccessToken()
                 success(param!)
             }, failure: { (error: NSError) -> () in
@@ -176,7 +162,17 @@ public class OAuth2Module {
             })
     }
     
+    public func authorizationFields() -> [String: String]? {
+        if (self.oauth2Session.accessToken == nil) {
+            return nil
+        } else {
+            return ["Authorization":"Bearer \(self.oauth2Session.accessToken!)"]
+        }
+    }
     
+    public func isAuthorized() -> Bool {
+        return self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()
+    }
 
     // MARK: Internal Methods
     
@@ -237,18 +233,6 @@ public class OAuth2Module {
             NSNotificationCenter.defaultCenter().removeObserver(applicationDidBecomeActiveNotificationObserver!)
             applicationDidBecomeActiveNotificationObserver = nil
         }
-    }
-    
-    func authorizationFields() -> [String: String]? {
-        if (self.oauth2Session.accessToken == nil) {
-            return nil
-        } else {
-            return ["Authorization":"Bearer \(self.oauth2Session.accessToken!)"]
-        }
-    }
-    
-    func isAuthorized() -> Bool {
-        return self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()
     }
     
     func urlAsString() -> String {
