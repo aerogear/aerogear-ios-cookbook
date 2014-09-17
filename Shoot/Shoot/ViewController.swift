@@ -96,8 +96,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
         
-        let http =  AccountManager.addFacebookAccount(facebookConfig).http
-        http.baseURL = NSURL(string: "https://graph.facebook.com/me/photos")
+        let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
+        
+        let http = Http(url: "https://graph.facebook.com/me/photos")
+        http.authzModule = fbModule
+        
         self.performUpload(http)
     }
     
@@ -107,8 +110,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
 
-        let http = AccountManager.addGoogleAccount(googleConfig).http
-        http.baseURL = NSURL(string: "https://www.googleapis.com/drive/v2/files")
+        let gdModule = AccountManager.addGoogleAccount(googleConfig)
+        let http = Http(url: "https://www.googleapis.com/drive/v2/files")
+        http.authzModule = gdModule
+        
         http.GET(success: { (object: AnyObject?) -> Void in
             if let mine: AnyObject = object {
                 println("Success using http GET")
