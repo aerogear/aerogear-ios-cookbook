@@ -20,7 +20,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo): How to use OTP client lib with a Java backend | - | - | **Login** |
 | [Buddies](Buddies/README.md): Easy usage of Pipe with REST Java backend | **Pipe** | - | - |
 | [GoogleDrive](GoogleDrive/GoogleDrive.md): OAuth2 to list all GoogleDrive documents | Pipe | - | **OAuth2** |
-| [ProductInventory](ProductInventory/ProductInventory.md): Keycloak OAuth2 running with Keycloak server | Pipe | - | **OAuth2**', **Keycloak** |
+| [ProductInventory](ProductInventory/README.md): Keycloak OAuth2 running with Keycloak server | Pipe | - | **OAuth2**', **Keycloak** |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. For example, AeroDoc demo main purpose is to show you Push notifications, but it also uses Pipes, Stores and Login.
 
