@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProductInventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgh-fq-acn">
+                                <rect key="frame" x="222" y="72" width="156" height="30"/>
+                                <state key="normal" title="Request Access Token">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestAccessToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K9m-bt-uNV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4Z-Ag-ZQj">
+                                <rect key="frame" x="221" y="110" width="159" height="30"/>
+                                <state key="normal" title="Request Refresh Token">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestRefreshToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueb-gx-uTn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49i-jf-Vhz">
+                                <rect key="frame" x="248" y="148" width="104" height="30"/>
+                                <state key="normal" title="Revoke Tokens">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="revokeTokens:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qrW-WI-gIt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a4Z-Ag-ZQj" firstAttribute="centerX" secondItem="49i-jf-Vhz" secondAttribute="centerX" id="Fg0-yi-6aR"/>
+                            <constraint firstItem="Zgh-fq-acn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="LYE-TZ-vKE"/>
+                            <constraint firstItem="49i-jf-Vhz" firstAttribute="top" secondItem="a4Z-Ag-ZQj" secondAttribute="bottom" constant="8" id="Ttp-2O-jmV"/>
+                            <constraint firstItem="Zgh-fq-acn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W1Z-P2-enu"/>
+                            <constraint firstItem="Zgh-fq-acn" firstAttribute="centerX" secondItem="a4Z-Ag-ZQj" secondAttribute="centerX" id="w8Y-xC-NcZ"/>
+                            <constraint firstItem="a4Z-Ag-ZQj" firstAttribute="top" secondItem="Zgh-fq-acn" secondAttribute="bottom" constant="8" id="yG6-ch-IbV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
