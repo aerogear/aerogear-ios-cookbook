@@ -19,8 +19,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
     var oauth2Module:OAuth2Module
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var revokeButton: UIButton!
     
     required init(coder aDecoder: NSCoder) {
         var config = Config(base: "http://192.168.0.37:8080/auth",
@@ -29,13 +30,15 @@ class ViewController: UIViewController {
             accessTokenEndpoint: "realms/product-inventory/tokens/access/codes",
             clientId: "product-inventory",
             refreshTokenEndpoint: "realms/product-inventory/tokens/refresh",
-            revokeTokenEndpoint: "rest/revoke")
+            revokeTokenEndpoint: "realms/product-inventory/tokens/logout")
         var session = UntrustedMemoryOAuth2Session(accountId: "MyAccount")
-        self.oauth2Module = OAuth2Module(config: config, accountId: "MyAccount", session: session)
+        self.oauth2Module = KeycloakOAuth2Module(config: config, accountId: "MyAccount", session: session)       
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
+        self.refreshButton.enabled = false
+        self.revokeButton.enabled = false
         super.viewDidLoad()
     }
 
@@ -46,6 +49,8 @@ class ViewController: UIViewController {
 
     @IBAction func requestAccessToken(sender: UIButton) {
         println("---> Request access token")
+        self.revokeButton.enabled = true
+        self.refreshButton.enabled = true
         self.oauth2Module.requestAccessSuccess({(obj) in
             println("AccessToken \(obj!)")
         }, failure: { error in
@@ -55,9 +60,11 @@ class ViewController: UIViewController {
 
     @IBAction func revokeTokens(sender: AnyObject) {
         println("---> Revoke tokens")
+        self.revokeButton.enabled = false
+        self.refreshButton.enabled = false
         // TODO AGIOS-206 waiting for KEYCLOAK-312
         self.oauth2Module.revokeAccessSuccess({(obj) in
-            println("RevokeToken \(obj!)")
+            println("RevokeToken .....")
             }, failure: { error in
                 println("Revoke Error: \(error)")
         })
