@@ -12,7 +12,6 @@
 		48DE905C19CC17C1007F9B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905A19CC17C1007F9B21 /* Main.storyboard */; };
 		48DE905E19CC17C1007F9B21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905D19CC17C1007F9B21 /* Images.xcassets */; };
 		48DE906119CC17C1007F9B21 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905F19CC17C1007F9B21 /* LaunchScreen.xib */; };
-		48DE906D19CC17C1007F9B21 /* ProductInventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE906C19CC17C1007F9B21 /* ProductInventoryTests.swift */; };
 		48DE908419CC1E44007F9B21 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907B19CC1E44007F9B21 /* AccountManager.swift */; };
 		48DE908519CC1E44007F9B21 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907D19CC1E44007F9B21 /* Config.swift */; };
 		48DE908619CC1E44007F9B21 /* FacebookOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907E19CC1E44007F9B21 /* FacebookOAuth2Module.swift */; };
@@ -33,27 +32,14 @@
 		48DE90A119CDDCD6007F9B21 /* KeycloakOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE90A019CDDCD6007F9B21 /* KeycloakOAuth2Module.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		48DE906719CC17C1007F9B21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48DE904919CC17C1007F9B21 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48DE905019CC17C1007F9B21;
-			remoteInfo = ProductInventory;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		48DE905119CC17C1007F9B21 /* ProductInventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductInventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48DE905119CC17C1007F9B21 /* KeycloakDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeycloakDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48DE905519CC17C1007F9B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48DE905619CC17C1007F9B21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48DE905819CC17C1007F9B21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48DE905B19CC17C1007F9B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48DE905D19CC17C1007F9B21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48DE906019CC17C1007F9B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		48DE906619CC17C1007F9B21 /* ProductInventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductInventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48DE906B19CC17C1007F9B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48DE906C19CC17C1007F9B21 /* ProductInventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInventoryTests.swift; sourceTree = "<group>"; };
 		48DE907B19CC1E44007F9B21 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = ../../libs/AeroGearOAuth2/AccountManager.swift; sourceTree = "<group>"; };
 		48DE907C19CC1E44007F9B21 /* AeroGearOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearOAuth2.h; path = ../../libs/AeroGearOAuth2/AeroGearOAuth2.h; sourceTree = "<group>"; };
 		48DE907D19CC1E44007F9B21 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../../libs/AeroGearOAuth2/Config.swift; sourceTree = "<group>"; };
@@ -84,21 +70,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48DE906319CC17C1007F9B21 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		48DE904819CC17C1007F9B21 = {
 			isa = PBXGroup;
 			children = (
-				48DE905319CC17C1007F9B21 /* ProductInventory */,
-				48DE906919CC17C1007F9B21 /* ProductInventoryTests */,
+				48DE905319CC17C1007F9B21 /* KeycloakDemo */,
 				48DE905219CC17C1007F9B21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,13 +84,12 @@
 		48DE905219CC17C1007F9B21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48DE905119CC17C1007F9B21 /* ProductInventory.app */,
-				48DE906619CC17C1007F9B21 /* ProductInventoryTests.xctest */,
+				48DE905119CC17C1007F9B21 /* KeycloakDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		48DE905319CC17C1007F9B21 /* ProductInventory */ = {
+		48DE905319CC17C1007F9B21 /* KeycloakDemo */ = {
 			isa = PBXGroup;
 			children = (
 				48DE905619CC17C1007F9B21 /* AppDelegate.swift */,
@@ -122,6 +99,7 @@
 				48DE905F19CC17C1007F9B21 /* LaunchScreen.xib */,
 				48DE905419CC17C1007F9B21 /* Supporting Files */,
 			);
+			name = KeycloakDemo;
 			path = ProductInventory;
 			sourceTree = "<group>";
 		};
@@ -131,23 +109,6 @@
 				48DE908C19CC1E50007F9B21 /* AeroGearHttp */,
 				48DE907A19CC1E31007F9B21 /* AeroGearOAuth2 */,
 				48DE905519CC17C1007F9B21 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		48DE906919CC17C1007F9B21 /* ProductInventoryTests */ = {
-			isa = PBXGroup;
-			children = (
-				48DE906C19CC17C1007F9B21 /* ProductInventoryTests.swift */,
-				48DE906A19CC17C1007F9B21 /* Supporting Files */,
-			);
-			path = ProductInventoryTests;
-			sourceTree = "<group>";
-		};
-		48DE906A19CC17C1007F9B21 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				48DE906B19CC17C1007F9B21 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		48DE905019CC17C1007F9B21 /* ProductInventory */ = {
+		48DE905019CC17C1007F9B21 /* KeycloakDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48DE907019CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "ProductInventory" */;
+			buildConfigurationList = 48DE907019CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "KeycloakDemo" */;
 			buildPhases = (
 				48DE904D19CC17C1007F9B21 /* Sources */,
 				48DE904E19CC17C1007F9B21 /* Frameworks */,
@@ -201,28 +162,10 @@
 			);
 			dependencies = (
 			);
-			name = ProductInventory;
+			name = KeycloakDemo;
 			productName = ProductInventory;
-			productReference = 48DE905119CC17C1007F9B21 /* ProductInventory.app */;
+			productReference = 48DE905119CC17C1007F9B21 /* KeycloakDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		48DE906519CC17C1007F9B21 /* ProductInventoryTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 48DE907319CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "ProductInventoryTests" */;
-			buildPhases = (
-				48DE906219CC17C1007F9B21 /* Sources */,
-				48DE906319CC17C1007F9B21 /* Frameworks */,
-				48DE906419CC17C1007F9B21 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				48DE906819CC17C1007F9B21 /* PBXTargetDependency */,
-			);
-			name = ProductInventoryTests;
-			productName = ProductInventoryTests;
-			productReference = 48DE906619CC17C1007F9B21 /* ProductInventoryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -236,13 +179,9 @@
 					48DE905019CC17C1007F9B21 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					48DE906519CC17C1007F9B21 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 48DE905019CC17C1007F9B21;
-					};
 				};
 			};
-			buildConfigurationList = 48DE904C19CC17C1007F9B21 /* Build configuration list for PBXProject "ProductInventory" */;
+			buildConfigurationList = 48DE904C19CC17C1007F9B21 /* Build configuration list for PBXProject "KeycloakDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -255,8 +194,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				48DE905019CC17C1007F9B21 /* ProductInventory */,
-				48DE906519CC17C1007F9B21 /* ProductInventoryTests */,
+				48DE905019CC17C1007F9B21 /* KeycloakDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -271,13 +209,6 @@
 				48DE909A19CC1E5F007F9B21 /* Info.plist in Resources */,
 				48DE908719CC1E44007F9B21 /* Info.plist in Resources */,
 				48DE905E19CC17C1007F9B21 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		48DE906419CC17C1007F9B21 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,23 +240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48DE906219CC17C1007F9B21 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				48DE906D19CC17C1007F9B21 /* ProductInventoryTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		48DE906819CC17C1007F9B21 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 48DE905019CC17C1007F9B21 /* ProductInventory */;
-			targetProxy = 48DE906719CC17C1007F9B21 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		48DE905A19CC17C1007F9B21 /* Main.storyboard */ = {
@@ -432,7 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ProductInventory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KeycloakDemo;
 			};
 			name = Debug;
 		};
@@ -442,48 +357,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ProductInventory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		48DE907419CC17C1007F9B21 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ProductInventoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProductInventory.app/ProductInventory";
-			};
-			name = Debug;
-		};
-		48DE907519CC17C1007F9B21 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ProductInventoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProductInventory.app/ProductInventory";
+				PRODUCT_NAME = KeycloakDemo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		48DE904C19CC17C1007F9B21 /* Build configuration list for PBXProject "ProductInventory" */ = {
+		48DE904C19CC17C1007F9B21 /* Build configuration list for PBXProject "KeycloakDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48DE906E19CC17C1007F9B21 /* Debug */,
@@ -492,19 +373,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48DE907019CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "ProductInventory" */ = {
+		48DE907019CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "KeycloakDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48DE907119CC17C1007F9B21 /* Debug */,
 				48DE907219CC17C1007F9B21 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		48DE907319CC17C1007F9B21 /* Build configuration list for PBXNativeTarget "ProductInventoryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				48DE907419CC17C1007F9B21 /* Debug */,
-				48DE907519CC17C1007F9B21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProductInventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KeycloakDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -43,10 +43,21 @@
                                     <action selector="revokeTokens:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qrW-WI-gIt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMB-Kl-Sux">
+                                <rect key="frame" x="225" y="186" width="150" height="30"/>
+                                <state key="normal" title="Get product inventory">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getProductInventory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kgk-G0-QDe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="a4Z-Ag-ZQj" firstAttribute="centerX" secondItem="49i-jf-Vhz" secondAttribute="centerX" id="Fg0-yi-6aR"/>
+                            <constraint firstItem="bMB-Kl-Sux" firstAttribute="top" secondItem="49i-jf-Vhz" secondAttribute="bottom" constant="8" symbolic="YES" id="H7h-kk-YJZ"/>
+                            <constraint firstItem="bMB-Kl-Sux" firstAttribute="centerX" secondItem="49i-jf-Vhz" secondAttribute="centerX" id="JTT-bg-Nis"/>
                             <constraint firstItem="Zgh-fq-acn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="LYE-TZ-vKE"/>
                             <constraint firstItem="49i-jf-Vhz" firstAttribute="top" secondItem="a4Z-Ag-ZQj" secondAttribute="bottom" constant="8" id="Ttp-2O-jmV"/>
                             <constraint firstItem="Zgh-fq-acn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W1Z-P2-enu"/>
@@ -55,6 +66,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="getButton" destination="bMB-Kl-Sux" id="dYj-Er-a8q"/>
                         <outlet property="refreshButton" destination="a4Z-Ag-ZQj" id="TEg-tN-w9h"/>
                         <outlet property="revokeButton" destination="49i-jf-Vhz" id="Gaf-VU-6Rx"/>
                     </connections>
