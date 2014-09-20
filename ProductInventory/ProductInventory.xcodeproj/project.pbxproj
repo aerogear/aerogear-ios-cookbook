@@ -30,6 +30,7 @@
 		48DE909D19CC1E5F007F9B21 /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE909419CC1E5F007F9B21 /* RequestSerializer.swift */; };
 		48DE909E19CC1E5F007F9B21 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE909519CC1E5F007F9B21 /* ResponseSerializer.swift */; };
 		48DE909F19CC1E5F007F9B21 /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE909619CC1E5F007F9B21 /* StringResponseSerializer.swift */; };
+		48DE90A119CDDCD6007F9B21 /* KeycloakOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE90A019CDDCD6007F9B21 /* KeycloakOAuth2Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		48DE909419CC1E5F007F9B21 /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestSerializer.swift; path = ../../libs/AeroGearHttp/RequestSerializer.swift; sourceTree = "<group>"; };
 		48DE909519CC1E5F007F9B21 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseSerializer.swift; path = ../../libs/AeroGearHttp/ResponseSerializer.swift; sourceTree = "<group>"; };
 		48DE909619CC1E5F007F9B21 /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringResponseSerializer.swift; path = ../../libs/AeroGearHttp/StringResponseSerializer.swift; sourceTree = "<group>"; };
+		48DE90A019CDDCD6007F9B21 /* KeycloakOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeycloakOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/KeycloakOAuth2Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				48DE907C19CC1E44007F9B21 /* AeroGearOAuth2.h */,
 				48DE907D19CC1E44007F9B21 /* Config.swift */,
 				48DE907E19CC1E44007F9B21 /* FacebookOAuth2Module.swift */,
+				48DE90A019CDDCD6007F9B21 /* KeycloakOAuth2Module.swift */,
 				48DE907F19CC1E44007F9B21 /* Info.plist */,
 				48DE908019CC1E44007F9B21 /* OAuth2Module.swift */,
 				48DE908119CC1E44007F9B21 /* OAuth2Session.swift */,
@@ -294,6 +297,7 @@
 				48DE909919CC1E5F007F9B21 /* HttpMethod.swift in Sources */,
 				48DE909819CC1E5F007F9B21 /* Http.swift in Sources */,
 				48DE905719CC17C1007F9B21 /* AppDelegate.swift in Sources */,
+				48DE90A119CDDCD6007F9B21 /* KeycloakOAuth2Module.swift in Sources */,
 				48DE909F19CC1E5F007F9B21 /* StringResponseSerializer.swift in Sources */,
 				48DE908919CC1E44007F9B21 /* OAuth2Session.swift in Sources */,
 				48DE908819CC1E44007F9B21 /* OAuth2Module.swift in Sources */,

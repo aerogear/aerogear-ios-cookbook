@@ -54,6 +54,10 @@
                             <constraint firstItem="a4Z-Ag-ZQj" firstAttribute="top" secondItem="Zgh-fq-acn" secondAttribute="bottom" constant="8" id="yG6-ch-IbV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="refreshButton" destination="a4Z-Ag-ZQj" id="TEg-tN-w9h"/>
+                        <outlet property="revokeButton" destination="49i-jf-Vhz" id="Gaf-VU-6Rx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
