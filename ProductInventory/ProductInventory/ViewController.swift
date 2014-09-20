@@ -22,9 +22,10 @@ class ViewController: UIViewController {
     var oauth2Module:OAuth2Module
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var revokeButton: UIButton!
+    @IBOutlet weak var getButton: UIButton!
     
     required init(coder aDecoder: NSCoder) {
-        var config = Config(base: "http://192.168.0.37:8080/auth",
+        var config = Config(base: "http://localhost:8080/auth",
             authzEndpoint: "realms/product-inventory/tokens/login",
             redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
             accessTokenEndpoint: "realms/product-inventory/tokens/access/codes",
@@ -32,13 +33,14 @@ class ViewController: UIViewController {
             refreshTokenEndpoint: "realms/product-inventory/tokens/refresh",
             revokeTokenEndpoint: "realms/product-inventory/tokens/logout")
         var session = UntrustedMemoryOAuth2Session(accountId: "MyAccount")
-        self.oauth2Module = KeycloakOAuth2Module(config: config, accountId: "MyAccount", session: session)       
+        self.oauth2Module = KeycloakOAuth2Module(config: config, accountId: "MyAccount", session: session)
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         self.refreshButton.enabled = false
         self.revokeButton.enabled = false
+        self.getButton.enabled = false
         super.viewDidLoad()
     }
 
@@ -47,10 +49,23 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func getProductInventory(sender: UIButton) {
+        var url = NSURL(string: "http://localhost:8080/ProductInventory/rest/portal/products")
+        var http = Http()
+        http.baseURL = url
+        http.authzModule = self.oauth2Module
+        http.GET(success: { (object) -> Void in
+            println("GET sucess \(object!)")
+        }) { (NSError) -> Void in
+            println("GET error")
+        }
+    }
+    
     @IBAction func requestAccessToken(sender: UIButton) {
         println("---> Request access token")
         self.revokeButton.enabled = true
         self.refreshButton.enabled = true
+        self.getButton.enabled = true
         self.oauth2Module.requestAccessSuccess({(obj) in
             println("AccessToken \(obj!)")
         }, failure: { error in
@@ -62,6 +77,7 @@ class ViewController: UIViewController {
         println("---> Revoke tokens")
         self.revokeButton.enabled = false
         self.refreshButton.enabled = false
+        self.getButton.enabled = false
         // TODO AGIOS-206 waiting for KEYCLOAK-312
         self.oauth2Module.revokeAccessSuccess({(obj) in
             println("RevokeToken .....")
