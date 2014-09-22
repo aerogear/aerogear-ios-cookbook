@@ -97,7 +97,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             scopes:["photo_upload, publish_actions"])
         
         let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
-        
         let http = Http(url: "https://graph.facebook.com/me/photos")
         http.authzModule = fbModule
         
@@ -106,42 +105,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
+        
         let googleConfig = GoogleConfig(
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
 
         let gdModule = AccountManager.addGoogleAccount(googleConfig)
-        let http = Http(url: "https://www.googleapis.com/drive/v2/files")
+        let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
         http.authzModule = gdModule
-        
-        http.GET(success: { (object: AnyObject?) -> Void in
-            if let mine: AnyObject = object {
-                println("Success using http GET")
-            }
-            }, failure: { (error: NSError) -> Void in
-                println("Error getting files: \(error)")
-        })
-
-        // TODO AGIOS-229 upload
-        //http.baseURL = NSURL(string: "https://www.googleapis.com/upload/drive/v2/files")
-        //self.performUpload(http)
+    
+        self.performUpload(http)
     }
 
     func performUpload(http: Http) {
         // extract the image filename
         let filename = self.imageView.accessibilityIdentifier;
     
-        // Get currently displayed image
-        let imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2);
+        let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image, 0.2),
+                                          name: "image",
+                                      filename: filename,
+                                      mimeType: "image/jpg")
         
         // TODO as part of AGIOS-229
-        http.multiPartUpload(http.baseURL!, parameters: ["mypersonal": imageData], success: {(response: AnyObject?) -> Void in
-            if (response != nil) {
-                println("Successful upload: " + response!.description)
+        http.POST(parameters: ["data": multiPartData], completionHandler: {(response, error) in
+            if (error != nil) {
+                println("Error uploading file: \(error)")
+            } else {
+                
+                println("Successfully uploaded: " + response!.description)
             }
-        }
-        , failure: {(error: NSError) -> Void in
-            println("Failed upload \(error)")
         })
     }
     
