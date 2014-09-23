@@ -50,15 +50,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func getProductInventory(sender: UIButton) {
-        var url = NSURL(string: "http://localhost:8080/ProductInventory/rest/portal/products")
-        var http = Http()
-        http.baseURL = url
+        var http = Http(url: "http://localhost:8080/ProductInventory/rest/portal/products")
         http.authzModule = self.oauth2Module
-        http.GET(success: { (object) -> Void in
-            println("GET sucess \(object!)")
-        }) { (NSError) -> Void in
-            println("GET error")
-        }
+        http.GET(completionHandler: { (response, error) in
+            println("GET sucess \(response!)")
+        })
     }
     
     @IBAction func requestAccessToken(sender: UIButton) {
@@ -66,11 +62,9 @@ class ViewController: UIViewController {
         self.revokeButton.enabled = true
         self.refreshButton.enabled = true
         self.getButton.enabled = true
-        self.oauth2Module.requestAccessSuccess({(obj) in
-            println("AccessToken \(obj!)")
-        }, failure: { error in
-            println("Access Error: \(error)")
-        })
+        self.oauth2Module.requestAccess({(response, error) in
+            println("AccessToken \(response)")
+        });
     }
 
     @IBAction func revokeTokens(sender: AnyObject) {
@@ -79,20 +73,15 @@ class ViewController: UIViewController {
         self.refreshButton.enabled = false
         self.getButton.enabled = false
         // TODO AGIOS-206 waiting for KEYCLOAK-312
-        self.oauth2Module.revokeAccessSuccess({(obj) in
+        self.oauth2Module.revokeAccess({(response, error) in
             println("RevokeToken .....")
-            }, failure: { error in
-                println("Revoke Error: \(error)")
         })
     }
     
     @IBAction func requestRefreshToken(sender: UIButton) {       
         println("---> Request refresh token")
-        self.oauth2Module.refreshAccessTokenSuccess({(obj) in
-            println("RefreshToken \(obj!)")
-            }, failure: { error in
-                println("Refresh Error: \(error)")
+        self.oauth2Module.refreshAccessToken({(response, error) in
+            println("RefreshToken \(response!)")
         })
     }
 }
-
