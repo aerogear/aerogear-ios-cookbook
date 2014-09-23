@@ -18,6 +18,7 @@
 import Foundation
 import UIKit
 
+
 public let AGAppLaunchedWithURLNotification = "AGAppLaunchedWithURLNotification"
 public let AGAppDidBecomeActiveNotification = "AGAppDidBecomeActiveNotification"
 public let AGAuthzErrorDomain = "AGAuthzErrorDomain"
@@ -31,7 +32,7 @@ enum AuthorizationState {
 public class OAuth2Module: AuthzModule {
     let config: Config
     var http: Http
-
+    
     var oauth2Session: OAuth2Session
     var applicationLaunchNotificationObserver: NSObjectProtocol?
     var applicationDidBecomeActiveNotificationObserver: NSObjectProtocol?
@@ -93,7 +94,7 @@ public class OAuth2Module: AuthzModule {
             if (config.clientSecret != nil) {
                 paramDict["client_secret"] = config.clientSecret!
             }
-            http.baseURL = config.accessTokenEndpointURL
+            http.baseURL = config.refreshTokenEndpointURL!
             http.POST(parameters: paramDict, completionHandler: { (response, error) in
                 
                 if (error != nil) {
@@ -140,7 +141,7 @@ public class OAuth2Module: AuthzModule {
             }
         })
     }
-
+    
     public func requestAccess(completionHandler: (AnyObject?, NSError?) -> Void) {
         if (self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()) {
             // we already have a valid access token, nothing more to be done
@@ -160,7 +161,7 @@ public class OAuth2Module: AuthzModule {
             return;
         }
         let paramDict:[String:String] = ["token":self.oauth2Session.accessToken!]
-
+        
         http.baseURL = config.revokeTokenEndpointURL!
         http.POST(parameters: paramDict, completionHandler: { (response, error) in
             if (error != nil) {
@@ -170,7 +171,7 @@ public class OAuth2Module: AuthzModule {
             
             self.oauth2Session.saveAccessToken()
             completionHandler(response, nil)
-        })        
+        })
     }
     
     public func authorizationFields() -> [String: String]? {
@@ -184,7 +185,7 @@ public class OAuth2Module: AuthzModule {
     public func isAuthorized() -> Bool {
         return self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()
     }
-
+    
     // MARK: Internal Methods
     
     func extractCode(notification: NSNotification, completionHandler: (AnyObject?, NSError?) -> Void) {
@@ -212,23 +213,23 @@ public class OAuth2Module: AuthzModule {
             var parameterScanner: NSScanner = NSScanner(string: queryString!)
             var name:NSString? = nil
             var value:NSString? = nil
-    
+            
             while (parameterScanner.atEnd != true) {
                 name = nil;
                 parameterScanner.scanUpToString("=", intoString: &name)
                 parameterScanner.scanString("=", intoString:nil)
-    
+                
                 value = nil
                 parameterScanner.scanUpToString("&", intoString:&value)
                 parameterScanner.scanString("&", intoString:nil)
-    
+                
                 if (name != nil && value != nil) {
                     parameters[name!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!] = value!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
                 }
             }
-    }
-    
-    return parameters;
+        }
+        
+        return parameters;
     }
     
     deinit {
@@ -241,7 +242,7 @@ public class OAuth2Module: AuthzModule {
             NSNotificationCenter.defaultCenter().removeObserver(applicationLaunchNotificationObserver!)
             self.applicationLaunchNotificationObserver = nil;
         }
-
+        
         if (applicationDidBecomeActiveNotificationObserver != nil) {
             NSNotificationCenter.defaultCenter().removeObserver(applicationDidBecomeActiveNotificationObserver!)
             applicationDidBecomeActiveNotificationObserver = nil
@@ -270,10 +271,10 @@ public class OAuth2Module: AuthzModule {
     
     func urlEncodeString(stringToURLEncode: String) -> String {
         let encodedURL = CFURLCreateStringByAddingPercentEscapes(nil,
-                                        stringToURLEncode as NSString,
-                                        nil,
-                                        "!@#$%&*'();:=+,/?[]",
-                                        CFStringBuiltInEncodings.UTF8.toRaw())
+            stringToURLEncode as NSString,
+            nil,
+            "!@#$%&*'();:=+,/?[]",
+            CFStringBuiltInEncodings.UTF8.toRaw())
         return encodedURL as NSString
     }
 }

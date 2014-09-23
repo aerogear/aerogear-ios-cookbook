@@ -96,7 +96,6 @@
 		48F709F219B59E9800DDB152 = {
 			isa = PBXGroup;
 			children = (
-				48478CB519BF26FF00983D79 /* Security.framework */,
 				48F709FD19B59E9800DDB152 /* Shoot */,
 				48F70A1019B59E9800DDB152 /* ShootTests */,
 				48F709FC19B59E9800DDB152 /* Products */,
@@ -127,6 +126,7 @@
 		48F709FE19B59E9800DDB152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48478CB519BF26FF00983D79 /* Security.framework */,
 				48F70A7019B6F11700DDB152 /* AeroGearOAuth2 */,
 				48F70A6F19B6F10C00DDB152 /* AeroGearHttp */,
 				48F709FF19B59E9800DDB152 /* Info.plist */,

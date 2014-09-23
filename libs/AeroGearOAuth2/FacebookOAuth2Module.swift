@@ -22,8 +22,8 @@ public class FacebookOAuth2Module: OAuth2Module {
     required public init(config: Config, accountId: String, session: OAuth2Session) {
         super.init(config: config, accountId: accountId, session: session)
         
-        http = Http(url: config.base)
         http.responseSerializer = StringResponseSerializer()
+        
     }
     
     override public func exchangeAuthorizationCodeForAccessToken(code: String, completionHandler: (AnyObject?, NSError?) -> Void) {
