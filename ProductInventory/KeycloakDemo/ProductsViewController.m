@@ -47,8 +47,8 @@
     id<AGAuthzModule> _restAuthzModule = [authorizer authz:^(id<AGAuthzConfig> config) {
         config.name = @"keycloak";
         config.baseURL = [[NSURL alloc] initWithString:@"http://localhost:8080/auth"];
-        config.authzEndpoint = @"/rest/realms/product-inventory/tokens/login";
-        config.accessTokenEndpoint = @"/rest/realms/product-inventory/tokens/access/codes";
+        config.authzEndpoint = @"/realms/product-inventory/tokens/login";
+        config.accessTokenEndpoint = @"/realms/product-inventory/tokens/access/codes";
         config.clientId = @"product-inventory";
         config.redirectURL = @"org.aerogear.KeycloakDemo://oauth2Callback";
     }];
