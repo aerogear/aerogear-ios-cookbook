@@ -24,9 +24,9 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = Http(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var http = Http(url: "http://localhost:8080/Buddies/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         
-        http.GET(success: {(response: AnyObject?) in
+        http.GET(completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
                 for developer in (response!) as [AnyObject] {
                     // TODO with object serialization AGIOS-13 replace this code to plugin serializer
@@ -34,8 +34,9 @@ class MasterViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             }
-        }, failure: {(error: NSError) in
-            println("An error has occured during read!", error)
+            if error != nil {
+                println("An error has occured during read! \(error!)")
+            }
         })
     }
 

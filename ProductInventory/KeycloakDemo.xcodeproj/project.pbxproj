@@ -11,7 +11,6 @@
 		48DE905919CC17C1007F9B21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE905819CC17C1007F9B21 /* ViewController.swift */; };
 		48DE905C19CC17C1007F9B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905A19CC17C1007F9B21 /* Main.storyboard */; };
 		48DE905E19CC17C1007F9B21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905D19CC17C1007F9B21 /* Images.xcassets */; };
-		48DE906119CC17C1007F9B21 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DE905F19CC17C1007F9B21 /* LaunchScreen.xib */; };
 		48DE908419CC1E44007F9B21 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907B19CC1E44007F9B21 /* AccountManager.swift */; };
 		48DE908519CC1E44007F9B21 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907D19CC1E44007F9B21 /* Config.swift */; };
 		48DE908619CC1E44007F9B21 /* FacebookOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE907E19CC1E44007F9B21 /* FacebookOAuth2Module.swift */; };
@@ -40,7 +39,6 @@
 		48DE905819CC17C1007F9B21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48DE905B19CC17C1007F9B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48DE905D19CC17C1007F9B21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		48DE906019CC17C1007F9B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		48DE907B19CC1E44007F9B21 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = ../../libs/AeroGearOAuth2/AccountManager.swift; sourceTree = "<group>"; };
 		48DE907C19CC1E44007F9B21 /* AeroGearOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearOAuth2.h; path = ../../libs/AeroGearOAuth2/AeroGearOAuth2.h; sourceTree = "<group>"; };
 		48DE907D19CC1E44007F9B21 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../../libs/AeroGearOAuth2/Config.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				48DE905819CC17C1007F9B21 /* ViewController.swift */,
 				48DE905A19CC17C1007F9B21 /* Main.storyboard */,
 				48DE905D19CC17C1007F9B21 /* Images.xcassets */,
-				48DE905F19CC17C1007F9B21 /* LaunchScreen.xib */,
 				48DE905419CC17C1007F9B21 /* Supporting Files */,
 			);
 			name = KeycloakDemo;
@@ -208,7 +205,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48DE905C19CC17C1007F9B21 /* Main.storyboard in Resources */,
-				48DE906119CC17C1007F9B21 /* LaunchScreen.xib in Resources */,
 				48DE909A19CC1E5F007F9B21 /* Info.plist in Resources */,
 				48DE908719CC1E44007F9B21 /* Info.plist in Resources */,
 				48DE905E19CC17C1007F9B21 /* Images.xcassets in Resources */,
@@ -253,14 +249,6 @@
 				48DE905B19CC17C1007F9B21 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		48DE905F19CC17C1007F9B21 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48DE906019CC17C1007F9B21 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

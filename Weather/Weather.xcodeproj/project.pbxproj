@@ -43,6 +43,7 @@
 		4865E502196FECE500311CA4 /* 13n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4F0196FECE500311CA4 /* 13n.png */; };
 		4865E503196FECE500311CA4 /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4F1196FECE500311CA4 /* 50d.png */; };
 		4865E504196FECE500311CA4 /* 50n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4F2196FECE500311CA4 /* 50n.png */; };
+		486A40D419D44555001E98E4 /* MultiPartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A40D319D44555001E98E4 /* MultiPartData.swift */; };
 		48AA2C5A196ECE0F005F0F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA2C59196ECE0F005F0F2F /* AppDelegate.swift */; };
 		48AA2C5C196ECE0F005F0F2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA2C5B196ECE0F005F0F2F /* ViewController.swift */; };
 		48AA2C5F196ECE0F005F0F2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AA2C5D196ECE0F005F0F2F /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		4865E4F0196FECE500311CA4 /* 13n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13n.png; sourceTree = "<group>"; };
 		4865E4F1196FECE500311CA4 /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
 		4865E4F2196FECE500311CA4 /* 50n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50n.png; sourceTree = "<group>"; };
+		486A40D319D44555001E98E4 /* MultiPartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPartData.swift; sourceTree = "<group>"; };
 		48AA2C54196ECE0F005F0F2F /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48AA2C59196ECE0F005F0F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48AA2C5B196ECE0F005F0F2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				48F70A6019B6F03100DDB152 /* AeroGearHttp.h */,
 				48F70A6119B6F03100DDB152 /* HttpMethod.swift */,
 				48F70A6219B6F03100DDB152 /* Info.plist */,
+				486A40D319D44555001E98E4 /* MultiPartData.swift */,
 				48F70A6319B6F03100DDB152 /* JsonRequestSerializer.swift */,
 				48F70A6419B6F03100DDB152 /* JsonResponseSerializer.swift */,
 				48BC696019BA179F00497B4E /* StringResponseSerializer.swift */,
@@ -378,6 +381,7 @@
 				48F70A6B19B6F03100DDB152 /* JsonResponseSerializer.swift in Sources */,
 				48BC696119BA179F00497B4E /* StringResponseSerializer.swift in Sources */,
 				48F70A6D19B6F03100DDB152 /* ResponseSerializer.swift in Sources */,
+				486A40D419D44555001E98E4 /* MultiPartData.swift in Sources */,
 				48DB691F19C884CF00452837 /* AuthzModule.swift in Sources */,
 				48BC696319BA17A600497B4E /* Http.swift in Sources */,
 			);
