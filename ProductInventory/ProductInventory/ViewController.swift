@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         self.refreshButton.enabled = false
         self.revokeButton.enabled = false
-        self.getButton.enabled = false
+        self.getButton.enabled = true
         super.viewDidLoad()
     }
 
@@ -59,22 +59,24 @@ class ViewController: UIViewController {
     
     @IBAction func requestAccessToken(sender: UIButton) {
         println("---> Request access token")
-        self.revokeButton.enabled = true
-        self.refreshButton.enabled = true
-        self.getButton.enabled = true
         self.oauth2Module.requestAccess({(response, error) in
             println("AccessToken \(response)")
+            if (error == nil) {
+                self.revokeButton.enabled = true
+                self.refreshButton.enabled = true
+            }
         });
     }
 
     @IBAction func revokeTokens(sender: AnyObject) {
         println("---> Revoke tokens")
-        self.revokeButton.enabled = false
-        self.refreshButton.enabled = false
-        self.getButton.enabled = false
         // TODO AGIOS-206 waiting for KEYCLOAK-312
         self.oauth2Module.revokeAccess({(response, error) in
             println("RevokeToken .....")
+            if (error == nil) {
+                self.revokeButton.enabled = false
+                self.refreshButton.enabled = false
+            }
         })
     }
     
