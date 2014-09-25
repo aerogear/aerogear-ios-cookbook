@@ -50,7 +50,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let session = Http(url:url)
         
         var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
-        session.GET(parameters: ["lat":latitude, "lon":longitude, "cnt":0], success: {(response: AnyObject?) -> Void in
+        
+        session.GET(parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+            if error != nil {
+                println("Error retrieving Weather \(error!)")
+                return
+            }
             if response != nil {
                 // TODO refactor once AGIOS-13 is ready (object serialization)
                 if var resp = response as? NSDictionary! {
@@ -59,12 +64,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         self.updateUISuccess(resp)
                     })
                 }
+            }
+        })
 
-            }
-            }
-            , failure: {(error: NSError) -> Void in
-                println("failure with \(error)")
-            })
     }
     
     
