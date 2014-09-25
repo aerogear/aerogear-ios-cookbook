@@ -6,7 +6,7 @@ A simple example that uses aerogear-ios-http and aerogear-ios-oauth2 lib to auth
 Please make sure a [Keycloak server](http://www.jboss.org/keycloak) is running, please refer to [server side readme instructions](https://github.com/aerogear/aerogear-backend-cookbook). 
 
 Go to Keycloack OAuth Clients, make sure the client type is public and you added the redirect URI that matches the one expected in you client code. It should be all configured properly if you imported testrealm.json.
-![Keycloack OAUth2 configuration](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/ProductInventory/KeycloackConfigOAuth2.png "Keycloack OAuth2 configuration")
+![Keycloack OAUth2 configuration](https://github.com/aerogear/aerogear-ios-cookbook/raw/swift/ProductInventory/keycloak-oauth2-condole.png "Keycloack OAuth2 configuration")
 
 ### Setup
 
