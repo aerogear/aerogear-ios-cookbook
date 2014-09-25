@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = Http(url: "http://igtests-cvasilak.rhcloud.com/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
+        var http = Http(url: "http://localhost:8080/Buddies/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         http.GET(completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
