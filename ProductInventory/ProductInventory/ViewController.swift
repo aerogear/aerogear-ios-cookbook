@@ -54,6 +54,12 @@ class ViewController: UIViewController {
         http.authzModule = self.oauth2Module
         http.GET(completionHandler: { (response, error) in
             println("GET sucess \(response!)")
+            dispatch_async(dispatch_get_main_queue(), {
+                if (error == nil) {
+                    self.revokeButton.enabled = true
+                    self.refreshButton.enabled = true
+                }
+            })
         })
     }
     
@@ -61,10 +67,12 @@ class ViewController: UIViewController {
         println("---> Request access token")
         self.oauth2Module.requestAccess({(response, error) in
             println("AccessToken \(response)")
-            if (error == nil) {
-                self.revokeButton.enabled = true
-                self.refreshButton.enabled = true
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if (error == nil) {
+                    self.revokeButton.enabled = true
+                    self.refreshButton.enabled = true
+                }
+            })
         });
     }
 
@@ -73,10 +81,13 @@ class ViewController: UIViewController {
         // TODO AGIOS-206 waiting for KEYCLOAK-312
         self.oauth2Module.revokeAccess({(response, error) in
             println("RevokeToken .....")
-            if (error == nil) {
-                self.revokeButton.enabled = false
-                self.refreshButton.enabled = false
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if (error == nil) {
+                    self.revokeButton.enabled = false
+                    self.refreshButton.enabled = false
+                }
+            })
+
         })
     }
     
