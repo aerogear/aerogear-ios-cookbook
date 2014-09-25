@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             authzEndpoint: "realms/product-inventory/tokens/login",
             redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
             accessTokenEndpoint: "realms/product-inventory/tokens/access/codes",
-            clientId: "product-inventory",
+            clientId: "product-inventory-oauth2",
             refreshTokenEndpoint: "realms/product-inventory/tokens/refresh",
             revokeTokenEndpoint: "realms/product-inventory/tokens/logout")
         var session = UntrustedMemoryOAuth2Session(accountId: "MyAccount")
