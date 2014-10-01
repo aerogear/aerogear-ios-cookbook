@@ -40,10 +40,10 @@
 		</dict>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>fb</string>
+			<string>fbYYY</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb</string>
+				<string>fbYYY</string>
 			</array>
 		</dict>
 	</array>
