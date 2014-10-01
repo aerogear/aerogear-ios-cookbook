@@ -129,7 +129,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
             accessTokenEndpoint: "realms/keycloak/tokens/access/codes",
             clientId: "third-party",
-            clientSecret: "3523250e-14c7-48fe-8be2-92aef4bcb149",
             refreshTokenEndpoint: "realms/keycloak/tokens/refresh",
             revokeTokenEndpoint: "realms/keycloak/tokens/logout")
 
