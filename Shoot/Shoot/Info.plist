@@ -24,6 +24,14 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>urn:ietf:wg:oauth:2.0:oob</key>
+			<string>org.aerogear.KeycloakDemo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>org.aerogear.KeycloakDemo</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
 			<string>org.aerogear.Shoot</string>
 			<key>CFBundleURLSchemes</key>
 			<array>

@@ -26,12 +26,13 @@ class ViewController: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         var config = Config(base: "http://localhost:8080/auth",
-            authzEndpoint: "realms/product-inventory/tokens/login",
+            authzEndpoint: "realms/keycloak/tokens/login",
             redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
-            accessTokenEndpoint: "realms/product-inventory/tokens/access/codes",
-            clientId: "product-inventory-oauth2",
-            refreshTokenEndpoint: "realms/product-inventory/tokens/refresh",
-            revokeTokenEndpoint: "realms/product-inventory/tokens/logout")
+            accessTokenEndpoint: "realms/keycloak/tokens/access/codes",
+            clientId: "third-party",
+            clientSecret: "3523250e-14c7-48fe-8be2-92aef4bcb149",
+            refreshTokenEndpoint: "realms/keycloak/tokens/refresh",
+            revokeTokenEndpoint: "realms/keycloak/tokens/logout")
         var session = UntrustedMemoryOAuth2Session(accountId: "MyAccount")
         self.oauth2Module = KeycloakOAuth2Module(config: config, accountId: "MyAccount", session: session)
         super.init(coder: aDecoder)
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func getProductInventory(sender: UIButton) {
-        var http = Http(url: "http://localhost:8080/ProductInventory/rest/portal/products")
+        var http = Http(url: "http://localhost:8080/keycloak/rest/products")
         http.authzModule = self.oauth2Module
         http.GET(completionHandler: { (response, error) in
             println("GET sucess \(response!)")

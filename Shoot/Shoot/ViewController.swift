@@ -51,7 +51,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
         }
-        
     }
     
     @IBAction func useCameraRoll(sender: UIBarButtonItem) {
@@ -77,7 +76,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let alertController = UIAlertController(title: "Share with", message: nil, preferredStyle: .ActionSheet)
-        presentViewController(alertController, animated: true, completion: nil)
         let google = UIAlertAction(title: "Google", style: .Default, handler: { (action) in
             self.shareWithGoogleDrive()
         })
@@ -87,6 +85,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(facebook)
         
+        let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
+            self.self.shareWithKeycloak()
+        })
+        alertController.addAction(keycloak)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func shareWithFacebook() {
@@ -100,7 +104,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let http = Http(url: "https://graph.facebook.com/me/photos")
         http.authzModule = fbModule
         
-        self.performUpload(http)
+        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
     }
     
     func shareWithGoogleDrive() {
@@ -114,25 +118,47 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
         http.authzModule = gdModule
     
-        self.performUpload(http)
+        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
+    }
+    
+    func shareWithKeycloak() {
+        println("Perform photo upload with Keycloak")
+        
+        var keycloakConfig = Config(base: "http://192.168.1.6:8080/auth",
+            authzEndpoint: "realms/keycloak/tokens/login",
+            redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
+            accessTokenEndpoint: "realms/keycloak/tokens/access/codes",
+            clientId: "third-party",
+            refreshTokenEndpoint: "realms/keycloak/tokens/refresh",
+            revokeTokenEndpoint: "realms/keycloak/tokens/logout")
+
+        let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
+        let http = Http(url: "http://192.168.1.6:8080/keycloak/rest/products")
+        http.authzModule = gdModule
+        
+        // popup dialog for user to enter product name
+        let alertController = UIAlertController(title: "Enter name", message: "Enter name of the product:", preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler(nil)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            var params = self.extractImageAsMultipartParams()
+            params["name"] = (alertController.textFields![0] as UITextField).text
+            
+            self.performUpload(http, parameters: params)
+        })
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
     }
 
-    func performUpload(http: Http) {
-        // extract the image filename
-        let filename = self.imageView.accessibilityIdentifier;
-    
-        let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image, 0.2),
-                                          name: "image",
-                                      filename: filename,
-                                      mimeType: "image/jpg")
-        
+    func performUpload(http: Http, parameters: [String: AnyObject]?) {
         // TODO as part of AGIOS-229
-        http.POST(parameters: ["data": multiPartData], completionHandler: {(response, error) in
+        http.POST(parameters: parameters, completionHandler: {(response, error) in
             if (error != nil) {
-                println("Error uploading file: \(error)")
+                self.presentAlert("Error", message: error!.localizedDescription)
             } else {
-                
-                println("Successfully uploaded: " + response!.description)
+                self.presentAlert("Success", message: "Successfully uploaded!")
             }
         })
     }
@@ -174,6 +200,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion:nil)
     }
-
+    
+    func extractImageAsMultipartParams() -> [String: AnyObject] {
+        // extract the image filename
+        let filename = self.imageView.accessibilityIdentifier;
+        
+        let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image, 0.2),
+            name: "image",
+            filename: filename,
+            mimeType: "image/jpg")
+        
+        return ["file": multiPartData]
+    }
+    
+    func presentAlert(title: String, message: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
