@@ -69,7 +69,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
             let alertController = UIAlertController(title: "Error", message: "Please select an image first!", preferredStyle: .Alert)
-            presentViewController(alertController, animated: true, completion: nil)
+            if let popoverController = alertController.popoverPresentationController {
+                popoverController.barButtonItem = sender
+            }
+            self.presentViewController(alertController, animated: true, completion: nil)
             let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
             alertController.addAction(ok)
             return;
@@ -90,6 +93,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(keycloak)
         
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        })
+        alertController.addAction(cancel)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
         presentViewController(alertController, animated: true, completion: nil)
     }
     
