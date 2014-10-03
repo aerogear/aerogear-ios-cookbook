@@ -73,30 +73,29 @@ Once an image is selected, you can share it. Doing so, you trigger the OAuth2 au
 
 NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
 
-## AeroGear upload
+## Keycloak setup
 
-How does it work?
+You will need an instance of Keycloak running locally please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot).
 
-    func performUpload(http: Http) {
-        // extract the image filename
-        let filename = self.imageView.accessibilityIdentifier; 
-    
-        // Get currently displayed image
-        let imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2); // [1]
+## AeroGear OAuth2
+
+```
+    func shareWithGoogleDrive() {
+        println("Perform photo upload with Google")
         
-        // TODO as part of AGIOS-229
-        http.multiPartUpload(http.baseURL!, parameters: ["mypersonal": imageData], success: {(response: AnyObject?) -> Void in
-            if (response != nil) {
-                println("Successful upload: " + response!.description)
-            }
-        }
-        , failure: {(error: NSError) -> Void in
-            println("Failed upload \(error)")
-        })
+        let googleConfig = GoogleConfig(                              // [1]
+            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+            scopes:["https://www.googleapis.com/auth/drive"])
+
+        let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [2]
+        let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
+        http.authzModule = gdModule                                   // [3]
+    
+        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
     }
+```
+In [1] initialize config
 
-[1] you convert your image into binary format with a compression ratio (high compression of 0.2)
+You can use AccountManager to create an OAuth2Module in [2]
 
-
-[2] TODO 
-
+Simply create an http object and inject the oauth2 module [3], then all headers will be added for you when you do http.POST/GET etc...
