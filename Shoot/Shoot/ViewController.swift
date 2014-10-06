@@ -93,7 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(keycloak)
         
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
         })
         alertController.addAction(cancel)
         
