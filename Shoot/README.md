@@ -3,6 +3,10 @@ Shoot'nShare
 You want to shoot cool photos and share them with friends using GoogleDrive or Facebook account?
 With Shoot'nShare you can take picture, browse your camera roll, pick a picture and share it!
 Picture get uploaded to your GoogleDrive or Facebook wall.
+You can also run this demo with its associated [Keyclaok backend](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
+
+**NOTES:** System requerement: iOS8. Because this demo securely stores OAuth2 tokens in your iOS keychain, we choosen to use ```WhenPasscodeSet``` policy as a result to run this app you need to have **your passcode set**. 
+For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/new-kids-on-block-whenpasswordset.html) and [Keychain and WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/touchid-and-keychain-ios8-best-friends.html)
 
 ## Facebook setup 
 
@@ -64,39 +68,36 @@ with YYY with you appId and XXX with your client secret.
 Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
 NOTES: Google setup has already been done for Shoot'nShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
+## Keycloak setup
+
+You will need an instance of Keycloak running locally please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot).
+
 ## UI Flow 
 When you start the application you can take picture or select one from your camera roll.
 
 Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
 
-![Shoot'nShare app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/Shoot/Resources/shootupload.png "Shoot")
-
 NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
 
-## AeroGear upload
+## AeroGear OAuth2
 
-How does it work?
-
-    func performUpload(http: Http) {
-        // extract the image filename
-        let filename = self.imageView.accessibilityIdentifier; 
-    
-        // Get currently displayed image
-        let imageData = UIImageJPEGRepresentation(self.imageView.image, 0.2); // [1]
+```
+    func shareWithGoogleDrive() {
+        println("Perform photo upload with Google")
         
-        // TODO as part of AGIOS-229
-        http.multiPartUpload(http.baseURL!, parameters: ["mypersonal": imageData], success: {(response: AnyObject?) -> Void in
-            if (response != nil) {
-                println("Successful upload: " + response!.description)
-            }
-        }
-        , failure: {(error: NSError) -> Void in
-            println("Failed upload \(error)")
-        })
+        let googleConfig = GoogleConfig(                              // [1]
+            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+            scopes:["https://www.googleapis.com/auth/drive"])
+
+        let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [2]
+        let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
+        http.authzModule = gdModule                                   // [3]
+    
+        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
     }
+```
+In [1] initialize config
 
-[1] you convert your image into binary format with a compression ratio (high compression of 0.2)
+You can use AccountManager to create an OAuth2Module in [2]
 
-
-[2] TODO 
-
+Simply create an http object and inject the oauth2 module [3], then all headers will be added for you when you do http.POST/GET etc...

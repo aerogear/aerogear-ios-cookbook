@@ -69,7 +69,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
             let alertController = UIAlertController(title: "Error", message: "Please select an image first!", preferredStyle: .Alert)
-            presentViewController(alertController, animated: true, completion: nil)
+            if let popoverController = alertController.popoverPresentationController {
+                popoverController.barButtonItem = sender
+            }
+            self.presentViewController(alertController, animated: true, completion: nil)
             let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
             alertController.addAction(ok)
             return;
@@ -90,6 +93,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(keycloak)
         
+        let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+        })
+        alertController.addAction(cancel)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
         presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -124,36 +134,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
         
-        var keycloakConfig = Config(base: "http://192.168.1.6:8080/auth",
-            authzEndpoint: "realms/keycloak/tokens/login",
-            redirectURL: "org.aerogear.KeycloakDemo://oauth2Callback",
-            accessTokenEndpoint: "realms/keycloak/tokens/access/codes",
-            clientId: "third-party",
-            refreshTokenEndpoint: "realms/keycloak/tokens/refresh",
-            revokeTokenEndpoint: "realms/keycloak/tokens/logout")
+        var keycloakConfig = Config(base: "http://localhost:8080/auth",
+            authzEndpoint: "realms/shoot-realm/tokens/login",
+            redirectURL: "org.aerogear.Shoot://oauth2Callback",
+            accessTokenEndpoint: "realms/shoot-realm/tokens/access/codes",
+            clientId: "shoot-third-party",
+            refreshTokenEndpoint: "realms/shoot-realm/tokens/refresh",
+            revokeTokenEndpoint: "realms/shoot-realm/tokens/logout")
 
         let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
-        let http = Http(url: "http://192.168.1.6:8080/keycloak/rest/products")
+        let http = Http(url: "http://localhost:8080/shoot/rest/photos")
         http.authzModule = gdModule
-        
-        // popup dialog for user to enter product name
-        let alertController = UIAlertController(title: "Enter name", message: "Enter name of the product:", preferredStyle: .Alert)
-        alertController.addTextFieldWithConfigurationHandler(nil)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-            var params = self.extractImageAsMultipartParams()
-            params["name"] = (alertController.textFields![0] as UITextField).text
-            
-            self.performUpload(http, parameters: params)
-        })
-        alertController.addAction(okAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
+        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
         
     }
 
     func performUpload(http: Http, parameters: [String: AnyObject]?) {
-        // TODO as part of AGIOS-229
         http.POST(parameters: parameters, completionHandler: {(response, error) in
             if (error != nil) {
                 self.presentAlert("Error", message: error!.localizedDescription)
