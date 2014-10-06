@@ -5,6 +5,9 @@ With Shoot'nShare you can take picture, browse your camera roll, pick a picture 
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keyclaok backend](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
+**NOTES:** System requerement: iOS8. Because this demo securely stores OAuth2 tokens in your iOS keychain, we choosen to use ```WhenPasscodeSet``` policy as a result to run this app you need to have **your passcode set**. 
+For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/new-kids-on-block-whenpasswordset.html) and [Keychain and WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/touchid-and-keychain-ios8-best-friends.html)
+
 ## Facebook setup 
 
 ### Step1: Setup facebook to ba a facebook developer:
