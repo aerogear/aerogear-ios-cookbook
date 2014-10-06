@@ -3,6 +3,7 @@ Shoot'nShare
 You want to shoot cool photos and share them with friends using GoogleDrive or Facebook account?
 With Shoot'nShare you can take picture, browse your camera roll, pick a picture and share it!
 Picture get uploaded to your GoogleDrive or Facebook wall.
+You can also run this demo with its associated [Keyclaok backend](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
 ## Facebook setup 
 
@@ -64,18 +65,16 @@ with YYY with you appId and XXX with your client secret.
 Similar setup than [GoogleDrive app](../GoogleDrive/GoogleDrive.md) please refer to its configuration section. 
 NOTES: Google setup has already been done for Shoot'nShare app. You can use out of the box. If you want to create your own app, please follow set instructions.
 
+## Keycloak setup
+
+You will need an instance of Keycloak running locally please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot).
+
 ## UI Flow 
 When you start the application you can take picture or select one from your camera roll.
 
 Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization porcess. Once successfully authorized, your image will be uploaded.
 
-![Shoot'nShare app](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/Shoot/Resources/shootupload.png "Shoot")
-
 NOTES: Because this app uses your camera, you should run it on actual device. Running on simulator won't allow camera shoot.
-
-## Keycloak setup
-
-You will need an instance of Keycloak running locally please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/corinnekrych/aerogear-backend-cookbook/tree/master/Shoot).
 
 ## AeroGear OAuth2
 
