@@ -166,7 +166,6 @@
         if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
             [_locationManager requestWhenInUseAuthorization];
         }
-        //[_locationManager startUpdatingLocation];
         [_locationManager startMonitoringSignificantLocationChanges];
         [self initUINavigation];
     } failure:^(NSError *error) {
