@@ -47,10 +47,7 @@
     [super viewDidLoad];
     DLog(@"AGLoginViewController start viewDidLoad");
     self.view.backgroundColor = [UIColor clearColor];
-
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+   
     UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _illustration = [[UIImageView alloc] initWithImage:background];
     _illustration.center = CGPointMake(160, 120);
@@ -161,6 +158,15 @@
         // a successful login means we can trigger the device registration
         // against the AeroGear UnifiedPush Server:
         [self deviceRegistration];
+
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        // needed for iOS8, check to support iOS7
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        //[_locationManager startUpdatingLocation];
         [_locationManager startMonitoringSignificantLocationChanges];
         [self initUINavigation];
     } failure:^(NSError *error) {

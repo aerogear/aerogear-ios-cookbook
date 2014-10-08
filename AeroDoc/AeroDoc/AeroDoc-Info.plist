@@ -57,5 +57,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationUsageDescription</key>
+    <string>Your location is needed to get you the best AeroDoc leads.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is needed to get you the best AeroDoc leads.</string>
 </dict>
 </plist>
