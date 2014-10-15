@@ -145,7 +145,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
         self.http.authzModule = gdModule
-        self.performUpload("http://localhost:8080/shoot", parameters: self.extractImageAsMultipartParams())
+        self.performUpload("http://localhost:8080/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
