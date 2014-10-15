@@ -225,9 +225,7 @@ public class TrustedPersistantOAuth2Session: OAuth2Session {
     * Check validity of accessToken. return true if still valid, false when expired.
     */
     public func tokenIsNotExpired() -> Bool {
-        var isExpired = self.accessTokenExpirationDate?.timeIntervalSinceDate(NSDate()) > 0
-        println("ISExpired::\(self.accessTokenExpirationDate!)  :: \(self.accessTokenExpirationDate?.timeIntervalSinceDate(NSDate())) ::  \(isExpired)")
-        return isExpired
+        return  self.accessTokenExpirationDate?.timeIntervalSinceDate(NSDate()) > 0
     }
     
     /**
