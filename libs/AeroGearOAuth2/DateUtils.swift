@@ -17,11 +17,21 @@
 
 import Foundation
 
-
-public enum HttpMethod: String {
-    case GET = "GET"
-    case HEAD = "HEAD"
-    case DELETE = "DELETE"
-    case POST = "POST"
-    case PUT = "PUT"
+extension NSDate
+{
+    convenience init(dateString:String) {
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a"
+        let d = dateStringFormatter.dateFromString(dateString)
+        if let unwrappedDate = d {
+            self.init(timeInterval:0, sinceDate:unwrappedDate)
+        } else {
+            self.init()
+        }
+    }
+    func toString() -> String {
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss a"
+        return dateStringFormatter.stringFromDate(self)
+    }
 }

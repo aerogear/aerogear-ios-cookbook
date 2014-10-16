@@ -17,25 +17,14 @@
 
 import Foundation
 
-public class MultiPartData {
-
-    public var name: String
-    public var filename: String
-    public var mimeType: String
-    public var data: NSData
+extension String {
     
-    public init(url: NSURL, mimeType: String) {
-        self.name = url.lastPathComponent
-        self.filename = url.lastPathComponent
-        self.mimeType = mimeType;
-        
-        self.data = NSData(contentsOfURL: url)!
-    }
-    
-    public init(data: NSData, name: String, filename: String, mimeType: String) {
-        self.data = data;
-        self.name = name;
-        self.filename = filename;
-        self.mimeType = mimeType;
+    public func urlEncode() -> String {
+        let encodedURL = CFURLCreateStringByAddingPercentEscapes(nil,
+            self as NSString,
+            nil,
+            "!@#$%&*'();:=+,/?[]",
+            CFStringBuiltInEncodings.UTF8.rawValue)
+        return encodedURL as NSString
     }
 }
