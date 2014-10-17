@@ -17,6 +17,9 @@
 
 import Foundation
 
+/**
+An OAuth2Module subclass specific to 'Facebook' authorization
+*/
 public class FacebookOAuth2Module: OAuth2Module {
 
     public required init(config: Config, session: OAuth2Session?, requestSerializer: RequestSerializer, responseSerializer: ResponseSerializer) {

@@ -19,18 +19,17 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    var http = Http()
     var data = [Developer]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var http = Http(url: "http://localhost:8080/Buddies/rest/team/developers", sessionConfig: NSURLSessionConfiguration.defaultSessionConfiguration())
-        
-        http.GET(completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+        http.GET("http://igtests-cvasilak.rhcloud.com/rest/team/developers", completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
                 for developer in (response!) as [AnyObject] {
                     // TODO with object serialization AGIOS-13 replace this code to plugin serializer
-                    self.data.append(Developer(name: developer["name"] as String, twitter: developer["twitter"] as String, image: NSURL(string: developer["photoURL"] as String)))
+                    self.data.append(Developer(name: developer["name"] as String, twitter: developer["twitter"] as String, image: NSURL(string: developer["photoURL"] as String)!))
                 }
                 self.tableView.reloadData()
             }
@@ -58,7 +57,7 @@ class MasterViewController: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue(), {
                 if cell.tag == indexPath.row {
-                    cell.imageView?.image = UIImage(data: imageData)
+                    cell.imageView?.image = UIImage(data: imageData!)
                     cell.setNeedsLayout()
                 }
             })
@@ -68,7 +67,7 @@ class MasterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let developer = data[indexPath.row]
-        let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")
+        let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")!
         UIApplication.sharedApplication().openURL(twitterURL)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

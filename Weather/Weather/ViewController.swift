@@ -20,6 +20,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager:CLLocationManager = CLLocationManager()
+    let session = Http()
     
     @IBOutlet var loadingIndicator : UIActivityIndicatorView? = nil
     @IBOutlet var icon : UIImageView?
@@ -46,12 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
-        var url = "http://api.openweathermap.org/data/2.5/weather"
-        let session = Http(url:url)
-        
-        var request = NSMutableURLRequest(URL: NSURL.URLWithString(url))
-        
-        session.GET(parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+        session.GET("http://api.openweathermap.org/data/2.5/weather", parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 println("Error retrieving Weather \(error!)")
                 return
