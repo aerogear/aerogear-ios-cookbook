@@ -35,9 +35,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearShootKeychainChanged",
+            name: NSUserDefaultsDidChangeNotification, object: nil)
         self.http = Http()
     }
+    
+    func clearShootKeychainChanged() {
+        println("settings changed")
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let clear = userDefaults.boolForKey("clearShootKeychain")
+        
+        if (clear) {
+            println("clearing keychain)")
+            let kc = KeychainWrap()
+            kc.resetKeychain()
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
