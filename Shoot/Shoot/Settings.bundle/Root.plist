@@ -8,6 +8,24 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
+			<string>Use Keycloak</string>
+			<key>Key</key>
+			<string>useKeycloak</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Keycloak URL</string>
+			<key>Key</key>
+			<string>KeycloakURL</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
 			<string>Clear Shoot Keychain</string>
 			<key>Key</key>
 			<string>clearShootKeychain</string>

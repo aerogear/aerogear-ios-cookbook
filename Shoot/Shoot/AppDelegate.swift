@@ -37,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let kc = KeychainWrap()
             kc.resetKeychain()
         }
+        // TODO
+        //useKeycloakMenu = userDefaults.boolForKey("useKeycloak")
+        //keycloakURL = userDefaults.stringForKey("keycloakURL")
     }
 
     func applicationWillResignActive(application: UIApplication!) {

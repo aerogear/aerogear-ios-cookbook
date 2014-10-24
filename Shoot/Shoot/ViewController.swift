@@ -23,7 +23,8 @@ import AssetsLibrary
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var newMedia: Bool = true
-    
+    var useKeycloakMenu = false
+    var keycloakURL:String?
     var http: Http!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -37,6 +38,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearShootKeychainChanged",
             name: NSUserDefaultsDidChangeNotification, object: nil)
+        
+        
         self.http = Http()
     }
     
@@ -44,9 +47,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("settings changed")
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let clear = userDefaults.boolForKey("clearShootKeychain")
+        useKeycloakMenu = userDefaults.boolForKey("useKeycloak")
+        keycloakURL = userDefaults.stringForKey("keycloakURL")
         
-        if (clear) {
-            println("clearing keychain)")
+        if clear {
+            println("clearing keychain")
             let kc = KeychainWrap()
             kc.resetKeychain()
         }
@@ -106,10 +111,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(facebook)
         
-        let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
-            self.self.shareWithKeycloak()
-        })
-        alertController.addAction(keycloak)
+        if useKeycloakMenu {
+            let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
+                self.self.shareWithKeycloak()
+            })
+            alertController.addAction(keycloak)
+        }
         
         let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
         })
@@ -148,8 +155,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
-        
-        var keycloakConfig = Config(base: "http://localhost:8080/auth",
+        if let unwrappedURL = keycloakURL {
+        var keycloakConfig = Config(base: "\(unwrappedURL)/auth",
             authzEndpoint: "realms/shoot-realm/tokens/login",
             redirectURL: "org.aerogear.Shoot://oauth2Callback",
             accessTokenEndpoint: "realms/shoot-realm/tokens/access/codes",
@@ -159,7 +166,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
         self.http.authzModule = gdModule
-        self.performUpload("http://localhost:8080/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+        self.performUpload("\(unwrappedURL)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+        } else {
+            println("Keycloak URL should be filled")
+        }
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
