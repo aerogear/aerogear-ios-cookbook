@@ -72,6 +72,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // MARK - Toolbar Actions
+    @IBAction func openSettings(sender: UIBarButtonItem) {
+        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
+        UIApplication.sharedApplication().openURL(settingsUrl!)
+    }
     
     @IBAction func useCamera(sender: UIBarButtonItem) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -97,6 +101,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    @IBAction func about(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "About", message: "Shoot'nShare your favourite photos to GoogleDrive, Facebook or your own Keycloak server.\nOAuth2 implementation using aerogear-ios-oauth2\n", preferredStyle: .Alert)
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
+        self.presentViewController(alertController, animated: true, completion: nil)
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
+        alertController.addAction(ok)
+        return;
+    }
     @IBAction func share(sender: UIBarButtonItem) {
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
