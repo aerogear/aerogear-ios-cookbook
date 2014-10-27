@@ -21,8 +21,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         prepareDefaultSettings()
@@ -31,15 +30,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func prepareDefaultSettings() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
+        
         let clear = userDefaults.boolForKey("clearShootKeychain")
-        println("finish launching clear \(clear)")
         if (clear) {
+            println("clearing Keychain")
             let kc = KeychainWrap()
             kc.resetKeychain()
         }
-        // TODO
-        //useKeycloakMenu = userDefaults.boolForKey("useKeycloak")
-        //keycloakURL = userDefaults.stringForKey("keycloakURL")
+        // default values
+        userDefaults.registerDefaults(NSDictionary(object: false, forKey: "useKeycloak"))
+        userDefaults.registerDefaults(NSDictionary(object: "http://localhost:8080", forKey: "key_url"))
+
     }
 
     func applicationWillResignActive(application: UIApplication!) {

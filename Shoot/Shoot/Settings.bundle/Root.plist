@@ -15,12 +15,22 @@
 			<false/>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>http://localhost:8080</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>key_url</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
 			<key>Title</key>
 			<string>Keycloak URL</string>
-			<key>Key</key>
-			<string>KeycloakURL</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
 		</dict>
 		<dict>
 			<key>Type</key>
