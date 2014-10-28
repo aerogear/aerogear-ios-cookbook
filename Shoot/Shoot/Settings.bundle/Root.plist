@@ -4,23 +4,14 @@
 <dict>
 	<key>PreferenceSpecifiers</key>
 	<array>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Use Keycloak</string>
-			<key>Key</key>
-			<string>useKeycloak</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
+
 		<dict>
 			<key>AutocapitalizationType</key>
 			<string>None</string>
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>http://localhost:8080</string>
+			<string></string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -36,7 +27,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Clear Shoot Keychain</string>
+			<string>Clear Keychain</string>
 			<key>Key</key>
 			<string>clearShootKeychain</string>
 			<key>DefaultValue</key>

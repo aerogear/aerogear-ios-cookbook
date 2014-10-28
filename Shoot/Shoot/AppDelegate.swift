@@ -38,8 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             kc.resetKeychain()
         }
         // default values
-        userDefaults.registerDefaults(NSDictionary(object: false, forKey: "useKeycloak"))
-        userDefaults.registerDefaults(NSDictionary(object: "http://localhost:8080", forKey: "key_url"))
+        userDefaults.registerDefaults(NSDictionary(object: "", forKey: "key_url"))
 
     }
 

@@ -23,7 +23,6 @@ import AssetsLibrary
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var newMedia: Bool = true
-    var useKeycloakMenu = NSUserDefaults.standardUserDefaults().boolForKey("useKeycloak")
     var keycloakURL:String = NSUserDefaults.standardUserDefaults().stringForKey("key_url") ?? ""
     var http: Http!
     
@@ -54,10 +53,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let clear = userDefaults.boolForKey("clearShootKeychain")
         
-        self.useKeycloakMenu = userDefaults.boolForKey("useKeycloak")
         self.keycloakURL = userDefaults.stringForKey("key_url") ?? ""
         
-        println("changed settings \(useKeycloakMenu) \(keycloakURL)")
+        println("changed settings \(keycloakURL)")
         
         if clear {
             println("clearing keychain")
@@ -134,7 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(facebook)
         
-        if self.useKeycloakMenu == true {
+        if self.keycloakURL != "" {
             let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
                 self.self.shareWithKeycloak()
             })
