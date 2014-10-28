@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Let's register for settings update notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearShootKeychainChanged",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
             name: NSUserDefaultsDidChangeNotification, object: nil)
         
         
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    func clearShootKeychainChanged() {
+    func handleSettingsChangedNotification() {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let clear = userDefaults.boolForKey("clearShootKeychain")
