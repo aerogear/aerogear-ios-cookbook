@@ -35,7 +35,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Let's register for settings update notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearShootKeychainChanged",
             name: NSUserDefaultsDidChangeNotification, object: nil)
         
@@ -71,6 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK - Toolbar Actions
     @IBAction func openSettings(sender: UIBarButtonItem) {
+        // iOS8 open Settings from your current app
         let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
         UIApplication.sharedApplication().openURL(settingsUrl!)
     }
