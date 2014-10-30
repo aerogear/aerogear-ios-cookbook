@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import AeroGearSyncClient
+import AeroGearSync
 
 class ViewController: UIViewController, UITextFieldDelegate {
+
+    let backgroundQueue = NSOperationQueue()
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var profession: UITextField!
@@ -16,8 +20,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var hobby2: UITextField!
     @IBOutlet var hobby3: UITextField!
     @IBOutlet var hobby4: UITextField!
+    @IBOutlet var connection: UIButton!
     var dirty = false
-    let backgroundQueue = NSOperationQueue()
+
+    let clientId = NSUUID().UUIDString
+    let documentId = "12345"
+    var content = Info(name: "Luke Skywalker",
+        profession: "Jedi",
+        hobbies: ["Fighting the Dark Side",
+        "Going into Tosche Station to pick up some power converters",
+        "Kissing his sister",
+        "Bulls eyeing Womprats on his T-16"])
+
+    var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String>>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +41,48 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hobby2.delegate = self
         hobby3.delegate = self
         hobby4.delegate = self
+        updateFields(content)
+
+        let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
+        let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
+        let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
+        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
+        syncClient.connect()
+        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: content.asJson())
+        syncClient.addDocument(doc, callback: syncCallback)
+    }
+
+    private func syncCallback(doc: ClientDocument<String>) {
+        println("syncCallback: \(doc.content)")
+    }
+
+    @IBAction func connection(button: UIButton) {
+        let text = button.titleLabel!.text!
+        println("Text: \(text)")
+        if text == "Disconnect" {
+            disconnect()
+            connection.setTitle("Connect", forState:UIControlState.Normal)
+        } else {
+            syncClient.connect()
+            connection.setTitle("Disconnect", forState:UIControlState.Normal)
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        disconnect()
+    }
+
+    func disconnect() {
+        syncClient.disconnect()
+    }
+
+    private func updateFields(content: Info) {
+        nameLabel.text = content.name
+        profession.text = content.profession
+        hobby1.text = content.hobbies[0]
+        hobby2.text = content.hobbies[1]
+        hobby3.text = content.hobbies[2]
+        hobby4.text = content.hobbies[3]
     }
 
     override func didReceiveMemoryWarning() {
