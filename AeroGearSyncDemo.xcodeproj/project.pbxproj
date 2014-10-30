@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C537FCAD1A021DCF00CA79A0 /* AeroGearSyncClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C537FCAA1A021DC200CA79A0 /* AeroGearSyncClient.framework */; };
+		C537FCB01A022A7F00CA79A0 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537FCAF1A022A7F00CA79A0 /* Info.swift */; };
 		C565E36A1A00EC5500EB2B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E3691A00EC5500EB2B1D /* AppDelegate.swift */; };
 		C565E36C1A00EC5500EB2B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E36B1A00EC5500EB2B1D /* ViewController.swift */; };
 		C565E36F1A00EC5500EB2B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C565E36D1A00EC5500EB2B1D /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AeroGearSyncClient.xcodeproj; path = "aerogear-ios-sync-client/AeroGearSyncClient.xcodeproj"; sourceTree = "<group>"; };
+		C537FCAF1A022A7F00CA79A0 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		C565E3641A00EC5500EB2B1D /* AeroGearSyncDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroGearSyncDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C565E3681A00EC5500EB2B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C565E3691A00EC5500EB2B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				C565E3691A00EC5500EB2B1D /* AppDelegate.swift */,
 				C565E36B1A00EC5500EB2B1D /* ViewController.swift */,
+				C537FCAF1A022A7F00CA79A0 /* Info.swift */,
 				C565E36D1A00EC5500EB2B1D /* Main.storyboard */,
 				C565E3701A00EC5500EB2B1D /* Images.xcassets */,
 				C565E3721A00EC5500EB2B1D /* LaunchScreen.xib */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C537FCB01A022A7F00CA79A0 /* Info.swift in Sources */,
 				C565E36C1A00EC5500EB2B1D /* ViewController.swift in Sources */,
 				C565E36A1A00EC5500EB2B1D /* AppDelegate.swift in Sources */,
 			);
