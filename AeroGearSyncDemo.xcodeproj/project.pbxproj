@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C537FCAD1A021DCF00CA79A0 /* AeroGearSyncClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C537FCAA1A021DC200CA79A0 /* AeroGearSyncClient.framework */; };
 		C565E36A1A00EC5500EB2B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E3691A00EC5500EB2B1D /* AppDelegate.swift */; };
 		C565E36C1A00EC5500EB2B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E36B1A00EC5500EB2B1D /* ViewController.swift */; };
 		C565E36F1A00EC5500EB2B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C565E36D1A00EC5500EB2B1D /* Main.storyboard */; };
@@ -16,6 +17,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C537FCA91A021DC200CA79A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C587E6C419D0460E0098638A;
+			remoteInfo = AeroGearSyncClient;
+		};
+		C537FCAB1A021DC200CA79A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C587E6CF19D0460E0098638A;
+			remoteInfo = AeroGearSyncClientTests;
+		};
 		C565E37A1A00EC5600EB2B1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C565E35C1A00EC5500EB2B1D /* Project object */;
@@ -26,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AeroGearSyncClient.xcodeproj; path = "aerogear-ios-sync-client/AeroGearSyncClient.xcodeproj"; sourceTree = "<group>"; };
 		C565E3641A00EC5500EB2B1D /* AeroGearSyncDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroGearSyncDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C565E3681A00EC5500EB2B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C565E3691A00EC5500EB2B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C537FCAD1A021DCF00CA79A0 /* AeroGearSyncClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,9 +73,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C537FCA21A021DC200CA79A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C537FCAA1A021DC200CA79A0 /* AeroGearSyncClient.framework */,
+				C537FCAC1A021DC200CA79A0 /* AeroGearSyncClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C565E35B1A00EC5500EB2B1D = {
 			isa = PBXGroup;
 			children = (
+				C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */,
 				C565E3661A00EC5500EB2B1D /* AeroGearSyncDemo */,
 				C565E37C1A00EC5600EB2B1D /* AeroGearSyncDemoTests */,
 				C565E3651A00EC5500EB2B1D /* Products */,
@@ -179,6 +206,12 @@
 			mainGroup = C565E35B1A00EC5500EB2B1D;
 			productRefGroup = C565E3651A00EC5500EB2B1D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C537FCA21A021DC200CA79A0 /* Products */;
+					ProjectRef = C537FCA11A021DC200CA79A0 /* AeroGearSyncClient.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C565E3631A00EC5500EB2B1D /* AeroGearSyncDemo */,
@@ -186,6 +219,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C537FCAA1A021DC200CA79A0 /* AeroGearSyncClient.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AeroGearSyncClient.framework;
+			remoteRef = C537FCA91A021DC200CA79A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C537FCAC1A021DC200CA79A0 /* AeroGearSyncClientTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AeroGearSyncClientTests.xctest;
+			remoteRef = C537FCAB1A021DC200CA79A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C565E3621A00EC5500EB2B1D /* Resources */ = {
@@ -405,6 +455,7 @@
 				C565E3851A00EC5600EB2B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C565E3861A00EC5600EB2B1D /* Build configuration list for PBXNativeTarget "AeroGearSyncDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +464,7 @@
 				C565E3881A00EC5600EB2B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
