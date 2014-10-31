@@ -44,7 +44,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hobby2.delegate = self
         hobby3.delegate = self
         hobby4.delegate = self
-        updateFields(content)
+        // TODO: we should read the current version from local storage.
+        //updateFields(content)
 
         let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
@@ -177,7 +178,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func fieldsAsJsonString() -> String {
-        return JSON(fieldAsJson()).rawString(encoding: NSUTF8StringEncoding, options: nil)!
+        return JsonConverter.asJsonString(fieldAsJson())!
     }
 
 }
