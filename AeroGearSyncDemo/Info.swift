@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Info {
+public class Info : Printable {
 
     public let name: String
     public let profession: String
@@ -18,6 +18,12 @@ public class Info {
         self.name = name;
         self.profession = profession
         self.hobbies = hobbies
+    }
+
+    public convenience init(dict: Dictionary<String, AnyObject>) {
+        self.init(name: dict["name"]! as String,
+            profession: dict["profession"]! as String,
+            hobbies: dict["hobbies"]! as Array<String>)
     }
 
     public func asJson() -> String {
@@ -33,5 +39,8 @@ public class Info {
         return json
     }
 
+    public var description: String {
+        return "Info[name=\(name), profession=\(profession), hobbies=\(hobbies)"
+    }
 }
 
