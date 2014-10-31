@@ -10,11 +10,13 @@ import Foundation
 
 public class Info : Printable {
 
+    public typealias Json = Dictionary<String, AnyObject>
+
     public let name: String
     public let profession: String
-    public let hobbies: Array<String>
+    public let hobbies: Array<Json>
 
-    public init(name: String, profession: String, hobbies: Array<String>) {
+    public init(name: String, profession: String, hobbies: Array<Json>) {
         self.name = name;
         self.profession = profession
         self.hobbies = hobbies
@@ -23,20 +25,7 @@ public class Info : Printable {
     public convenience init(dict: Dictionary<String, AnyObject>) {
         self.init(name: dict["name"]! as String,
             profession: dict["profession"]! as String,
-            hobbies: dict["hobbies"]! as Array<String>)
-    }
-
-    public func asJson() -> String {
-        var json = "{\"name\":\"\(name)\",\"profession\":\"\(profession)\",\"hobbies\":["
-        var i : Int
-        for i = 0; i < hobbies.count; i++ {
-            json += "\"\(hobbies[i])\""
-            if i != hobbies.count-1 {
-                json += ","
-            }
-        }
-        json += "]}"
-        return json
+            hobbies: dict["hobbies"]! as Array<Json>)
     }
 
     public var description: String {
