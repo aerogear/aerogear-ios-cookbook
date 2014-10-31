@@ -12,6 +12,7 @@ import AeroGearSync
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    typealias Json = JsonConverter.Json
     let backgroundQueue = NSOperationQueue()
 
     @IBOutlet var nameLabel: UILabel!
@@ -27,10 +28,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let documentId = "12345"
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
-        hobbies: ["Fighting the Dark Side",
-        "Going into Tosche Station to pick up some power converters",
-        "Kissing his sister",
-        "Bulls eyeing Womprats on his T-16"])
+        hobbies: [
+            ["description": "Fighting the Dark Side"],
+            ["description": "Going into Tosche Station to pick up some power converters"],
+            ["description": "Kissing his sister"],
+            ["description": "Bulls eyeing Womprats on his T-16"]
+        ])
 
     var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String>>!
 
@@ -48,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
         syncClient.connect()
-        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: content.asJson())
+        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         syncClient.addDocument(doc, callback: syncCallback)
     }
 
@@ -78,16 +81,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
         syncClient.disconnect()
     }
 
-    private func updateFields(content: Info) {
+    private func updateFieldsSync(content: Info) {
         println("updateFields: \(content)")
+        updateFields(content)
+    }
+
+    private func updateFieldsMainQueue(content: Info) {
         NSOperationQueue.mainQueue().addOperationWithBlock() {
-            self.nameLabel.text = content.name
-            self.profession.text = content.profession
-            self.hobby1.text = content.hobbies[0]
-            self.hobby2.text = content.hobbies[1]
-            self.hobby3.text = content.hobbies[2]
-            self.hobby4.text = content.hobbies[3]
+            self.updateFields(content)
         }
+    }
+
+    private func updateFields(content: Info) {
+        self.nameLabel.text = content.name
+        self.profession.text = content.profession
+        self.hobby1.text = content.hobbies[0]["description"] as String
+        self.hobby2.text = content.hobbies[1]["description"] as String
+        self.hobby3.text = content.hobbies[2]["description"] as String
+        self.hobby4.text = content.hobbies[3]["description"] as String
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,12 +153,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func sync(field: UITextField) {
+        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         if dirty {
             backgroundQueue.addOperationWithBlock() {
-                println("syncing...\(field.text)")
+                println("syncing...\(doc.content)")
+                self.syncClient.diffAndSend(doc)
                 self.dirty = false
             }
         }
     }
+
+    private func fieldAsJson() -> Json {
+        return [
+            "name": nameLabel.text!,
+            "profession": profession.text!,
+            "hobbies": [
+                ["description": hobby1.text!],
+                ["description": hobby2!.text],
+                ["description": hobby3!.text],
+                ["description": hobby4!.text]
+                ] as Array<Json>
+        ]
+    }
+
+    private func fieldsAsJsonString() -> String {
+        return JSON(fieldAsJson()).rawString(encoding: NSUTF8StringEncoding, options: nil)!
+    }
+
 }
 
