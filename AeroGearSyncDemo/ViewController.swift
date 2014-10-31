@@ -53,7 +53,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func syncCallback(doc: ClientDocument<String>) {
-        println("syncCallback: \(doc.content)")
+        if let dict = JsonConverter.asDictionary(doc.content) {
+            updateFields(Info(dict: dict))
+        }
     }
 
     @IBAction func connection(button: UIButton) {
@@ -77,6 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func updateFields(content: Info) {
+        println("updateFields: \(content)")
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             self.nameLabel.text = content.name
             self.profession.text = content.profession
