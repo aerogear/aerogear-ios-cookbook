@@ -77,12 +77,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func updateFields(content: Info) {
-        nameLabel.text = content.name
-        profession.text = content.profession
-        hobby1.text = content.hobbies[0]
-        hobby2.text = content.hobbies[1]
-        hobby3.text = content.hobbies[2]
-        hobby4.text = content.hobbies[3]
+        NSOperationQueue.mainQueue().addOperationWithBlock() {
+            self.nameLabel.text = content.name
+            self.profession.text = content.profession
+            self.hobby1.text = content.hobbies[0]
+            self.hobby2.text = content.hobbies[1]
+            self.hobby3.text = content.hobbies[2]
+            self.hobby4.text = content.hobbies[3]
+        }
     }
 
     override func didReceiveMemoryWarning() {
