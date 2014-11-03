@@ -23,6 +23,10 @@ Now, it is even worst that our submodule also contains a submodule (sorry):
     git submodule init
     git submodule update
 
+    cd aerogear-ios-sync-client/aerogear-ios-sync/diffmatchpatch-ios
+    git submodule init
+    git submodule update
+
 This project requires that the [AeroGear Differential Synchronization Server](https://github.com/danbev/aerogear-sync-server/tree/differential-synchronization/diffsync/server-netty)
 be running. Please refer to that project for instructions for starting the server.
 
