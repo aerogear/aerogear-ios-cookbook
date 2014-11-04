@@ -21,11 +21,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        prepareDefaultSettings()
         return true
+    }
+    
+    private func prepareDefaultSettings() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let clear = userDefaults.boolForKey("clearShootKeychain")
+        if (clear) {
+            println("clearing Keychain")
+            let kc = KeychainWrap()
+            kc.resetKeychain()
+        }
+        // default values
+        userDefaults.registerDefaults(NSDictionary(object: "", forKey: "key_url"))
+
     }
 
     func applicationWillResignActive(application: UIApplication!) {

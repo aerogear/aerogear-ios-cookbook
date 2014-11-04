@@ -23,7 +23,7 @@ import AssetsLibrary
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var newMedia: Bool = true
-    
+    var keycloakURL:String = NSUserDefaults.standardUserDefaults().stringForKey("key_url") ?? ""
     var http: Http!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -35,15 +35,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Let's register for settings update notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
+            name: NSUserDefaultsDidChangeNotification, object: nil)
+        
         
         self.http = Http()
     }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    func handleSettingsChangedNotification() {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let clear = userDefaults.boolForKey("clearShootKeychain")
+        
+        self.keycloakURL = userDefaults.stringForKey("key_url") ?? ""
+        
+        println("changed settings \(keycloakURL)")
+        
+        if clear {
+            println("clearing keychain")
+            let kc = KeychainWrap()
+            kc.resetKeychain()
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     // MARK - Toolbar Actions
+    @IBAction func openSettings(sender: UIBarButtonItem) {
+        // iOS8 open Settings from your current app
+        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
+        UIApplication.sharedApplication().openURL(settingsUrl!)
+    }
     
     @IBAction func useCamera(sender: UIBarButtonItem) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -69,6 +100,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    @IBAction func about(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "About", message: "Shoot'nShare your favourite photos to GoogleDrive, Facebook or your own Keycloak server.\nOAuth2 implementation using aerogear-ios-oauth2\n", preferredStyle: .Alert)
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
+        self.presentViewController(alertController, animated: true, completion: nil)
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
+        alertController.addAction(ok)
+        return;
+    }
     @IBAction func share(sender: UIBarButtonItem) {
         let filename = self.imageView.accessibilityIdentifier;
         if (filename == nil) { // nothing was selected
@@ -92,10 +133,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         alertController.addAction(facebook)
         
-        let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
-            self.self.shareWithKeycloak()
-        })
-        alertController.addAction(keycloak)
+        if self.keycloakURL != "" {
+            let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
+                self.self.shareWithKeycloak()
+            })
+            alertController.addAction(keycloak)
+        }
         
         let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
         })
@@ -134,8 +177,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
-        
-        var keycloakConfig = Config(base: "http://localhost:8080/auth",
+        if self.keycloakURL != "" {
+        var keycloakConfig = Config(base: "\(self.keycloakURL)/auth",
             authzEndpoint: "realms/shoot-realm/tokens/login",
             redirectURL: "org.aerogear.Shoot://oauth2Callback",
             accessTokenEndpoint: "realms/shoot-realm/tokens/access/codes",
@@ -145,7 +188,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
         self.http.authzModule = gdModule
-        self.performUpload("http://localhost:8080/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+        self.performUpload("\(self.keycloakURL)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+        } else {
+            println("Keycloak URL should be filled")
+        }
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
