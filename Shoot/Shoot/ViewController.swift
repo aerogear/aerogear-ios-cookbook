@@ -183,7 +183,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             host: "http://localhost:8080",
             realm: "shoot-realm")
         
-        let gdModule = AccountManager.addAccount(keycloakConfig, moduleClass: KeycloakOAuth2Module.self)
+        let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
         self.performUpload("\(self.keycloakURL)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
         } else {
