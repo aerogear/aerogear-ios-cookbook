@@ -50,10 +50,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
         let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine, contentSerializer: contentSerializer)
-        syncClient.connect()
-        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
-        syncClient.addDocument(doc, callback: syncCallback)
-
+        connect()
         println("ClientId=\(clientId)")
     }
 
@@ -67,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             disconnect()
             connection.setTitle("Connect", forState:UIControlState.Normal)
         } else {
-            syncClient.connect()
+            connect()
             connection.setTitle("Disconnect", forState:UIControlState.Normal)
         }
     }
@@ -76,7 +73,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         disconnect()
     }
 
-    func disconnect() {
+    private func connect() {
+        syncClient.connect()
+        syncClient.addDocument(ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString()), callback: syncCallback)
+    }
+
+    private func disconnect() {
         syncClient.disconnect()
     }
 
