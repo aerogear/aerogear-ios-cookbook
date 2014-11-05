@@ -82,10 +82,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         syncClient.disconnect()
     }
 
-    private func updateFieldsSync(content: Info) {
-        updateFields(content)
-    }
-
     private func updateFieldsMainQueue(content: Info) {
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             self.updateFields(content)
@@ -161,19 +157,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.syncClient.diffAndSend(json)
             }
         }
-    }
-
-    private func fieldsAsJson() -> Json {
-        return [
-            "name": nameLabel.text!,
-            "profession": profession.text!,
-            "hobbies": [
-                ["description": hobby1.text!, "id": content.hobbies[0].id],
-                ["description": hobby2.text!, "id": content.hobbies[1].id],
-                ["description": hobby3.text!, "id": content.hobbies[2].id],
-                ["description": hobby4.text!, "id": content.hobbies[3].id]
-                ] as Array<Json>
-        ]
     }
 
     private func fieldsAsJsonString() -> String {
