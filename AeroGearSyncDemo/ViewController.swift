@@ -29,13 +29,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
         hobbies: [
-            ["description": "Fighting the Dark Side"],
-            ["description": "Going into Tosche Station to pick up some power converters"],
-            ["description": "Kissing his sister"],
-            ["description": "Bulls eyeing Womprats on his T-16"]
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Fighting the Dark Side"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Going into Tosche Station to pick up some power converters"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Kissing his sister"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Bulls eyeing Womprats on his T-16")
         ])
-
-    var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String>>!
+    private let contentSerializer = StringContentSerializer()
+    private var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String>, StringContentSerializer>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,27 +44,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hobby2.delegate = self
         hobby3.delegate = self
         hobby4.delegate = self
-        // TODO: we should read the current version from local storage.
-        //updateFields(content)
+        updateFields(content)
 
         let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
         let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
-        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
+        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine, contentSerializer: contentSerializer)
         syncClient.connect()
         let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         syncClient.addDocument(doc, callback: syncCallback)
+
+        println("ClientId=\(clientId)")
     }
 
     private func syncCallback(doc: ClientDocument<String>) {
-        if let dict = JsonConverter.asDictionary(doc.content) {
-            updateFields(Info(dict: dict))
-        }
+        updateFieldsMainQueue(Info(dict: JsonConverter.asDictionary(doc.content)!))
     }
 
     @IBAction func connection(button: UIButton) {
         let text = button.titleLabel!.text!
-        println("Text: \(text)")
         if text == "Disconnect" {
             disconnect()
             connection.setTitle("Connect", forState:UIControlState.Normal)
@@ -83,23 +81,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func updateFieldsSync(content: Info) {
-        println("updateFields: \(content)")
         updateFields(content)
     }
 
     private func updateFieldsMainQueue(content: Info) {
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             self.updateFields(content)
+            self.content = content;
         }
     }
 
     private func updateFields(content: Info) {
         self.nameLabel.text = content.name
         self.profession.text = content.profession
-        self.hobby1.text = content.hobbies[0]["description"] as String
-        self.hobby2.text = content.hobbies[1]["description"] as String
-        self.hobby3.text = content.hobbies[2]["description"] as String
-        self.hobby4.text = content.hobbies[3]["description"] as String
+        self.hobby1.text = content.hobbies[0].desc
+        self.hobby2.text = content.hobbies[1].desc
+        self.hobby3.text = content.hobbies[2].desc
+        self.hobby4.text = content.hobbies[3].desc
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,37 +146,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
     */
     @IBAction func updates(sender: UITextField) {
         if !dirty {
-            println("field updating...\(sender.text)")
             dirty = true
         }
     }
 
     private func sync(field: UITextField) {
-        let doc = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
+        println("syncing...\(field.text)")
+        let json = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         if dirty {
             backgroundQueue.addOperationWithBlock() {
-                println("syncing...\(doc.content)")
-                self.syncClient.diffAndSend(doc)
                 self.dirty = false
+                self.syncClient.diffAndSend(json)
             }
         }
     }
 
-    private func fieldAsJson() -> Json {
+    private func fieldsAsJson() -> Json {
         return [
             "name": nameLabel.text!,
             "profession": profession.text!,
             "hobbies": [
-                ["description": hobby1.text!],
-                ["description": hobby2!.text],
-                ["description": hobby3!.text],
-                ["description": hobby4!.text]
+                ["description": hobby1.text!, "id": content.hobbies[0].id],
+                ["description": hobby2.text!, "id": content.hobbies[1].id],
+                ["description": hobby3.text!, "id": content.hobbies[2].id],
+                ["description": hobby4.text!, "id": content.hobbies[3].id]
                 ] as Array<Json>
         ]
     }
 
     private func fieldsAsJsonString() -> String {
-        return JsonConverter.asJsonString(fieldAsJson())!
+        var str = "{\"name\":\"" + (nameLabel.text! as String) + "\",\"profession\":\""
+            + profession.text! + "\""
+        str += ",\"hobbies\": ["
+        str += "{\"id\":\"" + content.hobbies[0].id + "\",\"description\":\"" + hobby1.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[1].id + "\",\"description\":\"" + hobby2.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[2].id + "\",\"description\":\"" + hobby3.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[3].id + "\",\"description\":\"" + hobby4.text! + "\"}"
+        str += "]}"
+        return str
+    }
+
+    private class StringContentSerializer : ContentSerializer {
+        private func asString(content: String) -> String {
+            return content;
+        }
     }
 
 }
