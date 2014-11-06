@@ -31,6 +31,7 @@ public enum TokenType: String {
     case AccessToken = "AccessToken"
     case RefreshToken = "RefreshToken"
     case ExpirationDate = "ExpirationDate"
+    case RefreshExpirationDate = "RefreshExpirationDate"
 }
 
 /**
@@ -226,6 +227,25 @@ public class TrustedPersistantOAuth2Session: OAuth2Session {
         }
     }
     
+    /**
+    * The refresh token's expiration date.
+    */
+    public var refreshTokenExpirationDate: NSDate? {
+        get {
+            var dateAsString = self.keychain.read(self.accountId, tokenType: .RefreshExpirationDate)
+            if let unwrappedDate = dateAsString {
+                return NSDate(dateString: unwrappedDate)
+            } else {
+                return nil
+            }
+        }
+        set(value) {
+            if let unwrappedValue = value {
+                let result = self.keychain.save(self.accountId, tokenType: .RefreshExpirationDate, value: unwrappedValue.toString())
+            }
+        }
+    }
+    
     private let keychain: KeychainWrap
     
     /**
@@ -236,25 +256,36 @@ public class TrustedPersistantOAuth2Session: OAuth2Session {
     }
     
     /**
+    * Check validity of refreshToken. return true if still valid, false when expired.
+    */
+    public func refreshTokenIsNotExpired() -> Bool {
+        return  self.refreshTokenExpirationDate?.timeIntervalSinceDate(NSDate()) > 0
+    }
+    
+    /**
     * Save in memory tokens information. Saving tokens allow you to refresh accesstoken transparently for the user without prompting
     * for grant access.
     */
-    public func saveAccessToken(accessToken: String?, refreshToken: String?, expiration: String?) {
+    public func saveAccessToken(accessToken: String?, refreshToken: String?, accessTokenExpiration: String?, refreshTokenExpiration: String?) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         
         let now = NSDate()
-        if let inter = expiration?.doubleValue {
+        if let inter = accessTokenExpiration?.doubleValue {
             self.accessTokenExpirationDate = now.dateByAddingTimeInterval(inter)
+        }
+        if let inter = refreshTokenExpiration?.doubleValue {
+            self.refreshTokenExpirationDate = now.dateByAddingTimeInterval(inter)
         }
     }
     public func saveAccessToken() {
         self.accessToken = nil
         self.refreshToken = nil
         self.accessTokenExpirationDate = nil
+        self.refreshTokenExpirationDate = nil
     }
     
-    public init(accountId: String, accessToken: String? = nil, accessTokenExpirationDate: NSDate? = nil, refreshToken: String? = nil) {
+    public init(accountId: String, accessToken: String? = nil, accessTokenExpirationDate: NSDate? = nil, refreshToken: String? = nil, refreshTokenExpirationDate: NSDate? = nil) {
         self.accountId = accountId
         self.keychain = KeychainWrap()
         // TODO Shoot config to reset all keychain + choose ACL type: with or without touchID
@@ -263,5 +294,6 @@ public class TrustedPersistantOAuth2Session: OAuth2Session {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         self.accessTokenExpirationDate = accessTokenExpirationDate
+        self.refreshTokenExpirationDate = refreshTokenExpirationDate
     }
 }

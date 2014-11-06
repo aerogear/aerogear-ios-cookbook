@@ -135,8 +135,13 @@ public class OAuth2Module: AuthzModule {
                     let accessToken: String = unwrappedResponse["access_token"] as NSString
                     let expiration = unwrappedResponse["expires_in"] as NSNumber
                     let exp: String = expiration.stringValue
+<<<<<<< HEAD
 
                     self.oauth2Session.saveAccessToken(accessToken, refreshToken: unwrappedRefreshToken, expiration: exp)
+=======
+                    
+                    self.oauth2Session.saveAccessToken(accessToken, refreshToken: unwrappedRefreshToken, accessTokenExpiration: exp, refreshTokenExpiration: nil)
+>>>>>>> Refresh token expiration for Keycloak
                     completionHandler(unwrappedResponse["access_token"], nil);
                 }
             })
@@ -167,8 +172,8 @@ public class OAuth2Module: AuthzModule {
                 let refreshToken: String = unwrappedResponse["refresh_token"] as NSString
                 let expiration = unwrappedResponse["expires_in"] as NSNumber
                 let exp: String = expiration.stringValue
-
-                self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, expiration: exp)
+                
+                self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, accessTokenExpiration: exp, refreshTokenExpiration: nil)
                 completionHandler(accessToken, nil)
             }
         })
@@ -183,7 +188,7 @@ public class OAuth2Module: AuthzModule {
         if (self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()) {
             // we already have a valid access token, nothing more to be done
             completionHandler(self.oauth2Session.accessToken!, nil);
-        } else if (self.oauth2Session.refreshToken != nil) {
+        } else if (self.oauth2Session.refreshToken != nil && self.oauth2Session.refreshTokenIsNotExpired()) {
             // need to refresh token
             self.refreshAccessToken(completionHandler)
         } else {
