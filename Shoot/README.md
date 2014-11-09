@@ -1,6 +1,6 @@
 Shoot'nShare
 ==============
-You want to shoot cool photos and share them with friends using GoogleDrive or Facebook account?
+You want to shoot cool photos and share them with friends using Google Drive or Facebook account?
 With Shoot'nShare you can take picture, browse your camera roll, pick a picture and share it!
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
@@ -59,7 +59,7 @@ In ViewController.swift initializer, replace:
 with YYY with you appId and XXX with your client secret.
 
 ## Google setup (optional)
-Here is the links and detailed setup instructions for GoogleDrive however as I noticed it is quite poorly documented for iOS app.
+Here is the links and detailed setup instructions for Google Drive however as I noticed it is quite poorly documented for iOS app.
 
 NOTES: This step is optional if your want to try the GoogleDrive app out of the box. The client id for 'GoogleDrive' has already been generated and [is available in the app](https://github.com/aerogear/aerogear-ios-cookbook/blob/master/GoogleDrive/GoogleDrive/AGViewController.m#L75). However if you want to create your own app, you will have to go through your provider setup instruction. Here's how to do it for Google Drive.
 
