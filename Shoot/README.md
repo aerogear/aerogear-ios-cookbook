@@ -33,30 +33,29 @@ For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr
 
 In Shoot-Info.plist
 
-        <key>CFBundleURLTypes</key>
-        <array>
-            <dict>
-                <key>CFBundleURLName</key>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>org.aerogear.Shoot</string>
                 <string>fbYYY</string>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>fbYYY</string>
-                </array>
-            </dict>
-        </array>
+            </array>
+        </dict>
+    </array>
 
-Replace by fbYYY where YYY is your app id.
+Replace YYY with your Facebook client id.
 
 In ViewController.swift initializer, replace:
 
-    // TODO replace XXX -> secret and YYY-> appid in this file + plist file
+    // TODO replace XXX -> secret and YYY -> client id in this file + plist file
     let facebookConfig = FacebookConfig(
             clientId: "YYY",
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
     self.facebook = FacebookOAuth2Module(config: facebookConfig)
 
-with YYY with you appId and XXX with your client secret.
+with YYY with you client id and XXX with your client secret.
 
 ## Google setup (optional)
 Here is the links and detailed setup instructions for Google Drive however as I noticed it is quite poorly documented for iOS app.
