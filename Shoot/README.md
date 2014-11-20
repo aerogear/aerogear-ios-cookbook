@@ -73,7 +73,7 @@ Enter a correct bundle id as it will be use in URL schema to specify the callbac
 
 Once completed you will have your information displayed as below:
 
-![Google Cloud client registration]((https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/shoot_google_cloud_admin.png "Google Cloud client registration")
+![Google Cloud client registration](https://github.com/aerogear/aerogear-ios-cookbook/raw/master/Shoot/shoot_google_cloud_admin.png "Google Cloud client registration")
 
 You get :
 
