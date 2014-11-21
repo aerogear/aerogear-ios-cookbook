@@ -29,8 +29,7 @@ class MasterViewController: UITableViewController {
         
         http.GET("http://igtests-cvasilak.rhcloud.com/rest/team/developers", completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
-                var developersList = self.serializer.fromJSONArray(response!, to: Developer.self)
-                self.data = developersList
+                self.data = self.serializer.fromJSONArray(response!, to: Developer.self)
                 self.tableView.reloadData()
             }
             if error != nil {
@@ -64,6 +63,7 @@ class MasterViewController: UITableViewController {
                             if cell.tag == indexPath.row {
                                 cell.imageView.image = UIImage(data: imageData)
                                 cell.setNeedsLayout()
+                                self.tableView.reloadData()
                             }
                         })
                     }
