@@ -21,7 +21,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var http = Http()
-    var data = [Developer]()
+    var data: [Developer]?
     var serializer = JsonSZ()
     
     override func viewDidLoad() {
@@ -29,12 +29,13 @@ class MasterViewController: UITableViewController {
         
         http.GET("http://igtests-cvasilak.rhcloud.com/rest/team/developers", completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
-            
-                for developerJson in (response!) as [AnyObject] {
-                    let developerObject = self.serializer.fromJSON(developerJson, to: Developer.self)
-                    println(":::::\(developerObject)")
-                    self.data.append(developerObject)
-                }
+                var developersList = self.serializer.fromJSONArray(response!, to: Developer.self)
+                self.data = developersList
+//                for developerJson in (response!) as [AnyObject] {
+//                    let developerObject = self.serializer.fromJSON(developerJson, to: Developer.self)
+//                    println(":::::\(developerObject)")
+//                    self.data.append(developerObject)
+//                }
                 self.tableView.reloadData()
             }
             if error != nil {
@@ -44,37 +45,44 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        if let data = data {
+            return data.count
+        } else {
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
-        let developer = data[indexPath.row]
-        cell.textLabel.text = developer.name
-        cell.detailTextLabel?.text = developer.twitter
-        cell.tag = indexPath.row
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0), {
-            // todo safe unwrap
-            var imageData = NSData(contentsOfURL: NSURL(string: developer.image!)!)
+        if let data = data {
+            let developer = data[indexPath.row]
+            cell.textLabel.text = developer.name
+            cell.detailTextLabel?.text = developer.twitter
+            cell.tag = indexPath.row
             
-            dispatch_async(dispatch_get_main_queue(), {
-                if cell.tag == indexPath.row {
-                    cell.imageView.image = UIImage(data: imageData!)
-                    cell.setNeedsLayout()
-                }
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0), {
+                // todo safe unwrap
+                var imageData = NSData(contentsOfURL: NSURL(string: developer.image!)!)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if cell.tag == indexPath.row {
+                        cell.imageView.image = UIImage(data: imageData!)
+                        cell.setNeedsLayout()
+                    }
+                })
             })
-        })
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let developer = data[indexPath.row]
-        let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")!
-        UIApplication.sharedApplication().openURL(twitterURL)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if let data = data {
+            let developer = data[indexPath.row]
+            let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")!
+            UIApplication.sharedApplication().openURL(twitterURL)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
 }
 

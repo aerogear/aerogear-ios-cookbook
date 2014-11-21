@@ -29,7 +29,7 @@ enum Operation {
 
 public class JsonSZ {
     var values: [String:  AnyObject] = [:]
-
+    
     var key: String?
     var value: AnyObject?
     
@@ -46,18 +46,51 @@ public class JsonSZ {
         }
     }
     
-    public func fromJSON<N: JSONSerializable>(JSON: AnyObject,  to type: N.Type) -> N! {
+    public func fromJSON<N: JSONSerializable>(JSON: AnyObject,  to type: N.Type) -> N {
         if let string = JSON as? String {
             if let data =  JSON.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
-               self.values = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String: AnyObject]
+                self.values = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String: AnyObject]
             }
         } else if let dictionary = JSON as? [String: AnyObject] {
             self.values = dictionary
         }
-
+        
         var object = N()
         N.map(self, object: object)
         return object
+    }
+    
+    public func fromJSONArray<N: JSONSerializable>(JSON: AnyObject,  to type: N.Type) -> [N]? {
+        if let string = JSON as? String {
+            if let data =  JSON.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
+                let parsed = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                if let array = parsed as? [[String: AnyObject]] {
+                    return fromJSONArrayInner(array)
+                } else { //fail to parse JSON as an array, try to parse as dict and wrap it into array?
+                    //TODO
+                }
+                
+            }
+        } else if let dictionary = JSON as? [String: AnyObject] {
+            self.values = dictionary
+        }
+        
+        return nil
+    }
+    
+    func fromJSONArrayInner<N: JSONSerializable>(JSON: [[String : AnyObject]]) -> [N] {
+        operation = .fromJSON
+        
+        var objects: [N] = []
+        
+        for element in JSON {
+            self.values = element
+            var object = N()
+            N.map(self, object: object)
+            objects.append(object)
+        }
+        
+        return objects
     }
     
     public func toJSON<N: JSONSerializable>(object: N) -> [String:  AnyObject] {
@@ -133,18 +166,18 @@ class FromJSON<CollectionType> {
             }
         }
     }
-
+    
     func objectType<N: JSONSerializable>(inout field: N?, value: AnyObject?) {
         if let value = value as? [String:  AnyObject] {
             field = JsonSZ().fromJSON(value, to: N.self)
         }
     }
-        
+    
     func arrayType<N: JSONSerializable>(inout field: [N]?, value: AnyObject?) {
         let serializer = JsonSZ()
         
         var objects = [N]()
-
+        
         if let array = value as [AnyObject]? {
             for object in array {
                 var object = serializer.fromJSON(object as [String: AnyObject],  to: N.self)
@@ -154,7 +187,7 @@ class FromJSON<CollectionType> {
         
         field = objects.count > 0 ? objects: nil
     }
-        
+    
     func dictionaryType<N: JSONSerializable>(inout field: [String: N]?, value: AnyObject?) {
         let serializer = JsonSZ()
         
@@ -165,14 +198,14 @@ class FromJSON<CollectionType> {
                 var object = serializer.fromJSON(object as [String:  AnyObject], to: N.self)
                 objects[key] = object
             }
-
+            
             field = objects.count > 0 ? objects: nil
         }
     }
 }
 
 class ToJSON {
-
+    
     func primitiveType<N>(field: N?, key: String, inout dictionary: [String : AnyObject]) {
         if let field: N = field {
             switch N.self {
