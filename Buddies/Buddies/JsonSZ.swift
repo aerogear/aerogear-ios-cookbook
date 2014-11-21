@@ -61,36 +61,46 @@ public class JsonSZ {
     }
     
     public func fromJSONArray<N: JSONSerializable>(JSON: AnyObject,  to type: N.Type) -> [N]? {
-        if let string = JSON as? String {
-            if let data =  JSON.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
-                let parsed = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
-                if let array = parsed as? [[String: AnyObject]] {
-                    return fromJSONArrayInner(array)
-                } else { //fail to parse JSON as an array, try to parse as dict and wrap it into array?
-                    //TODO
+        
+        var data = JSON.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        if let data = data {
+            var error: NSError?
+            var parsed: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
+            if let array = parsed as? [[String: AnyObject]] {
+                var objects: [N] = []
+                
+                for element in array {
+                    self.values = element
+                    var object = N()
+                    N.map(self, object: object)
+                    objects.append(object)
                 }
                 
+                return objects
             }
-        } else if let dictionary = JSON as? [String: AnyObject] {
-            self.values = dictionary
+
         }
-        
         return nil
-    }
-    
-    func fromJSONArrayInner<N: JSONSerializable>(JSON: [[String : AnyObject]]) -> [N] {
-        operation = .fromJSON
         
-        var objects: [N] = []
-        
-        for element in JSON {
-            self.values = element
-            var object = N()
-            N.map(self, object: object)
-            objects.append(object)
-        }
-        
-        return objects
+//        if let string = JSON as? String {
+//            if let data =  JSON.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
+//                let parsed: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+//                if let array = parsed as? [[String: AnyObject]] {
+//                    var objects: [N] = []
+//                    
+//                    for element in array {
+//                        self.values = element
+//                        var object = N()
+//                        N.map(self, object: object)
+//                        objects.append(object)
+//                    }
+//                    
+//                    return objects
+//                }
+//            }
+//        }
+//        
+//        return nil
     }
     
     public func toJSON<N: JSONSerializable>(object: N) -> [String:  AnyObject] {
@@ -130,10 +140,28 @@ public func <=<T: JSONSerializable>(inout left: [T]?, right: JsonSZ) {
     }
 }
 
+// array primitives
+public func <=(inout left: [AnyObject]?, right: JsonSZ) {
+    if right.operation == .fromJSON {
+        FromJSON<AnyObject>().primitiveType(&left, value: right.value)
+    } else {
+        ToJSON().arrayType(left, key: right.key!, dictionary: &right.values)
+    }
+}
+
 // dictionary
 public func <=<T: JSONSerializable>(inout left: [String:  T]?, right: JsonSZ) {
     if right.operation == .fromJSON {
         FromJSON<T>().dictionaryType(&left, value: right.value)
+    } else {
+        ToJSON().dictionaryType(left, key: right.key!, dictionary: &right.values)
+    }
+}
+
+// dictionary primitives
+public func <=(inout left: [String:  AnyObject]?, right: JsonSZ) {
+    if right.operation == .fromJSON {
+        FromJSON<AnyObject>().primitiveType(&left, value: right.value)
     } else {
         ToJSON().dictionaryType(left, key: right.key!, dictionary: &right.values)
     }
@@ -245,6 +273,12 @@ class ToJSON {
         }
     }
     
+    func arrayType(field: [AnyObject]?, key: String, inout dictionary: [String : AnyObject]) {
+        if let value = field {
+            dictionary[key] = NSArray(array: value)
+        }
+    }
+    
     func dictionaryType<N: JSONSerializable>(field: [String: N]?, key: String, inout dictionary: [String : AnyObject]) {
         if let field = field {
             var objects = NSMutableDictionary()
@@ -256,6 +290,12 @@ class ToJSON {
             if objects.count > 0 {
                 dictionary[key] = objects
             }
+        }
+    }
+    
+    func dictionaryType(field: [String: AnyObject]?, key: String, inout dictionary: [String : AnyObject]) {
+        if let value = field {
+            dictionary[key] = NSDictionary(dictionary: value)
         }
     }
     

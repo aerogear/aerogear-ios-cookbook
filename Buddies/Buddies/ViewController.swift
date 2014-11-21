@@ -20,7 +20,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var http = Http()
+    var http = Http(responseSerializer: StringResponseSerializer())
     var data: [Developer]?
     var serializer = JsonSZ()
     
@@ -31,11 +31,6 @@ class MasterViewController: UITableViewController {
             if (response != nil) {
                 var developersList = self.serializer.fromJSONArray(response!, to: Developer.self)
                 self.data = developersList
-//                for developerJson in (response!) as [AnyObject] {
-//                    let developerObject = self.serializer.fromJSON(developerJson, to: Developer.self)
-//                    println(":::::\(developerObject)")
-//                    self.data.append(developerObject)
-//                }
                 self.tableView.reloadData()
             }
             if error != nil {
@@ -62,16 +57,19 @@ class MasterViewController: UITableViewController {
             
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0), {
-                // todo safe unwrap
-                var imageData = NSData(contentsOfURL: NSURL(string: developer.image!)!)
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    if cell.tag == indexPath.row {
-                        cell.imageView.image = UIImage(data: imageData!)
-                        cell.setNeedsLayout()
+                if let image = developer.image {
+                    var imageData = NSData(contentsOfURL: NSURL(string: image)!)
+                    if let imageData = imageData {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            if cell.tag == indexPath.row {
+                                cell.imageView.image = UIImage(data: imageData)
+                                cell.setNeedsLayout()
+                            }
+                        })
                     }
-                })
+                }
             })
+            
         }
         return cell
     }
