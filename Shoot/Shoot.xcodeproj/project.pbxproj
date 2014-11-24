@@ -10,10 +10,12 @@
 		48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */; };
 		48478CB619BF26FF00983D79 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48478CB519BF26FF00983D79 /* Security.framework */; };
 		48478CBA19C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */; };
+		489710E61A260E8200D3F730 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489710E51A260E8200D3F730 /* icons.xcassets */; };
 		48975B8019EE802A0075EFC7 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48975B7F19EE802A0075EFC7 /* DateUtils.swift */; };
 		48BC695119B9FC2B00497B4E /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */; };
 		48BC695319B9FDAE00497B4E /* FacebookOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */; };
 		48DB691D19C8347600452837 /* AuthzModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB691C19C8347600452837 /* AuthzModule.swift */; };
+		48E201061A23658B00C5CCC6 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E201041A23658B00C5CCC6 /* OverlayView.xib */; };
 		48E2D50A19F6F271002B5179 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48E2D50919F6F271002B5179 /* Settings.bundle */; };
 		48F70A0119B59E9800DDB152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0019B59E9800DDB152 /* AppDelegate.swift */; };
 		48F70A0319B59E9800DDB152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0219B59E9800DDB152 /* ViewController.swift */; };
@@ -50,10 +52,12 @@
 		48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrustedPersistantOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
 		48478CB519BF26FF00983D79 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UntrustedMemoryOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
+		489710E51A260E8200D3F730 /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
 		48975B7F19EE802A0075EFC7 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = ../../libs/AeroGearOAuth2/DateUtils.swift; sourceTree = "<group>"; };
 		48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringResponseSerializer.swift; path = ../../libs/AeroGearHttp/StringResponseSerializer.swift; sourceTree = "<group>"; };
 		48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/FacebookOAuth2Module.swift; sourceTree = "<group>"; };
 		48DB691C19C8347600452837 /* AuthzModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthzModule.swift; path = ../../libs/AeroGearHttp/AuthzModule.swift; sourceTree = "<group>"; };
+		48E201051A23658B00C5CCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OverlayView.xib; sourceTree = "<group>"; };
 		48E2D50919F6F271002B5179 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		48F709FB19B59E9800DDB152 /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F709FF19B59E9800DDB152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,9 +129,11 @@
 				48F70A0019B59E9800DDB152 /* AppDelegate.swift */,
 				48F70A0219B59E9800DDB152 /* ViewController.swift */,
 				48F70A0419B59E9800DDB152 /* Main.storyboard */,
+				48E201041A23658B00C5CCC6 /* OverlayView.xib */,
 				48E2D50919F6F271002B5179 /* Settings.bundle */,
 				48F70A0719B59E9800DDB152 /* Images.xcassets */,
 				48F709FE19B59E9800DDB152 /* Supporting Files */,
+				489710E51A260E8200D3F730 /* icons.xcassets */,
 			);
 			path = Shoot;
 			sourceTree = "<group>";
@@ -277,9 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F70A8819B6F13D00DDB152 /* Info.plist in Resources */,
+				48E201061A23658B00C5CCC6 /* OverlayView.xib in Resources */,
 				48F70A0619B59E9800DDB152 /* Main.storyboard in Resources */,
 				48E2D50A19F6F271002B5179 /* Settings.bundle in Resources */,
 				48F70A0819B59E9800DDB152 /* Images.xcassets in Resources */,
+				489710E61A260E8200D3F730 /* icons.xcassets in Resources */,
 				48F70A7A19B6F13000DDB152 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +348,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		48E201041A23658B00C5CCC6 /* OverlayView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48E201051A23658B00C5CCC6 /* Base */,
+			);
+			name = OverlayView.xib;
+			sourceTree = "<group>";
+		};
 		48F70A0419B59E9800DDB152 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
