@@ -53,8 +53,8 @@ public class KeycloakOAuth2Module: OAuth2Module {
                 }
                 
                 if let unwrappedResponse = response as? [String: AnyObject] {
-                    let accessToken: String = unwrappedResponse["access_token"] as NSString
-                    let refreshToken: String = unwrappedResponse["refresh_token"] as NSString
+                    let accessToken: String = unwrappedResponse["access_token"] as String
+                    let refreshToken: String = unwrappedResponse["refresh_token"] as String
                     let expiration = unwrappedResponse["expires_in"] as NSNumber
                     let exp: String = expiration.stringValue
 
@@ -67,10 +67,9 @@ public class KeycloakOAuth2Module: OAuth2Module {
                         refreshExp = timeLeft.stringValue
                     }
                     
-                    println("Decoded token \(base64Decoded)")
                     // in Keycloak refresh token get refreshed every time you use them
                     self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, accessTokenExpiration: exp, refreshTokenExpiration: refreshExp)
-                    completionHandler(unwrappedResponse["access_token"], nil);
+                    completionHandler(accessToken, nil);
                 }
             })
         }
@@ -78,17 +77,18 @@ public class KeycloakOAuth2Module: OAuth2Module {
     
     // TODO: Once https://issues.jboss.org/browse/KEYCLOAK-760 is implemented
     // decoding refresh token to get expiration date should not be needed.
-    func decode(token:NSString) -> [String: AnyObject]? {
+    func decode(token: String) -> [String: AnyObject]? {
         let string = token.componentsSeparatedByString(".")
-        let toDecode = string[1] as NSString
+        let toDecode = string[1] as String
         
         
-        var stringtoDecode:NSString = toDecode.stringByReplacingOccurrencesOfString("-", withString: "+") // 62nd char of encoding
+        var stringtoDecode: String = toDecode.stringByReplacingOccurrencesOfString("-", withString: "+") // 62nd char of encoding
         stringtoDecode = stringtoDecode.stringByReplacingOccurrencesOfString("_", withString: "/") // 63rd char of encoding
-        switch (stringtoDecode.length % 4) {
+        switch (stringtoDecode.utf16Count % 4) {
         case 2: stringtoDecode = "\(stringtoDecode)=="
         case 3: stringtoDecode = "\(stringtoDecode)="
-        default: println("none")
+        default: // nothing to do stringtoDecode can stay the same
+            println()
         }
         let dataToDecode = NSData(base64EncodedString: stringtoDecode, options: .allZeros)
         let base64DecodedString = NSString(data: dataToDecode!, encoding: NSUTF8StringEncoding)

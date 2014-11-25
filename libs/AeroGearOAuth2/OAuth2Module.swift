@@ -135,13 +135,9 @@ public class OAuth2Module: AuthzModule {
                     let accessToken: String = unwrappedResponse["access_token"] as NSString
                     let expiration = unwrappedResponse["expires_in"] as NSNumber
                     let exp: String = expiration.stringValue
-<<<<<<< HEAD
-
-                    self.oauth2Session.saveAccessToken(accessToken, refreshToken: unwrappedRefreshToken, expiration: exp)
-=======
                     
                     self.oauth2Session.saveAccessToken(accessToken, refreshToken: unwrappedRefreshToken, accessTokenExpiration: exp, refreshTokenExpiration: nil)
->>>>>>> Refresh token expiration for Keycloak
+
                     completionHandler(unwrappedResponse["access_token"], nil);
                 }
             })

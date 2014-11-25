@@ -180,7 +180,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if self.keycloakURL != "" {
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
-            host: "http://localhost:8080",
+            host: "\(self.keycloakURL)",
             realm: "shoot-realm")
         
         let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
