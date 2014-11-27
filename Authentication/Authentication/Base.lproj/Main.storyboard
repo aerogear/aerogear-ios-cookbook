@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2GI-9O-4Hb" kind="relationship" relationship="viewControllers" id="bGK-8s-afB"/>
+                        <segue destination="ch2-Yb-ZhQ" kind="relationship" relationship="viewControllers" id="3um-YL-7Ab"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-336" y="240"/>
+        </scene>
+        <!--Basic Authentication-->
+        <scene sceneID="27H-xH-d5c">
+            <objects>
+                <tableViewController id="B1L-8E-98s" customClass="BeersViewController" customModule="Authentication" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="he3-3Q-fF5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="RSX-1S-JPc">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSX-1S-JPc" id="bhO-Lj-4Gu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="B1L-8E-98s" id="Ywl-lz-QG9"/>
+                            <outlet property="delegate" destination="B1L-8E-98s" id="EAX-z7-YBt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Basic Authentication" id="vwM-yP-pxD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZK-AR-d5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="-164"/>
+        </scene>
+        <!--Digest Authentication-->
+        <scene sceneID="s3F-uZ-ESW">
+            <objects>
+                <tableViewController id="3QP-ix-i5O" customClass="BaconViewController" customModule="Authentication" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHy-e5-vhe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Dro-Z1-MUk">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dro-Z1-MUk" id="myO-Ml-4Vu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3QP-ix-i5O" id="zcR-ec-TF1"/>
+                            <outlet property="delegate" destination="3QP-ix-i5O" id="eC3-4a-ruQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Digest Authentication" id="x4s-FZ-L2I"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEy-Lv-gyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="602"/>
+        </scene>
+        <!--Beer-->
+        <scene sceneID="2Ue-WM-vaw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2GI-9O-4Hb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Beer" image="beer" id="ge2-kV-YtI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W9Z-we-ehM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B1L-8E-98s" kind="relationship" relationship="rootViewController" id="gXC-4S-blC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vFG-Ge-vLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752" y="-164"/>
+        </scene>
+        <!--Bacon-->
+        <scene sceneID="bcN-Nl-mTB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ch2-Yb-ZhQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bacon" image="steak" id="Xmd-KE-Dz0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ypY-vl-Whu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3QP-ix-i5O" kind="relationship" relationship="rootViewController" id="Grk-7x-ZcA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psD-sm-bQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752" y="602"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="beer" width="25" height="25"/>
+        <image name="steak" width="25" height="25"/>
+    </resources>
+</document>
