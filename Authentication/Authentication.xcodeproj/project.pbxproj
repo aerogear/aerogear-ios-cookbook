@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FCE3CBD1A261DA7009895C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CBC1A261DA7009895C2 /* AppDelegate.swift */; };
+		6FCE3CBF1A261DA7009895C2 /* BeersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CBE1A261DA7009895C2 /* BeersViewController.swift */; };
+		6FCE3CC11A261DA7009895C2 /* BaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CC01A261DA7009895C2 /* BaconViewController.swift */; };
+		6FCE3CC41A261DA7009895C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE3CC21A261DA7009895C2 /* Main.storyboard */; };
+		6FCE3CC61A261DA7009895C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE3CC51A261DA7009895C2 /* Images.xcassets */; };
+		6FCE3CC91A261DA7009895C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE3CC71A261DA7009895C2 /* LaunchScreen.xib */; };
+		6FCE3CD51A261DA7009895C2 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CD41A261DA7009895C2 /* AuthenticationTests.swift */; };
+		6FCE3D031A2621B7009895C2 /* AuthzModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CF81A2621B7009895C2 /* AuthzModule.swift */; };
+		6FCE3D041A2621B7009895C2 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CF91A2621B7009895C2 /* Http.swift */; };
+		6FCE3D051A2621B7009895C2 /* HttpRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFA1A2621B7009895C2 /* HttpRequestSerializer.swift */; };
+		6FCE3D061A2621B7009895C2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFB1A2621B7009895C2 /* Info.plist */; };
+		6FCE3D071A2621B7009895C2 /* JsonRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFC1A2621B7009895C2 /* JsonRequestSerializer.swift */; };
+		6FCE3D081A2621B7009895C2 /* JsonResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFD1A2621B7009895C2 /* JsonResponseSerializer.swift */; };
+		6FCE3D091A2621B7009895C2 /* MultiPartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFE1A2621B7009895C2 /* MultiPartData.swift */; };
+		6FCE3D0A1A2621B7009895C2 /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CFF1A2621B7009895C2 /* RequestSerializer.swift */; };
+		6FCE3D0B1A2621B7009895C2 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3D001A2621B7009895C2 /* ResponseSerializer.swift */; };
+		6FCE3D0C1A2621B7009895C2 /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3D011A2621B7009895C2 /* StringResponseSerializer.swift */; };
+		6FCE3D0D1A2621B7009895C2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3D021A2621B7009895C2 /* Utils.swift */; };
+		6FCE3D0F1A262E60009895C2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3D0E1A262E60009895C2 /* Network.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FCE3CCF1A261DA7009895C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FCE3CAF1A261DA7009895C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FCE3CB61A261DA7009895C2;
+			remoteInfo = Authentication;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6FCE3CB71A261DA7009895C2 /* Authentication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authentication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCE3CBB1A261DA7009895C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCE3CBC1A261DA7009895C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6FCE3CBE1A261DA7009895C2 /* BeersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersViewController.swift; sourceTree = "<group>"; };
+		6FCE3CC01A261DA7009895C2 /* BaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaconViewController.swift; sourceTree = "<group>"; };
+		6FCE3CC31A261DA7009895C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6FCE3CC51A261DA7009895C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6FCE3CC81A261DA7009895C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6FCE3CCE1A261DA7009895C2 /* AuthenticationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthenticationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCE3CD31A261DA7009895C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCE3CD41A261DA7009895C2 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
+		6FCE3CF71A2621B7009895C2 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AeroGearHttp.h; sourceTree = "<group>"; };
+		6FCE3CF81A2621B7009895C2 /* AuthzModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthzModule.swift; sourceTree = "<group>"; };
+		6FCE3CF91A2621B7009895C2 /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		6FCE3CFA1A2621B7009895C2 /* HttpRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestSerializer.swift; sourceTree = "<group>"; };
+		6FCE3CFB1A2621B7009895C2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCE3CFC1A2621B7009895C2 /* JsonRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequestSerializer.swift; sourceTree = "<group>"; };
+		6FCE3CFD1A2621B7009895C2 /* JsonResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonResponseSerializer.swift; sourceTree = "<group>"; };
+		6FCE3CFE1A2621B7009895C2 /* MultiPartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPartData.swift; sourceTree = "<group>"; };
+		6FCE3CFF1A2621B7009895C2 /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSerializer.swift; sourceTree = "<group>"; };
+		6FCE3D001A2621B7009895C2 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
+		6FCE3D011A2621B7009895C2 /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringResponseSerializer.swift; sourceTree = "<group>"; };
+		6FCE3D021A2621B7009895C2 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		6FCE3D0E1A262E60009895C2 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FCE3CB41A261DA7009895C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FCE3CCB1A261DA7009895C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FCE3CAE1A261DA7009895C2 = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CB91A261DA7009895C2 /* Authentication */,
+				6FCE3CD11A261DA7009895C2 /* AuthenticationTests */,
+				6FCE3CB81A261DA7009895C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6FCE3CB81A261DA7009895C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CB71A261DA7009895C2 /* Authentication.app */,
+				6FCE3CCE1A261DA7009895C2 /* AuthenticationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FCE3CB91A261DA7009895C2 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CBC1A261DA7009895C2 /* AppDelegate.swift */,
+				6FCE3CBE1A261DA7009895C2 /* BeersViewController.swift */,
+				6FCE3CC01A261DA7009895C2 /* BaconViewController.swift */,
+				6FCE3D0E1A262E60009895C2 /* Network.swift */,
+				6FCE3CC21A261DA7009895C2 /* Main.storyboard */,
+				6FCE3CC51A261DA7009895C2 /* Images.xcassets */,
+				6FCE3CC71A261DA7009895C2 /* LaunchScreen.xib */,
+				6FCE3CBA1A261DA7009895C2 /* Supporting Files */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		6FCE3CBA1A261DA7009895C2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CF61A2621B7009895C2 /* AeroGearHttp */,
+				6FCE3CBB1A261DA7009895C2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FCE3CD11A261DA7009895C2 /* AuthenticationTests */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CD41A261DA7009895C2 /* AuthenticationTests.swift */,
+				6FCE3CD21A261DA7009895C2 /* Supporting Files */,
+			);
+			path = AuthenticationTests;
+			sourceTree = "<group>";
+		};
+		6FCE3CD21A261DA7009895C2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CD31A261DA7009895C2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FCE3CF61A2621B7009895C2 /* AeroGearHttp */ = {
+			isa = PBXGroup;
+			children = (
+				6FCE3CF71A2621B7009895C2 /* AeroGearHttp.h */,
+				6FCE3CF81A2621B7009895C2 /* AuthzModule.swift */,
+				6FCE3CF91A2621B7009895C2 /* Http.swift */,
+				6FCE3CFA1A2621B7009895C2 /* HttpRequestSerializer.swift */,
+				6FCE3CFB1A2621B7009895C2 /* Info.plist */,
+				6FCE3CFC1A2621B7009895C2 /* JsonRequestSerializer.swift */,
+				6FCE3CFD1A2621B7009895C2 /* JsonResponseSerializer.swift */,
+				6FCE3CFE1A2621B7009895C2 /* MultiPartData.swift */,
+				6FCE3CFF1A2621B7009895C2 /* RequestSerializer.swift */,
+				6FCE3D001A2621B7009895C2 /* ResponseSerializer.swift */,
+				6FCE3D011A2621B7009895C2 /* StringResponseSerializer.swift */,
+				6FCE3D021A2621B7009895C2 /* Utils.swift */,
+			);
+			name = AeroGearHttp;
+			path = ../../libs/AeroGearHttp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FCE3CB61A261DA7009895C2 /* Authentication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FCE3CD81A261DA7009895C2 /* Build configuration list for PBXNativeTarget "Authentication" */;
+			buildPhases = (
+				6FCE3CB31A261DA7009895C2 /* Sources */,
+				6FCE3CB41A261DA7009895C2 /* Frameworks */,
+				6FCE3CB51A261DA7009895C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Authentication;
+			productName = Authentication;
+			productReference = 6FCE3CB71A261DA7009895C2 /* Authentication.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6FCE3CCD1A261DA7009895C2 /* AuthenticationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FCE3CDB1A261DA7009895C2 /* Build configuration list for PBXNativeTarget "AuthenticationTests" */;
+			buildPhases = (
+				6FCE3CCA1A261DA7009895C2 /* Sources */,
+				6FCE3CCB1A261DA7009895C2 /* Frameworks */,
+				6FCE3CCC1A261DA7009895C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FCE3CD01A261DA7009895C2 /* PBXTargetDependency */,
+			);
+			name = AuthenticationTests;
+			productName = AuthenticationTests;
+			productReference = 6FCE3CCE1A261DA7009895C2 /* AuthenticationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FCE3CAF1A261DA7009895C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Christos Vasilakis";
+				TargetAttributes = {
+					6FCE3CB61A261DA7009895C2 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					6FCE3CCD1A261DA7009895C2 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 6FCE3CB61A261DA7009895C2;
+					};
+				};
+			};
+			buildConfigurationList = 6FCE3CB21A261DA7009895C2 /* Build configuration list for PBXProject "Authentication" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6FCE3CAE1A261DA7009895C2;
+			productRefGroup = 6FCE3CB81A261DA7009895C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FCE3CB61A261DA7009895C2 /* Authentication */,
+				6FCE3CCD1A261DA7009895C2 /* AuthenticationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FCE3CB51A261DA7009895C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCE3D061A2621B7009895C2 /* Info.plist in Resources */,
+				6FCE3CC41A261DA7009895C2 /* Main.storyboard in Resources */,
+				6FCE3CC91A261DA7009895C2 /* LaunchScreen.xib in Resources */,
+				6FCE3CC61A261DA7009895C2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FCE3CCC1A261DA7009895C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FCE3CB31A261DA7009895C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCE3CC11A261DA7009895C2 /* BaconViewController.swift in Sources */,
+				6FCE3D0C1A2621B7009895C2 /* StringResponseSerializer.swift in Sources */,
+				6FCE3D051A2621B7009895C2 /* HttpRequestSerializer.swift in Sources */,
+				6FCE3D081A2621B7009895C2 /* JsonResponseSerializer.swift in Sources */,
+				6FCE3CBD1A261DA7009895C2 /* AppDelegate.swift in Sources */,
+				6FCE3D0D1A2621B7009895C2 /* Utils.swift in Sources */,
+				6FCE3D031A2621B7009895C2 /* AuthzModule.swift in Sources */,
+				6FCE3D0A1A2621B7009895C2 /* RequestSerializer.swift in Sources */,
+				6FCE3D0B1A2621B7009895C2 /* ResponseSerializer.swift in Sources */,
+				6FCE3CBF1A261DA7009895C2 /* BeersViewController.swift in Sources */,
+				6FCE3D091A2621B7009895C2 /* MultiPartData.swift in Sources */,
+				6FCE3D071A2621B7009895C2 /* JsonRequestSerializer.swift in Sources */,
+				6FCE3D0F1A262E60009895C2 /* Network.swift in Sources */,
+				6FCE3D041A2621B7009895C2 /* Http.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FCE3CCA1A261DA7009895C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCE3CD51A261DA7009895C2 /* AuthenticationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6FCE3CD01A261DA7009895C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FCE3CB61A261DA7009895C2 /* Authentication */;
+			targetProxy = 6FCE3CCF1A261DA7009895C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6FCE3CC21A261DA7009895C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FCE3CC31A261DA7009895C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6FCE3CC71A261DA7009895C2 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FCE3CC81A261DA7009895C2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6FCE3CD61A261DA7009895C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6FCE3CD71A261DA7009895C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FCE3CD91A261DA7009895C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Authentication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6FCE3CDA1A261DA7009895C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Authentication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6FCE3CDC1A261DA7009895C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AuthenticationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Authentication.app/Authentication";
+			};
+			name = Debug;
+		};
+		6FCE3CDD1A261DA7009895C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AuthenticationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Authentication.app/Authentication";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FCE3CB21A261DA7009895C2 /* Build configuration list for PBXProject "Authentication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FCE3CD61A261DA7009895C2 /* Debug */,
+				6FCE3CD71A261DA7009895C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FCE3CD81A261DA7009895C2 /* Build configuration list for PBXNativeTarget "Authentication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FCE3CD91A261DA7009895C2 /* Debug */,
+				6FCE3CDA1A261DA7009895C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6FCE3CDB1A261DA7009895C2 /* Build configuration list for PBXNativeTarget "AuthenticationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FCE3CDC1A261DA7009895C2 /* Debug */,
+				6FCE3CDD1A261DA7009895C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FCE3CAF1A261DA7009895C2 /* Project object */;
+}
