@@ -22,11 +22,14 @@ import AssetsLibrary
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var overlayView: UIView?
+    var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
+    var zoomImage = (camera: true, display: true)
     var keycloakURL:String = NSUserDefaults.standardUserDefaults().stringForKey("key_url") ?? ""
     var http: Http!
-    
     @IBOutlet weak var imageView: UIImageView!
+
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,13 +37,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+
         // Let's register for settings update notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
             name: NSUserDefaultsDidChangeNotification, object: nil)
         
         
         self.http = Http()
+        self.useCamera()
+
     }
     
     deinit {
@@ -64,93 +71,59 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK - Toolbar Actions
-    @IBAction func openSettings(sender: UIBarButtonItem) {
+    @IBAction func goToCamera(sender: UIButton) {
+        self.useCamera()
+    }
+    
+    @IBAction func takePicture(sender: UIBarButtonItem) {
+        self.imagePicker.takePicture()
+    }
+    
+    @IBAction func goToSettings(sender: AnyObject) {
         // iOS8 open Settings from your current app
         let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
         UIApplication.sharedApplication().openURL(settingsUrl!)
     }
     
-    @IBAction func useCamera(sender: UIBarButtonItem) {
+    func useCamera() {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera
             imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
             imagePicker.allowsEditing = false
+            
+            // resize
+            if (zoomImage.camera) {
+                self.imagePicker.cameraViewTransform = CGAffineTransformScale(self.imagePicker.cameraViewTransform, 1.5, 1.5);
+                self.zoomImage.camera = false
+            }
+            // custom camera overlayview
+            imagePicker.showsCameraControls = false
+            NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
+            self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
+            imagePicker.cameraOverlayView = self.overlayView
+            self.overlayView = nil
+
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
-        }
-    }
-    
-    @IBAction func useCameraRoll(sender: UIBarButtonItem) {
-        if (UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum)) {
-            var imagePicker = UIImagePickerController()
-            imagePicker.delegate = self;
-            imagePicker.sourceType = .PhotoLibrary
-            imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
-            imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated:true, completion:{})
-            newMedia = false
-        }
-    }
-    
-    @IBAction func about(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "About", message: "Shoot'nShare your favourite photos to GoogleDrive, Facebook or your own Keycloak server.\nOAuth2 implementation using aerogear-ios-oauth2\n", preferredStyle: .Alert)
-        if let popoverController = alertController.popoverPresentationController {
-            popoverController.barButtonItem = sender
-        }
-        self.presentViewController(alertController, animated: true, completion: nil)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
-        alertController.addAction(ok)
-        return;
-    }
-    @IBAction func share(sender: UIBarButtonItem) {
-        let filename = self.imageView.accessibilityIdentifier;
-        if (filename == nil) { // nothing was selected
-            let alertController = UIAlertController(title: "Error", message: "Please select an image first!", preferredStyle: .Alert)
-            if let popoverController = alertController.popoverPresentationController {
-                popoverController.barButtonItem = sender
+        } else {
+            if (UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum)) {
+                var imagePicker = UIImagePickerController()
+                imagePicker.delegate = self;
+                imagePicker.sourceType = .PhotoLibrary
+                imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
+                imagePicker.allowsEditing = false
+                self.presentViewController(imagePicker, animated:true, completion:{})
+                newMedia = false
             }
-            self.presentViewController(alertController, animated: true, completion: nil)
-            let ok = UIAlertAction(title: "OK", style: .Default, handler: { (action) in })
-            alertController.addAction(ok)
-            return;
         }
-        
-        let alertController = UIAlertController(title: "Share with", message: nil, preferredStyle: .ActionSheet)
-        let google = UIAlertAction(title: "Google", style: .Default, handler: { (action) in
-            self.shareWithGoogleDrive()
-        })
-        alertController.addAction(google)
-        let facebook = UIAlertAction(title: "Facebook", style: .Default, handler: { (action) in
-            self.self.shareWithFacebook()
-        })
-        alertController.addAction(facebook)
-        
-        if self.keycloakURL != "" {
-            let keycloak = UIAlertAction(title: "Keycloak", style: .Default, handler: { (action) in
-                self.self.shareWithKeycloak()
-            })
-            alertController.addAction(keycloak)
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
-        })
-        alertController.addAction(cancel)
-        
-        if let popoverController = alertController.popoverPresentationController {
-            popoverController.barButtonItem = sender
-        }
-        presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func shareWithFacebook() {
+    @IBAction func shareWithFacebook() {
         println("Perform photo upload with Facebook")
         let facebookConfig = FacebookConfig(
             clientId: "YYY",
@@ -163,7 +136,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.performUpload("https://graph.facebook.com/me/photos",  parameters: self.extractImageAsMultipartParams())
     }
     
-    func shareWithGoogleDrive() {
+    @IBAction func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
         
         let googleConfig = GoogleConfig(
@@ -175,7 +148,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
     
-    func shareWithKeycloak() {
+    @IBAction func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
         if self.keycloakURL != "" {
         let keycloakConfig = KeycloakConfig(
@@ -229,6 +202,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafePointer<Void>) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
+    
+        if zoomImage.display {
+            self.imageView.transform = CGAffineTransformScale(self.imageView.transform, 1.7, 1.7)
+            self.zoomImage.display = false
+        }
         if let error = didFinishSavingWithError {
             let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
                 alert.show()
