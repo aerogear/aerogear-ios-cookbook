@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48F187CD1A2CB56F00E07356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CC1A2CB56F00E07356 /* AppDelegate.swift */; };
+		48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CE1A2CB56F00E07356 /* ViewController.swift */; };
+		48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D01A2CB56F00E07356 /* Main.storyboard */; };
+		48F187D41A2CB56F00E07356 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D31A2CB56F00E07356 /* Images.xcassets */; };
+		48F187D71A2CB56F00E07356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D51A2CB56F00E07356 /* LaunchScreen.xib */; };
+		48F187FC1A2CC08800E07356 /* AuthzModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F11A2CC08800E07356 /* AuthzModule.swift */; };
+		48F187FD1A2CC08800E07356 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F21A2CC08800E07356 /* Http.swift */; };
+		48F187FE1A2CC08800E07356 /* HttpRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F31A2CC08800E07356 /* HttpRequestSerializer.swift */; };
+		48F187FF1A2CC08800E07356 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F187F41A2CC08800E07356 /* Info.plist */; };
+		48F188001A2CC08800E07356 /* JsonRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F51A2CC08800E07356 /* JsonRequestSerializer.swift */; };
+		48F188011A2CC08800E07356 /* JsonResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F61A2CC08800E07356 /* JsonResponseSerializer.swift */; };
+		48F188021A2CC08800E07356 /* MultiPartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F71A2CC08800E07356 /* MultiPartData.swift */; };
+		48F188031A2CC08800E07356 /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F81A2CC08800E07356 /* RequestSerializer.swift */; };
+		48F188041A2CC08800E07356 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F91A2CC08800E07356 /* ResponseSerializer.swift */; };
+		48F188051A2CC08800E07356 /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187FA1A2CC08800E07356 /* StringResponseSerializer.swift */; };
+		48F188061A2CC08800E07356 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187FB1A2CC08800E07356 /* Utils.swift */; };
+		48F188121A2CC09700E07356 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F188071A2CC09700E07356 /* AccountManager.swift */; };
+		48F188131A2CC09700E07356 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F188091A2CC09700E07356 /* Config.swift */; };
+		48F188141A2CC09700E07356 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1880A1A2CC09700E07356 /* DateUtils.swift */; };
+		48F188151A2CC09700E07356 /* FacebookOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1880B1A2CC09700E07356 /* FacebookOAuth2Module.swift */; };
+		48F188161A2CC09700E07356 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F1880C1A2CC09700E07356 /* Info.plist */; };
+		48F188171A2CC09700E07356 /* KeycloakOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1880D1A2CC09700E07356 /* KeycloakOAuth2Module.swift */; };
+		48F188181A2CC09700E07356 /* OAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1880E1A2CC09700E07356 /* OAuth2Module.swift */; };
+		48F188191A2CC09700E07356 /* OAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1880F1A2CC09700E07356 /* OAuth2Session.swift */; };
+		48F1881A1A2CC09700E07356 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F188101A2CC09700E07356 /* TrustedPersistantOAuth2Session.swift */; };
+		48F1881B1A2CC09700E07356 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F188111A2CC09700E07356 /* UntrustedMemoryOAuth2Session.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48F187DD1A2CB56F00E07356 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48F187BF1A2CB56F00E07356 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48F187C61A2CB56F00E07356;
+			remoteInfo = SharedShoot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48F187C71A2CB56F00E07356 /* SharedShoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedShoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F187CB1A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F187CC1A2CB56F00E07356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		48F187CE1A2CB56F00E07356 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48F187D11A2CB56F00E07356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48F187D31A2CB56F00E07356 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		48F187D61A2CB56F00E07356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		48F187DC1A2CB56F00E07356 /* SharedShootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedShootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F187E11A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F187F01A2CC08800E07356 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearHttp.h; path = ../../libs/AeroGearHttp/AeroGearHttp.h; sourceTree = "<group>"; };
+		48F187F11A2CC08800E07356 /* AuthzModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthzModule.swift; path = ../../libs/AeroGearHttp/AuthzModule.swift; sourceTree = "<group>"; };
+		48F187F21A2CC08800E07356 /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Http.swift; path = ../../libs/AeroGearHttp/Http.swift; sourceTree = "<group>"; };
+		48F187F31A2CC08800E07356 /* HttpRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpRequestSerializer.swift; path = ../../libs/AeroGearHttp/HttpRequestSerializer.swift; sourceTree = "<group>"; };
+		48F187F41A2CC08800E07356 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../libs/AeroGearHttp/Info.plist; sourceTree = "<group>"; };
+		48F187F51A2CC08800E07356 /* JsonRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonRequestSerializer.swift; path = ../../libs/AeroGearHttp/JsonRequestSerializer.swift; sourceTree = "<group>"; };
+		48F187F61A2CC08800E07356 /* JsonResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonResponseSerializer.swift; path = ../../libs/AeroGearHttp/JsonResponseSerializer.swift; sourceTree = "<group>"; };
+		48F187F71A2CC08800E07356 /* MultiPartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiPartData.swift; path = ../../libs/AeroGearHttp/MultiPartData.swift; sourceTree = "<group>"; };
+		48F187F81A2CC08800E07356 /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestSerializer.swift; path = ../../libs/AeroGearHttp/RequestSerializer.swift; sourceTree = "<group>"; };
+		48F187F91A2CC08800E07356 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseSerializer.swift; path = ../../libs/AeroGearHttp/ResponseSerializer.swift; sourceTree = "<group>"; };
+		48F187FA1A2CC08800E07356 /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringResponseSerializer.swift; path = ../../libs/AeroGearHttp/StringResponseSerializer.swift; sourceTree = "<group>"; };
+		48F187FB1A2CC08800E07356 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../libs/AeroGearHttp/Utils.swift; sourceTree = "<group>"; };
+		48F188071A2CC09700E07356 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = ../../libs/AeroGearOAuth2/AccountManager.swift; sourceTree = "<group>"; };
+		48F188081A2CC09700E07356 /* AeroGearOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearOAuth2.h; path = ../../libs/AeroGearOAuth2/AeroGearOAuth2.h; sourceTree = "<group>"; };
+		48F188091A2CC09700E07356 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../../libs/AeroGearOAuth2/Config.swift; sourceTree = "<group>"; };
+		48F1880A1A2CC09700E07356 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = ../../libs/AeroGearOAuth2/DateUtils.swift; sourceTree = "<group>"; };
+		48F1880B1A2CC09700E07356 /* FacebookOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/FacebookOAuth2Module.swift; sourceTree = "<group>"; };
+		48F1880C1A2CC09700E07356 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../libs/AeroGearOAuth2/Info.plist; sourceTree = "<group>"; };
+		48F1880D1A2CC09700E07356 /* KeycloakOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeycloakOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/KeycloakOAuth2Module.swift; sourceTree = "<group>"; };
+		48F1880E1A2CC09700E07356 /* OAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2Module.swift; path = ../../libs/AeroGearOAuth2/OAuth2Module.swift; sourceTree = "<group>"; };
+		48F1880F1A2CC09700E07356 /* OAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2Session.swift; path = ../../libs/AeroGearOAuth2/OAuth2Session.swift; sourceTree = "<group>"; };
+		48F188101A2CC09700E07356 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrustedPersistantOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
+		48F188111A2CC09700E07356 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UntrustedMemoryOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48F187C41A2CB56F00E07356 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48F187D91A2CB56F00E07356 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48F187BE1A2CB56F00E07356 = {
+			isa = PBXGroup;
+			children = (
+				48F187C91A2CB56F00E07356 /* SharedShoot */,
+				48F187DF1A2CB56F00E07356 /* SharedShootTests */,
+				48F187C81A2CB56F00E07356 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48F187C81A2CB56F00E07356 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48F187C71A2CB56F00E07356 /* SharedShoot.app */,
+				48F187DC1A2CB56F00E07356 /* SharedShootTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48F187C91A2CB56F00E07356 /* SharedShoot */ = {
+			isa = PBXGroup;
+			children = (
+				48F187CC1A2CB56F00E07356 /* AppDelegate.swift */,
+				48F187CE1A2CB56F00E07356 /* ViewController.swift */,
+				48F187D01A2CB56F00E07356 /* Main.storyboard */,
+				48F187D31A2CB56F00E07356 /* Images.xcassets */,
+				48F187D51A2CB56F00E07356 /* LaunchScreen.xib */,
+				48F187CA1A2CB56F00E07356 /* Supporting Files */,
+			);
+			path = SharedShoot;
+			sourceTree = "<group>";
+		};
+		48F187CA1A2CB56F00E07356 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48F187EF1A2CBF8600E07356 /* AeroGearOAuth2 */,
+				48F187EE1A2CBF7B00E07356 /* AeroGearHttp */,
+				48F187CB1A2CB56F00E07356 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48F187DF1A2CB56F00E07356 /* SharedShootTests */ = {
+			isa = PBXGroup;
+			children = (
+				48F187E01A2CB56F00E07356 /* Supporting Files */,
+			);
+			path = SharedShootTests;
+			sourceTree = "<group>";
+		};
+		48F187E01A2CB56F00E07356 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48F187E11A2CB56F00E07356 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48F187EE1A2CBF7B00E07356 /* AeroGearHttp */ = {
+			isa = PBXGroup;
+			children = (
+				48F187F01A2CC08800E07356 /* AeroGearHttp.h */,
+				48F187F11A2CC08800E07356 /* AuthzModule.swift */,
+				48F187F21A2CC08800E07356 /* Http.swift */,
+				48F187F31A2CC08800E07356 /* HttpRequestSerializer.swift */,
+				48F187F41A2CC08800E07356 /* Info.plist */,
+				48F187F51A2CC08800E07356 /* JsonRequestSerializer.swift */,
+				48F187F61A2CC08800E07356 /* JsonResponseSerializer.swift */,
+				48F187F71A2CC08800E07356 /* MultiPartData.swift */,
+				48F187F81A2CC08800E07356 /* RequestSerializer.swift */,
+				48F187F91A2CC08800E07356 /* ResponseSerializer.swift */,
+				48F187FA1A2CC08800E07356 /* StringResponseSerializer.swift */,
+				48F187FB1A2CC08800E07356 /* Utils.swift */,
+			);
+			name = AeroGearHttp;
+			sourceTree = "<group>";
+		};
+		48F187EF1A2CBF8600E07356 /* AeroGearOAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				48F188071A2CC09700E07356 /* AccountManager.swift */,
+				48F188081A2CC09700E07356 /* AeroGearOAuth2.h */,
+				48F188091A2CC09700E07356 /* Config.swift */,
+				48F1880A1A2CC09700E07356 /* DateUtils.swift */,
+				48F1880B1A2CC09700E07356 /* FacebookOAuth2Module.swift */,
+				48F1880C1A2CC09700E07356 /* Info.plist */,
+				48F1880D1A2CC09700E07356 /* KeycloakOAuth2Module.swift */,
+				48F1880E1A2CC09700E07356 /* OAuth2Module.swift */,
+				48F1880F1A2CC09700E07356 /* OAuth2Session.swift */,
+				48F188101A2CC09700E07356 /* TrustedPersistantOAuth2Session.swift */,
+				48F188111A2CC09700E07356 /* UntrustedMemoryOAuth2Session.swift */,
+			);
+			name = AeroGearOAuth2;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48F187C61A2CB56F00E07356 /* SharedShoot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48F187E61A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShoot" */;
+			buildPhases = (
+				48F187C31A2CB56F00E07356 /* Sources */,
+				48F187C41A2CB56F00E07356 /* Frameworks */,
+				48F187C51A2CB56F00E07356 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedShoot;
+			productName = SharedShoot;
+			productReference = 48F187C71A2CB56F00E07356 /* SharedShoot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48F187DB1A2CB56F00E07356 /* SharedShootTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48F187E91A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShootTests" */;
+			buildPhases = (
+				48F187D81A2CB56F00E07356 /* Sources */,
+				48F187D91A2CB56F00E07356 /* Frameworks */,
+				48F187DA1A2CB56F00E07356 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48F187DE1A2CB56F00E07356 /* PBXTargetDependency */,
+			);
+			name = SharedShootTests;
+			productName = SharedShootTests;
+			productReference = 48F187DC1A2CB56F00E07356 /* SharedShootTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48F187BF1A2CB56F00E07356 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = aerogear;
+				TargetAttributes = {
+					48F187C61A2CB56F00E07356 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					48F187DB1A2CB56F00E07356 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 48F187C61A2CB56F00E07356;
+					};
+				};
+			};
+			buildConfigurationList = 48F187C21A2CB56F00E07356 /* Build configuration list for PBXProject "SharedShoot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48F187BE1A2CB56F00E07356;
+			productRefGroup = 48F187C81A2CB56F00E07356 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48F187C61A2CB56F00E07356 /* SharedShoot */,
+				48F187DB1A2CB56F00E07356 /* SharedShootTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48F187C51A2CB56F00E07356 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F187FF1A2CC08800E07356 /* Info.plist in Resources */,
+				48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */,
+				48F187D71A2CB56F00E07356 /* LaunchScreen.xib in Resources */,
+				48F188161A2CC09700E07356 /* Info.plist in Resources */,
+				48F187D41A2CB56F00E07356 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48F187DA1A2CB56F00E07356 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48F187C31A2CB56F00E07356 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F187FE1A2CC08800E07356 /* HttpRequestSerializer.swift in Sources */,
+				48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */,
+				48F188021A2CC08800E07356 /* MultiPartData.swift in Sources */,
+				48F188131A2CC09700E07356 /* Config.swift in Sources */,
+				48F188051A2CC08800E07356 /* StringResponseSerializer.swift in Sources */,
+				48F188031A2CC08800E07356 /* RequestSerializer.swift in Sources */,
+				48F188011A2CC08800E07356 /* JsonResponseSerializer.swift in Sources */,
+				48F188141A2CC09700E07356 /* DateUtils.swift in Sources */,
+				48F188151A2CC09700E07356 /* FacebookOAuth2Module.swift in Sources */,
+				48F187FD1A2CC08800E07356 /* Http.swift in Sources */,
+				48F188041A2CC08800E07356 /* ResponseSerializer.swift in Sources */,
+				48F188121A2CC09700E07356 /* AccountManager.swift in Sources */,
+				48F188171A2CC09700E07356 /* KeycloakOAuth2Module.swift in Sources */,
+				48F187CD1A2CB56F00E07356 /* AppDelegate.swift in Sources */,
+				48F188191A2CC09700E07356 /* OAuth2Session.swift in Sources */,
+				48F187FC1A2CC08800E07356 /* AuthzModule.swift in Sources */,
+				48F188001A2CC08800E07356 /* JsonRequestSerializer.swift in Sources */,
+				48F188181A2CC09700E07356 /* OAuth2Module.swift in Sources */,
+				48F1881A1A2CC09700E07356 /* TrustedPersistantOAuth2Session.swift in Sources */,
+				48F188061A2CC08800E07356 /* Utils.swift in Sources */,
+				48F1881B1A2CC09700E07356 /* UntrustedMemoryOAuth2Session.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48F187D81A2CB56F00E07356 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48F187DE1A2CB56F00E07356 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48F187C61A2CB56F00E07356 /* SharedShoot */;
+			targetProxy = 48F187DD1A2CB56F00E07356 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		48F187D01A2CB56F00E07356 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F187D11A2CB56F00E07356 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		48F187D51A2CB56F00E07356 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F187D61A2CB56F00E07356 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48F187E41A2CB56F00E07356 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48F187E51A2CB56F00E07356 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48F187E71A2CB56F00E07356 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SharedShoot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		48F187E81A2CB56F00E07356 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SharedShoot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		48F187EA1A2CB56F00E07356 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharedShootTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedShoot.app/SharedShoot";
+			};
+			name = Debug;
+		};
+		48F187EB1A2CB56F00E07356 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SharedShootTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedShoot.app/SharedShoot";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48F187C21A2CB56F00E07356 /* Build configuration list for PBXProject "SharedShoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F187E41A2CB56F00E07356 /* Debug */,
+				48F187E51A2CB56F00E07356 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48F187E61A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F187E71A2CB56F00E07356 /* Debug */,
+				48F187E81A2CB56F00E07356 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		48F187E91A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShootTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F187EA1A2CB56F00E07356 /* Debug */,
+				48F187EB1A2CB56F00E07356 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48F187BF1A2CB56F00E07356 /* Project object */;
+}
