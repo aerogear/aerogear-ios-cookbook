@@ -73,11 +73,17 @@ class ViewController: UIViewController {
             //self.performSegueWithIdentifier("seeImages:", sender: self)
             
             
-            self.keycloakHttp.GET("http://localhost:8080/shoot/photos", parameters: nil, completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+            self.keycloakHttp.GET("http://localhost:8080/shoot/rest/photos", parameters: nil, completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
                 if error != nil {
                     println("ERROR::\(error)")
                 }
-                println("Get list of photos::\(response)")
+                var image = response![0] as [String: AnyObject]
+                var fileId: AnyObject? = image["filename"]
+                println("Get list of photos::\(response) \n \(fileId)")
+                
+                self.keycloakHttp.GET("http://localhost:8080/shoot/rest/photos/images/\(fileId!)", parameters: nil, completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+                 println("Photo::\(response) \(error)")
+                })
             })
 
 
