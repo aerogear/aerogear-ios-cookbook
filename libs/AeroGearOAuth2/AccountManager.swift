@@ -37,7 +37,7 @@ public class FacebookConfig: Config {
         // Add openIdConnect scope
         if self.isOpenIDConnect {
             if self.scopes[0].rangeOfString("public_profile") == nil {
-            self.scopes[0] = self.scopes[0] + ", public_profile"
+                self.scopes[0] = self.scopes[0] + ", public_profile"
             }
         }
     }
@@ -48,7 +48,7 @@ A Config object that setups Google specific configuration parameters
 */
 public class GoogleConfig: Config {
     public init(clientId: String, scopes: [String], accountId: String? = nil, isOpenIDConnect: Bool = false) {
-        let bundleString = NSBundle.mainBundle().bundleIdentifier!
+        let bundleString = NSBundle.mainBundle().bundleIdentifier ?? "google"
         super.init(base: "https://accounts.google.com",
             authzEndpoint: "o/oauth2/auth",
             redirectURL: "\(bundleString):/oauth2Callback",
@@ -69,7 +69,7 @@ public class GoogleConfig: Config {
 
 public class KeycloakConfig: Config {
     public init(clientId: String, host: String, realm: String? = nil, isOpenIDConnect: Bool = false) {
-        let bundleString = NSBundle.mainBundle().bundleIdentifier!
+        let bundleString = NSBundle.mainBundle().bundleIdentifier ?? "keycloak"
         let defaulRealmName = String(format: "%@-realm", clientId)
         let realm = realm ?? defaulRealmName
         super.init(base: String(format: "%@/auth", host),
@@ -88,7 +88,7 @@ public class KeycloakConfig: Config {
 }
 
 /**
- An account manager used to instantiate, store and retrieve OAuth2 modules
+An account manager used to instantiate, store and retrieve OAuth2 modules
 */
 public class AccountManager {
     

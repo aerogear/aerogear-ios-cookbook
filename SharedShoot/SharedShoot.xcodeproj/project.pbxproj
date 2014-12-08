@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485D73831A35C40F0007D9EC /* OpenIDClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D73821A35C40F0007D9EC /* OpenIDClaim.swift */; };
+		486670A71A3211DB00136B04 /* SharedShootCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */; };
 		48F187CD1A2CB56F00E07356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CC1A2CB56F00E07356 /* AppDelegate.swift */; };
 		48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CE1A2CB56F00E07356 /* ViewController.swift */; };
 		48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D01A2CB56F00E07356 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		485D73821A35C40F0007D9EC /* OpenIDClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenIDClaim.swift; path = ../../libs/AeroGearOAuth2/OpenIDClaim.swift; sourceTree = "<group>"; };
+		486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedShootCollectionViewController.swift; sourceTree = "<group>"; };
 		48F187C71A2CB56F00E07356 /* SharedShoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedShoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F187CB1A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F187CC1A2CB56F00E07356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				48F187CC1A2CB56F00E07356 /* AppDelegate.swift */,
 				48F187CE1A2CB56F00E07356 /* ViewController.swift */,
 				48F187D01A2CB56F00E07356 /* Main.storyboard */,
+				486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */,
 				48F187D31A2CB56F00E07356 /* Images.xcassets */,
 				48F187D51A2CB56F00E07356 /* LaunchScreen.xib */,
 				48F187CA1A2CB56F00E07356 /* Supporting Files */,
@@ -180,6 +185,7 @@
 				48F188071A2CC09700E07356 /* AccountManager.swift */,
 				48F188081A2CC09700E07356 /* AeroGearOAuth2.h */,
 				48F188091A2CC09700E07356 /* Config.swift */,
+				485D73821A35C40F0007D9EC /* OpenIDClaim.swift */,
 				48F1880A1A2CC09700E07356 /* DateUtils.swift */,
 				48F1880B1A2CC09700E07356 /* FacebookOAuth2Module.swift */,
 				48F1880C1A2CC09700E07356 /* Info.plist */,
@@ -295,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F187FE1A2CC08800E07356 /* HttpRequestSerializer.swift in Sources */,
+				486670A71A3211DB00136B04 /* SharedShootCollectionViewController.swift in Sources */,
 				48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */,
+				485D73831A35C40F0007D9EC /* OpenIDClaim.swift in Sources */,
 				48F188021A2CC08800E07356 /* MultiPartData.swift in Sources */,
 				48F188131A2CC09700E07356 /* Config.swift in Sources */,
 				48F188051A2CC08800E07356 /* StringResponseSerializer.swift in Sources */,
@@ -509,6 +517,7 @@
 				48F187E81A2CB56F00E07356 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		48F187E91A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShootTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +526,7 @@
 				48F187EB1A2CB56F00E07356 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
