@@ -50,7 +50,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         if let data = data {
             let developer = data[indexPath.row]
-            cell.textLabel.text = developer.name
+            cell.textLabel!.text = developer.name
             cell.detailTextLabel?.text = developer.twitter
             cell.tag = indexPath.row
             
@@ -61,7 +61,7 @@ class MasterViewController: UITableViewController {
                     if let imageData = imageData {
                         dispatch_async(dispatch_get_main_queue(), {
                             if cell.tag == indexPath.row {
-                                cell.imageView.image = UIImage(data: imageData)
+                                cell.imageView!.image = UIImage(data: imageData)
                                 cell.setNeedsLayout()
                                 self.tableView.reloadData()
                             }
