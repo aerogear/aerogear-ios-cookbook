@@ -81,9 +81,26 @@ class ViewController: UIViewController {
                 var fileId: AnyObject? = image["filename"]
                 println("Get list of photos::\(response) \n \(fileId)")
                 
-                self.keycloakHttp.GET("http://localhost:8080/shoot/rest/photos/images/\(fileId!)", parameters: nil, completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
-                 println("Photo::\(response) \(error)")
+
+                var fileManager = NSFileManager.defaultManager()
+                
+                var path  = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+                fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: nil)
+                
+                var finalDestination = path.stringByAppendingPathComponent("Untitledssss.jpg")
+                
+                self.keycloakHttp.download("http://localhost:8080/shoot/rest/photos/images/\(fileId!)",
+                    progress: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)  in
+                        println("bytesWritten: \(bytesWritten), totalBytesWritten: \(totalBytesWritten), totalBytesExpectedToWrite: \(totalBytesExpectedToWrite)")
+                    }, completionHandler: { (response, error) in
+                        var httpResponse = response as NSHTTPURLResponse
+                        
+                        var image = UIImage(contentsOfFile: finalDestination)
+                        //httpResponse
+                        println("Photo::\(response) \(image)")
+
                 })
+
             })
 
 
