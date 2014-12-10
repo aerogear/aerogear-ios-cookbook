@@ -28,47 +28,47 @@ An OAuth2Session implementation the stores OAuth2 metadata in-memory
 public class UntrustedMemoryOAuth2Session: OAuth2Session {
     
     /**
-    * The account id.
+    The account id.
     */
     public var accountId: String
     
     /**
-    * The access token which expires.
+    The access token which expires.
     */
     public var accessToken: String?
     
     /**
-    * The access token's expiration date.
+    The access token's expiration date.
     */
     public var accessTokenExpirationDate: NSDate?
     
     /**
-    * The refresh tokens. This toke does not expire and should be used to renew access token when expired.
+    The refresh tokens. This toke does not expire and should be used to renew access token when expired.
     */
     public var refreshToken: String?
     
     /**
-    * The refresh token's expiration date.
+    The refresh token's expiration date.
     */
     public var refreshTokenExpirationDate: NSDate?
     
     /**
-    * Check validity of accessToken. return true if still valid, false when expired.
+    Check validity of accessToken. return true if still valid, false when expired.
     */
     public func tokenIsNotExpired() -> Bool {
         return self.accessTokenExpirationDate?.timeIntervalSinceDate(NSDate()) > 0
     }
     
     /**
-    * Check validity of refreshToken. return true if still valid, false when expired.
+    Check validity of refreshToken. return true if still valid, false when expired.
     */
     public func refreshTokenIsNotExpired() -> Bool {
         return self.refreshTokenExpirationDate?.timeIntervalSinceDate(NSDate()) > 0
     }
     
     /**
-    * Save in memory tokens information. Saving tokens allow you to refresh accesstoken transparently for the user without prompting
-    * for grant access.
+    Save in memory tokens information. Saving tokens allow you to refresh accesstoken transparently for the user without prompting
+    for grant access.
     */
     public func saveAccessToken(accessToken: String?, refreshToken: String?, accessTokenExpiration: String?, refreshTokenExpiration: String?) {
         self.accessToken = accessToken
