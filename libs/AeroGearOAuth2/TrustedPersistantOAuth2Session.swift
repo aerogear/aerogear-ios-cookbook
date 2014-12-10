@@ -35,7 +35,7 @@ public enum TokenType: String {
 }
 
 /**
-*  A handy keychain wrapper
+A handy keychain wrapper. It saves your oauth2 tokens using WhenPasscodeSet ACL.
 */
 public class KeychainWrap {
     public var serviceIdentifier: String
@@ -181,12 +181,12 @@ An OAuth2Session implementation the permanent stores OAuth2 metadata using the k
 public class TrustedPersistantOAuth2Session: OAuth2Session {
     
     /**
-    * The account id.
+    The account id.
     */
     public var accountId: String
     
     /**
-    * The access token's expiration date.
+    The access token's expiration date.
     */
     public var accessTokenExpirationDate: NSDate? {
         get {
@@ -228,7 +228,7 @@ public class TrustedPersistantOAuth2Session: OAuth2Session {
     }
     
     /**
-    * The refresh token's expiration date.
+    The refresh token's expiration date.
     */
     public var refreshTokenExpirationDate: NSDate? {
         get {

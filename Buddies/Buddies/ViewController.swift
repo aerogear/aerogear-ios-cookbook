@@ -17,20 +17,19 @@
 
 import UIKit
 
+
 class MasterViewController: UITableViewController {
 
-    var http = Http()
-    var data = [Developer]()
-
+    var http = Http(responseSerializer: StringResponseSerializer())
+    var data: [Developer]?
+    var serializer = JsonSZ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         http.GET("http://igtests-cvasilak.rhcloud.com/rest/team/developers", completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if (response != nil) {
-                for developer in (response!) as [AnyObject] {
-                    // TODO with object serialization AGIOS-13 replace this code to plugin serializer
-                    self.data.append(Developer(name: developer["name"] as String, twitter: developer["twitter"] as String, image: NSURL(string: developer["photoURL"] as String)!))
-                }
+                self.data = self.serializer.fromJSONArray(response!, to: Developer.self)
                 self.tableView.reloadData()
             }
             if error != nil {
@@ -40,47 +39,87 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        if let data = data {
+            return data.count
+        } else {
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
-        let developer = data[indexPath.row]
-        cell.textLabel?.text = developer.name
-        cell.detailTextLabel?.text = developer.twitter
-        cell.tag = indexPath.row
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0), {
-            var imageData = NSData(contentsOfURL: developer.image)
+        if let data = data {
+            let developer = data[indexPath.row]
+            cell.textLabel!.text = developer.name
+            cell.detailTextLabel?.text = developer.twitter
+            cell.tag = indexPath.row
             
-            dispatch_async(dispatch_get_main_queue(), {
-                if cell.tag == indexPath.row {
-                    cell.imageView?.image = UIImage(data: imageData!)
-                    cell.setNeedsLayout()
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0), {
+                if let image = developer.image {
+                    var imageData = NSData(contentsOfURL: NSURL(string: image)!)
+                    if let imageData = imageData {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            if cell.tag == indexPath.row {
+                                cell.imageView!.image = UIImage(data: imageData)
+                                cell.setNeedsLayout()
+                                self.tableView.reloadData()
+                            }
+                        })
+                    }
                 }
             })
-        })
+            
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let developer = data[indexPath.row]
-        let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")!
-        UIApplication.sharedApplication().openURL(twitterURL)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if let data = data {
+            let developer = data[indexPath.row]
+            let twitterURL: NSURL = NSURL(string:"http://twitter.com/\(developer.twitter)")!
+            UIApplication.sharedApplication().openURL(twitterURL)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
 }
 
-class Developer {
-    init(name: String, twitter: String, image: NSURL) {
+class Developer: JSONSerializable {
+    
+    var name: String?
+    var twitter: String?
+    var image: String?
+    
+    init(name: String, twitter: String, image: String) {
         self.name = name
         self.twitter = twitter
         self.image = image
     }
-    var name: String
-    var twitter: String
-    var image: NSURL
+    
+    required init() {}
+    
+    class func map(source: JsonSZ, object: Developer) {
+        object.name <= source["name"]
+        object.twitter <= source["twitter"]
+        object.image <= source["photoURL"]
+    }
+
+}
+extension Developer: Printable {
+    var description: String {
+        get {
+            var description = ">>"
+            if let name = name {
+                description += "name:\(name) "
+            }
+            if let twitter = twitter {
+                description += "twitter:\(twitter) "
+            }
+            if let image = image {
+                description += "image:\(image) "
+            }
+            return description
+        }
+    }
 }
 

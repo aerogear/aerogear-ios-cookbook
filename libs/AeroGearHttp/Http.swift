@@ -58,6 +58,13 @@ enum UploadType {
     case Stream(NSInputStream)
 }
 
+/** error domain*/
+public let HttpErrorDomain = "HttpDomain"
+/** request error */
+public let NetworkingOperationFailingURLRequestErrorKey = "NetworkingOperationFailingURLRequestErrorKey"
+/* response error */
+public let NetworkingOperationFailingURLResponseErrorKey = "NetworkingOperationFailingURLResponseErrorKey"
+
 public typealias ProgressBlock = (Int64, Int64, Int64) -> Void
 public typealias CompletionBlock = (AnyObject?, NSError?) -> Void
 
@@ -70,7 +77,7 @@ public class Http {
     var session: NSURLSession
     var requestSerializer: RequestSerializer
     var responseSerializer: ResponseSerializer
-    var authzModule:  AuthzModule?
+    public var authzModule:  AuthzModule?
     
     private var delegate: SessionDelegate;
     
@@ -218,7 +225,7 @@ public class Http {
     
     :param: url               the url of the resource
     :param: parameters  the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
     */
     public func GET(url: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, completionHandler: CompletionBlock) {
@@ -230,7 +237,7 @@ public class Http {
     
     :param: url               the url of the resource
     :param: parameters   the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
     */
     public func POST(url: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, completionHandler: CompletionBlock) {
@@ -242,7 +249,7 @@ public class Http {
     
     :param: url               the url of the resource
     :param: parameters   the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
     */
     public func PUT(url: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, completionHandler: CompletionBlock) {
@@ -254,7 +261,7 @@ public class Http {
     
     :param: url               the url of the resource
     :param: parameters  the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
     */
     public func DELETE(url: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, completionHandler: CompletionBlock) {
@@ -266,7 +273,7 @@ public class Http {
     
     :param: url               the url of the resource
     :param: parameters   the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
     */
     public func HEAD(url: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, completionHandler: CompletionBlock) {
@@ -279,7 +286,7 @@ public class Http {
     :param: url                      the URL of the downloadable resource
     :param: destinationDirectory the destination directory where the file would be stored, if not specified application's default '.Documents' directory would be used
     :param: parameters          the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: method               the method to be used, by default a .GET request
     :param: progress              a block that will be invoked to report progress during download
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
@@ -294,7 +301,7 @@ public class Http {
     :param: url              the URL to upload resource into
     :param: file              the URL of the local file to be uploaded
     :param: parameters  the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: method       the method to be used, by default a .POST request
     :param: progress      a block that will be invoked to report progress during upload
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
@@ -309,7 +316,7 @@ public class Http {
     :param: url              the URL to upload resource into
     :param: data            the data to be uploaded
     :param: parameters  the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: method       the method to be used, by default a .POST request
     :param: progress      a block that will be invoked to report progress during upload
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
@@ -324,7 +331,7 @@ public class Http {
     :param: url              the URL to upload resource into
     :param: stream         the stream that will be used for uploading
     :param: parameters  the request parameters
-    :credential               the credentials to use for basic/digest auth
+    :credential               the credentials to use for basic/digest auth (Note: it is advised that HTTPS should be used by default)
     :param: method       the method to be used, by default a .POST request
     :param: progress      a block that will be invoked to report progress during upload
     :param: completionHandler A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: The object created from the response data of request and the `NSError` object describing the network or parsing error that occurred.
