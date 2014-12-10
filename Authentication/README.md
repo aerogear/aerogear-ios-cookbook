@@ -19,6 +19,8 @@ Configure
 Either run a [backend instance locally](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) or use the [OpenShift instance](http://igtests-cvasilak.rhcloud.com/) . To verify that the server is indeed running, [click here](https://igtests-cvasilak.rhcloud.com/rest/grocery/beers) (user: ```john``` pass:```123```) for the HTTP Basic protected endpoint, or [click here](https://igtests-cvasilak.rhcloud.com/rest/grocery/bacons) (user: ```agnes``` pass: ```123```) for the HTTP Digest authentication endpoint.
 
 
+> **NOTE:**  It is advised that HTTPS should be used by default when performing authentication of this type. For convenience of deployment , in this example we use HTTP in the backend example but you should opt to enable HTTPS in your application server of choice.
+
 Build and Deploy
 ------------------------
 
