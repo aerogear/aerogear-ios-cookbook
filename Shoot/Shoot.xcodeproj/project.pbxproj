@@ -34,6 +34,7 @@
 		48F70A8A19B6F13D00DDB152 /* OAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */; };
 		6F1354D919D5651F0000464E /* KeycloakOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1354D819D5651F0000464E /* KeycloakOAuth2Module.swift */; };
 		6F24AEB919D0026F002BB280 /* MultiPartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24AEB819D0026F002BB280 /* MultiPartData.swift */; };
+		6F3DA5611A38B44700626151 /* OpenIDClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DA5601A38B44700626151 /* OpenIDClaim.swift */; };
 		6F53F67819ED0FB100DCFC72 /* HttpRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F53F67719ED0FB100DCFC72 /* HttpRequestSerializer.swift */; };
 		6F53F67A19ED0FCA00DCFC72 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F53F67919ED0FCA00DCFC72 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuth2Session.swift; path = ../../libs/AeroGearOAuth2/OAuth2Session.swift; sourceTree = "<group>"; };
 		6F1354D819D5651F0000464E /* KeycloakOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeycloakOAuth2Module.swift; path = ../../libs/AeroGearOAuth2/KeycloakOAuth2Module.swift; sourceTree = "<group>"; };
 		6F24AEB819D0026F002BB280 /* MultiPartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiPartData.swift; path = ../../libs/AeroGearHttp/MultiPartData.swift; sourceTree = "<group>"; };
+		6F3DA5601A38B44700626151 /* OpenIDClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenIDClaim.swift; path = ../../libs/AeroGearOAuth2/OpenIDClaim.swift; sourceTree = "<group>"; };
 		6F53F67719ED0FB100DCFC72 /* HttpRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpRequestSerializer.swift; path = ../../libs/AeroGearHttp/HttpRequestSerializer.swift; sourceTree = "<group>"; };
 		6F53F67919ED0FCA00DCFC72 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../libs/AeroGearHttp/Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 				48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */,
 				48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */,
 				6F1354D819D5651F0000464E /* KeycloakOAuth2Module.swift */,
+				6F3DA5601A38B44700626151 /* OpenIDClaim.swift */,
 				48975B7F19EE802A0075EFC7 /* DateUtils.swift */,
 			);
 			name = AeroGearOAuth2;
@@ -323,6 +326,7 @@
 				48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */,
 				6F53F67A19ED0FCA00DCFC72 /* Utils.swift in Sources */,
 				48F70A8719B6F13D00DDB152 /* Config.swift in Sources */,
+				6F3DA5611A38B44700626151 /* OpenIDClaim.swift in Sources */,
 				48975B8019EE802A0075EFC7 /* DateUtils.swift in Sources */,
 				48F70A7C19B6F13000DDB152 /* JsonResponseSerializer.swift in Sources */,
 				48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */,
