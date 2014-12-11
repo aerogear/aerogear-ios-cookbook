@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		485D73831A35C40F0007D9EC /* OpenIDClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D73821A35C40F0007D9EC /* OpenIDClaim.swift */; };
-		486670A71A3211DB00136B04 /* SharedShootCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */; };
 		48F187CD1A2CB56F00E07356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CC1A2CB56F00E07356 /* AppDelegate.swift */; };
 		48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CE1A2CB56F00E07356 /* ViewController.swift */; };
 		48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D01A2CB56F00E07356 /* Main.storyboard */; };
 		48F187D41A2CB56F00E07356 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D31A2CB56F00E07356 /* Images.xcassets */; };
-		48F187D71A2CB56F00E07356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D51A2CB56F00E07356 /* LaunchScreen.xib */; };
 		48F187FC1A2CC08800E07356 /* AuthzModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F11A2CC08800E07356 /* AuthzModule.swift */; };
 		48F187FD1A2CC08800E07356 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F21A2CC08800E07356 /* Http.swift */; };
 		48F187FE1A2CC08800E07356 /* HttpRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187F31A2CC08800E07356 /* HttpRequestSerializer.swift */; };
@@ -49,14 +47,12 @@
 
 /* Begin PBXFileReference section */
 		485D73821A35C40F0007D9EC /* OpenIDClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenIDClaim.swift; path = ../../libs/AeroGearOAuth2/OpenIDClaim.swift; sourceTree = "<group>"; };
-		486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedShootCollectionViewController.swift; sourceTree = "<group>"; };
 		48F187C71A2CB56F00E07356 /* SharedShoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedShoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F187CB1A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F187CC1A2CB56F00E07356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F187CE1A2CB56F00E07356 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48F187D11A2CB56F00E07356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48F187D31A2CB56F00E07356 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		48F187D61A2CB56F00E07356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		48F187DC1A2CB56F00E07356 /* SharedShootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedShootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F187E11A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F187F01A2CC08800E07356 /* AeroGearHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroGearHttp.h; path = ../../libs/AeroGearHttp/AeroGearHttp.h; sourceTree = "<group>"; };
@@ -126,9 +122,7 @@
 				48F187CC1A2CB56F00E07356 /* AppDelegate.swift */,
 				48F187CE1A2CB56F00E07356 /* ViewController.swift */,
 				48F187D01A2CB56F00E07356 /* Main.storyboard */,
-				486670A61A3211DB00136B04 /* SharedShootCollectionViewController.swift */,
 				48F187D31A2CB56F00E07356 /* Images.xcassets */,
-				48F187D51A2CB56F00E07356 /* LaunchScreen.xib */,
 				48F187CA1A2CB56F00E07356 /* Supporting Files */,
 			);
 			path = SharedShoot;
@@ -280,7 +274,6 @@
 			files = (
 				48F187FF1A2CC08800E07356 /* Info.plist in Resources */,
 				48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */,
-				48F187D71A2CB56F00E07356 /* LaunchScreen.xib in Resources */,
 				48F188161A2CC09700E07356 /* Info.plist in Resources */,
 				48F187D41A2CB56F00E07356 /* Images.xcassets in Resources */,
 			);
@@ -301,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F187FE1A2CC08800E07356 /* HttpRequestSerializer.swift in Sources */,
-				486670A71A3211DB00136B04 /* SharedShootCollectionViewController.swift in Sources */,
 				48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */,
 				485D73831A35C40F0007D9EC /* OpenIDClaim.swift in Sources */,
 				48F188021A2CC08800E07356 /* MultiPartData.swift in Sources */,
@@ -350,14 +342,6 @@
 				48F187D11A2CB56F00E07356 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		48F187D51A2CB56F00E07356 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48F187D61A2CB56F00E07356 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
