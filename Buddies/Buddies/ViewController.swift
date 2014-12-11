@@ -17,6 +17,8 @@
 
 import UIKit
 
+import AeroGearHttp
+import AeroGearJsonSZ
 
 class MasterViewController: UITableViewController {
 
