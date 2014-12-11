@@ -1,0 +1,7 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+xcodeproj 'Buddies.xcodeproj'
+platform :ios, '8.0'
+
+pod 'AeroGearHttp', :git => "https://github.com/cvasilak/aerogear-ios-http.git", :branch => "podspec"
+pod 'AeroGearJsonSZ', :git => "https://github.com/cvasilak/aerogear-ios-jsonsz.git", :branch => "podspec"
