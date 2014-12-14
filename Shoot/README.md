@@ -8,6 +8,17 @@ You can also run this demo with its associated [Keycloak backend](https://github
 **NOTES:** System requirement: iOS8. Because this demo securely stores OAuth2 tokens in your iOS keychain, we chosen to use ```WhenPasscodeSet``` policy as a result to run this app you need to have **your passcode set**.
 For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/new-kids-on-block-whenpasswordset.html) and [Keychain and WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/touchid-and-keychain-ios8-best-friends.html)
 
+### Run it in Xcode
+
+The demo utilizes [cocoapods](http://cocoapods.org) for handling it's dependencies. On the root directory, simply execute the following:
+
+```bash
+bundle install
+bundle exec pod install
+```
+
+and then double click on the generated .xcworkspace to open in Xcode.
+
 ## Facebook setup 
 
 ### Step1: Setup facebook to be a facebook developer:
