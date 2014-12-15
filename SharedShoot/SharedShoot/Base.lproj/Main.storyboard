@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SharedShoot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-D2-jaK">
+                                <rect key="frame" x="238" y="361" width="126" height="30"/>
+                                <state key="normal" title="Login as Keycloak">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAsKeycloak:" destination="BYZ-38-t0r" eventType="touchUpInside" id="axs-7L-BeK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-yE-PcB">
+                                <rect key="frame" x="-31" y="-62" width="645" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-t6-O7M" userLabel="BackwardButton">
+                                <rect key="frame" x="21" y="15" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="5T6-LV-64D"/>
+                                    <constraint firstAttribute="height" constant="28" id="nOI-uX-A0L"/>
+                                </constraints>
+                                <state key="normal" image="backarrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goPreviousImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDl-Nq-cWu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2m-1E-i9W" userLabel="ForwardButton">
+                                <rect key="frame" x="542" y="15" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="8DE-hJ-0BQ"/>
+                                    <constraint firstAttribute="height" constant="28" id="a4f-dc-gi9"/>
+                                </constraints>
+                                <state key="normal" image="forwardarrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goNextImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cmu-IE-oQs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAD-Vf-pCH">
+                                <rect key="frame" x="16" y="571" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cn2-yE-PcB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-82" id="15y-W8-Npv"/>
+                            <constraint firstItem="Cn2-yE-PcB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-47" id="2et-BE-bpo"/>
+                            <constraint firstItem="DBs-t6-O7M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-5" id="4IT-z7-9iL"/>
+                            <constraint firstAttribute="width" secondItem="oAD-Vf-pCH" secondAttribute="width" id="9NK-X3-a4T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z2m-1E-i9W" secondAttribute="trailing" constant="14" id="9Oh-Qn-Ktx"/>
+                            <constraint firstItem="z2m-1E-i9W" firstAttribute="top" secondItem="DBs-t6-O7M" secondAttribute="top" id="JgJ-Fg-MHa"/>
+                            <constraint firstItem="oAD-Vf-pCH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="e26-cC-1pt"/>
+                            <constraint firstAttribute="centerY" secondItem="8Kq-D2-jaK" secondAttribute="centerY" constant="-76" id="eri-Jj-yoo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cn2-yE-PcB" secondAttribute="trailing" constant="-30" id="ikE-O3-sp0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cn2-yE-PcB" secondAttribute="bottom" constant="-5" id="jUh-ep-Pt5"/>
+                            <constraint firstItem="oAD-Vf-pCH" firstAttribute="top" secondItem="Cn2-yE-PcB" secondAttribute="bottom" constant="-34" id="lOb-Oa-qvL"/>
+                            <constraint firstItem="DBs-t6-O7M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="yw9-ZQ-2Qr"/>
+                            <constraint firstAttribute="centerX" secondItem="8Kq-D2-jaK" secondAttribute="centerX" constant="-0.5" id="zdS-iz-MY7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Cn2-yE-PcB" id="M2F-vl-D7C"/>
+                        <outlet property="nameLabel" destination="oAD-Vf-pCH" id="SNQ-33-q0B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backarrow" width="28" height="28"/>
+        <image name="forwardarrow" width="28" height="28"/>
+    </resources>
+</document>

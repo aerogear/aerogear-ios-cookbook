@@ -10,6 +10,7 @@
 		48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */; };
 		48478CB619BF26FF00983D79 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48478CB519BF26FF00983D79 /* Security.framework */; };
 		48478CBA19C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */; };
+		485D738B1A35F7010007D9EC /* OpenIDClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D738A1A35F7010007D9EC /* OpenIDClaim.swift */; };
 		489710E61A260E8200D3F730 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489710E51A260E8200D3F730 /* icons.xcassets */; };
 		48975B8019EE802A0075EFC7 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48975B7F19EE802A0075EFC7 /* DateUtils.swift */; };
 		48BC695119B9FC2B00497B4E /* StringResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */; };
@@ -53,6 +54,7 @@
 		48478CB319BF025200983D79 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrustedPersistantOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
 		48478CB519BF26FF00983D79 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		48478CB919C05F0900983D79 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UntrustedMemoryOAuth2Session.swift; path = ../../libs/AeroGearOAuth2/UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
+		485D738A1A35F7010007D9EC /* OpenIDClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenIDClaim.swift; path = ../../libs/AeroGearOAuth2/OpenIDClaim.swift; sourceTree = "<group>"; };
 		489710E51A260E8200D3F730 /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
 		48975B7F19EE802A0075EFC7 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = ../../libs/AeroGearOAuth2/DateUtils.swift; sourceTree = "<group>"; };
 		48BC695019B9FC2B00497B4E /* StringResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringResponseSerializer.swift; path = ../../libs/AeroGearHttp/StringResponseSerializer.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				48F70A8119B6F13D00DDB152 /* AeroGearOAuth2.h */,
 				48F70A8219B6F13D00DDB152 /* Config.swift */,
 				48F70A8319B6F13D00DDB152 /* Info.plist */,
+				485D738A1A35F7010007D9EC /* OpenIDClaim.swift */,
 				48F70A8419B6F13D00DDB152 /* OAuth2Module.swift */,
 				48BC695219B9FDAE00497B4E /* FacebookOAuth2Module.swift */,
 				48F70A8519B6F13D00DDB152 /* OAuth2Session.swift */,
@@ -326,7 +329,7 @@
 				48F70A7B19B6F13000DDB152 /* JsonRequestSerializer.swift in Sources */,
 				6F53F67A19ED0FCA00DCFC72 /* Utils.swift in Sources */,
 				48F70A8719B6F13D00DDB152 /* Config.swift in Sources */,
-				6F3DA5611A38B44700626151 /* OpenIDClaim.swift in Sources */,
+				485D738B1A35F7010007D9EC /* OpenIDClaim.swift in Sources */,
 				48975B8019EE802A0075EFC7 /* DateUtils.swift in Sources */,
 				48F70A7C19B6F13000DDB152 /* JsonResponseSerializer.swift in Sources */,
 				48478CB419BF025200983D79 /* TrustedPersistantOAuth2Session.swift in Sources */,
