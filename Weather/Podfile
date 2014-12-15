@@ -3,4 +3,4 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Weather.xcodeproj'
 platform :ios, '8.0'
 
-pod 'AeroGearHttp', :git => "https://github.com/cvasilak/aerogear-ios-http.git", :branch => "podspec"
+pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
