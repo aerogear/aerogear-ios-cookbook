@@ -16,7 +16,7 @@
 */
 import UIKit
 
-import AeroGearOauth2
+import AeroGearOAuth2
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
