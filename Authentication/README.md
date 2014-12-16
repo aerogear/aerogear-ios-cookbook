@@ -36,11 +36,15 @@ If you deploy the backend locally, in Network.swift, update the URL accordingly:
 
 ### Run it in Xcode
 
-To run it, just hit the run button on Xcode.
+The demo utilizes [cocoapods](http://cocoapods.org) for handling it's dependencies. On the root directory, simply execute the following:
 
-The source code of [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library is contained in ../libs/AeroGearHttp shared folder.
+```bash
+bundle install
+bundle exec pod install
+```
 
-> **NOTE:** Hopefully in the future and as the Swift language and tools around it mature, more straightforward distribution mechanisms will be employed using e.g [cocoapods](http://cocoapods.org) and framework builds. Currently neither cocoapods nor binary framework builds support Swift. For more information, consult this [mail thread](http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Swift-Frameworks-Static-libs-and-Cocoapods-td8456.html) that describes the current situation.
+and then double click on the generated .xcworkspace to open in Xcode.
+
 
 Application Flow
 ----------------

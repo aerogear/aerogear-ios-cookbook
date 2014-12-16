@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'Weather.xcodeproj'
+xcodeproj 'Authentication.xcodeproj'
 platform :ios, '8.0'
 
 pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"

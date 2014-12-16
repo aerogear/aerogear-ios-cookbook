@@ -17,6 +17,8 @@
 import UIKit
 import CoreLocation
 
+import AeroGearHttp
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager:CLLocationManager = CLLocationManager()

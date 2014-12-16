@@ -20,6 +20,9 @@ import UIKit
 import MobileCoreServices
 import AssetsLibrary
 
+import AeroGearHttp
+import AeroGearOAuth2
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var overlayView: UIView?

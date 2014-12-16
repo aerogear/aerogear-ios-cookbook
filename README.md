@@ -27,8 +27,13 @@ Some of the demos listed below are hold in separate repo, but as they follow the
 
 ## Building and installing each app
 
-Follow app specific readme instruction open ```app-name.xcworkspace```. 
+The demos utilize [cocoapods](http://cocoapods.org) for handling their dependencies. On the root directory of each demo, simply execute the following:
 
-> **NOTE:** Hopefully in the future and as the Swift language and tools around it mature, more straightforward distribution mechanisms will be employed using e.g [cocoapods](http://cocoapods.org) and framework builds. Currently neither cocoapods nor binary framework builds support Swift. For more information, consult this [mail thread](http://aerogear-dev.1069024.n5.nabble.com/aerogear-dev-Swift-Frameworks-Static-libs-and-Cocoapods-td8456.html) that describes the current situation.
+```bash
+bundle install
+bundle exec pod install
+```
+
+and then double click on the generated .xcworkspace to open in Xcode.
 
 

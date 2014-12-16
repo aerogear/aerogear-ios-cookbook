@@ -16,6 +16,9 @@
 */
 import UIKit
 
+import AeroGearHttp
+import AeroGearOAuth2
+
 let HOST = "http://localhost:8080"
 
 class ViewController: UIViewController {
