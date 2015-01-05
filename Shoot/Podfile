@@ -3,11 +3,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Shoot.xcodeproj'
 platform :ios, '8.0'
 
-pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
+pod 'AeroGearHttp', :git => "https://github.com/corinnekrych/aerogear-ios-http-1.git", :branch => "AGIOS-326.mulipart-background-upload"
 pod 'AeroGearOAuth2', :git => "https://github.com/corinnekrych/aerogear-ios-oauth2-1.git", :branch => "AGIOS-285.keychain.sso"
 
 target 'ShootExt' do
-  pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
+  pod 'AeroGearHttp', :git => "https://github.com/corinnekrych/aerogear-ios-http-1.git", :branch => "AGIOS-326.mulipart-background-upload"
   pod 'AeroGearOAuth2', :git => "https://github.com/corinnekrych/aerogear-ios-oauth2-1.git", :branch => "AGIOS-285.keychain.sso"
 end
 
