@@ -40,7 +40,7 @@ class ShareViewController: SLComposeServiceViewController, UIWebViewDelegate {
     
     required init(coder aDecoder: NSCoder) {
         // create background session
-        var sessionConf = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(appGroup + "backgroundSession")
+        var sessionConf = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(appGroup + "backgroundSession" + NSUUID().UUIDString)
         sessionConf.sharedContainerIdentifier = appGroup
         self.http = Http(sessionConfig: sessionConf)
         super.init(coder: aDecoder)
@@ -119,14 +119,21 @@ class ShareViewController: SLComposeServiceViewController, UIWebViewDelegate {
                 let multiPartData = MultiPartData(url: imageURL!,
                             mimeType: "image/jpg")
                 let parameters = ["file": multiPartData]
-                
+                /*
+                // multi-part upload could be achievd either with upload as a stream or using POST
                 self.http.upload("https://www.googleapis.com/upload/drive/v2/files", stream: NSInputStream(URL: imageURL!)!, parameters: parameters, method: .POST, progress: { (ar1:Int64, ar2:Int64, arr3:Int64) -> Void in
                     println("Uploading...")
                     }) { (response: AnyObject?, error: NSError?) -> Void in
-                    println("Uploaded::\(response)::\(error)")
+                    println("Uploaded: \(response) \(error)")
                 }
-                
-
+                */
+                self.http.POST("https://www.googleapis.com/upload/drive/v2/files", parameters: parameters, completionHandler: {(response, error) in
+                    if (error != nil) {
+                        println("Error: \(error!.localizedDescription)")
+                    } else {
+                        println("Successfully uploaded!")
+                    }
+                })
             }
             
         }
