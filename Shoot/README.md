@@ -42,6 +42,8 @@ Select the Shoot project in the Project Navigator and then select the ShootExt t
 
 This is important because of the way files are uploaded when using the extension. Before uploading, image files are saved to the shared container. Then, they are scheduled for upload via a background task.
 
+To run shoot extension, select ShootExt target and run it, select Photos app as host app. Select a photo, click on share button and select Shoot app. A Pop-up will appear, select send: you photo is uploaded on the background.
+
 ## Facebook setup 
 
 ### Step1: Setup facebook to be a facebook developer:
