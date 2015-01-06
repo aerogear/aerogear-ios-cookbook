@@ -169,7 +169,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
         self.http.POST(url, parameters: parameters, completionHandler: {(response, error) in
-            println("RESPONSE:\(response)")
             if (error != nil) {
                 self.presentAlert("Error", message: error!.localizedDescription)
             } else {

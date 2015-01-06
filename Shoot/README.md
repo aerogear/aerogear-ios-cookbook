@@ -1,9 +1,13 @@
 Shoot'nShare
 ==============
 You want to shoot cool photos and share them with friends using Google Drive or Facebook account?
-With Shoot'nShare you can take picture, browse your camera roll, pick a picture and share it!
-Picture get uploaded to your GoogleDrive or Facebook wall.
+With Shoot'nShare you can take pictures and share it!
+Pictures get uploaded to your GoogleDrive or Facebook wall.
+
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
+
+** Shoot share extension **
+given that you've already used shoot'nshare to authenticate via OAuth2, you can use photo app to browse your camera roll and pick a picture to share it via Shoot'nShare. the Share extension allows you to upload your image to Google drive using background processing.
 
 **NOTES:** System requirement: iOS8. Because this demo securely stores OAuth2 tokens in your iOS keychain, we chosen to use ```WhenPasscodeSet``` policy as a result to run this app you need to have **your passcode set**.
 For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/new-kids-on-block-whenpasswordset.html) and [Keychain and WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/touchid-and-keychain-ios8-best-friends.html)
@@ -18,6 +22,26 @@ bundle exec pod install
 ```
 
 and then double click on the generated .xcworkspace to open in Xcode.
+
+1. Run Shoot'nShare app
+
+Simply select *Shoot* target and run it on your device.
+
+2. run Shoot extension
+
+You need a bit more configuration: 
+
+* Configure App Group for Shoot target
+In order for Shoot'nshare to share content with its extensions, you’ll need to set up an App Group. App Groups allow access to group containers that are shared amongst related apps, or in this case your container app and extension.
+Select the Shoot project in the Project Navigator, and then select the Shoot target from the list of targets. On the General tab, update the Bundle Identifier to org.your_domain.Shoot replacing your_domain with your actual domain. This step is essential as App Groups are intrinsically linked to bundle identifiers.
+
+Now switch to the Capabilities tab and enable App Groups by flicking the switch. If you’re prompted to “select a Development Team” then choose your personal account. Add a new group by clicking the + button and name it group.org.your_domain.Shoot, again replacing your_domain with your actual domain.
+
+* Configure your App Group for ShootExt target
+
+Select the Shoot project in the Project Navigator and then select the ShootExt target. Open the Capabilities tab and enable App Groups. Select the group you created when setting up the Shoot project. The App Group simply allows both the extension and container app to share files.
+
+This is important because of the way files are uploaded when using the extension. Before uploading, image files are saved to the shared container. Then, they are scheduled for upload via a background task.
 
 ## Facebook setup 
 
