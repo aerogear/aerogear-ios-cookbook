@@ -11,15 +11,17 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe 	| Core 	| Push 	| Security 	|
 | ------------- |:-------------:| :-----:|:-----:|
+| [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth| - | - | **basic/digest** |
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib | **http** | - | - |
 | [Buddies](Buddies/README.md): Simple demo for http usage and serialization | **http** | - | - |
 | [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **push** | - |
 | [PushQuickstarts](https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server | - | **Push** | - |
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos | http, **oauth2** | - | - |
+| [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos | http, **oauth2** | - | - |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. 
 
-Some of the demos uses a [backend](https://github.com/aerogear/aerogear-integration-tests-server).
+Some of the demos uses a [backend](https://github.com/aerogear/aerogear-backend-cookbook/).
 
 Some of the demos listed below are hold in separate repo, but as they follow the same philosophy (illustrate AeroGear libraries usage) we put a placeholder in the recipe cookbook for completeness. HelloWorld, Push-Quickstarts have been added as git submodule, to fetch them:
 

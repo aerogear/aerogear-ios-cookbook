@@ -24,11 +24,10 @@ Build and Deploy Buddies
 
 ### Run it in Xcode
 
-The demo utilizes [cocoapods](http://cocoapods.org) for handling it's dependencies. On the root directory, simply execute the following:
+The project uses utilizes [cocoapods](http://cocoapods.org) 0.36.0 pre-release for handling its dependencies. As a pre-requisite, install [cocoapods pre-release](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) and then install the pod. On the root directory of the project run:
 
 ```bash
-bundle install
-bundle exec pod install
+pod install
 ```
 
 and then double click on the generated .xcworkspace to open in Xcode.
