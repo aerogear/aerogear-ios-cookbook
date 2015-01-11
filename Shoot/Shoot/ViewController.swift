@@ -15,7 +15,6 @@
 * limitations under the License.
 */
 
-
 import UIKit
 import MobileCoreServices
 import AssetsLibrary
@@ -145,8 +144,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let googleConfig = GoogleConfig(
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
-
-        let gdModule = AccountManager.addGoogleAccount(googleConfig)
+        let ssoKeychainGroup = "357BX7TCT5.org.aerogear.Shoot"
+        // We specify the keychain groupId, should be the same as the one used in Share extension
+        let gdModule = OAuth2Module(config: googleConfig, session: TrustedPersistantOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)", groupId: ssoKeychainGroup))
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }

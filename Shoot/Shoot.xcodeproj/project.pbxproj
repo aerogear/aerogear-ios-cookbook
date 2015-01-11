@@ -10,14 +10,25 @@
 		489710E61A260E8200D3F730 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489710E51A260E8200D3F730 /* icons.xcassets */; };
 		48E201061A23658B00C5CCC6 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E201041A23658B00C5CCC6 /* OverlayView.xib */; };
 		48E2D50A19F6F271002B5179 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48E2D50919F6F271002B5179 /* Settings.bundle */; };
+		48E52ACC1A403EF300436286 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E52ACB1A403EF300436286 /* ShareViewController.swift */; };
+		48E52ACE1A403EF300436286 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E52ACD1A403EF300436286 /* MainInterface.storyboard */; };
+		48E52AD11A403EF300436286 /* ShootExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 48E52AC71A403EF300436286 /* ShootExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		48F70A0119B59E9800DDB152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0019B59E9800DDB152 /* AppDelegate.swift */; };
 		48F70A0319B59E9800DDB152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F70A0219B59E9800DDB152 /* ViewController.swift */; };
 		48F70A0619B59E9800DDB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0419B59E9800DDB152 /* Main.storyboard */; };
 		48F70A0819B59E9800DDB152 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F70A0719B59E9800DDB152 /* Images.xcassets */; };
+		5AAFF4636694B50924E4B49F /* Pods_ShootExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A73B96413B0B66A4228762E /* Pods_ShootExt.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		76DCB8F02D2EC45275EFAD47 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6043B0FD510BB6EA1CAD27 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		48E52ACF1A403EF300436286 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48F709F319B59E9800DDB152 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E52AC61A403EF300436286;
+			remoteInfo = ShootExt;
+		};
 		48F70A0E19B59E9800DDB152 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48F709F319B59E9800DDB152 /* Project object */;
@@ -27,11 +38,39 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		48E52AD51A403EF300436286 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				48E52AD11A403EF300436286 /* ShootExt.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1A73B96413B0B66A4228762E /* Pods_ShootExt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShootExt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		246FA7B54760F6184BC4957C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3F9A0F2CA14BC3773B1D64D7 /* Pods-ShootExt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShootExt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShootExt/Pods-ShootExt.release.xcconfig"; sourceTree = "<group>"; };
 		489710E51A260E8200D3F730 /* icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = icons.xcassets; sourceTree = "<group>"; };
 		48E201051A23658B00C5CCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OverlayView.xib; sourceTree = "<group>"; };
 		48E2D50919F6F271002B5179 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		48E52AC71A403EF300436286 /* ShootExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShootExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E52ACA1A403EF300436286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48E52ACB1A403EF300436286 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		48E52ACD1A403EF300436286 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		48E52AD61A403F0500436286 /* Shoot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Shoot.entitlements; sourceTree = "<group>"; };
+		48E52AD71A403F1300436286 /* ShootExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShootExt.entitlements; sourceTree = "<group>"; };
+		48E52AD81A4040AE00436286 /* AeroGearOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearOAuth2.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearOAuth2.framework"; sourceTree = "<group>"; };
+		48E52ADA1A4040B300436286 /* AeroGearHttp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearHttp.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearHttp.framework"; sourceTree = "<group>"; };
+		48E52ADC1A4041C400436286 /* AeroGearHttp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearHttp.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearHttp.framework"; sourceTree = "<group>"; };
+		48E52ADE1A4041C800436286 /* AeroGearOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearOAuth2.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearOAuth2.framework"; sourceTree = "<group>"; };
+		48E52AE01A4042DC00436286 /* AeroGearHttp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearHttp.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearHttp.framework"; sourceTree = "<group>"; };
+		48E52AE21A4042E200436286 /* AeroGearOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AeroGearOAuth2.framework; path = "Pods/build/Debug-iphoneos/Pods/AeroGearOAuth2.framework"; sourceTree = "<group>"; };
 		48F709FB19B59E9800DDB152 /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F709FF19B59E9800DDB152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F70A0019B59E9800DDB152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,9 +81,18 @@
 		48F70A1219B59E9800DDB152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6808E1F8E15C7A4E1F0C024D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6043B0FD510BB6EA1CAD27 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBB42C05EC2B3A54687F5258 /* Pods-ShootExt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShootExt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShootExt/Pods-ShootExt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		48E52AC41A403EF300436286 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AAFF4636694B50924E4B49F /* Pods_ShootExt.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F709F819B59E9800DDB152 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,8 +116,29 @@
 			children = (
 				6808E1F8E15C7A4E1F0C024D /* Pods.debug.xcconfig */,
 				246FA7B54760F6184BC4957C /* Pods.release.xcconfig */,
+				DBB42C05EC2B3A54687F5258 /* Pods-ShootExt.debug.xcconfig */,
+				3F9A0F2CA14BC3773B1D64D7 /* Pods-ShootExt.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		48E52AC81A403EF300436286 /* ShootExt */ = {
+			isa = PBXGroup;
+			children = (
+				48E52AD71A403F1300436286 /* ShootExt.entitlements */,
+				48E52ACB1A403EF300436286 /* ShareViewController.swift */,
+				48E52ACD1A403EF300436286 /* MainInterface.storyboard */,
+				48E52AC91A403EF300436286 /* Supporting Files */,
+			);
+			path = ShootExt;
+			sourceTree = "<group>";
+		};
+		48E52AC91A403EF300436286 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48E52ACA1A403EF300436286 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		48F709F219B59E9800DDB152 = {
@@ -77,6 +146,7 @@
 			children = (
 				48F709FD19B59E9800DDB152 /* Shoot */,
 				48F70A1019B59E9800DDB152 /* ShootTests */,
+				48E52AC81A403EF300436286 /* ShootExt */,
 				48F709FC19B59E9800DDB152 /* Products */,
 				099BD407BD9764E97C93F048 /* Pods */,
 				B713F08FB34EFB1498C160D5 /* Frameworks */,
@@ -88,6 +158,7 @@
 			children = (
 				48F709FB19B59E9800DDB152 /* Shoot.app */,
 				48F70A0D19B59E9800DDB152 /* ShootTests.xctest */,
+				48E52AC71A403EF300436286 /* ShootExt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +166,7 @@
 		48F709FD19B59E9800DDB152 /* Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				48E52AD61A403F0500436286 /* Shoot.entitlements */,
 				48F70A0019B59E9800DDB152 /* AppDelegate.swift */,
 				48F70A0219B59E9800DDB152 /* ViewController.swift */,
 				48F70A0419B59E9800DDB152 /* Main.storyboard */,
@@ -134,7 +206,14 @@
 		B713F08FB34EFB1498C160D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48E52AE21A4042E200436286 /* AeroGearOAuth2.framework */,
+				48E52AE01A4042DC00436286 /* AeroGearHttp.framework */,
+				48E52ADE1A4041C800436286 /* AeroGearOAuth2.framework */,
+				48E52ADC1A4041C400436286 /* AeroGearHttp.framework */,
+				48E52ADA1A4040B300436286 /* AeroGearHttp.framework */,
+				48E52AD81A4040AE00436286 /* AeroGearOAuth2.framework */,
 				CB6043B0FD510BB6EA1CAD27 /* Pods.framework */,
+				1A73B96413B0B66A4228762E /* Pods_ShootExt.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +221,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		48E52AC61A403EF300436286 /* ShootExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48E52AD41A403EF300436286 /* Build configuration list for PBXNativeTarget "ShootExt" */;
+			buildPhases = (
+				375722EF8FC0733E255E86B1 /* Check Pods Manifest.lock */,
+				48E52AC31A403EF300436286 /* Sources */,
+				48E52AC41A403EF300436286 /* Frameworks */,
+				48E52AC51A403EF300436286 /* Resources */,
+				4259894F15496EEF93136E01 /* Embed Pods Frameworks */,
+				019FDFC55FCED3EBAC477CCF /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShootExt;
+			productName = ShootExt;
+			productReference = 48E52AC71A403EF300436286 /* ShootExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		48F709FA19B59E9800DDB152 /* Shoot */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48F70A1719B59E9800DDB152 /* Build configuration list for PBXNativeTarget "Shoot" */;
@@ -152,10 +251,12 @@
 				48F709F919B59E9800DDB152 /* Resources */,
 				BE8D5A28023FE2AE307E81C7 /* Embed Pods Frameworks */,
 				70486F6A01ABA95A5F9E6249 /* Copy Pods Resources */,
+				48E52AD51A403EF300436286 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				48E52AD01A403EF300436286 /* PBXTargetDependency */,
 			);
 			name = Shoot;
 			productName = Shoot;
@@ -189,8 +290,28 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = AeroGear;
 				TargetAttributes = {
+					48E52AC61A403EF300436286 = {
+						CreatedOnToolsVersion = 6.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
 					48F709FA19B59E9800DDB152 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 357BX7TCT5;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					48F70A0C19B59E9800DDB152 = {
 						CreatedOnToolsVersion = 6.0;
@@ -213,11 +334,20 @@
 			targets = (
 				48F709FA19B59E9800DDB152 /* Shoot */,
 				48F70A0C19B59E9800DDB152 /* ShootTests */,
+				48E52AC61A403EF300436286 /* ShootExt */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		48E52AC51A403EF300436286 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E52ACE1A403EF300436286 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F709F919B59E9800DDB152 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +370,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		019FDFC55FCED3EBAC477CCF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShootExt/Pods-ShootExt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		375722EF8FC0733E255E86B1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4259894F15496EEF93136E01 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShootExt/Pods-ShootExt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		70486F6A01ABA95A5F9E6249 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +463,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		48E52AC31A403EF300436286 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E52ACC1A403EF300436286 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F709F719B59E9800DDB152 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +490,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		48E52AD01A403EF300436286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E52AC61A403EF300436286 /* ShootExt */;
+			targetProxy = 48E52ACF1A403EF300436286 /* PBXContainerItemProxy */;
+		};
 		48F70A0F19B59E9800DDB152 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 48F709FA19B59E9800DDB152 /* Shoot */;
@@ -334,6 +522,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		48E52AD21A403EF300436286 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBB42C05EC2B3A54687F5258 /* Pods-ShootExt.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShootExt/ShootExt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos/Pods",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShootExt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		48E52AD31A403EF300436286 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F9A0F2CA14BC3773B1D64D7 /* Pods-ShootExt.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShootExt/ShootExt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos/Pods",
+				);
+				INFOPLIST_FILE = ShootExt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		48F70A1519B59E9800DDB152 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -351,6 +583,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -394,6 +627,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -419,10 +653,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Shoot/Shoot.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Shoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -432,10 +671,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Shoot/Shoot.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Shoot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -476,6 +720,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		48E52AD41A403EF300436286 /* Build configuration list for PBXNativeTarget "ShootExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E52AD21A403EF300436286 /* Debug */,
+				48E52AD31A403EF300436286 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		48F709F619B59E9800DDB152 /* Build configuration list for PBXProject "Shoot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
