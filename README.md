@@ -7,25 +7,16 @@ The [iOS SyncEngine](https://github.com/danbev/aerogear-ios-sync) performs the a
 ## Prerequisites 
 This project requires Xcode 6.0 to run.
 
-This project also uses a git submodule as a temporary solution until we can have Swift project in Cocoapods. The submodule need to be
-initialized and updated:
+This project uses [CocoaPods](http://cocoapods.org/) to managed its dependencies. The following command 
+must be run prior to building:
+    
+    sudo gem install cocoapods --pre
+    pod install
 
-    git submodule init
-    git submodule update
+This project is also a Cocoapod and can be pushed to the Cocoapods specs repository.
+Currently we are using a private/local Cocoapods repo before publishing the real ones. This is only for testing. Please
+follow the instructions [here](https://github.com/danbev/Cocoapods-repo) to set up a local repo.
 
-Now, it is even worst that our submodule also contains a submodule (sorry):
-
-    cd aerogear-ios-sync-client
-    git submodule init
-    git submodule update
-
-    cd aerogear-ios-sync-client/aerogear-ios-sync/
-    git submodule init
-    git submodule update
-
-    cd aerogear-ios-sync-client/aerogear-ios-sync/diffmatchpatch-ios
-    git submodule init
-    git submodule update
 
 This project requires that the [AeroGear Differential Synchronization Server](https://github.com/danbev/aerogear-sync-server/tree/differential-synchronization/diffsync/server-netty)
 be running. Please refer to that project for instructions for starting the server.
@@ -34,11 +25,11 @@ be running. Please refer to that project for instructions for starting the serve
 
 Building can be done by opening the project in Xcode:
 
-    open AeroGearSyncDemo.xcodeproj
+    open AeroGearSyncDemo.xcworkspace
 
 or you can use the command line:
 
-    xcodebuild -project AeroGearSyncDemo.xcodeproj -scheme AeroGearSyncDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+    xcodebuild -project AeroGearSyncDemo.xcworkspace -scheme AeroGearSyncDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 ## Running
 The demo app can run from with in Xcode using Product->Run menu option (CMD+R).  

@@ -1,3 +1,0 @@
-[submodule "aerogear-ios-sync-client"]
-	path = aerogear-ios-sync-client
-	url = git@github.com:danbev/aerogear-ios-sync-client.git
