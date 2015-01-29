@@ -3,5 +3,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Buddies.xcodeproj'
 platform :ios, '8.0'
 
-pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
-pod 'AeroGearJsonSZ', :git => "https://github.com/aerogear/aerogear-ios-jsonsz.git", :branch => "master"
+pod 'AeroGearHttp', '0.2.0'
+pod 'AeroGearJsonSZ', '0.1.0'
