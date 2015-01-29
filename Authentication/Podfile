@@ -3,4 +3,4 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Authentication.xcodeproj'
 platform :ios, '8.0'
 
-pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
+pod 'AeroGearHttp', '0.2.0'

@@ -3,8 +3,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Shoot.xcodeproj'
 platform :ios, '8.0'
 
-pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
-pod 'AeroGearOAuth2', :git => "https://github.com/aerogear/aerogear-ios-oauth2.git", :branch => "master"
+pod 'AeroGearHttp', '0.2.0'
+pod 'AeroGearOAuth2', '0.2.0'
 
 # due to swift compiler bug, disable the '-Fastest' optimization flag
 # for the 'AeroGearOAuth2' library
