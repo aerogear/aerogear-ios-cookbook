@@ -17,7 +17,7 @@ pod install
 ```
 and then double click on the generated .xcworkspace to open in Xcode.
 
-## Facebook setup 
+## Facebook setup
 
 ### Step1: Setup facebook to be a facebook developer:
 
@@ -70,15 +70,15 @@ In AppDelegate.swift, add the callback method ```application:openURL:sourceAppli
 
 ```
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-        let notification = NSNotification(name: AGAppLaunchedWithURLNotification, 
-            object:nil, 
+        let notification = NSNotification(name: AGAppLaunchedWithURLNotification,
+            object:nil,
             userInfo:[UIApplicationLaunchOptionsURLKey:url]) // [1]
         NSNotificationCenter.defaultCenter().postNotification(notification) //[2]
         return true
     }
 ```
 
-In [1], we retrieve the url information containing authz code. To inform OAuth2 lib to carry on the OAuth2 dance post a notification in [2]. 
+In [1], we retrieve the url information containing authz code. To inform OAuth2 lib to carry on the OAuth2 dance post a notification in [2].
 
 ## Google setup (optional)
 Here is the links and detailed setup instructions for Google Drive however as I noticed it is quite poorly documented for iOS app.
@@ -114,7 +114,28 @@ In AppDelegate.swift, add the callback method ```application:openURL:sourceAppli
 
 You will need an instance of Keycloak running locally please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot).
 
-## UI Flow 
+After that go to `ViewController.swift` and include the URL of Keycloak installation. For example:
+
+```
+@IBAction func shareWithKeycloak() {
+    println("Perform photo upload with Keycloak")
+    // Replace by your host here
+    let keycloakHost = "https://shoot-aerogear.rhcloud.com"
+    let keycloakConfig = KeycloakConfig(
+        clientId: "shoot-third-party",
+        host: keycloakHost,
+        realm: "shoot-realm")
+
+    let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
+    self.http.authzModule = gdModule
+    self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+
+}
+
+```
+
+
+## UI Flow
 When you start the application you can take picture or select one from your camera roll.
 
 Once an image is selected, you can share it. Doing so, you trigger the OAuth2 authorization process. Once successfully authorized, your image will be uploaded.
@@ -126,7 +147,7 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
 ```
     func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
-        
+
         let googleConfig = GoogleConfig(                              // [1]
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
@@ -134,7 +155,7 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
         let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [2]
         let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
         http.authzModule = gdModule                                   // [3]
-    
+
         self.performUpload(http, parameters: self.extractImageAsMultipartParams())
     }
 ```

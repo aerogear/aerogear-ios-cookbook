@@ -148,6 +148,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
+//bazinga 
         let keycloakHost = "https://shoot-aerogear.rhcloud.com"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
