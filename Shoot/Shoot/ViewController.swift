@@ -29,7 +29,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
     var zoomImage = (camera: true, display: true)
-    var keycloakURL:String = NSUserDefaults.standardUserDefaults().stringForKey("key_url") ?? ""
     var http: Http!
     @IBOutlet weak var imageView: UIImageView!
 
@@ -62,10 +61,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let clear = userDefaults.boolForKey("clearShootKeychain")
-        
-        self.keycloakURL = userDefaults.stringForKey("key_url") ?? ""
-        
-        println("changed settings \(keycloakURL)")
         
         if clear {
             println("clearing keychain")
@@ -153,18 +148,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
-        if self.keycloakURL != "" {
+        let keycloakHost = "https://shoot-aerogear.rhcloud.com"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
-            host: "\(self.keycloakURL)",
+            host: keycloakHost,
             realm: "shoot-realm")
         
         let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
-        self.performUpload("\(self.keycloakURL)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
-        } else {
-            println("Keycloak URL should be filled")
-        }
+        self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+        
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
