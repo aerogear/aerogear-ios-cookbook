@@ -29,44 +29,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
     var zoomImage = (camera: true, display: true)
-    var keycloakURL:String = NSUserDefaults.standardUserDefaults().stringForKey("key_url") ?? ""
     var http: Http!
     @IBOutlet weak var imageView: UIImageView!
 
-    
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
 
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
 
         // Let's register for settings update notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
             name: NSUserDefaultsDidChangeNotification, object: nil)
-        
-        
+
+
         self.http = Http()
         self.useCamera()
 
     }
-    
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
-    
+
+
     func handleSettingsChangedNotification() {
-        
+
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let clear = userDefaults.boolForKey("clearShootKeychain")
-        
-        self.keycloakURL = userDefaults.stringForKey("key_url") ?? ""
-        
-        println("changed settings \(keycloakURL)")
-        
+
         if clear {
             println("clearing keychain")
             let kc = KeychainWrap()
@@ -77,28 +72,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     @IBAction func goToCamera(sender: UIButton) {
         self.useCamera()
     }
-    
+
     @IBAction func takePicture(sender: UIBarButtonItem) {
         self.imagePicker.takePicture()
     }
-    
+
     @IBAction func goToSettings(sender: AnyObject) {
         // iOS8 open Settings from your current app
         let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
         UIApplication.sharedApplication().openURL(settingsUrl!)
     }
-    
+
     func useCamera() {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera
             imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
             imagePicker.allowsEditing = false
-            
+
             // resize
             if (zoomImage.camera) {
                 self.imagePicker.cameraViewTransform = CGAffineTransformScale(self.imagePicker.cameraViewTransform, 1.5, 1.5);
@@ -125,23 +120,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
-    
+
     @IBAction func shareWithFacebook() {
         println("Perform photo upload with Facebook")
         let facebookConfig = FacebookConfig(
             clientId: "YYY",
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
-        
+
         let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
-        
+
         self.performUpload("https://graph.facebook.com/me/photos",  parameters: self.extractImageAsMultipartParams())
     }
-    
+
     @IBAction func shareWithGoogleDrive() {
         println("Perform photo upload with Google")
-        
+
         let googleConfig = GoogleConfig(
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
@@ -150,21 +145,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
-    
+
     @IBAction func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
-        if self.keycloakURL != "" {
+//bazinga
+        let keycloakHost = "http://localhost:8080"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
-            host: "\(self.keycloakURL)",
+            host: keycloakHost,
             realm: "shoot-realm")
-        
+
         let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
-        self.performUpload("\(self.keycloakURL)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
-        } else {
-            println("Keycloak URL should be filled")
-        }
+        self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
+
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
@@ -176,9 +170,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         })
     }
-    
+
     // MARK - UIImagePickerControllerDelegate
-    
+
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
         self.dismissViewControllerAnimated(true, completion:nil)
         var image: UIImage = info[UIImagePickerControllerOriginalImage] as UIImage
@@ -201,11 +195,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             )
         }
     }
-    
+
     func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafePointer<Void>) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
-    
+
         if zoomImage.display {
             self.imageView.transform = CGAffineTransformScale(self.imageView.transform, 1.7, 1.7)
             self.zoomImage.display = false
@@ -215,23 +209,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 alert.show()
         }
    }
-    
+
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion:nil)
     }
-    
+
     func extractImageAsMultipartParams() -> [String: AnyObject] {
         // extract the image filename
         let filename = self.imageView.accessibilityIdentifier;
-        
+
         let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image, 0.2),
             name: "image",
             filename: filename,
             mimeType: "image/jpg")
-        
+
         return ["file": multiPartData]
     }
-    
+
     func presentAlert(title: String, message: String) {
         var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
