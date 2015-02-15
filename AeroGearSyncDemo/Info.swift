@@ -7,10 +7,9 @@
 //
 
 import Foundation
+import AeroGearSync
 
 public class Info : Printable {
-
-    public typealias Json = Dictionary<String, AnyObject>
 
     public let name: String
     public let profession: String
@@ -22,10 +21,10 @@ public class Info : Printable {
         self.hobbies = hobbies
     }
 
-    public convenience init(dict: Dictionary<String, AnyObject>) {
+    public convenience init(dict: JsonNode) {
         self.init(name: dict["name"]! as String,
             profession: dict["profession"]! as String,
-            hobbies: (dict["hobbies"] as Array<Json>).map { Hobby(id: $0["id"]! as String, desc: $0["description"]! as String) })
+            hobbies: (dict["hobbies"] as Array<JsonNode>).map { Hobby(desc: $0["description"]! as String) })
     }
 
     public var description: String {
@@ -34,16 +33,14 @@ public class Info : Printable {
 
     public class Hobby : Printable {
 
-        public let id: String
         public let desc: String
 
-        public init(id: String, desc: String) {
-            self.id = id
+        public init(desc: String) {
             self.desc = desc
         }
 
         public var description: String {
-            return "Hobby[id=\(id), description=\(description)]"
+            return "Hobby[description=\(description)]"
         }
     }
 }
