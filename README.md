@@ -65,4 +65,3 @@ Join our [user mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-u
 ## Found a bug?
 
 If you found a bug please create a ticket for us on [Jira](https://issues.jboss.org/browse/AGIOS) with some steps to reproduce it.
-
