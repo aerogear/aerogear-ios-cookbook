@@ -51,6 +51,9 @@ class MasterViewController: UITableViewController {
         addRandomJokeToTableView()
     }
 
+    @IBAction func add(sender: UIBarButtonItem) {
+        addRandomJokeToTableView()
+    }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
