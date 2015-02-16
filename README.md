@@ -21,6 +21,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe 	| Core 	| Push 	| Security 	|
 | ------------- |:-------------:| :-----:|:-----:|
+| [AeroDoc](AeroDoc/README.md): AeroDoc project demonstrates how to integrate to a backend using Pipe, Auth, Store and Push functionality with AeroGear 1.6.1.| - | - | **push** |
 | [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth| - | - | **basic/digest** |
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib | **http** | - | - |
 | [Buddies](Buddies/README.md): Simple demo for http usage and serialization | **http** | - | - |
