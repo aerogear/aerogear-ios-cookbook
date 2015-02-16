@@ -1,0 +1,19 @@
+//
+// Prefix header for all source files of the 'AeroDoc' target in the 'AeroDoc' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
+// cater for debug/release mode of logging
+// see http://www.cimgf.com/2009/01/24/dropping-nslog-in-release-builds/
+#ifdef DEBUG
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...) /* */
+#endif
+#define ALog(...) NSLog(__VA_ARGS__)

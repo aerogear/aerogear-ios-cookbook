@@ -17,13 +17,10 @@ xcuserdata
 profile
 *.moved-aside
 DerivedData
-*.xcodeproj/xcuserdata
-
-
 
 # CocoaPods
-Podfile.lock
-Pods/
+##Podfile.lock
+##Pods/
 
 #Docset/AppleDoc
 */Docset/*
