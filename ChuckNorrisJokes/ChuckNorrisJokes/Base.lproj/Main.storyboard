@@ -21,7 +21,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5E-vO-n9T">
-                                            <rect key="frame" x="15" y="10" width="567" height="21"/>
+                                            <rect key="frame" x="15" y="10" width="570" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -34,7 +34,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="J5E-vO-n9T" secondAttribute="trailing" constant="18" id="4mp-jT-tdI"/>
+                                        <constraint firstAttribute="trailing" secondItem="J5E-vO-n9T" secondAttribute="trailing" constant="15" id="4mp-jT-tdI"/>
                                         <constraint firstItem="taa-oK-T49" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" constant="15" id="beA-o4-pdO"/>
                                         <constraint firstItem="J5E-vO-n9T" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="10" id="bzF-ZP-A2Y"/>
                                         <constraint firstAttribute="trailing" secondItem="taa-oK-T49" secondAttribute="trailing" constant="15" id="hnz-Aj-Geo"/>
