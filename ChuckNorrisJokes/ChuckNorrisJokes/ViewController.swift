@@ -47,6 +47,8 @@ class MasterViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
         super.viewDidLoad()
         addRandomJokeToTableView()
     }
@@ -59,11 +61,11 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as BasicCell
 
         let joke = data[indexPath.row]
-        cell.textLabel!.text = "Joke #\(joke.id)"
-        cell.detailTextLabel?.text = joke.joke
+        cell.titleLabel.text = "Joke #\(joke.id)"
+        cell.subtitleLabel.text = joke.joke
         cell.tag = indexPath.row
         
         return cell
