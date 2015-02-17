@@ -22,26 +22,22 @@ import AeroGearJsonSZ
 
 class MasterViewController: UITableViewController {
 
-    var http = Http(responseSerializer: StringResponseSerializer())
+    var http = Http()
     var data: [Joke] = []
     var serializer = JsonSZ()
     
     func addRandomJokeToTableView() -> () {
         var joke: String
-        http.GET("http://api.icndb.com/jokes/random/", completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
-            if let response: AnyObject = response {
-                let dataFromHttp = response.dataUsingEncoding(NSUTF8StringEncoding)
-                if let dataFromHttp = dataFromHttp {
-                    let error: NSErrorPointer = nil
-                    let object = NSJSONSerialization.JSONObjectWithData(dataFromHttp, options: nil, error: error) as? [String: AnyObject]
-                    let json = object!["value"]! as NSDictionary
-                    let joke = self.serializer.fromJSON(json, to: Joke.self)
+        http.GET("http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
+             if error != nil {
+                println("An error has occured during read! \(error!)")
+                return;
+            }
+            
+            if  let obj = response as? [String: AnyObject] {
+                    let joke = self.serializer.fromJSON(obj["value"]!, to: Joke.self)
                     self.data.append(joke)
                     self.tableView.reloadData()
-                }
-            }
-            if error != nil {
-                println("An error has occured during read! \(error!)")
             }
         })
     }
