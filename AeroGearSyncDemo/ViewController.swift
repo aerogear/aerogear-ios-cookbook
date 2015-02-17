@@ -173,14 +173,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         info["name"] = nameLabel.text!
         info["profession"] = profession.text!
         
-        var hobbies = Array<Dictionary<String, String>>()
-        
-        hobbies.append(["description" : hobby1.text!])
-        hobbies.append(["description" : hobby2.text!])
-        hobbies.append(["description" : hobby3.text!])
-        hobbies.append(["description" : hobby4.text!])
-        
-        info["hobbies"] = hobbies
+        info["hobbies"] = [
+            ["description" : hobby1.text!],
+            ["description" : hobby2.text!],
+            ["description" : hobby3.text!],
+            ["description" : hobby4.text!]]
         
         return info
     }

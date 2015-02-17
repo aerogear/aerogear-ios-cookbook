@@ -22,9 +22,9 @@ public class Info : Printable {
 
     public let name: String
     public let profession: String
-    public let hobbies: Array<Hobby>
+    public let hobbies: [Hobby]
 
-    public init(name: String, profession: String, hobbies: Array<Hobby>) {
+    public init(name: String, profession: String, hobbies: [Hobby]) {
         self.name = name;
         self.profession = profession
         self.hobbies = hobbies
