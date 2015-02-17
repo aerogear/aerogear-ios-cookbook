@@ -1,18 +1,26 @@
-//
-//  ViewController.swift
-//  AeroGearSyncDemo
-//
-//  Created by Daniel Bevenius on 29/10/14.
-//  Copyright (c) 2014 Daniel Bevenius. All rights reserved.
-//
+/*
+* JBoss, Home of Professional Open Source.
+* Copyright Red Hat, Inc., and individual contributors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 import UIKit
-import AeroGearSyncClient
 import AeroGearSync
+import AeroGearSyncClient
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    typealias Json = JsonConverter.Json
     let backgroundQueue = NSOperationQueue()
 
     @IBOutlet var nameLabel: UILabel!
@@ -29,13 +37,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
         hobbies: [
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Fighting the Dark Side"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Going into Tosche Station to pick up some power converters"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Kissing his sister"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Bulls eyeing Womprats on his T-16")
+            Info.Hobby(desc: "Fighting the Dark Side"),
+            Info.Hobby(desc: "Going into Tosche Station to pick up some power converters"),
+            Info.Hobby(desc: "Kissing his sister"),
+            Info.Hobby(desc: "Bulls eyeing Womprats on his T-16")
         ])
-    private let contentSerializer = StringContentSerializer()
-    private var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String>, StringContentSerializer>!
+
+    private var syncClient: SyncClient<JsonPatchSynchronizer, InMemoryDataStore<JsonNode, JsonPatchEdit>>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +56,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
-        let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
-        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine, contentSerializer: contentSerializer)
+        let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
+        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
         connect()
         println("ClientId=\(clientId)")
     }
 
-    private func syncCallback(doc: ClientDocument<String>) {
-        updateFieldsMainQueue(Info(dict: JsonConverter.asDictionary(doc.content)!))
+    private func syncCallback(doc: ClientDocument<JsonNode>) {
+        updateFieldsMainQueue(Info(dict:doc.content))
     }
 
     @IBAction func connection(button: UIButton) {
@@ -75,7 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     private func connect() {
         syncClient.connect()
-        syncClient.addDocument(ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString()), callback: syncCallback)
+        syncClient.addDocument(ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson()), callback: syncCallback)
     }
 
     private func disconnect() {
@@ -150,32 +158,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     private func sync(field: UITextField) {
         println("syncing...\(field.text)")
-        let json = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
+        let doc = ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson())
         if dirty {
             backgroundQueue.addOperationWithBlock() {
                 self.dirty = false
-                self.syncClient.diffAndSend(json)
+                self.syncClient.diffAndSend(doc)
             }
         }
     }
 
-    private func fieldsAsJsonString() -> String {
-        var str = "{\"name\":\"" + (nameLabel.text! as String) + "\",\"profession\":\""
-            + profession.text! + "\""
-        str += ",\"hobbies\": ["
-        str += "{\"id\":\"" + content.hobbies[0].id + "\",\"description\":\"" + hobby1.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[1].id + "\",\"description\":\"" + hobby2.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[2].id + "\",\"description\":\"" + hobby3.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[3].id + "\",\"description\":\"" + hobby4.text! + "\"}"
-        str += "]}"
-        return str
+    private func fieldsAsJson() -> JsonNode {
+        var info = JsonNode()
+        
+        info["name"] = nameLabel.text!
+        info["profession"] = profession.text!
+        
+        info["hobbies"] = [
+            ["description" : hobby1.text!],
+            ["description" : hobby2.text!],
+            ["description" : hobby3.text!],
+            ["description" : hobby4.text!]]
+        
+        return info
     }
-
-    private class StringContentSerializer : ContentSerializer {
-        private func asString(content: String) -> String {
-            return content;
-        }
-    }
-
 }
 
