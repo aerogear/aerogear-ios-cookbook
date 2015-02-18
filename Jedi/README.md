@@ -28,7 +28,16 @@ Build and Deploy Jedi
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) 0.36.0 pre-release for handling its dependencies. As a pre-requisite, install [cocoapods pre-release](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) and then install the pod. On the root directory of the project run:
+The project uses [cocoapods](http://cocoapods.org) 0.36.0 pre-release for handling its dependencies. As a pre-requisite, install [cocoapods pre-release](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) and then install the pod. 
+there are 2 version of the demo ```JsonPatchSync``` to run the sync demo using [JsonPatch](https://tools.ietf.org/html/rfc6902) protocol or ```DiffMAtchPatchSync``` using DiffMatchPatch [Google initial implementation](https://github.com/JanX2/google-diff-match-patch).
+
+Choose one or the other:
+
+```bash
+cd JsonPatchSync
+```
+
+On the root directory of the project run:
 
 ```bash
 pod install
