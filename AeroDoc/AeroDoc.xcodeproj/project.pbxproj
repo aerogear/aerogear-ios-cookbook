@@ -1,0 +1,682 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4810B5D017C3ACF700E72BFD /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 4810B5CF17C3ACF700E72BFD /* ic_launcher.png */; };
+		4810B5D217C3AD5100E72BFD /* ic_launcher_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */; };
+		481BE86E176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
+		481BE870176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
+		481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE871176F155A00960BDF /* CoreGraphics.framework */; };
+		481BE878176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE876176F155A00960BDF /* InfoPlist.strings */; };
+		481BE886176F155A00960BDF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 481BE885176F155A00960BDF /* Podfile */; };
+		481BE890176F155A00960BDF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 481BE88F176F155A00960BDF /* .gitignore */; };
+		481BE899176F155A00960BDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86D176F155A00960BDF /* UIKit.framework */; };
+		481BE89A176F155A00960BDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481BE86F176F155A00960BDF /* Foundation.framework */; };
+		481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 481BE8A0176F155A00960BDF /* InfoPlist.strings */; };
+		4885A24817C4C5C600CD6B02 /* aero_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4885A24617C4C5C600CD6B02 /* aero_greyed.png */; };
+		4885A24917C4C5C600CD6B02 /* aero_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4885A24717C4C5C600CD6B02 /* aero_selected.png */; };
+		48C139C117C66C7D00449D3C /* user_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139BF17C66C7D00449D3C /* user_selected.png */; };
+		48C139C317C66CDB00449D3C /* user_greyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139C217C66CDB00449D3C /* user_greyed.png */; };
+		48C139C517C6714A00449D3C /* notification_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C139C417C6714A00449D3C /* notification_red.png */; };
+		48C4A9981796F595000108DF /* AGLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9971796F595000108DF /* AGLead.m */; };
+		48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */; };
+		48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A99D1796F5B2000108DF /* AGLeadViewController.m */; };
+		48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A11796F5B2000108DF /* AGLoginViewController.m */; };
+		48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */; };
+		48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */; };
+		48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9AD1796F5DE000108DF /* LeadCell.m */; };
+		48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B01796F5FF000108DF /* AGAppDelegate.m */; };
+		48C4A9B81796F645000108DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4A9B71796F645000108DF /* main.m */; };
+		48C4A9C51796F69B000108DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C21796F69B000108DF /* Default-568h@2x.png */; };
+		48C4A9C61796F69B000108DF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C31796F69B000108DF /* Default.png */; };
+		48C4A9C71796F69B000108DF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C41796F69B000108DF /* Default@2x.png */; };
+		48C4A9C91796F6B8000108DF /* AeroDocTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */; };
+		48C4EAA817CF9FF700E2D71F /* AGStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C4EAA717CF9FF700E2D71F /* AGStatus.m */; };
+		48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C44177622A000043C05 /* aerogear_logo.png */; };
+		48E07C69177622A000043C05 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C51177622A000043C05 /* logout.png */; };
+		48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E07C58177622A000043C05 /* topAndBottomRow.png */; };
+		6F016810177A142200601E7A /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680E177A142200601E7A /* green.png */; };
+		6F016811177A142200601E7A /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01680F177A142200601E7A /* orange.png */; };
+		B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */; };
+		CCB432686BC74882B5C55932 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED1957D45914DBAA7632452 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		481BE89B176F155A00960BDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481BE862176F155900960BDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 481BE869176F155A00960BDF;
+			remoteInfo = AeroDoc;
+		};
+		6F2960EA1981A992009AB9B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481BE862176F155900960BDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 481BE869176F155A00960BDF;
+			remoteInfo = AeroDoc;
+		};
+		6F2960EC1981A992009AB9B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481BE862176F155900960BDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 481BE869176F155A00960BDF;
+			remoteInfo = AeroDoc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3ED1957D45914DBAA7632452 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4810B5CB17C3AB8D00E72BFD /* AeroDoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AeroDoc-Info.plist"; sourceTree = "<group>"; };
+		4810B5CF17C3ACF700E72BFD /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = ../ic_launcher.png; sourceTree = "<group>"; };
+		4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher_114.png; path = ../ic_launcher_114.png; sourceTree = "<group>"; };
+		481BE86A176F155A00960BDF /* AeroDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE86D176F155A00960BDF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		481BE86F176F155A00960BDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		481BE871176F155A00960BDF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		481BE877176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		481BE885176F155A00960BDF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		481BE88F176F155A00960BDF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		481BE896176F155A00960BDF /* AeroDocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AeroDocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		481BE8A1176F155A00960BDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4885A24617C4C5C600CD6B02 /* aero_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aero_greyed.png; path = Resources/images/aero_greyed.png; sourceTree = "<group>"; };
+		4885A24717C4C5C600CD6B02 /* aero_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aero_selected.png; path = Resources/images/aero_selected.png; sourceTree = "<group>"; };
+		48C139BF17C66C7D00449D3C /* user_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_selected.png; path = Resources/images/user_selected.png; sourceTree = "<group>"; };
+		48C139C217C66CDB00449D3C /* user_greyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_greyed.png; path = Resources/images/user_greyed.png; sourceTree = "<group>"; };
+		48C139C417C6714A00449D3C /* notification_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notification_red.png; path = Resources/images/notification_red.png; sourceTree = "<group>"; };
+		48C4A9961796F595000108DF /* AGLead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLead.h; path = AeroDoc/Classes/Model/AGLead.h; sourceTree = SOURCE_ROOT; };
+		48C4A9971796F595000108DF /* AGLead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLead.m; path = AeroDoc/Classes/Model/AGLead.m; sourceTree = SOURCE_ROOT; };
+		48C4A9991796F5A5000108DF /* AGConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGConfig.h; path = AeroDoc/Classes/Config/AGConfig.h; sourceTree = SOURCE_ROOT; };
+		48C4A99A1796F5B2000108DF /* AGLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGLeadsViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGLeadsViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A99C1796F5B2000108DF /* AGLeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLeadViewController.h; path = AeroDoc/Classes/Controllers/AGLeadViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A99D1796F5B2000108DF /* AGLeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLeadViewController.m; path = AeroDoc/Classes/Controllers/AGLeadViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A01796F5B2000108DF /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = AeroDoc/Classes/Controllers/AGLoginViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A9A11796F5B2000108DF /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = AeroDoc/Classes/Controllers/AGLoginViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGMyLeadsViewController.h; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.h; sourceTree = SOURCE_ROOT; };
+		48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGMyLeadsViewController.m; path = AeroDoc/Classes/Controllers/AGMyLeadsViewController.m; sourceTree = SOURCE_ROOT; };
+		48C4A9A91796F5C6000108DF /* AeroDocAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AeroDocAPIClient.h; path = AeroDoc/Classes/Networking/AeroDocAPIClient.h; sourceTree = SOURCE_ROOT; };
+		48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AeroDocAPIClient.m; path = AeroDoc/Classes/Networking/AeroDocAPIClient.m; sourceTree = SOURCE_ROOT; };
+		48C4A9AC1796F5DE000108DF /* LeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeadCell.h; path = AeroDoc/Classes/TableCells/LeadCell.h; sourceTree = SOURCE_ROOT; };
+		48C4A9AD1796F5DE000108DF /* LeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeadCell.m; path = AeroDoc/Classes/TableCells/LeadCell.m; sourceTree = SOURCE_ROOT; };
+		48C4A9AF1796F5FF000108DF /* AGAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAppDelegate.h; path = AeroDoc/AGAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		48C4A9B01796F5FF000108DF /* AGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAppDelegate.m; path = AeroDoc/AGAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		48C4A9B71796F645000108DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AeroDoc/main.m; sourceTree = SOURCE_ROOT; };
+		48C4A9B91796F64E000108DF /* AeroDoc-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AeroDoc-Prefix.pch"; path = "AeroDoc/AeroDoc-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		48C4A9C21796F69B000108DF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "AeroDoc/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		48C4A9C31796F69B000108DF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = AeroDoc/Default.png; sourceTree = SOURCE_ROOT; };
+		48C4A9C41796F69B000108DF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "AeroDoc/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AeroDocTests-Info.plist"; path = "AeroDocTests/AeroDocTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		48C4EAA617CF9FF700E2D71F /* AGStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGStatus.h; path = Classes/Controllers/AGStatus.h; sourceTree = "<group>"; };
+		48C4EAA717CF9FF700E2D71F /* AGStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGStatus.m; path = Classes/Controllers/AGStatus.m; sourceTree = "<group>"; };
+		48E07C44177622A000043C05 /* aerogear_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aerogear_logo.png; path = Resources/images/aerogear_logo.png; sourceTree = "<group>"; };
+		48E07C51177622A000043C05 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logout.png; path = Resources/images/logout.png; sourceTree = "<group>"; };
+		48E07C58177622A000043C05 /* topAndBottomRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topAndBottomRow.png; path = Resources/images/topAndBottomRow.png; sourceTree = "<group>"; };
+		6F01680E177A142200601E7A /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = Resources/images/green.png; sourceTree = "<group>"; };
+		6F01680F177A142200601E7A /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = Resources/images/orange.png; sourceTree = "<group>"; };
+		71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		481BE867176F155A00960BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE86E176F155A00960BDF /* UIKit.framework in Frameworks */,
+				481BE870176F155A00960BDF /* Foundation.framework in Frameworks */,
+				481BE872176F155A00960BDF /* CoreGraphics.framework in Frameworks */,
+				CCB432686BC74882B5C55932 /* libPods.a in Frameworks */,
+				B20A52351779B14A4BD25A1F /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE892176F155A00960BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE899176F155A00960BDF /* UIKit.framework in Frameworks */,
+				481BE89A176F155A00960BDF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		481BE861176F155900960BDF = {
+			isa = PBXGroup;
+			children = (
+				481BE873176F155A00960BDF /* AeroDoc */,
+				481BE89D176F155A00960BDF /* AeroDocTests */,
+				481BE86C176F155A00960BDF /* Frameworks */,
+				481BE86B176F155A00960BDF /* Products */,
+				71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		481BE86B176F155A00960BDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				481BE86A176F155A00960BDF /* AeroDoc.app */,
+				481BE896176F155A00960BDF /* AeroDocTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		481BE86C176F155A00960BDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				481BE86D176F155A00960BDF /* UIKit.framework */,
+				481BE86F176F155A00960BDF /* Foundation.framework */,
+				481BE871176F155A00960BDF /* CoreGraphics.framework */,
+				3ED1957D45914DBAA7632452 /* libPods.a */,
+				B20A5F1341AACD1A3C260ABF /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		481BE873176F155A00960BDF /* AeroDoc */ = {
+			isa = PBXGroup;
+			children = (
+				48E07C741776F57400043C05 /* TableCells */,
+				48E07C091771E31F00043C05 /* Model */,
+				48C4A9AF1796F5FF000108DF /* AGAppDelegate.h */,
+				48C4A9B01796F5FF000108DF /* AGAppDelegate.m */,
+				481BE885176F155A00960BDF /* Podfile */,
+				481BE88F176F155A00960BDF /* .gitignore */,
+				48E07C10177435D500043C05 /* Config */,
+				481BE887176F155A00960BDF /* Networking */,
+				481BE88B176F155A00960BDF /* Controllers */,
+				48E07C43177621B700043C05 /* Resources */,
+				481BE874176F155A00960BDF /* Supporting Files */,
+			);
+			path = AeroDoc;
+			sourceTree = "<group>";
+		};
+		481BE874176F155A00960BDF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9B71796F645000108DF /* main.m */,
+				48C4A9B91796F64E000108DF /* AeroDoc-Prefix.pch */,
+				4810B5CB17C3AB8D00E72BFD /* AeroDoc-Info.plist */,
+				481BE876176F155A00960BDF /* InfoPlist.strings */,
+				48C4A9C21796F69B000108DF /* Default-568h@2x.png */,
+				48C4A9C31796F69B000108DF /* Default.png */,
+				48C4A9C41796F69B000108DF /* Default@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		481BE887176F155A00960BDF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9A91796F5C6000108DF /* AeroDocAPIClient.h */,
+				48C4A9AA1796F5C6000108DF /* AeroDocAPIClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		481BE88B176F155A00960BDF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A99A1796F5B2000108DF /* AGLeadsViewController.h */,
+				48C4A99B1796F5B2000108DF /* AGLeadsViewController.m */,
+				48C4A99C1796F5B2000108DF /* AGLeadViewController.h */,
+				48C4A99D1796F5B2000108DF /* AGLeadViewController.m */,
+				48C4A9A01796F5B2000108DF /* AGLoginViewController.h */,
+				48C4A9A11796F5B2000108DF /* AGLoginViewController.m */,
+				48C4A9A21796F5B2000108DF /* AGMyLeadsViewController.h */,
+				48C4A9A31796F5B2000108DF /* AGMyLeadsViewController.m */,
+				48C4EAA617CF9FF700E2D71F /* AGStatus.h */,
+				48C4EAA717CF9FF700E2D71F /* AGStatus.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		481BE89D176F155A00960BDF /* AeroDocTests */ = {
+			isa = PBXGroup;
+			children = (
+				481BE89E176F155A00960BDF /* Supporting Files */,
+			);
+			path = AeroDocTests;
+			sourceTree = "<group>";
+		};
+		481BE89E176F155A00960BDF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9C81796F6B8000108DF /* AeroDocTests-Info.plist */,
+				481BE8A0176F155A00960BDF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48E07C091771E31F00043C05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9961796F595000108DF /* AGLead.h */,
+				48C4A9971796F595000108DF /* AGLead.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		48E07C10177435D500043C05 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9991796F5A5000108DF /* AGConfig.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		48E07C43177621B700043C05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				48C139C417C6714A00449D3C /* notification_red.png */,
+				48C139C217C66CDB00449D3C /* user_greyed.png */,
+				48C139BF17C66C7D00449D3C /* user_selected.png */,
+				4810B5D117C3AD5100E72BFD /* ic_launcher_114.png */,
+				4810B5CF17C3ACF700E72BFD /* ic_launcher.png */,
+				4885A24617C4C5C600CD6B02 /* aero_greyed.png */,
+				4885A24717C4C5C600CD6B02 /* aero_selected.png */,
+				48E07C44177622A000043C05 /* aerogear_logo.png */,
+				48E07C51177622A000043C05 /* logout.png */,
+				48E07C58177622A000043C05 /* topAndBottomRow.png */,
+				6F01680E177A142200601E7A /* green.png */,
+				6F01680F177A142200601E7A /* orange.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		48E07C741776F57400043C05 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				48C4A9AC1796F5DE000108DF /* LeadCell.h */,
+				48C4A9AD1796F5DE000108DF /* LeadCell.m */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		481BE869176F155A00960BDF /* AeroDoc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDoc" */;
+			buildPhases = (
+				5514BACBE1264F0CBDC066B7 /* Check Pods Manifest.lock */,
+				481BE866176F155A00960BDF /* Sources */,
+				481BE867176F155A00960BDF /* Frameworks */,
+				481BE868176F155A00960BDF /* Resources */,
+				886BF5EE0EEE49A9BC50E39D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AeroDoc;
+			productName = AeroDoc;
+			productReference = 481BE86A176F155A00960BDF /* AeroDoc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		481BE895176F155A00960BDF /* AeroDocTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDocTests" */;
+			buildPhases = (
+				481BE891176F155A00960BDF /* Sources */,
+				481BE892176F155A00960BDF /* Frameworks */,
+				481BE893176F155A00960BDF /* Resources */,
+				481BE894176F155A00960BDF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				481BE89C176F155A00960BDF /* PBXTargetDependency */,
+				6F2960EB1981A992009AB9B1 /* PBXTargetDependency */,
+				6F2960ED1981A992009AB9B1 /* PBXTargetDependency */,
+			);
+			name = AeroDocTests;
+			productName = AeroDocTests;
+			productReference = 481BE896176F155A00960BDF /* AeroDocTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		481BE862176F155900960BDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AG;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = AeroGear;
+				TargetAttributes = {
+					481BE895176F155A00960BDF = {
+						TestTargetID = 481BE869176F155A00960BDF;
+					};
+				};
+			};
+			buildConfigurationList = 481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 481BE861176F155900960BDF;
+			productRefGroup = 481BE86B176F155A00960BDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				481BE869176F155A00960BDF /* AeroDoc */,
+				481BE895176F155A00960BDF /* AeroDocTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		481BE868176F155A00960BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE878176F155A00960BDF /* InfoPlist.strings in Resources */,
+				481BE886176F155A00960BDF /* Podfile in Resources */,
+				481BE890176F155A00960BDF /* .gitignore in Resources */,
+				48E07C5C177622A000043C05 /* aerogear_logo.png in Resources */,
+				48E07C69177622A000043C05 /* logout.png in Resources */,
+				48E07C70177622A000043C05 /* topAndBottomRow.png in Resources */,
+				6F016810177A142200601E7A /* green.png in Resources */,
+				6F016811177A142200601E7A /* orange.png in Resources */,
+				48C4A9C51796F69B000108DF /* Default-568h@2x.png in Resources */,
+				48C4A9C61796F69B000108DF /* Default.png in Resources */,
+				48C4A9C71796F69B000108DF /* Default@2x.png in Resources */,
+				48C4A9C91796F6B8000108DF /* AeroDocTests-Info.plist in Resources */,
+				4810B5D017C3ACF700E72BFD /* ic_launcher.png in Resources */,
+				4810B5D217C3AD5100E72BFD /* ic_launcher_114.png in Resources */,
+				4885A24817C4C5C600CD6B02 /* aero_greyed.png in Resources */,
+				4885A24917C4C5C600CD6B02 /* aero_selected.png in Resources */,
+				48C139C117C66C7D00449D3C /* user_selected.png in Resources */,
+				48C139C317C66CDB00449D3C /* user_greyed.png in Resources */,
+				48C139C517C6714A00449D3C /* notification_red.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE893176F155A00960BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BE8A2176F155A00960BDF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		481BE894176F155A00960BDF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		5514BACBE1264F0CBDC066B7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		886BF5EE0EEE49A9BC50E39D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		481BE866176F155A00960BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C4A9981796F595000108DF /* AGLead.m in Sources */,
+				48C4A9A41796F5B2000108DF /* AGLeadsViewController.m in Sources */,
+				48C4A9A51796F5B2000108DF /* AGLeadViewController.m in Sources */,
+				48C4A9A71796F5B2000108DF /* AGLoginViewController.m in Sources */,
+				48C4A9A81796F5B2000108DF /* AGMyLeadsViewController.m in Sources */,
+				48C4A9AB1796F5C6000108DF /* AeroDocAPIClient.m in Sources */,
+				48C4A9AE1796F5DE000108DF /* LeadCell.m in Sources */,
+				48C4A9B11796F5FF000108DF /* AGAppDelegate.m in Sources */,
+				48C4A9B81796F645000108DF /* main.m in Sources */,
+				48C4EAA817CF9FF700E2D71F /* AGStatus.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		481BE891176F155A00960BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		481BE89C176F155A00960BDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 481BE869176F155A00960BDF /* AeroDoc */;
+			targetProxy = 481BE89B176F155A00960BDF /* PBXContainerItemProxy */;
+		};
+		6F2960EB1981A992009AB9B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 481BE869176F155A00960BDF /* AeroDoc */;
+			targetProxy = 6F2960EA1981A992009AB9B1 /* PBXContainerItemProxy */;
+		};
+		6F2960ED1981A992009AB9B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 481BE869176F155A00960BDF /* AeroDoc */;
+			targetProxy = 6F2960EC1981A992009AB9B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		481BE876176F155A00960BDF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				481BE877176F155A00960BDF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		481BE8A0176F155A00960BDF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				481BE8A1176F155A00960BDF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		481BE8A6176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		481BE8A7176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		481BE8A9176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		481BE8AA176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AD62DA68B548C7B5B69C65 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDoc/AeroDoc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AeroDoc;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		481BE8AC176F155A00960BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroDoc.app/AeroDoc";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDocTests/AeroDocTests-Info.plist";
+				PRODUCT_NAME = AeroDocTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		481BE8AD176F155A00960BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AeroDoc.app/AeroDoc";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroDoc/AeroDoc-Prefix.pch";
+				INFOPLIST_FILE = "AeroDocTests/AeroDocTests-Info.plist";
+				PRODUCT_NAME = AeroDocTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		481BE865176F155900960BDF /* Build configuration list for PBXProject "AeroDoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8A6176F155A00960BDF /* Debug */,
+				481BE8A7176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		481BE8A8176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8A9176F155A00960BDF /* Debug */,
+				481BE8AA176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		481BE8AB176F155A00960BDF /* Build configuration list for PBXNativeTarget "AeroDocTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				481BE8AC176F155A00960BDF /* Debug */,
+				481BE8AD176F155A00960BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 481BE862176F155900960BDF /* Project object */;
+}
