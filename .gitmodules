@@ -4,3 +4,4 @@
 [submodule "push-quickstarts"]
 	path = push-quickstarts
 	url = https://github.com/aerogear/aerogear-push-quickstarts.git
+
