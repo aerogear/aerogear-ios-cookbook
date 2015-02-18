@@ -44,9 +44,11 @@ and then double click on the generated .xcworkspace to open in Xcode.
 Application Flow
 ----------------
 
-To test the application, you will need
-Launch the application on your device
-Launch the application on you simulator
+To test the application, you will need 2 Jedi demo running. For exemple:
+- launch the application on your device
+- launch the application on you simulator
 
-![import](weather.png)
+modify one field on simulator and see it instantly synchronized on device!
+
+![import](Jedi.png)
 
