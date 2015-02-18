@@ -17,7 +17,10 @@ xcuserdata
 profile
 *.moved-aside
 DerivedData
+
 *.xcodeproj/xcuserdata
+
+**/*.xcuserstate
 
 
 # CocoaPods
