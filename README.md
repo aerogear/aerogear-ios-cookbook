@@ -22,12 +22,13 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | Recipe 	| Core 	| Push 	| Security 	|
 | ------------- |:-------------:| :-----:|:-----:|
 | [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth| - | - | **basic/digest** |
-| [Weather](Weather/README.md): geo-loation based app to fetch information using http lib | **http** | - | - |
 | [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization | **http** | - | - |
 | [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **push** | - |
+| [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo. Declined in 2 versions: JsonPatch RFC based or DiffMatchPatch text based.| **sync** | - | - |
 | [PushQuickstarts](https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server | - | **Push** | - |
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos | http, **oauth2** | - | - |
 | [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos | http, **oauth2** | - | - |
+| [Weather](Weather/README.md): geo-loation based app to fetch information using http lib | **http** | - | - |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. 
 
@@ -65,4 +66,3 @@ Join our [user mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-u
 ## Found a bug?
 
 If you found a bug please create a ticket for us on [Jira](https://issues.jboss.org/browse/AGIOS) with some steps to reproduce it.
-
