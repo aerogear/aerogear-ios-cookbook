@@ -18,7 +18,6 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Xmas](Xmas/Xmas.md): Demo how to encrypt/decrypt with crypto-lib | Store | - | **Encrypted API** |
 | [CryptoDemo](https://github.com/aerogear/aerogear-crypto-ios-demo): Demo how to use Encrypted Storage | Store | - | **EncryptedStorage** |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-ios-demo): How to use OTP client lib with a Java backend | - | - | **Login** |
-| [Buddies](Buddies/README.md): Easy usage of Pipe with REST Java backend | **Pipe** | - | - |
 | [GoogleDrive](GoogleDrive/GoogleDrive.md): OAuth2 to list all GoogleDrive documents | Pipe | - | **OAuth2** |
 | [ProductInventory](ProductInventory/README.md): Keycloak OAuth2 running with Keycloak server | Pipe | - | **OAuth2**', **Keycloak** |
 
