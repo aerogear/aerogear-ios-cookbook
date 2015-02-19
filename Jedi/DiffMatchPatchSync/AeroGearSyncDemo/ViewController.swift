@@ -16,13 +16,21 @@
 */
 
 import UIKit
-import AeroGearSync
 import AeroGearSyncClient
+import AeroGearSync
+
+
+public func asDictionary(jsonString: String) -> [String: AnyObject]? {
+    var jsonErrorOptional: NSError?
+    return NSJSONSerialization.JSONObjectWithData((jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!,
+        options: NSJSONReadingOptions(0), error: &jsonErrorOptional) as? Dictionary<String, AnyObject>
+}
+
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
     let backgroundQueue = NSOperationQueue()
-
+    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var profession: UITextField!
     @IBOutlet var hobby1: UITextField!
@@ -31,20 +39,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var hobby4: UITextField!
     @IBOutlet var connection: UIButton!
     var dirty = false
-
+    
     let clientId = NSUUID().UUIDString
     let documentId = "12345"
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
         hobbies: [
-            Info.Hobby(desc: "Fighting the Dark Side"),
-            Info.Hobby(desc: "Going into Tosche Station to pick up some power converters"),
-            Info.Hobby(desc: "Kissing his sister"),
-            Info.Hobby(desc: "Bulls eyeing Womprats on his T-16")
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Fighting the Dark Side"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Going into Tosche Station to pick up some power converters"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Kissing his sister"),
+            Info.Hobby(id: NSUUID().UUIDString, desc: "Bulls eyeing Womprats on his T-16")
         ])
 
-    private var syncClient: SyncClient<JsonPatchSynchronizer, InMemoryDataStore<JsonNode, JsonPatchEdit>>!
+    private var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String, DiffMatchPatchEdit>>!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profession.delegate = self
@@ -56,16 +65,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
-        let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
+        let engine = ClientSyncEngine(synchronizer: DiffMatchPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
         connect()
-        println("ClientId=\(clientId)")
     }
-
-    private func syncCallback(doc: ClientDocument<JsonNode>) {
-        updateFieldsMainQueue(Info(dict:doc.content))
+    
+    private func syncCallback(doc: ClientDocument<String>) {
+        updateFieldsMainQueue(Info(dict: asDictionary(doc.content)!))
     }
-
+    
     @IBAction func connection(button: UIButton) {
         let text = button.titleLabel!.text!
         if text == "Disconnect" {
@@ -76,27 +84,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
             connection.setTitle("Disconnect", forState:UIControlState.Normal)
         }
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         disconnect()
     }
-
+    
     private func connect() {
         syncClient.connect()
-        syncClient.addDocument(ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson()), callback: syncCallback)
+        syncClient.addDocument(ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString()), callback: syncCallback)
     }
-
+    
     private func disconnect() {
         syncClient.disconnect()
     }
-
+    
     private func updateFieldsMainQueue(content: Info) {
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             self.updateFields(content)
             self.content = content;
         }
     }
-
+    
     private func updateFields(content: Info) {
         self.nameLabel.text = content.name
         self.profession.text = content.profession
@@ -105,26 +113,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.hobby3.text = content.hobbies[2].desc
         self.hobby4.text = content.hobbies[3].desc
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     /**
     Should the textField in question give up focus.
-
+    
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the current field gives up focus
     */
     func textFieldShouldEndEditing(textField: UITextField!) -> Bool {
         return true
     }
-
+    
     /**
     Hides the keyboard after return button has been pressed.
     This function will also perform a sync if the field in question
     was updated.
-
+    
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the keyboard is removed.
     */
@@ -132,18 +140,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sync(textField)
         return true
     }
-
+    
     /**
     Called when focus moves from one textfield to another.
     This function will also perform a sync if the field in question
     was updated.
-
+    
     :param: textField the UITextField that is in focus
     */
     @IBAction func editEnd(textField: UITextField) {
         sync(textField)
     }
-
+    
     /**
     Detects when a field is being updated and takes note of this fact.
     This is later used to determine if a sync should be done or not.
@@ -155,31 +163,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
             dirty = true
         }
     }
-
+    
     private func sync(field: UITextField) {
         println("syncing...\(field.text)")
-        let doc = ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson())
+        let json = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         if dirty {
             backgroundQueue.addOperationWithBlock() {
                 self.dirty = false
-                self.syncClient.diffAndSend(doc)
+                self.syncClient.diffAndSend(json)
             }
         }
     }
-
-    private func fieldsAsJson() -> JsonNode {
-        var info = JsonNode()
-        
-        info["name"] = nameLabel.text!
-        info["profession"] = profession.text!
-        
-        info["hobbies"] = [
-            ["description" : hobby1.text!],
-            ["description" : hobby2.text!],
-            ["description" : hobby3.text!],
-            ["description" : hobby4.text!]]
-        
-        return info
+    
+    private func fieldsAsJsonString() -> String {
+        var str = "{\"name\":\"" + (nameLabel.text! as String) + "\",\"profession\":\""
+            + profession.text! + "\""
+        str += ",\"hobbies\": ["
+        str += "{\"id\":\"" + content.hobbies[0].id + "\",\"desc\":\"" + hobby1.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[1].id + "\",\"desc\":\"" + hobby2.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[2].id + "\",\"desc\":\"" + hobby3.text! + "\"},"
+        str += "{\"id\":\"" + content.hobbies[3].id + "\",\"desc\":\"" + hobby4.text! + "\"}"
+        str += "]}"
+        return str
     }
+    
 }
-

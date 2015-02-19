@@ -5,9 +5,9 @@ xcodeproj 'AeroGearSyncDemo.xcodeproj'
 platform :ios, '8.0'
 
 pod 'AeroGearSyncClient', :git => 'https://github.com/aerogear/aerogear-ios-sync-client.git', :branch => "master"
-pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-384.diffmatchpatch"
 
 target 'AeroGearSyncDemoTests' do
     pod 'AeroGearSyncClient', :git => 'https://github.com/aerogear/aerogear-ios-sync-client.git', :branch => "master"
-   pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master" 
+   pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-384.diffmatchpatch" 
 end
