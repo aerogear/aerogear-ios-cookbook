@@ -138,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("Perform photo upload with Google")
 
         let googleConfig = GoogleConfig(
-            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+            clientId: "<your client secret goes here.apps.googleusercontent.com>",
             scopes:["https://www.googleapis.com/auth/drive"])
 
         let gdModule = AccountManager.addGoogleAccount(googleConfig)
