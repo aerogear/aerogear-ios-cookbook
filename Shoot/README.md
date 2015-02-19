@@ -80,10 +80,8 @@ In AppDelegate.swift, add the callback method ```application:openURL:sourceAppli
 
 In [1], we retrieve the url information containing authz code. To inform OAuth2 lib to carry on the OAuth2 dance post a notification in [2].
 
-## Google setup (optional)
+## Google setup
 Here is the links and detailed setup instructions for Google Drive however as I noticed it is quite poorly documented for iOS app.
-
-NOTES: This step is optional if your want to try the GoogleDrive app out of the box. The client id for 'GoogleDrive' has already been generated and [is available in the app](https://github.com/aerogear/aerogear-ios-cookbook/blob/1.6.x/GoogleDrive/GoogleDrive/AGViewController.m#L156). However if you want to create your own app, you will have to go through your provider setup instruction. Here's how to do it for Google Drive.
 
 1. Have a Google account
 2. Go to [Google cloud console](https://cloud.google.com/console#/project), create a new project
