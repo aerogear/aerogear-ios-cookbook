@@ -35,7 +35,7 @@ public class Info : Printable {
     public convenience init(dict: Json) {
         self.init(name: dict["name"]! as String,
             profession: dict["profession"]! as String,
-            hobbies: (dict["hobbies"] as [Json]).map { Hobby(id: $0["id"]! as String, desc: $0["desc"]! as String) })
+            hobbies: (dict["hobbies"] as [Json]).map { Hobby(desc: $0["description"]! as String) })
     }
     
     public var description: String {
@@ -44,16 +44,14 @@ public class Info : Printable {
     
     public class Hobby : Printable {
         
-        public let id: String
         public let desc: String
         
-        public init(id: String, desc: String) {
-            self.id = id
+        public init(desc: String) {
             self.desc = desc
         }
         
         public var description: String {
-            return "Hobby[id=\(id), desc=\(desc)]"
+            return "Hobby[description=\(desc)]"
         }
     }
 }

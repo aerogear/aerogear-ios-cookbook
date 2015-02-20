@@ -45,10 +45,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
         hobbies: [
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Fighting the Dark Side"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Going into Tosche Station to pick up some power converters"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Kissing his sister"),
-            Info.Hobby(id: NSUUID().UUIDString, desc: "Bulls eyeing Womprats on his T-16")
+            Info.Hobby(desc: "Fighting the Dark Side"),
+            Info.Hobby(desc: "Going into Tosche Station to pick up some power converters"),
+            Info.Hobby(desc: "Kissing his sister"),
+            Info.Hobby(desc: "Bulls eyeing Womprats on his T-16")
         ])
 
     private var syncClient: SyncClient<DiffMatchPatchSynchronizer, InMemoryDataStore<String, DiffMatchPatchEdit>>!
@@ -179,10 +179,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var str = "{\"name\":\"" + (nameLabel.text! as String) + "\",\"profession\":\""
             + profession.text! + "\""
         str += ",\"hobbies\": ["
-        str += "{\"id\":\"" + content.hobbies[0].id + "\",\"desc\":\"" + hobby1.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[1].id + "\",\"desc\":\"" + hobby2.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[2].id + "\",\"desc\":\"" + hobby3.text! + "\"},"
-        str += "{\"id\":\"" + content.hobbies[3].id + "\",\"desc\":\"" + hobby4.text! + "\"}"
+        str += "{\"description\":\"" + hobby1.text! + "\"},"
+        str += "{\"description\":\"" + hobby2.text! + "\"},"
+        str += "{\"description\":\"" + hobby3.text! + "\"},"
+        str += "{\"description\":\"" + hobby4.text! + "\"}"
         str += "]}"
         return str
     }
