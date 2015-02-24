@@ -3,7 +3,7 @@ AeroGear iOS Cookbook
 
 The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. This is a live version of the exact source code you can find [iOS cookbook documentation](http://aerogear.org/docs/guides/iOSCookbook/).
 
-Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear libraries and how it helps to achieve clean code. The app features are very lean and most of UI is kept to basics in order to focus on AeroGear library usage. 
+Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear libraries and how it helps to achieve clean code. The app features are very lean and most of UI is kept to basics in order to focus on AeroGear library usage.
 
 ## Table of content
 
@@ -11,7 +11,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | ------------- |:-------------:| :-----:|:-----:|
 | [Cooking](Recipe/CookingRecipe.md): CRUD made easy with SQLite store | **Store** | - | - |
 | [Shoot'n Share](Shoot/Shoot.md): Upload file to OAuth2 GoogleDrive | **File Upload** | - | OAuth2 |
-| [AeroDoc](https://github.com/aerogear/aerogear-aerodoc-ios): Full exemple on how to register, received notification with Java backend | Store, Pipe | **Push** | Login |
+| [AeroDoc](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/aerodoc-backend): Full exemple on how to register, received notification with Java backend | Store, Pipe | **Push** | Login |
 | [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **Push** | - |
 | [PushQuickstarts](https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server | - | **Push** | - |
 | [PushDemo](https://github.com/aerogear/aerogear-push-ios-demo): Simple demo of Push client registration with cocopods| - | **Push** | - |
@@ -25,7 +25,7 @@ Most of the recipes illustrate one main topic which is listed in bold in the tab
 
 Some of the demos uses a [backend](https://github.com/aerogear/aerogear-integration-tests-server).
 
-AeroGear features can be splitted into three main topics: 
+AeroGear features can be splitted into three main topics:
 
 * AeroGear Core: Store, Pipe, Paging, File upload etc...
 * AeroGear Push: APN/GCM push notification, SimplePush
