@@ -3,9 +3,9 @@ AeroGear iOS Cookbook
 
 > Recipe app build with Xcode6.1.1
 
-The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. 
+The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience.
 
-Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear libraries and how it helps to achieve clean code. The app features are very lean and most of UI is kept to basics in order to focus on AeroGear library usage. 
+Each recipe is a complete iOS app. The goal of the recipes is to show you how easily you can use iOS AeroGear libraries and how it helps to achieve clean code. The app features are very lean and most of UI is kept to basics in order to focus on AeroGear library usage.
 
 |                 | Project Info  |
 | --------------- | ------------- |
@@ -21,7 +21,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe    | Core  | Push  | Security  |
 | ------------- |:-------------:| :-----:|:-----:|
-| [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth| - | - | **basic/digest** |
+| [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/aerodoc-backend) using basic/digest auth| - | - | **basic/digest** |
 | [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization | **http** | - | - |
 | [HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **push** | - |
 | [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo. Declined in 2 versions: JsonPatch RFC based or DiffMatchPatch text based.| **sync** | - | - |
@@ -30,7 +30,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos | http, **oauth2** | - | - |
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib | **http** | - | - |
 
-Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. 
+Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics.
 
 Some of the demos uses a [backend](https://github.com/aerogear/aerogear-backend-cookbook/).
 
