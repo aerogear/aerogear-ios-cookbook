@@ -56,8 +56,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
         let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
+        let syncPath = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPath")! as String
         let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
-        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)", syncEngine: engine)
+        syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)\(syncPath)", syncEngine: engine)
         connect()
         println("ClientId=\(clientId)")
     }
