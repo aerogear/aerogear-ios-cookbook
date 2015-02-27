@@ -2,6 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 xcodeproj 'SharedShoot.xcodeproj'
 platform :ios, '8.0'
+use_frameworks!
 
 pod 'AeroGearHttp', '0.2.0'
 pod 'AeroGearOAuth2', '0.2.0'
