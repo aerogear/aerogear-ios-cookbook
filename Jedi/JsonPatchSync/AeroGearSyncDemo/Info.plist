@@ -6,6 +6,8 @@
 	<string>localhost</string>
 	<key>SyncServerPort</key>
 	<integer>7777</integer>
+	<key>SyncServerPath</key>
+	<string>/sync</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
