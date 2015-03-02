@@ -139,6 +139,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     */
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         sync(textField)
+        textField.resignFirstResponder()
         return true
     }
     
