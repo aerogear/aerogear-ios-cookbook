@@ -34,7 +34,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jvj-ex-Tiu">
                                 <rect key="frame" x="130" y="120" width="447" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="wkj-aE-r01"/>
                                     <action selector="updates:" destination="vXZ-lx-hvc" eventType="editingChanged" id="qpb-E7-3kZ"/>
@@ -49,7 +49,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-Fd-hOE">
                                 <rect key="frame" x="23" y="211" width="554" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Ml7-dy-Z3z"/>
                                     <action selector="updates:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Wjq-42-Cnz"/>
@@ -58,7 +58,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6V-XS-trg">
                                 <rect key="frame" x="23" y="259" width="554" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="jUe-Px-vua"/>
                                     <action selector="updates:" destination="vXZ-lx-hvc" eventType="editingChanged" id="B92-Fb-Xdg"/>
@@ -67,7 +67,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mdn-sV-DyS">
                                 <rect key="frame" x="23" y="308" width="554" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="X12-gQ-C61"/>
                                     <action selector="updates:" destination="vXZ-lx-hvc" eventType="editingChanged" id="j1D-lH-XdU"/>
@@ -76,7 +76,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fhr-3p-SAV">
                                 <rect key="frame" x="23" y="358" width="554" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="editEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="7Vw-fO-ZNP"/>
                                     <action selector="updates:" destination="vXZ-lx-hvc" eventType="editingChanged" id="PGP-jK-vUY"/>
