@@ -5,7 +5,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'AeroGearHttp', '0.2.0'
-pod 'AeroGearOAuth2', '0.2.0'
+pod 'AeroGearOAuth2', '0.2.1'
 
 # due to swift compiler bug, disable the '-Fastest' optimization flag
 # for the 'AeroGearOAuth2' library
