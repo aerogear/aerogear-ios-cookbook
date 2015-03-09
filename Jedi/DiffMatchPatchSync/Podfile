@@ -4,10 +4,10 @@ xcodeproj 'AeroGearSyncDemo.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearSyncClient', :git => 'https://github.com/aerogear/aerogear-ios-sync-client.git', :branch => "master"
-pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+pod 'AeroGearSyncClient', '1.0.0-alpha.1'
+pod 'AeroGearSync/DiffMatchPatch', '1.0.0-alpha.1'
 
 target 'AeroGearSyncDemoTests' do
-    pod 'AeroGearSyncClient', :git => 'https://github.com/aerogear/aerogear-ios-sync-client.git', :branch => "master"
-   pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master" 
+    pod 'AeroGearSyncClient', '1.0.0-alpha.1'
+    pod 'AeroGearSync/DiffMatchPatch', '1.0.0-alpha.1'
 end
