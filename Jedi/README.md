@@ -30,7 +30,7 @@ Build and Deploy Jedi
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) 0.36.0 pre-release for handling its dependencies. As a pre-requisite, install [cocoapods pre-release](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) and then install the pod. 
+The project uses [cocoapods](http://cocoapods.org) 0.36 release for handling its dependencies. As a pre-requisite, install [cocoapods](http://blog.cocoapods.org/CocoaPods-0.36/) and then install the pod.
 
 Choose the variant of the demo you want to use, enter the directory and run:
 
