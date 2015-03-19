@@ -45,11 +45,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Let's register for settings update notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
             name: NSUserDefaultsDidChangeNotification, object: nil)
-
-
         self.http = Http()
         self.useCamera()
-
     }
 
     deinit {
@@ -148,7 +145,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func shareWithKeycloak() {
         println("Perform photo upload with Keycloak")
-//bazinga
+
         let keycloakHost = "http://localhost:8080"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
