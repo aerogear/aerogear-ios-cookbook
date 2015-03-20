@@ -124,7 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientId: "YYY",
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
-
+        //facebookConfig.isWebView = true
         let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
@@ -137,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let googleConfig = GoogleConfig(
             clientId: "<your client secret goes here.apps.googleusercontent.com>",
             scopes:["https://www.googleapis.com/auth/drive"])
-
+        //googleConfig.isWebView = true
         let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
@@ -151,7 +151,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientId: "shoot-third-party",
             host: keycloakHost,
             realm: "shoot-realm")
-
+        //keycloakConfig.isWebView = true
         let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
         self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())

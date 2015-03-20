@@ -35,16 +35,15 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
         let googleConfig = GoogleConfig(                              // [1]
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
-
-        let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [2]
+        //googleConfig.isWebView = true                               // [2]
+        let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [3]
         let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
-        http.authzModule = gdModule                                   // [3]
-
+        http.authzModule = gdModule                                   // [4]
         self.performUpload(http, parameters: self.extractImageAsMultipartParams())
     }
 ```
-In [1] initialize config
+In [1] initialize config. The default config uses an external browser approach when lauching the authorization request (ie: Safari opens to prompt you for your credentials). If you prefer to use an embedded webview, uncomment line [2].
 
-You can use AccountManager to create an OAuth2Module in [2]
+You can use AccountManager to create an OAuth2Module in [3]
 
-Simply create an http object and inject the oauth2 module [3], then all headers will be added for you when you do http.POST/GET etc...
+Simply create an http object and inject the oauth2 module [4], then all headers will be added for you when you do http.POST/GET etc...
