@@ -1,7 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-xcodeproj 'KeycloakDemo.xcodeproj'
-platform :ios, '7.0'
-
-pod 'AeroGear', '1.6.1'
-pod 'SVProgressHUD', '1.0'
