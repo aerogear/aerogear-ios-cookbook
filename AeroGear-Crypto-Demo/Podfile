@@ -1,0 +1,8 @@
+xcodeproj 'AeroGear-Crypto-Demo.xcodeproj'
+platform :ios, '7.0'
+         
+pod 'AeroGear', '1.6.1'
+pod 'UIActionSheet-Blocks', '1.0'
+pod 'UIAlertView+Blocks', '0.7'
+pod 'SVProgressHUD', '1.0'
+
