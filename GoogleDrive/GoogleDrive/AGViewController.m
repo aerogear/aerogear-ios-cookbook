@@ -153,7 +153,7 @@
         config.authzEndpoint = @"/o/oauth2/auth";
         config.accessTokenEndpoint = @"/o/oauth2/token";
         config.revokeTokenEndpoint = @"/o/oauth2/revoke";
-        config.clientId = @"241956090675-gkeh47arq23mdise57kf3abecte7i5km.apps.googleusercontent.com";
+        config.clientId = @"<your client secret goes here.apps.googleusercontent.com>";
         config.redirectURL = @"org.aerogear.GoogleDrive:/oauth2Callback";
         config.scopes = @[@"https://www.googleapis.com/auth/drive"];
     }];
