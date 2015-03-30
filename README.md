@@ -22,8 +22,8 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Shoot'n Share](Shoot/Shoot.md): Upload file to OAuth2 GoogleDrive | **File Upload** | - | OAuth2 |
 | [AeroDoc](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/aerodoc-backend): Full exemple on how to register, received notification with Java backend | Store, Pipe | **Push** | Login |
 | [Xmas](Xmas/Xmas.md): Demo how to encrypt/decrypt with crypto-lib | Store | - | **Encrypted API** |
-| [CryptoDemo](CryptoDemo/README.md): Demo how to use Encrypted Storage | Store | - | **EncryptedStorage** |
-| [OTPDemo](OTPDemo/README.md): How to use OTP client lib with a Java backend | - | - | **Login** |
+| [PasswordManager](PasswordManager/README.md): Demo how to use Encrypted Storage | Store | - | **EncryptedStorage** |
+| [Two-Factor](Two-Factor/README.md): How to use OTP client lib with a Java backend | - | - | **Login** |
 | [GoogleDrive](GoogleDrive/GoogleDrive.md): OAuth2 to list all GoogleDrive documents | Pipe | - | **OAuth2** |
 
 ## Other AeroGear iOS example apps
