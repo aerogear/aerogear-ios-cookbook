@@ -1,6 +1,3 @@
-[submodule "OTP"]
-	path = OTP
-	url = https://github.com/aerogear/aerogear-otp-ios-demo.git
 [submodule "CryptoDemo"]
 	path = CryptoDemo
 	url = https://github.com/aerogear/aerogear-crypto-ios-demo.git
