@@ -1,6 +1,3 @@
-[submodule "CryptoDemo"]
-	path = CryptoDemo
-	url = https://github.com/aerogear/aerogear-crypto-ios-demo.git
 [submodule "PushDemo"]
 	path = PushDemo
 	url = https://github.com/aerogear/aerogear-push-ios-demo.git
