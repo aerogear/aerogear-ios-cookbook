@@ -1,0 +1,11 @@
+xcodeproj 'AeroGear-OTP-Demo.xcodeproj'
+
+platform :ios, '7.0'
+
+pod 'AeroGear', '1.6.1'
+pod 'AeroGear-OTP', '1.0.1'
+pod 'SVProgressHUD', '1.0'
+
+target 'AeroGear-OTP-DemoTests', :exclusive => true do
+	pod 'OCHamcrest', '1.9'
+end
