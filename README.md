@@ -32,7 +32,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe    | Core  | Push  | Security  |
 | ------------- |:-------------:| :-----:|:-----:|
-| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **push** | - |
+| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld/tree/master/ios): Simple demo of Push registration and notification handles with framework as dependencies | - | **push** | - |
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server | - | **Push** | - |
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. 
