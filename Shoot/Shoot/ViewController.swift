@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera
-            imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
+            imagePicker.mediaTypes = [kUTTypeImage]
             imagePicker.allowsEditing = false
 
             // resize
@@ -110,7 +110,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 var imagePicker = UIImagePickerController()
                 imagePicker.delegate = self;
                 imagePicker.sourceType = .PhotoLibrary
-                imagePicker.mediaTypes = NSArray(object: kUTTypeImage)
+                imagePicker.mediaTypes = [kUTTypeImage]
                 imagePicker.allowsEditing = false
                 self.presentViewController(imagePicker, animated:true, completion:{})
                 newMedia = false
@@ -170,13 +170,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     // MARK - UIImagePickerControllerDelegate
 
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion:nil)
-        var image: UIImage = info[UIImagePickerControllerOriginalImage] as UIImage
+        var image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         if (newMedia == true) {
             UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
         } else {
-            var imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as NSURL
+            var imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             var assetslibrary = ALAssetsLibrary()
             assetslibrary.assetForURL(imageURL, resultBlock: {
                 (asset: ALAsset!) in

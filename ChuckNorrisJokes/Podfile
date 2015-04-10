@@ -4,5 +4,5 @@ xcodeproj 'ChuckNorrisJokes.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearHttp', '0.2.0'
-pod 'AeroGearJsonSZ', '0.1.0'
+pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
+pod 'AeroGearJsonSZ', :git => "https://github.com/aerogear/aerogear-ios-jsonsz.git", :branch => "master"

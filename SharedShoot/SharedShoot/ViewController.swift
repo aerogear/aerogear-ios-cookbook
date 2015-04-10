@@ -73,14 +73,14 @@ class ViewController: UIViewController {
                 if error != nil {
                     println("Oops something must have being wrong. Check your URL. Is your Keycloak server running? \n\(error)")
                 }
-                var files = response as [AnyObject]
+                var files = response as! [AnyObject]
                 files.map({ (file: AnyObject) -> () in
                     let image = file as? [String: AnyObject]
                     if let image = image {
-                        let fileId = image["filename"] as String
+                        let fileId = image["filename"] as! String
                         // Find the path where the photo will be downloaded
                         let fileManager = NSFileManager.defaultManager()
-                        let path  = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+                        let path  = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
                         fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: nil)
                         let finalDestination = path.stringByAppendingPathComponent(fileId)
                         // Download the photo one by one
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
 
                             }, completionHandler: { (response, error) in
                                 if let fileBase64EncodedContent =  NSString(contentsOfFile: finalDestination, encoding: NSUTF8StringEncoding, error: nil) {
-                                    if let data = NSData(base64EncodedString: fileBase64EncodedContent, options: NSDataBase64DecodingOptions.allZeros) {
+                                    if let data = NSData(base64EncodedString: fileBase64EncodedContent as String, options: NSDataBase64DecodingOptions.allZeros) {
                                         if let image = UIImage(data: data) {
                                             self.images.append(image)
                                         }

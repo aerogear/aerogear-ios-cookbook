@@ -84,16 +84,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        if let temperatureResult = ((jsonResult["main"]? as NSDictionary)["temp"] as? Double) {
-            if let sys = (jsonResult["sys"]? as? NSDictionary) {
+        if let temperatureResult = ((jsonResult["main"] as! NSDictionary)["temp"] as? Double) {
+            if let sys = (jsonResult["sys"] as? NSDictionary) {
                 let temperature = temperatureUnit(sys["country"] as? String, temperatureResult)
                 self.temperature?.text = "\(temperature)°"
                 self.location?.text =  jsonResult["name"] as? String
                 
-                if let weather = jsonResult["weather"]? as? NSArray {
-                    let condition = (weather[0] as NSDictionary)["id"] as Int
-                    let sunrise = sys["sunrise"] as Double
-                    let sunset = sys["sunset"] as Double
+                if let weather = jsonResult["weather"] as? NSArray {
+                    let condition = (weather[0] as! NSDictionary)["id"] as! Int
+                    let sunrise = sys["sunrise"] as! Double
+                    let sunset = sys["sunset"] as! Double
                     var nightTime = false
                     let now = NSDate().timeIntervalSince1970
                     if (now < sunrise || now > sunset) {
@@ -134,7 +134,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var location:CLLocation = locations[locations.count-1] as CLLocation
+        var location:CLLocation = locations[locations.count-1] as! CLLocation
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation()

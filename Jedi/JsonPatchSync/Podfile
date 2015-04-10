@@ -4,10 +4,14 @@ xcodeproj 'AeroGearSyncDemo.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearSyncClient', '1.0.0-alpha.1'
-pod 'AeroGearSync/JSONPatch', '1.0.0-alpha.1'
+pod 'Starscream', '0.9.3'
+pod 'AeroGearSyncClient', :git => "https://github.com/aerogear/aerogear-ios-sync-client.git", :branch => "master"
+pod 'AeroGearSync/Core', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+pod 'AeroGearSync/JSONPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
 
 target 'AeroGearSyncDemoTests' do
-    pod 'AeroGearSyncClient', '1.0.0-alpha.1'
-   pod 'AeroGearSync/JSONPatch', '1.0.0-alpha.1'
+	pod 'Starscream', '0.9.3'
+	pod 'AeroGearSyncClient', :git => "https://github.com/aerogear/aerogear-ios-sync-client.git", :branch => "master"
+	pod 'AeroGearSync/Core', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+	pod 'AeroGearSync/JSONPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
 end

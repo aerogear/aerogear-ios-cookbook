@@ -33,9 +33,9 @@ public class Info : Printable {
     }
     
     public convenience init(dict: Json) {
-        self.init(name: dict["name"]! as String,
-            profession: dict["profession"]! as String,
-            hobbies: (dict["hobbies"] as [Json]).map { Hobby(desc: $0["description"]! as String) })
+        self.init(name: dict["name"]! as! String,
+            profession: dict["profession"]! as! String,
+            hobbies: (dict["hobbies"] as! [Json]).map { Hobby(desc: $0["description"]! as! String) })
     }
     
     public var description: String {
