@@ -1,7 +1,7 @@
 AeroGear iOS Cookbook
 =====================
 
-> Recipe app build with Xcode6.1.1
+> Recipe app build with Xcode6.3
 
 The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. 
 
