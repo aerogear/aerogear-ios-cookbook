@@ -54,9 +54,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hobby4.delegate = self
         updateFields(content)
 
-        let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as String
-        let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as Int
-        let syncPath = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPath")! as String
+        let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as! String
+        let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as! Int
+        let syncPath = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPath")! as! String
         let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)\(syncPath)", syncEngine: engine)
         connect()
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the current field gives up focus
     */
-    func textFieldShouldEndEditing(textField: UITextField!) -> Bool {
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         return true
     }
 
@@ -129,7 +129,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the keyboard is removed.
     */
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         sync(textField)
         textField.resignFirstResponder()
         return true

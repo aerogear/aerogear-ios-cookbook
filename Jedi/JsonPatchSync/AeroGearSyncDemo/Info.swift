@@ -31,9 +31,9 @@ public class Info : Printable {
     }
 
     public convenience init(dict: JsonNode) {
-        self.init(name: dict["name"]! as String,
-            profession: dict["profession"]! as String,
-            hobbies: (dict["hobbies"] as Array<JsonNode>).map { Hobby(desc: $0["description"]! as String) })
+        self.init(name: dict["name"]! as! String,
+            profession: dict["profession"]! as! String,
+            hobbies: (dict["hobbies"] as! [JsonNode]).map { Hobby(desc: $0["description"]! as! String) })
     }
 
     public var description: String {
