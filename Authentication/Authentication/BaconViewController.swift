@@ -33,7 +33,7 @@ class BaconViewController: UITableViewController {
                 }
                 
                 // set data and refresh
-                self.data = response as [String]
+                self.data = response as! [String]
                 self.tableView.reloadData()
         })
     }
@@ -43,7 +43,7 @@ class BaconViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
         cell.textLabel?.text = data[indexPath.row]
         return cell
