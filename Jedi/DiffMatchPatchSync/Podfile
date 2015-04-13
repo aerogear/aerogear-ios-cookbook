@@ -4,10 +4,14 @@ xcodeproj 'AeroGearSyncDemo.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearSyncClient', '1.0.0-alpha.1'
-pod 'AeroGearSync/DiffMatchPatch', '1.0.0-alpha.1'
+pod 'Starscream', '0.9.3'
+pod 'AeroGearSyncClient', :git => "https://github.com/corinnekrych/aerogear-ios-sync-client.git", :branch => "AGIOS-428.ios-8.3.migration"
+pod 'AeroGearSync/Core', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
+pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
 
 target 'AeroGearSyncDemoTests' do
-    pod 'AeroGearSyncClient', '1.0.0-alpha.1'
-    pod 'AeroGearSync/DiffMatchPatch', '1.0.0-alpha.1'
+	pod 'Starscream', '0.9.3'
+	pod 'AeroGearSyncClient', :git => "https://github.com/corinnekrych/aerogear-ios-sync-client.git", :branch => "AGIOS-428.ios-8.3.migration"
+	pod 'AeroGearSync/Core', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
+	pod 'AeroGearSync/DiffMatchPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
 end
