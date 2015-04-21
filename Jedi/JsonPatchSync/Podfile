@@ -5,13 +5,13 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Starscream', '0.9.3'
-pod 'AeroGearSyncClient', :git => "https://github.com/corinnekrych/aerogear-ios-sync-client.git", :branch => "AGIOS-428.ios-8.3.migration"
-pod 'AeroGearSync/Core', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
-pod 'AeroGearSync/JSONPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
+pod 'AeroGearSyncClient', :git => "https://github.com/aerogear/aerogear-ios-sync-client.git", :branch => "master"
+pod 'AeroGearSync/Core', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+pod 'AeroGearSync/JSONPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
 
 target 'AeroGearSyncDemoTests' do
 	pod 'Starscream', '0.9.3'
-	pod 'AeroGearSyncClient', :git => "https://github.com/corinnekrych/aerogear-ios-sync-client.git", :branch => "AGIOS-428.ios-8.3.migration"
-	pod 'AeroGearSync/Core', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
-	pod 'AeroGearSync/JSONPatch', :git => "https://github.com/corinnekrych/aerogear-ios-sync.git", :branch => "AGIOS-428.ios-8.3.migration"
+	pod 'AeroGearSyncClient', :git => "https://github.com/aerogear/aerogear-ios-sync-client.git", :branch => "master"
+	pod 'AeroGearSync/Core', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
+	pod 'AeroGearSync/JSONPatch', :git => "https://github.com/aerogear/aerogear-ios-sync.git", :branch => "master"
 end

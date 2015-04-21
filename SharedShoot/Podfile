@@ -4,6 +4,6 @@ xcodeproj 'SharedShoot.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearHttp', :git => "https://github.com/corinnekrych/aerogear-ios-http-1.git", :branch => "AGIOS-428.ios-8.3.migration"
-pod 'AeroGearOAuth2', :git => "https://github.com/corinnekrych/aerogear-ios-oauth2-1.git", :branch => "AGIOS-428.ios-8.3.migration"
+pod 'AeroGearHttp', :git => "https://github.com/aerogear/aerogear-ios-http.git", :branch => "master"
+pod 'AeroGearOAuth2', :git => "https://github.com/aerogear/aerogear-ios-oauth2.git", :branch => "master"
 
