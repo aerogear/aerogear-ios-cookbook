@@ -28,7 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var overlayView: UIView?
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
-    var zoomImage = (camera: true, display: true)
     var http: Http!
     @IBOutlet weak var imageView: UIImageView!
 
@@ -80,8 +79,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func goToSettings(sender: AnyObject) {
         // iOS8 open Settings from your current app
-        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
-        UIApplication.sharedApplication().openURL(settingsUrl!)
+        if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
+            let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
+            UIApplication.sharedApplication().openURL(settingsUrl!)
+        }
+        // else in iOS7 no settings access via app, but available in device settings
     }
 
     func useCamera() {
@@ -91,17 +93,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePicker.mediaTypes = [kUTTypeImage]
             imagePicker.allowsEditing = false
 
-            // resize
-            if (zoomImage.camera) {
-                self.imagePicker.cameraViewTransform = CGAffineTransformScale(self.imagePicker.cameraViewTransform, 1.5, 1.5);
-                self.zoomImage.camera = false
+            if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
+                // custom camera overlayview
+                imagePicker.showsCameraControls = false
+                NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
+                self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
+                imagePicker.cameraOverlayView = self.overlayView
+                self.overlayView = nil
             }
-            // custom camera overlayview
-            imagePicker.showsCameraControls = false
-            NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
-            self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
-            imagePicker.cameraOverlayView = self.overlayView
-            self.overlayView = nil
 
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
@@ -197,10 +196,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
-        if zoomImage.display {
-            self.imageView.transform = CGAffineTransformScale(self.imageView.transform, 1.7, 1.7)
-            self.zoomImage.display = false
-        }
         if let error = didFinishSavingWithError {
             let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
                 alert.show()
@@ -224,9 +219,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func presentAlert(title: String, message: String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
+            var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        } else { // iOS7 style
+            let alert = UIAlertView()
+            alert.title = title
+            alert.message = message
+            alert.addButtonWithTitle("OK")
+            alert.show()
+        }
     }
 }
 
