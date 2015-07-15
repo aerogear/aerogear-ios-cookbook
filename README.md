@@ -27,7 +27,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS7 [1], iOS8|
 | [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS8|
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS8|
-| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld/tree/master/ios): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS7, iOS8|
+| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS7, iOS8|
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS7, iOS8|
 
 **Note [1]**: http and oauth2 libraries are written in Swift and packaged as dynamic frameworks. Although you can deploy Swift app using dynamic frameworks on iOS7 device in dev, Apple Store doesn't accept them (min requirement: from iOS8+). The workaround for iOS7 is to include http, oauth2 code directly in your Swift app.
