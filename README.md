@@ -25,7 +25,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization.| **http** | - | - |iOS7 [1], iOS8|
 | [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo. Declined in 2 versions: JsonPatch RFC based or DiffMatchPatch text based.| **sync** | - | - |iOS8|
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS7 [1], iOS8|
-| [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS8|
+| [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS7 [1], iOS8|
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS7 [1], iOS8|
 | [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS7, iOS8|
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS7, iOS8|
