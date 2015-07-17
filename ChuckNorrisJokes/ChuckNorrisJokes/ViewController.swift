@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
     var http = Http()
     var data: [Joke] = []
     var serializer = JsonSZ()
-    
+
     func addRandomJokeToTableView() -> () {
         var joke: String
         http.GET("http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
@@ -43,8 +43,10 @@ class MasterViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 160.0
+        if "".respondsToSelector(Selector("containsString:")) == true { //iOS8+
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 160.0
+        } // do nothing for iOS7
         super.viewDidLoad()
         addRandomJokeToTableView()
     }
