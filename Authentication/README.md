@@ -11,8 +11,8 @@ This project is a very simple app, to show how to perform an HTTP Basic/Digest a
 
 System requirements
 -------------------
-- iOS 8.X
-- Xcode6.1.1 and later
+- iOS 7.X
+- Xcode6.4 and later
 
 Configure
 ---------

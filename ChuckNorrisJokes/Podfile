@@ -1,8 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 xcodeproj 'ChuckNorrisJokes.xcodeproj'
-platform :ios, '8.0'
+platform :ios, '7.0'
 use_frameworks!
 
-pod 'AeroGearHttp', '0.3.0'
-pod 'AeroGearJsonSZ', '0.2.0'
+
+pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+pod 'AeroGearJsonSZ', :git => 'https://github.com/aerogear/aerogear-ios-jsonsz.git'
