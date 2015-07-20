@@ -6,4 +6,4 @@ use_frameworks!
 
 
 pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
-pod 'AeroGearJsonSZ', :git => 'https://github.com/corinnekrych/aerogear-ios-jsonsz.git', :branch => 'AGIOS-457.ios7.min.deployement.target'
+pod 'AeroGearJsonSZ', :git => 'https://github.com/aerogear/aerogear-ios-jsonsz.git'
