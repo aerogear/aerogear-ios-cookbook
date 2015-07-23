@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let clear = userDefaults.boolForKey("clearShootKeychain")
         if (clear) {
-            println("clearing Keychain")
+            print("clearing Keychain")
             let kc = KeychainWrap()
             kc.resetKeychain()
         }
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         let notification = NSNotification(name: AGAppLaunchedWithURLNotification, object:nil, userInfo:[UIApplicationLaunchOptionsURLKey:url])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         return true

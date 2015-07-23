@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		488DDF3F1B613390000302FA /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CB6043B0FD510BB6EA1CAD27 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		489710E61A260E8200D3F730 /* icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489710E51A260E8200D3F730 /* icons.xcassets */; };
 		48E201061A23658B00C5CCC6 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E201041A23658B00C5CCC6 /* OverlayView.xib */; };
 		48E2D50A19F6F271002B5179 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48E2D50919F6F271002B5179 /* Settings.bundle */; };
@@ -26,6 +27,19 @@
 			remoteInfo = Shoot;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		488DDF3E1B613383000302FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				488DDF3F1B613390000302FA /* Pods.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		246FA7B54760F6184BC4957C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +166,7 @@
 				48F709F919B59E9800DDB152 /* Resources */,
 				BE8D5A28023FE2AE307E81C7 /* Embed Pods Frameworks */,
 				70486F6A01ABA95A5F9E6249 /* Copy Pods Resources */,
+				488DDF3E1B613383000302FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -186,7 +201,8 @@
 		48F709F319B59E9800DDB152 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = AeroGear;
 				TargetAttributes = {
 					48F709FA19B59E9800DDB152 = {
@@ -354,6 +370,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -423,6 +440,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -437,6 +455,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -455,6 +474,7 @@
 				);
 				INFOPLIST_FILE = ShootTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shoot.app/Shoot";
 			};
@@ -470,6 +490,7 @@
 				);
 				INFOPLIST_FILE = ShootTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shoot.app/Shoot";
 			};
