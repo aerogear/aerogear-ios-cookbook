@@ -203,7 +203,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
                 alert.show()
         }
-        shareWithKeycloak()
+        //shareWithKeycloak()
    }
 
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
