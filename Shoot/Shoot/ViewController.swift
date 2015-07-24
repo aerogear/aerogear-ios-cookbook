@@ -101,12 +101,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 imagePicker.cameraOverlayView = self.overlayView
                 self.overlayView = nil
             }
-
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
-            
-            
-            
         } else {
             if (UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum)) {
                 let imagePicker = UIImagePickerController()
@@ -148,7 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareWithKeycloak() {
         print("Perform photo upload with Keycloak")
 
-        let keycloakHost = "http://192.168.0.10:8080"
+        let keycloakHost = "http://localhost:8080"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
             host: keycloakHost,
@@ -203,7 +199,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
                 alert.show()
         }
-        //shareWithKeycloak()
    }
 
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
