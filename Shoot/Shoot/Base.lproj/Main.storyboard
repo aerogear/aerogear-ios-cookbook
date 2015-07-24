@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f2u-eh-GSp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f2u-eh-GSp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,16 +19,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tim-6x-e6f">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="512"/>
+                                <rect key="frame" x="4" y="0.0" width="592" height="512"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMk-sY-8Hc">
-                                <rect key="frame" x="0.0" y="512" width="600" height="88"/>
+                                <rect key="frame" x="4" y="512" width="592" height="88"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-EN-ff5">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="88"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="197" height="88"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="googleplus-icon" translatesAutoresizingMaskIntoConstraints="NO" id="npv-RH-Q33">
-                                                <rect key="frame" x="84" y="27" width="33" height="33"/>
+                                                <rect key="frame" x="82" y="27" width="33" height="33"/>
                                                 <gestureRecognizers/>
                                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="33" y="56" width="24" height="21"/>
@@ -56,14 +58,14 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="t3V-CA-LVE" appends="YES" id="wbg-Jc-6Tm"/>
+                                            <outletCollection property="gestureRecognizers" destination="JUv-Nl-wkg" appends="YES" id="LuO-iZ-9rN"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF8-tg-fgN">
-                                        <rect key="frame" x="400" y="0.0" width="200" height="88"/>
+                                        <rect key="frame" x="395" y="0.0" width="197" height="88"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-icon" translatesAutoresizingMaskIntoConstraints="NO" id="T3R-AW-esk">
-                                                <rect key="frame" x="84" y="28" width="33" height="33"/>
+                                                <rect key="frame" x="82" y="28" width="33" height="33"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.17254901959999999" green="0.25490196079999999" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,14 +90,14 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="1QL-yE-bBK" appends="YES" id="rAP-O1-ZpJ"/>
+                                            <outletCollection property="gestureRecognizers" destination="k2C-Tf-MNg" appends="YES" id="9pq-DH-inM"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FR6-cA-Lyp">
-                                        <rect key="frame" x="200" y="0.0" width="200" height="88"/>
+                                        <rect key="frame" x="197" y="0.0" width="198" height="88"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keycloack-icon" translatesAutoresizingMaskIntoConstraints="NO" id="mbI-aZ-UfH">
-                                                <rect key="frame" x="84" y="27" width="33" height="33"/>
+                                                <rect key="frame" x="83" y="27" width="33" height="33"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.22352941179999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,7 +125,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="3hf-R0-3UH" appends="YES" id="ybK-qo-Z3E"/>
+                                            <outletCollection property="gestureRecognizers" destination="CSa-7I-Thz" appends="YES" id="g4w-ot-YdT"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -209,7 +211,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-9X-8YN" userLabel="BackToCamera">
-                                <rect key="frame" x="16" y="20" width="56" height="61"/>
+                                <rect key="frame" x="20" y="20" width="56" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="bAE-0P-gza"/>
                                     <constraint firstAttribute="height" constant="61" id="diq-hO-j4k"/>
@@ -234,7 +236,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3c-bX-UA7">
-                                <rect key="frame" x="527" y="36" width="57" height="30"/>
+                                <rect key="frame" x="523" y="36" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="hvS-5a-l5h"/>
                                     <constraint firstAttribute="height" constant="30" id="zHb-ga-cp6"/>
@@ -341,19 +343,22 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="t3V-CA-LVE" userLabel="GoogleTap">
+                <tapGestureRecognizer id="JUv-Nl-wkg" userLabel="GoogleGestureTap">
+                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
-                        <action selector="shareWithGoogleDrive" destination="vXZ-lx-hvc" id="GX5-fd-BKu"/>
+                        <action selector="shareWithGoogleDrive" destination="vXZ-lx-hvc" id="x23-1E-yut"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="3hf-R0-3UH" userLabel="KeycloakTap">
+                <tapGestureRecognizer id="CSa-7I-Thz" userLabel="KeycloakGestureTap">
+                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
-                        <action selector="shareWithKeycloak" destination="vXZ-lx-hvc" id="NHP-7u-0kh"/>
+                        <action selector="shareWithKeycloak" destination="vXZ-lx-hvc" id="t7w-uX-iWv"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="1QL-yE-bBK" userLabel="FacebookTap">
+                <tapGestureRecognizer id="k2C-Tf-MNg" userLabel="FacebookGestureTap">
+                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
-                        <action selector="shareWithFacebook" destination="vXZ-lx-hvc" id="AYj-Rq-JeV"/>
+                        <action selector="shareWithFacebook" destination="vXZ-lx-hvc" id="MEL-8k-25e"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
