@@ -27,10 +27,10 @@ class MasterViewController: UITableViewController {
     var serializer = JsonSZ()
 
     func addRandomJokeToTableView() -> () {
-        var joke: String
+        var _: String
         http.GET("http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
              if error != nil {
-                println("An error has occured during read! \(error!)")
+                print("An error has occured during read! \(error!)")
                 return;
             }
             
@@ -88,7 +88,7 @@ class Joke: JSONSerializable {
 
 }
 
-extension Joke: Printable {
+extension Joke: CustomStringConvertible {
     var description: String {
         get {
             var description = ">>"
