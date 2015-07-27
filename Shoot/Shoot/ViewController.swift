@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
 
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -122,8 +122,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientId: "YYY",
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
+        // If you want to use embedded web view uncomment
         //facebookConfig.isWebView = true
-        let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let fbModule = KeycloakOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
+        //let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
         self.performUpload("https://graph.facebook.com/me/photos",  parameters: self.extractImageAsMultipartParams())
@@ -135,8 +139,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let googleConfig = GoogleConfig(
             clientId: "<your client secret goes here.apps.googleusercontent.com>",
             scopes:["https://www.googleapis.com/auth/drive"])
+        // If you want to use embedded web view uncomment
         //googleConfig.isWebView = true
-        let gdModule = AccountManager.addGoogleAccount(googleConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
+        
+        //let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
@@ -149,8 +158,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             clientId: "shoot-third-party",
             host: keycloakHost,
             realm: "shoot-realm")
+        // If you want to use embedded web view uncomment
         //keycloakConfig.isWebView = true
-        let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let gdModule = KeycloakOAuth2Module(config: keycloakConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(keycloakConfig.clientId)"))
+        //let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
         self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
 
