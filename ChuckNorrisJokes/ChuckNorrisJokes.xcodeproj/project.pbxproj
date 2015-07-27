@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482B2B9E1B666C0E000E0FCC /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 217C8DB6980E754F43A1C721 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48FF4B171A91F9E5003857E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF4B161A91F9E5003857E2 /* AppDelegate.swift */; };
 		48FF4B191A91F9E5003857E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF4B181A91F9E5003857E2 /* ViewController.swift */; };
 		48FF4B1C1A91F9E5003857E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FF4B1A1A91F9E5003857E2 /* Main.storyboard */; };
@@ -25,6 +26,19 @@
 			remoteInfo = ChuckNorrisJokes;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		482B2B9D1B666C06000E0FCC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				482B2B9E1B666C0E000E0FCC /* Pods.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		217C8DB6980E754F43A1C721 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +163,7 @@
 				48FF4B0F1A91F9E5003857E2 /* Resources */,
 				FFE8F26287E9135226822E80 /* Embed Pods Frameworks */,
 				01090371086E45DACBE1677F /* Copy Pods Resources */,
+				482B2B9D1B666C06000E0FCC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -183,6 +198,8 @@
 		48FF4B091A91F9E5003857E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = aerogear;
 				TargetAttributes = {
