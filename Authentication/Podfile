@@ -4,4 +4,4 @@ xcodeproj 'Authentication.xcodeproj'
 platform :ios, '7.0'
 use_frameworks!
 
-pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git', :branch => 'swift-2.0'

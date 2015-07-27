@@ -28,7 +28,7 @@ class BaconViewController: UITableViewController {
         Network.http.GET("/rest/grocery/bacons",  credential: credential,
             completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
                 if error != nil {
-                    println("An error has occured during read! \(error!)")
+                    print("An error has occured during read! \(error!)")
                     return
                 }
                 
@@ -43,7 +43,7 @@ class BaconViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         cell.textLabel?.text = data[indexPath.row]
         return cell
