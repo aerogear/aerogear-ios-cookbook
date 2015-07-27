@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.loadingIndicator?.startAnimating()
         self.view.backgroundColor = UIColor.whiteColor()
-        if locationManager.respondsToSelector(Selector("requestAlwaysAuthorization")) {
+        if #available(iOS 8.0, *) {
             locationManager.requestAlwaysAuthorization()
         }
         locationManager.startUpdatingLocation()
@@ -51,13 +51,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         session.GET("http://api.openweathermap.org/data/2.5/weather", parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
-                println("Error retrieving Weather \(error!)")
+                print("Error retrieving Weather \(error!)")
                 return
             }
             if response != nil {
                 // TODO refactor once AGIOS-13 is ready (object serialization)
-                if var resp = response as? NSDictionary! {
-                    println("JSON: " + resp.description)
+                if let resp = response as? NSDictionary! {
+                    print("JSON: " + resp.description)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateUISuccess(resp)
                     })
@@ -86,7 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if let temperatureResult = ((jsonResult["main"] as! NSDictionary)["temp"] as? Double) {
             if let sys = (jsonResult["sys"] as? NSDictionary) {
-                let temperature = temperatureUnit(sys["country"] as? String, temperatureResult)
+                let temperature = temperatureUnit(sys["country"] as? String, temperature: temperatureResult)
                 self.temperature?.text = "\(temperature)°"
                 self.location?.text =  jsonResult["name"] as? String
                 
@@ -126,25 +126,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case let x where x == 803: imageName = "03"
         case let x where x == 804: imageName = "04"
         case let x where x < 1000: imageName = "11"
-        case let x: imageName = "dunno"
+        case _: imageName = "dunno"
         }
         let night = "n"
         let day = "d"
         self.icon?.image = UIImage(named: "\(imageName)\(nightTime ? night : day ).png")
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var location:CLLocation = locations[locations.count-1] as! CLLocation
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location:CLLocation = locations[locations.count-1] 
         
         if (location.horizontalAccuracy > 0) {
             self.locationManager.stopUpdatingLocation()
-            println(">>\(location.coordinate)")
+            print(">>\(location.coordinate)")
             updateWeatherInfo(location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println(error)
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
         self.loading?.text = "Can't get your location!"
     }
 }
