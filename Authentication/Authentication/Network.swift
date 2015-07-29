@@ -22,7 +22,7 @@ public class Network {
     
     public class var http: Http {
         struct Singleton {
-            static let instance = Http(baseURL: "https://igtests-cvasilak.rhcloud.com")
+            static let instance = Http(baseURL: "https://bacon-corinnekrych.rhcloud.com")
         }
         
         return Singleton.instance
