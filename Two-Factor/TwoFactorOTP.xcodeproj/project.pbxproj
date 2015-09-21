@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48F479D31BB0058000C5E23F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F479D21BB0058000C5E23F /* AppDelegate.swift */; };
+		48F479D51BB0058000C5E23F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F479D41BB0058000C5E23F /* ViewController.swift */; };
+		48F479D81BB0058000C5E23F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F479D61BB0058000C5E23F /* Main.storyboard */; };
+		48F479DA1BB0058000C5E23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F479D91BB0058000C5E23F /* Assets.xcassets */; };
+		48F479DD1BB0058000C5E23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F479DB1BB0058000C5E23F /* LaunchScreen.storyboard */; };
+		48F479E51BB0248E00C5E23F /* QRcodeCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4D0A0AA74A82C727ECD3E4F8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87DF303A039A557A4F49962 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		48F479CF1BB0058000C5E23F /* TwoFactorOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoFactorOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F479D21BB0058000C5E23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		48F479D41BB0058000C5E23F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48F479D71BB0058000C5E23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48F479D91BB0058000C5E23F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48F479DC1BB0058000C5E23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48F479DE1BB0058000C5E23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRcodeCaptureViewController.swift; sourceTree = "<group>"; };
+		98191152D33145D23D32E152 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CE625E636484A0081D76F95B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F87DF303A039A557A4F49962 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48F479CC1BB0058000C5E23F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D0A0AA74A82C727ECD3E4F8 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48F479C61BB0058000C5E23F = {
+			isa = PBXGroup;
+			children = (
+				48F479D11BB0058000C5E23F /* TwoFactorOTP */,
+				48F479D01BB0058000C5E23F /* Products */,
+				6277BA07C039F33F23FA11F7 /* Pods */,
+				BAADDCF7D4263EB760E7BE13 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		48F479D01BB0058000C5E23F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48F479CF1BB0058000C5E23F /* TwoFactorOTP.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48F479D11BB0058000C5E23F /* TwoFactorOTP */ = {
+			isa = PBXGroup;
+			children = (
+				48F479D21BB0058000C5E23F /* AppDelegate.swift */,
+				48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */,
+				48F479D41BB0058000C5E23F /* ViewController.swift */,
+				48F479D61BB0058000C5E23F /* Main.storyboard */,
+				48F479D91BB0058000C5E23F /* Assets.xcassets */,
+				48F479DB1BB0058000C5E23F /* LaunchScreen.storyboard */,
+				48F479DE1BB0058000C5E23F /* Info.plist */,
+			);
+			path = TwoFactorOTP;
+			sourceTree = "<group>";
+		};
+		6277BA07C039F33F23FA11F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				98191152D33145D23D32E152 /* Pods.debug.xcconfig */,
+				CE625E636484A0081D76F95B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BAADDCF7D4263EB760E7BE13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F87DF303A039A557A4F49962 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48F479CE1BB0058000C5E23F /* TwoFactorOTP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48F479E11BB0058000C5E23F /* Build configuration list for PBXNativeTarget "TwoFactorOTP" */;
+			buildPhases = (
+				21726E50D5D08CE3EBA6F921 /* Check Pods Manifest.lock */,
+				48F479CB1BB0058000C5E23F /* Sources */,
+				48F479CC1BB0058000C5E23F /* Frameworks */,
+				48F479CD1BB0058000C5E23F /* Resources */,
+				FCCD581AB3E13550B55D5B88 /* Embed Pods Frameworks */,
+				0175BE608EC19CE86CF1CABF /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TwoFactorOTP;
+			productName = TwoFactorOTP;
+			productReference = 48F479CF1BB0058000C5E23F /* TwoFactorOTP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48F479C71BB0058000C5E23F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = AeroGear;
+				TargetAttributes = {
+					48F479CE1BB0058000C5E23F = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 48F479CA1BB0058000C5E23F /* Build configuration list for PBXProject "TwoFactorOTP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48F479C61BB0058000C5E23F;
+			productRefGroup = 48F479D01BB0058000C5E23F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48F479CE1BB0058000C5E23F /* TwoFactorOTP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48F479CD1BB0058000C5E23F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F479DD1BB0058000C5E23F /* LaunchScreen.storyboard in Resources */,
+				48F479DA1BB0058000C5E23F /* Assets.xcassets in Resources */,
+				48F479D81BB0058000C5E23F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0175BE608EC19CE86CF1CABF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21726E50D5D08CE3EBA6F921 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCCD581AB3E13550B55D5B88 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48F479CB1BB0058000C5E23F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F479D51BB0058000C5E23F /* ViewController.swift in Sources */,
+				48F479E51BB0248E00C5E23F /* QRcodeCaptureViewController.swift in Sources */,
+				48F479D31BB0058000C5E23F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		48F479D61BB0058000C5E23F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F479D71BB0058000C5E23F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		48F479DB1BB0058000C5E23F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F479DC1BB0058000C5E23F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48F479DF1BB0058000C5E23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48F479E01BB0058000C5E23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48F479E21BB0058000C5E23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98191152D33145D23D32E152 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwoFactorOTP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.TwoFactorOTP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		48F479E31BB0058000C5E23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE625E636484A0081D76F95B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwoFactorOTP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.TwoFactorOTP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48F479CA1BB0058000C5E23F /* Build configuration list for PBXProject "TwoFactorOTP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F479DF1BB0058000C5E23F /* Debug */,
+				48F479E01BB0058000C5E23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48F479E11BB0058000C5E23F /* Build configuration list for PBXNativeTarget "TwoFactorOTP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F479E21BB0058000C5E23F /* Debug */,
+				48F479E31BB0058000C5E23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48F479C71BB0058000C5E23F /* Project object */;
+}

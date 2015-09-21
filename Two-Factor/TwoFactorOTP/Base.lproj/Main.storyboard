@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TwoFactorOTP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-zX-PSk">
+                                <rect key="frame" x="20" y="299" width="560" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-ji-5SM">
+                                <rect key="frame" x="271" y="236" width="59" height="30"/>
+                                <state key="normal" title="Scan QR"/>
+                                <connections>
+                                    <action selector="captureQRCode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pey-an-cxv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="digitDisplay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYP-c7-7sb">
+                                <rect key="frame" x="234" y="326" width="132" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="6ad-5i-qQe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bqq-zX-PSk" firstAttribute="top" secondItem="orG-ji-5SM" secondAttribute="bottom" constant="33" id="CF5-Z5-VFo"/>
+                            <constraint firstItem="Bqq-zX-PSk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Cvo-8f-9d9"/>
+                            <constraint firstItem="Bqq-zX-PSk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Z2X-dN-L1T"/>
+                            <constraint firstItem="orG-ji-5SM" firstAttribute="centerX" secondItem="Bqq-zX-PSk" secondAttribute="centerX" id="djf-B5-4H6"/>
+                            <constraint firstItem="Bqq-zX-PSk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f1j-5w-QBE"/>
+                            <constraint firstItem="HYP-c7-7sb" firstAttribute="centerX" secondItem="Bqq-zX-PSk" secondAttribute="centerX" id="kNd-ch-y0z"/>
+                            <constraint firstItem="HYP-c7-7sb" firstAttribute="top" secondItem="Bqq-zX-PSk" secondAttribute="bottom" constant="25" id="n9S-JU-yYw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayQRCode" destination="HYP-c7-7sb" id="YRx-t1-pco"/>
+                        <outlet property="progressBarView" destination="Bqq-zX-PSk" id="wLT-IY-HwU"/>
+                        <outlet property="scanQRCodeButton" destination="orG-ji-5SM" id="Pl3-Qh-6vG"/>
+                        <segue destination="FNd-Nn-ArL" kind="show" identifier="qrcodecapture:" id="DU9-Zv-v34"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="420"/>
+        </scene>
+        <!--Rcode Capture View Controller-->
+        <scene sceneID="gUj-af-KxD">
+            <objects>
+                <viewController id="FNd-Nn-ArL" customClass="QRcodeCaptureViewController" customModule="TwoFactorOTP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qLn-Jf-Zkf"/>
+                        <viewControllerLayoutGuide type="bottom" id="2h5-dL-xWk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0xI-KQ-D3z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="displayOTP:" id="QQL-s7-44B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7t7-eR-IAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="420"/>
+        </scene>
+    </scenes>
+</document>
