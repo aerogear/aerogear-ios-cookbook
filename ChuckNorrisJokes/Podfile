@@ -5,5 +5,5 @@ platform :ios, '7.0'
 use_frameworks!
 
 
-pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git', :branch => 'swift-2.0'
-pod 'AeroGearJsonSZ', :git => 'https://github.com/aerogear/aerogear-ios-jsonsz.git', :branch => 'swift-2.0'
+pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+pod 'AeroGearJsonSZ', :git => 'https://github.com/aerogear/aerogear-ios-jsonsz.git'

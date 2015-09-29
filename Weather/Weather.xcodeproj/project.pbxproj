@@ -26,7 +26,6 @@
 		48217F05197548C00005655E /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4F1196FECE500311CA4 /* 50d.png */; };
 		48217F06197548C00005655E /* 50n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4F2196FECE500311CA4 /* 50n.png */; };
 		482B2B9A1B6665E7000E0FCC /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 259607804ED7D2AF4A920CDB /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		482B2B9C1B666940000E0FCC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 482B2B9B1B666940000E0FCC /* Info.plist */; };
 		4865E4F3196FECE500311CA4 /* 01d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4E1196FECE500311CA4 /* 01d.png */; };
 		4865E4F4196FECE500311CA4 /* 01n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4E2196FECE500311CA4 /* 01n.png */; };
 		4865E4F5196FECE500311CA4 /* 02d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4865E4E3196FECE500311CA4 /* 02d.png */; };
@@ -279,7 +278,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = aerogear;
 				TargetAttributes = {
 					48AA2C53196ECE0F005F0F2F = {
@@ -335,7 +334,6 @@
 				48217F06197548C00005655E /* 50n.png in Resources */,
 				48AA2C5F196ECE0F005F0F2F /* Main.storyboard in Resources */,
 				48AA2C61196ECE0F005F0F2F /* Images.xcassets in Resources */,
-				482B2B9C1B666940000E0FCC /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -540,6 +539,7 @@
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -553,6 +553,7 @@
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -571,6 +572,7 @@
 				);
 				INFOPLIST_FILE = WeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -586,6 +588,7 @@
 				);
 				INFOPLIST_FILE = WeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
