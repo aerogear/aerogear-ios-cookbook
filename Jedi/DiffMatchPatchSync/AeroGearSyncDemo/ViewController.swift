@@ -17,13 +17,13 @@
 
 import UIKit
 import AeroGearSyncClient
+
 import AeroGearSync
 
 
 public func asDictionary(jsonString: String) -> [String: AnyObject]? {
-    var jsonErrorOptional: NSError?
-    return NSJSONSerialization.JSONObjectWithData((jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!,
-        options: NSJSONReadingOptions(0), error: &jsonErrorOptional) as? Dictionary<String, AnyObject>
+    return try! NSJSONSerialization.JSONObjectWithData((jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!,
+        options: NSJSONReadingOptions(rawValue: 0)) as? Dictionary<String, AnyObject>
 }
 
 
@@ -167,7 +167,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func sync(field: UITextField) {
-        println("syncing...\(field.text)")
+        print("syncing...\(field.text)")
         let json = ClientDocument<String>(id: documentId, clientId: clientId, content: fieldsAsJsonString())
         if dirty {
             backgroundQueue.addOperationWithBlock() {

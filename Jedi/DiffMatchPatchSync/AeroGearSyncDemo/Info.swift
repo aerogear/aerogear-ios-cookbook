@@ -18,7 +18,7 @@
 import Foundation
 import AeroGearSync
 
-public class Info : Printable {
+public class Info : CustomStringConvertible {
     
     public typealias Json = [String: AnyObject]
     
@@ -42,7 +42,7 @@ public class Info : Printable {
         return "Info[name=\(name), profession=\(profession), hobbies=\(hobbies)"
     }
     
-    public class Hobby : Printable {
+    public class Hobby : CustomStringConvertible {
         
         public let desc: String
         
