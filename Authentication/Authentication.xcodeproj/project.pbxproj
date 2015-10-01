@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482B2BA11B666E10000E0FCC /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F91F6F726D57FD552AFFC7E /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FB49E8BE1B18E139FE2BB5D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F91F6F726D57FD552AFFC7E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FCE3CBD1A261DA7009895C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CBC1A261DA7009895C2 /* AppDelegate.swift */; };
 		6FCE3CBF1A261DA7009895C2 /* BeersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE3CBE1A261DA7009895C2 /* BeersViewController.swift */; };
@@ -27,6 +28,19 @@
 			remoteInfo = Authentication;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		482B2B9F1B666DFF000E0FCC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				482B2BA11B666E10000E0FCC /* Pods.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F91F6F726D57FD552AFFC7E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +169,7 @@
 				6FCE3CB51A261DA7009895C2 /* Resources */,
 				145F0D455BF5891AF185CC83 /* Embed Pods Frameworks */,
 				66E1A7381BC0C7A79110CD7D /* Copy Pods Resources */,
+				482B2B9F1B666DFF000E0FCC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -189,7 +204,9 @@
 		6FCE3CAF1A261DA7009895C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Christos Vasilakis";
 				TargetAttributes = {
 					6FCE3CB61A261DA7009895C2 = {
@@ -358,6 +375,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -422,6 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -433,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -451,6 +471,7 @@
 				);
 				INFOPLIST_FILE = AuthenticationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Authentication.app/Authentication";
 			};
@@ -466,6 +487,7 @@
 				);
 				INFOPLIST_FILE = AuthenticationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Authentication.app/Authentication";
 			};

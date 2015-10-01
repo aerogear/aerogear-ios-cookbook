@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
 
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let clear = userDefaults.boolForKey("clearShootKeychain")
 
         if clear {
-            println("clearing keychain")
+            print("clearing keychain")
             let kc = KeychainWrap()
             kc.resetKeychain()
         }
@@ -79,7 +79,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func goToSettings(sender: AnyObject) {
         // iOS8 open Settings from your current app
-        if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
+        if #available(iOS 8.0, *) { // iOS8
             let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
             UIApplication.sharedApplication().openURL(settingsUrl!)
         }
@@ -90,10 +90,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera
-            imagePicker.mediaTypes = [kUTTypeImage]
+            imagePicker.mediaTypes = [String(kUTTypeImage)]
             imagePicker.allowsEditing = false
 
-            if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
+            if #available(iOS 8.0, *) { // iOS8
                 // custom camera overlayview
                 imagePicker.showsCameraControls = false
                 NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
@@ -101,15 +101,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 imagePicker.cameraOverlayView = self.overlayView
                 self.overlayView = nil
             }
-
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
         } else {
             if (UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum)) {
-                var imagePicker = UIImagePickerController()
+                let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self;
                 imagePicker.sourceType = .PhotoLibrary
-                imagePicker.mediaTypes = [kUTTypeImage]
+                imagePicker.mediaTypes = [String(kUTTypeImage)]
                 imagePicker.allowsEditing = false
                 self.presentViewController(imagePicker, animated:true, completion:{})
                 newMedia = false
@@ -118,40 +117,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func shareWithFacebook() {
-        println("Perform photo upload with Facebook")
+        print("Perform photo upload with Facebook")
         let facebookConfig = FacebookConfig(
             clientId: "YYY",
             clientSecret: "XXX",
             scopes:["photo_upload, publish_actions"])
+        // If you want to use embedded web view uncomment
         //facebookConfig.isWebView = true
-        let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let fbModule = KeycloakOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
+        //let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
         self.performUpload("https://graph.facebook.com/me/photos",  parameters: self.extractImageAsMultipartParams())
     }
 
     @IBAction func shareWithGoogleDrive() {
-        println("Perform photo upload with Google")
+        print("Perform photo upload with Google")
 
         let googleConfig = GoogleConfig(
             clientId: "<your client secret goes here.apps.googleusercontent.com>",
             scopes:["https://www.googleapis.com/auth/drive"])
+        // If you want to use embedded web view uncomment
         //googleConfig.isWebView = true
-        let gdModule = AccountManager.addGoogleAccount(googleConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
+        
+        //let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
 
     @IBAction func shareWithKeycloak() {
-        println("Perform photo upload with Keycloak")
+        print("Perform photo upload with Keycloak")
 
         let keycloakHost = "http://localhost:8080"
         let keycloakConfig = KeycloakConfig(
             clientId: "shoot-third-party",
             host: keycloakHost,
             realm: "shoot-realm")
+        // If you want to use embedded web view uncomment
         //keycloakConfig.isWebView = true
-        let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
+        
+        // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
+        let gdModule = KeycloakOAuth2Module(config: keycloakConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(keycloakConfig.clientId)"))
+        //let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
         self.http.authzModule = gdModule
         self.performUpload("\(keycloakHost)/shoot/rest/photos", parameters: self.extractImageAsMultipartParams())
 
@@ -169,24 +181,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     // MARK - UIImagePickerControllerDelegate
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         self.dismissViewControllerAnimated(true, completion:nil)
-        var image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         if (newMedia == true) {
             UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
         } else {
-            var imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-            var assetslibrary = ALAssetsLibrary()
+            let imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            let assetslibrary = ALAssetsLibrary()
             assetslibrary.assetForURL(imageURL, resultBlock: {
                 (asset: ALAsset!) in
                 if asset != nil {
-                    var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
+                    let assetRep: ALAssetRepresentation = asset.defaultRepresentation()
                     self.imageView.accessibilityIdentifier = assetRep.filename()
                     self.imageView.image = image;
                 }
             }, failureBlock: {
                 (error: NSError!) in
-                println("Error \(error)")
+                print("Error \(error)")
             }
             )
         }
@@ -196,7 +208,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
-        if let error = didFinishSavingWithError {
+        if let _ = didFinishSavingWithError {
             let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
                 alert.show()
         }
@@ -210,17 +222,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // extract the image filename
         let filename = self.imageView.accessibilityIdentifier;
 
-        let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image, 0.2),
+        let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image!, 0.2)!,
             name: "image",
-            filename: filename,
+            filename: filename!,
             mimeType: "image/jpg")
 
         return ["file": multiPartData]
     }
 
     func presentAlert(title: String, message: String) {
-        if "".respondsToSelector(Selector("containsString:")) == true { // iOS8
-            var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        if #available(iOS 8.0, *) { // iOS8
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
 

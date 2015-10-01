@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)\(syncPath)", syncEngine: engine)
         connect()
-        println("ClientId=\(clientId)")
+        print("ClientId=\(clientId)")
     }
 
     private func syncCallback(doc: ClientDocument<JsonNode>) {
@@ -159,7 +159,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func sync(field: UITextField) {
-        println("syncing...\(field.text)")
+        print("syncing...\(field.text)")
         let doc = ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson())
         if dirty {
             backgroundQueue.addOperationWithBlock() {

@@ -17,8 +17,8 @@
 
 import Foundation
 import AeroGearSync
-
-public class Info : Printable {
+public typealias JsonNode = [String: AnyObject]
+public class Info : CustomStringConvertible {
 
     public let name: String
     public let profession: String
@@ -40,7 +40,7 @@ public class Info : Printable {
         return "Info[name=\(name), profession=\(profession), hobbies=\(hobbies)"
     }
 
-    public class Hobby : Printable {
+    public class Hobby : CustomStringConvertible {
 
         public let desc: String
 
@@ -49,7 +49,7 @@ public class Info : Printable {
         }
 
         public var description: String {
-            return "Hobby[description=\(description)]"
+            return "Hobby[description=\(self.description)]"
         }
     }
 }
