@@ -15,8 +15,8 @@ The [iOS SyncEngine](https://github.com/aerogear/aerogear-ios-sync) performs the
 
 System requirements
 -------------------
-- iOS 8.X
-- Xcode version 6.1.1
+- iOS8, iOS9
+- Xcode version 7
 
 Configure
 ---------
@@ -30,7 +30,7 @@ Build and Deploy Jedi
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) 0.36 release for handling its dependencies. As a pre-requisite, install [cocoapods](http://blog.cocoapods.org/CocoaPods-0.36/) and then install the pod.
+The project uses [cocoapods](http://cocoapods.org) 0.37.1 release for handling its dependencies. As a pre-requisite, install [cocoapods](http://blog.cocoapods.org/CocoaPods-0.36/) and then install the pod.
 
 Choose the variant of the demo you want to use, enter the directory and run:
 
@@ -39,6 +39,7 @@ pod install
 ```
 
 and then double click on the generated .xcworkspace to open in Xcode.
+
 
 Application Flow
 ----------------
