@@ -30,6 +30,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS7, iOS8, iOS9|
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS7, iOS8, iOS9|
 | [Two-Factor](Two-Factor/README.md): Demo OTP with Keycloak server.| - | **OTP** | - |iOS7, iOS8, iOS9|
+| [Howdy](Howdy/README.md): Tell me how it is going for you. Howdy demoes text input notification with iOS9 on your phone and even on Watch.| - | **Push** | - |iOS9|
 
 **Note [1]**: http and oauth2 libraries are written in Swift and packaged as dynamic frameworks. Although you can deploy Swift app using dynamic frameworks on iOS7 device in dev, Apple Store doesn't accept them (min requirement: from iOS8+). The workaround for iOS7 is to include http, oauth2 code directly in your Swift app.
 
