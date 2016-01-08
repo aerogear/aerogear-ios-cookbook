@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94BF80A05B9137EA7FC5D230 /* Pods_AeroGearSyncDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E220FD1E24DBD01ADAAD3BC2 /* Pods_AeroGearSyncDemoTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		94BF80A05B9137EA7FC5D230 /* Pods_AeroGearSyncDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E220FD1E24DBD01ADAAD3BC2 /* Pods_AeroGearSyncDemoTests.framework */; };
 		C537FCB01A022A7F00CA79A0 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537FCAF1A022A7F00CA79A0 /* Info.swift */; };
 		C565E36A1A00EC5500EB2B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E3691A00EC5500EB2B1D /* AppDelegate.swift */; };
 		C565E36C1A00EC5500EB2B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E36B1A00EC5500EB2B1D /* ViewController.swift */; };
@@ -15,7 +15,7 @@
 		C565E3711A00EC5500EB2B1D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C565E3701A00EC5500EB2B1D /* Images.xcassets */; };
 		C565E3741A00EC5600EB2B1D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C565E3721A00EC5500EB2B1D /* LaunchScreen.xib */; };
 		C565E3801A00EC5600EB2B1D /* AeroGearSyncDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565E37F1A00EC5600EB2B1D /* AeroGearSyncDemoTests.swift */; };
-		F0850673CBF0EEE5A3C735F3 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB55F167CAD5E7F97A2506AB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F0850673CBF0EEE5A3C735F3 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB55F167CAD5E7F97A2506AB /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
