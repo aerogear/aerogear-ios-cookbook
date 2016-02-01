@@ -16,9 +16,9 @@
 */
 
 import UIKit
-import AeroGearSyncClient
+import AeroGearSyncClientDiffMatchPatch
 
-import AeroGearSync
+import AeroGearSyncDiffMatchPatch
 
 
 public func asDictionary(jsonString: String) -> [String: AnyObject]? {
