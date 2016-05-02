@@ -78,12 +78,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func goToSettings(sender: AnyObject) {
-        // iOS8 open Settings from your current app
-        if #available(iOS 8.0, *) { // iOS8
-            let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
-            UIApplication.sharedApplication().openURL(settingsUrl!)
-        }
-        // else in iOS7 no settings access via app, but available in device settings
+        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
+        UIApplication.sharedApplication().openURL(settingsUrl!)
     }
 
     func useCamera() {
@@ -92,15 +88,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePicker.sourceType = .Camera
             imagePicker.mediaTypes = [String(kUTTypeImage)]
             imagePicker.allowsEditing = false
-
-            if #available(iOS 8.0, *) { // iOS8
-                // custom camera overlayview
-                imagePicker.showsCameraControls = false
-                NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
-                self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
-                imagePicker.cameraOverlayView = self.overlayView
-                self.overlayView = nil
-            }
+            
+            // custom camera overlayview
+            imagePicker.showsCameraControls = false
+            NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
+            self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
+            imagePicker.cameraOverlayView = self.overlayView
+            self.overlayView = nil
             self.presentViewController(imagePicker, animated:true, completion:{})
             newMedia = true
         } else {
@@ -137,7 +131,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("Perform photo upload with Google")
 
         let googleConfig = GoogleConfig(
-            clientId: "<your client secret goes here.apps.googleusercontent.com>",
+            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
         // If you want to use embedded web view uncomment
         //googleConfig.isWebView = true
@@ -170,7 +164,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func performUpload(url: String, parameters: [String: AnyObject]?) {
-        self.http.POST(url, parameters: parameters, completionHandler: {(response, error) in
+        self.http.request(.POST, path: url, parameters: parameters, completionHandler: {(response, error) in
             if (error != nil) {
                 self.presentAlert("Error", message: error!.localizedDescription)
             } else {
@@ -231,18 +225,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func presentAlert(title: String, message: String) {
-        if #available(iOS 8.0, *) { // iOS8
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-
-        } else { // iOS7 style
-            let alert = UIAlertView()
-            alert.title = title
-            alert.message = message
-            alert.addButtonWithTitle("OK")
-            alert.show()
-        }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f2u-eh-GSp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f2u-eh-GSp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -344,19 +344,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="JUv-Nl-wkg" userLabel="GoogleGestureTap">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <action selector="shareWithGoogleDrive" destination="vXZ-lx-hvc" id="x23-1E-yut"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="CSa-7I-Thz" userLabel="KeycloakGestureTap">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <action selector="shareWithKeycloak" destination="vXZ-lx-hvc" id="t7w-uX-iWv"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="k2C-Tf-MNg" userLabel="FacebookGestureTap">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <action selector="shareWithFacebook" destination="vXZ-lx-hvc" id="MEL-8k-25e"/>
                     </connections>
