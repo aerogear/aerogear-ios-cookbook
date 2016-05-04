@@ -5,4 +5,4 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'AeroGearHttp', :git => 'http://github.com/aerogear/aerogear-ios-http'
-pod 'AeroGearOAuth2', :git => 'http://github.com/corinnekrych/aerogear-ios-oauth2-1', :branch => 'keycloak.1.9.1'
+pod 'AeroGearOAuth2', :git => 'http://github.com/aerogear/aerogear-ios-oauth2'
