@@ -11,7 +11,7 @@
 		48F187CF1A2CB56F00E07356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F187CE1A2CB56F00E07356 /* ViewController.swift */; };
 		48F187D21A2CB56F00E07356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D01A2CB56F00E07356 /* Main.storyboard */; };
 		48F187D41A2CB56F00E07356 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F187D31A2CB56F00E07356 /* Images.xcassets */; };
-		5D56912D4E44A164E609A82C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 809EC0E36A836448AFFB64D1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		49C53F83C99BDE8ED8BE6D44 /* Pods_SharedShoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E39F4C3522F28F484FDF192 /* Pods_SharedShoot.framework */; };
 		6FC68EE41A3F1E7700DDB020 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC68EE31A3F1E7700DDB020 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06F34EFB2DDE0AAA6086D3CD /* Pods-SharedShoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedShoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SharedShoot/Pods-SharedShoot.debug.xcconfig"; sourceTree = "<group>"; };
+		0E39F4C3522F28F484FDF192 /* Pods_SharedShoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharedShoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F187C71A2CB56F00E07356 /* SharedShoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedShoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F187CB1A2CB56F00E07356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F187CC1A2CB56F00E07356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,7 @@
 		57FB0A44522CF07B94D6D38E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6FC68EE31A3F1E7700DDB020 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		809EC0E36A836448AFFB64D1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A829F0950211701F429387 /* Pods-SharedShoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedShoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-SharedShoot/Pods-SharedShoot.release.xcconfig"; sourceTree = "<group>"; };
 		D4EC9FBFB74F92F973E2BCF1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D56912D4E44A164E609A82C /* Pods.framework in Frameworks */,
+				49C53F83C99BDE8ED8BE6D44 /* Pods_SharedShoot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				809EC0E36A836448AFFB64D1 /* Pods.framework */,
+				0E39F4C3522F28F484FDF192 /* Pods_SharedShoot.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,6 +133,8 @@
 			children = (
 				57FB0A44522CF07B94D6D38E /* Pods.debug.xcconfig */,
 				D4EC9FBFB74F92F973E2BCF1 /* Pods.release.xcconfig */,
+				06F34EFB2DDE0AAA6086D3CD /* Pods-SharedShoot.debug.xcconfig */,
+				A6A829F0950211701F429387 /* Pods-SharedShoot.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -140,12 +146,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48F187E61A2CB56F00E07356 /* Build configuration list for PBXNativeTarget "SharedShoot" */;
 			buildPhases = (
-				02F47ED22043310B3D2E2F8E /* Check Pods Manifest.lock */,
+				02F47ED22043310B3D2E2F8E /* [CP] Check Pods Manifest.lock */,
 				48F187C31A2CB56F00E07356 /* Sources */,
 				48F187C41A2CB56F00E07356 /* Frameworks */,
 				48F187C51A2CB56F00E07356 /* Resources */,
-				8B5CF36DC80E5CAA544F9CA0 /* Embed Pods Frameworks */,
-				7A45C8C79EB4C080F33A6FCA /* Copy Pods Resources */,
+				8B5CF36DC80E5CAA544F9CA0 /* [CP] Embed Pods Frameworks */,
+				7A45C8C79EB4C080F33A6FCA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,14 +240,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02F47ED22043310B3D2E2F8E /* Check Pods Manifest.lock */ = {
+		02F47ED22043310B3D2E2F8E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,34 +255,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7A45C8C79EB4C080F33A6FCA /* Copy Pods Resources */ = {
+		7A45C8C79EB4C080F33A6FCA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SharedShoot/Pods-SharedShoot-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8B5CF36DC80E5CAA544F9CA0 /* Embed Pods Frameworks */ = {
+		8B5CF36DC80E5CAA544F9CA0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SharedShoot/Pods-SharedShoot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -402,11 +408,11 @@
 		};
 		48F187E71A2CB56F00E07356 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FB0A44522CF07B94D6D38E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 06F34EFB2DDE0AAA6086D3CD /* Pods-SharedShoot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SharedShoot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,11 +421,11 @@
 		};
 		48F187E81A2CB56F00E07356 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4EC9FBFB74F92F973E2BCF1 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A6A829F0950211701F429387 /* Pods-SharedShoot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SharedShoot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aerogear.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
