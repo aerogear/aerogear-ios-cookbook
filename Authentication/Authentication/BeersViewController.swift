@@ -25,7 +25,7 @@ class BeersViewController: UITableViewController {
         super.viewDidLoad()
 
         let credential = NSURLCredential(user: "john", password: "123", persistence: .None)
-        Network.http.GET("/rest/grocery/beers",  credential: credential,
+        Network.http.request(.GET, path:"/rest/grocery/beers",  credential: credential,
             completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
                 if error != nil {
                     print("An error has occured during read! \(error!)")

@@ -1,7 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'Authentication.xcodeproj'
-platform :ios, '7.0'
+project 'Authentication.xcodeproj'
+platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+target 'Authentication' do
+	pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+end
