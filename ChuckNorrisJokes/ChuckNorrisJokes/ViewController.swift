@@ -28,7 +28,7 @@ class MasterViewController: UITableViewController {
 
     func addRandomJokeToTableView() -> () {
         var _: String
-        http.GET("http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
+        http.request(.GET, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
              if error != nil {
                 print("An error has occured during read! \(error!)")
                 return;
@@ -43,10 +43,10 @@ class MasterViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        if "".respondsToSelector(Selector("containsString:")) == true { //iOS8+
-            tableView.rowHeight = UITableViewAutomaticDimension
-            tableView.estimatedRowHeight = 160.0
-        } // do nothing for iOS7
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
+
         super.viewDidLoad()
         addRandomJokeToTableView()
     }
