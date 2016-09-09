@@ -16,7 +16,8 @@
 */
 
 import Foundation
-import AeroGearSync
+import AeroGearSyncClientJsonPatch
+
 public typealias JsonNode = [String: AnyObject]
 public class Info : CustomStringConvertible {
 

@@ -25,7 +25,7 @@ class BaconViewController: UITableViewController {
         super.viewDidLoad()
 
         let credential = NSURLCredential(user: "agnes", password: "123", persistence: .None)
-        Network.http.GET("/rest/grocery/bacons",  credential: credential,
+        Network.http.request(.GET, path:"/rest/grocery/bacons",  credential: credential,
             completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
                 if error != nil {
                     print("An error has occured during read! \(error!)")

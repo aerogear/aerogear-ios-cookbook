@@ -8,15 +8,10 @@ What is it?
 -----------
 This project is a simple demo for the work around [AeroGear Differential Synchronization](https://github.com/aerogear/aerogear-sync-server).
 
-There are two versions of the demo, ```JsonPatchSync``` to run the sync demo using [JsonPatch](https://tools.ietf.org/html/rfc6902) protocol or ```DiffMatchPatchSync``` that uses DiffMatchPatch [Google initial implementation](https://github.com/JanX2/google-diff-match-patch).
-
-Both demos uses the [iOS SyncClient](https://github.com/aerogear/aerogear-ios-sync-client) which handles the communication with the sync server. 
-The [iOS SyncEngine](https://github.com/aerogear/aerogear-ios-sync) performs the actual work of the DiffSync protocol for the SyncClient.
-
 System requirements
 -------------------
 - iOS8, iOS9
-- Xcode version 7
+- Xcode 7.3
 
 Configure
 ---------
@@ -30,7 +25,7 @@ Build and Deploy Jedi
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) 0.37.1 release for handling its dependencies. As a pre-requisite, install [cocoapods](http://blog.cocoapods.org/CocoaPods-0.36/) and then install the pod.
+The project uses [CocoaPods](http://cocoapods.org) for handling its dependencies. As a pre-requisite, install [CocoaPods](http://blog.cocoapods.org/) and then install the pod.
 
 Choose the variant of the demo you want to use, enter the directory and run:
 

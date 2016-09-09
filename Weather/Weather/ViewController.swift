@@ -37,9 +37,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.loadingIndicator?.startAnimating()
         self.view.backgroundColor = UIColor.whiteColor()
-        if #available(iOS 8.0, *) {
-            locationManager.requestAlwaysAuthorization()
-        }
+
+        locationManager.requestAlwaysAuthorization()
+        
         locationManager.startUpdatingLocation()
     }
     
@@ -49,7 +49,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
-        session.GET("http://api.openweathermap.org/data/2.5/weather", parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+        session.request(.GET, path: "http://api.openweathermap.org/data/2.5/weather", parameters:  ["lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 print("Error retrieving Weather \(error!)")
                 return

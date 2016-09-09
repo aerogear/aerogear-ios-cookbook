@@ -1,7 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'Weather.xcodeproj'
-platform :ios, '7.0'
+project 'Weather.xcodeproj'
+platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+target 'Weather' do
+	pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git'
+end

@@ -12,11 +12,13 @@
 		48F479D81BB0058000C5E23F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F479D61BB0058000C5E23F /* Main.storyboard */; };
 		48F479DA1BB0058000C5E23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F479D91BB0058000C5E23F /* Assets.xcassets */; };
 		48F479DD1BB0058000C5E23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F479DB1BB0058000C5E23F /* LaunchScreen.storyboard */; };
-		48F479E51BB0248E00C5E23F /* QRcodeCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		4D0A0AA74A82C727ECD3E4F8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87DF303A039A557A4F49962 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		48F479E51BB0248E00C5E23F /* QRcodeCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */; };
+		5BE29BED3745403A0E19395A /* Pods_TwoFactorOTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221D590AE6BB24B3A00DEB85 /* Pods_TwoFactorOTP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221D590AE6BB24B3A00DEB85 /* Pods_TwoFactorOTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwoFactorOTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		391375CB93AA2898349E02CF /* Pods-TwoFactorOTP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwoFactorOTP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwoFactorOTP/Pods-TwoFactorOTP.release.xcconfig"; sourceTree = "<group>"; };
 		48F479CF1BB0058000C5E23F /* TwoFactorOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoFactorOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F479D21BB0058000C5E23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F479D41BB0058000C5E23F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,6 +27,7 @@
 		48F479DC1BB0058000C5E23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48F479DE1BB0058000C5E23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F479E41BB0248E00C5E23F /* QRcodeCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRcodeCaptureViewController.swift; sourceTree = "<group>"; };
+		6BC3B55E7DED071841FDFD8B /* Pods-TwoFactorOTP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwoFactorOTP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwoFactorOTP/Pods-TwoFactorOTP.debug.xcconfig"; sourceTree = "<group>"; };
 		98191152D33145D23D32E152 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CE625E636484A0081D76F95B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F87DF303A039A557A4F49962 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0A0AA74A82C727ECD3E4F8 /* Pods.framework in Frameworks */,
+				5BE29BED3745403A0E19395A /* Pods_TwoFactorOTP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,8 @@
 			children = (
 				98191152D33145D23D32E152 /* Pods.debug.xcconfig */,
 				CE625E636484A0081D76F95B /* Pods.release.xcconfig */,
+				6BC3B55E7DED071841FDFD8B /* Pods-TwoFactorOTP.debug.xcconfig */,
+				391375CB93AA2898349E02CF /* Pods-TwoFactorOTP.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				F87DF303A039A557A4F49962 /* Pods.framework */,
+				221D590AE6BB24B3A00DEB85 /* Pods_TwoFactorOTP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,12 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48F479E11BB0058000C5E23F /* Build configuration list for PBXNativeTarget "TwoFactorOTP" */;
 			buildPhases = (
-				21726E50D5D08CE3EBA6F921 /* Check Pods Manifest.lock */,
+				21726E50D5D08CE3EBA6F921 /* [CP] Check Pods Manifest.lock */,
 				48F479CB1BB0058000C5E23F /* Sources */,
 				48F479CC1BB0058000C5E23F /* Frameworks */,
 				48F479CD1BB0058000C5E23F /* Resources */,
-				FCCD581AB3E13550B55D5B88 /* Embed Pods Frameworks */,
-				0175BE608EC19CE86CF1CABF /* Copy Pods Resources */,
+				FCCD581AB3E13550B55D5B88 /* [CP] Embed Pods Frameworks */,
+				0175BE608EC19CE86CF1CABF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,29 +166,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0175BE608EC19CE86CF1CABF /* Copy Pods Resources */ = {
+		0175BE608EC19CE86CF1CABF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwoFactorOTP/Pods-TwoFactorOTP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		21726E50D5D08CE3EBA6F921 /* Check Pods Manifest.lock */ = {
+		21726E50D5D08CE3EBA6F921 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,19 +196,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FCCD581AB3E13550B55D5B88 /* Embed Pods Frameworks */ = {
+		FCCD581AB3E13550B55D5B88 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwoFactorOTP/Pods-TwoFactorOTP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -325,11 +331,11 @@
 		};
 		48F479E21BB0058000C5E23F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98191152D33145D23D32E152 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 6BC3B55E7DED071841FDFD8B /* Pods-TwoFactorOTP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TwoFactorOTP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.TwoFactorOTP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,11 +344,11 @@
 		};
 		48F479E31BB0058000C5E23F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE625E636484A0081D76F95B /* Pods.release.xcconfig */;
+			baseConfigurationReference = 391375CB93AA2898349E02CF /* Pods-TwoFactorOTP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TwoFactorOTP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.TwoFactorOTP;
 				PRODUCT_NAME = "$(TARGET_NAME)";

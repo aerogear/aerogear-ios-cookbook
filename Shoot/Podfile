@@ -1,8 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'Shoot.xcodeproj'
+project 'Shoot.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGearHttp', :git => 'http://github.com/aerogear/aerogear-ios-http'
-pod 'AeroGearOAuth2', :git => 'http://github.com/aerogear/aerogear-ios-oauth2'
+target 'Shoot' do
+	pod 'AeroGearHttp', :git => 'http://github.com/aerogear/aerogear-ios-http'
+	pod 'AeroGearOAuth2', :git => 'http://github.com/aerogear/aerogear-ios-oauth2'
+end

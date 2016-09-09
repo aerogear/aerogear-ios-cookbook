@@ -11,8 +11,8 @@ This project is a very simple app, to show how to perform an HTTP Basic/Digest a
 
 System requirements
 -------------------
-- iOS7, iOS8, iOS9
-- Xcode7
+- iOS8, iOS9
+- Xcode7.3
 
 Configure
 ---------
@@ -36,7 +36,7 @@ If you deploy the backend locally, in Network.swift, update the URL accordingly:
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) for handling its dependencies. As a pre-requisite, install [cocoapods](http://blog.cocoapods.org/) and then install the pod. On the root directory of the project run:
+The project uses [CocoaPods](http://cocoapods.org) for handling its dependencies. As a pre-requisite, install [CocoaPods](http://blog.cocoapods.org/) and then install the pod. On the root directory of the project run:
 
 ```bash
 pod install

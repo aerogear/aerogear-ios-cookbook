@@ -1,7 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'TwoFactorOTP.xcodeproj'
-platform :ios, '7.0'
+project 'TwoFactorOTP.xcodeproj'
+platform :ios, '8.0'
 use_frameworks!
 
-pod 'AeroGear-OTP', '1.0.1'
+target 'TwoFactorOTP' do
+	pod 'AeroGear-OTP', '1.0.1'
+end

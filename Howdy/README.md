@@ -40,7 +40,7 @@ Replace SERVERL-URL, VARIANT-ID, VARIANT-SECRET from the on one provided for you
 System requirements
 -------------------
 - iOS 9.X / WatchOS2
-- Xcode version 7
+- Xcode 7.3
 
 Build and Deploy
 ----------------
