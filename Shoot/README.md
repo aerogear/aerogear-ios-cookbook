@@ -5,15 +5,11 @@ With Shoot'nShare you can take picture, browse your camera roll, pick a picture 
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
-Supported platforms: iOS7, iOS8, iOS9.
-
-**NOTES:** On iOS8, this demo securely stores OAuth2 tokens in your iOS keychain, we chosen to use ```WhenPasscodeSet``` policy as a result to run this app you need to have **your passcode set**.
-For iOS7, the ```WhenUnlockedThisDeviceOnly``` is choosen, no need of passcode to be set.
-For more details see [WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/new-kids-on-block-whenpasswordset.html) and [Keychain and WhenPasscodeSet blog post](http://corinnekrych.blogspot.fr/2014/09/touchid-and-keychain-ios8-best-friends.html)
+Supported platforms: iOS8, iOS9.
 
 ### Run it in Xcode
 
-The project uses [cocoapods](http://cocoapods.org) or handling its dependencies. As a pre-requisite, install [cocoapods](http://cocoapods.org) and then install the pod. On the root directory of the project run:
+The project uses [CocoaPods](http://cocoapods.org) or handling its dependencies. As a pre-requisite, install [CocoaPods](http://cocoapods.org) and then install the pod. On the root directory of the project run:
 
 ```bash
 pod install

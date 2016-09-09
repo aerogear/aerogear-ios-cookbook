@@ -12,8 +12,8 @@ The ```Two-Factor``` app demonstrates how to generate OTP tokens using Keycloak 
 
 ### 0. System Requirements
 
-* iOS7
-* Xcode 7 (Swift2.0 syntax)
+* iOS8, iOS9
+* Xcode 7.3
 
 ### Configuring a testing server
 
@@ -28,7 +28,7 @@ For more details, please refer to our [documentation](http://aerogear.org/docs/s
 
 ### Build Application
 
-The project uses cocoapods 0.36+ release for handling its dependencies. As a pre-requisite, install cocoapods and then install the pod. On the root directory of the project run:
+The project uses [CocoaPods](http://cocoapods.org) for handling its dependencies. As a pre-requisite, install [CocoaPods](http://blog.cocoapods.org/) and then install the pod. On the root directory of the project run:
 
 ```
 pod install
