@@ -42,7 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
 
         // Let's register for settings update notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleSettingsChangedNotification",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.handleSettingsChangedNotification),
             name: NSUserDefaultsDidChangeNotification, object: nil)
         self.http = Http()
         self.useCamera()
@@ -179,7 +179,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion:nil)
         let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         if (newMedia == true) {
-            UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else {
             let imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
             let assetslibrary = ALAssetsLibrary()
