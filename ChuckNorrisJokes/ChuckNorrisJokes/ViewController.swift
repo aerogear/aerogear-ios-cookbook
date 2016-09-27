@@ -18,14 +18,10 @@
 import UIKit
 
 import AeroGearHttp
-import AeroGearJsonSZ
 
 class MasterViewController: UITableViewController {
-
-    var http = Http()
     var data: [Joke] = []
-    var serializer = JsonSZ()
-
+    let http = Http()
     func addRandomJokeToTableView() -> () {
         var _: String
         http.request(.GET, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
@@ -33,11 +29,12 @@ class MasterViewController: UITableViewController {
                 print("An error has occured during read! \(error!)")
                 return;
             }
-            
-            if  let obj = response as? [String: AnyObject] {
-                    let joke = self.serializer.fromJSON(obj["value"]!, to: Joke.self)
+            if let response = response, let value = response["value"] {
+                if let value = value, let id  = value["id"] as? Int, let description = value["joke"] as? String {
+                    let joke = Joke(id: id, description: description)
                     self.data.append(joke)
                     self.tableView.reloadData()
+                }
             }
         })
     }
@@ -63,39 +60,20 @@ class MasterViewController: UITableViewController {
 
         let joke = data[indexPath.row]
         cell.titleLabel.text = "Joke #\(joke.id)"
-        cell.subtitleLabel.text = joke.joke
+        cell.subtitleLabel.text = joke.description
         cell.tag = indexPath.row
         
         return cell
     }
 }
 
-class Joke: JSONSerializable {
+class Joke {
     var id: Int = 0
-    var joke: String = ""
+    var description: String = ""
     
-    init(id: Int, joke: String) {
+    init(id: Int, description: String) {
         self.id = id
-        self.joke = joke
-    }
-    
-    required init() {}
-    
-    class func map(source: JsonSZ, object: Joke) {
-        object.id <= source["id"]
-        object.joke <= source["joke"]
-    }
-
-}
-
-extension Joke: CustomStringConvertible {
-    var description: String {
-        get {
-            var description = ">>"
-            description += "id:\(id) "
-            description += "joke:\(joke) "
-            return description
-        }
+        self.description = description
     }
 }
 
