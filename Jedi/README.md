@@ -10,8 +10,8 @@ This project is a simple demo for the work around [AeroGear Differential Synchro
 
 System requirements
 -------------------
-- iOS8, iOS9
-- Xcode 7.3
+- iOS8, iOS9, iOS10
+- Xcode8
 
 Configure
 ---------
