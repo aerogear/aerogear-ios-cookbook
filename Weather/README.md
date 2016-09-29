@@ -1,7 +1,7 @@
 Weather
 =======
 Level: Beginner  
-Technologies: Swift, iOS  
+Technologies: Swift 2.3, iOS
 Summary: A basic example of aerogear-ios-http  
 
 What is it?
@@ -11,8 +11,8 @@ This project is a very simple app, to show how to do a http call against a simpl
 
 System requirements
 -------------------
-- iOS8, iOS9.
-- Xcode 7.3
+- iOS8, iOS9, iOS10
+- Xcode8
 
 Configure
 ---------
