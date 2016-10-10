@@ -56,11 +56,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     private func generateOTPAndStartCount() {
         displayQRCode.text = self.otp!.generateOTP()
         self.counter = 0
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
     
     internal func update() {
-        counter++
+        counter += 1
         if counter == 30 {
             timer.invalidate()
             // Do again
