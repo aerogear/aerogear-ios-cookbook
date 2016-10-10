@@ -41,14 +41,14 @@ class ViewController: UIViewController {
     
     @IBAction func goPreviousImage(sender: UIButton) {
         if  self.currentIndex > 0 {
-            self.currentIndex--
+            self.currentIndex -= 1
         }
         self.imageView.image = self.images[self.currentIndex]
     }
     
     @IBAction func goNextImage(sender: UIButton) {
         if  self.currentIndex < self.images.count - 1{
-            self.currentIndex++
+            self.currentIndex += 1
         }
         self.imageView.image = self.images[self.currentIndex]
     }
