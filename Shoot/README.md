@@ -5,7 +5,7 @@ With Shoot'nShare you can take picture, browse your camera roll, pick a picture 
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
-Supported platforms: iOS8, iOS9.
+Supported platforms: iOS8, iOS9, iOS10.
 
 ### Run it in Xcode
 

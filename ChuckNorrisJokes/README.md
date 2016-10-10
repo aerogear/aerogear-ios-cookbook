@@ -12,7 +12,7 @@ This project is a very simple app, to show how to do a http call against a simpl
 System requirements
 -------------------
 - iOS8, iOS9, iOS10
-- Xcode7.3.1, Xcode8
+- Xcode 8+
 
 Build and Deploy ChuckNorrisJokes
 ---------------------------------
