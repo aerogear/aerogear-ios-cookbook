@@ -5,8 +5,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Shoot' do
-	pod 'AeroGearHttp', :git => 'http://github.com/aerogear/aerogear-ios-http'
-	pod 'AeroGearOAuth2', :git => 'http://github.com/aerogear/aerogear-ios-oauth2'
+	pod 'AeroGearHttp', '0.8.0'
+	pod 'AeroGearOAuth2', '0.8.0'
 end
 
 # Workaround to fix swifft version to 2.3 for Pods. 
