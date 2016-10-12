@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>org.aerogear.helloworldpush</string>
+	<string>org.aerogear.howdy</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
