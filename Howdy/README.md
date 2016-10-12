@@ -37,6 +37,22 @@ Replace SERVERL-URL, VARIANT-ID, VARIANT-SECRET from the on one provided for you
 
 **Note:** If you're running the server locally on development mode (ie: without TLS), you need to add a TLS1.2 exception in iOS9.
 
+### Changing bundle id
+* In the main tab, go to Target -> `helloworldpush` target, change `org.aerogear.how` to your own identifier for the `Bundle identifier` field. 
+* Do the same for WatchKit and WatchKit extension targets. 
+* Go to `Howdy/helloworldpush WatchKit App/Info.plist` right click `Open as source`, replace `org.aerogear.how` by your bundle id:
+```
+ <key>WKCompanionAppBundleIdentifier</key>
+ <string>org.aerogear.how</string>
+ ```
+* In `Howdy/helloworldpush WatchKit Extension/Info.plist`
+```
+<key>WKAppBundleIdentifier</key>
+<string>org.aerogear.how.watchkitapp</string>
+```
+Well done!
+
+
 System requirements
 -------------------
 - iOS 9, iOS10 / watchOS2, watchOS3 
