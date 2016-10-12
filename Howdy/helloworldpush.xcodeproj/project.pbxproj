@@ -496,7 +496,7 @@
 				);
 				INFOPLIST_FILE = "helloworldpush WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -521,7 +521,7 @@
 				);
 				INFOPLIST_FILE = "helloworldpush WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -542,7 +542,7 @@
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -563,7 +563,7 @@
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -589,7 +589,7 @@
 				);
 				INFOPLIST_FILE = helloworldpush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -612,7 +612,7 @@
 				);
 				INFOPLIST_FILE = helloworldpush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.howdy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
