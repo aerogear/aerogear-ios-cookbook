@@ -254,7 +254,6 @@
 				TargetAttributes = {
 					48DE7B691BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -265,12 +264,10 @@
 					};
 					48DE7B7B1BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
 						LastSwiftMigration = 0800;
 					};
 					48DE7B8A1BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -432,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -473,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -488,7 +485,7 @@
 				CODE_SIGN_ENTITLEMENTS = "helloworldpush WatchKit Extension/helloworldpush WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -513,7 +510,7 @@
 				CODE_SIGN_ENTITLEMENTS = "helloworldpush WatchKit Extension/helloworldpush WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,7 +535,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
@@ -559,7 +556,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
@@ -581,7 +578,7 @@
 				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,7 +601,7 @@
 				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 357BX7TCT5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

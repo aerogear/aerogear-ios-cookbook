@@ -1,7 +1,7 @@
 ChuckNorrisJokes
 ================
 Level: Beginner  
-Technologies: Swift, iOS  
+Technologies: Swift 2.3, iOS  
 Summary: A basic example of aerogear-ios-http  
 
 What is it?
