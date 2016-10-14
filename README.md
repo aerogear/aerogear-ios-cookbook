@@ -1,7 +1,7 @@
 AeroGear iOS Cookbook
 =====================
 
-> Recipe app build with Xcode7.3
+> Recipe apps built with Xcode8
 
 The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. 
 
@@ -21,16 +21,16 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 
 | Recipe    | Core  | Push  | Security  | Platform  |
 | ------------- |:-------------:| :-----:|:-----:|:----:|
-| [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth.| - | - | **basic/digest** |, iOS8, iOS9|
-| [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization.| **http** | - | - |, iOS8, iOS9|
-| [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo.| **sync** | - | - |iOS8, iOS9|
-| [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS8, iOS9|
-| [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS8, iOS9|
-| [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS8, iOS9|
-| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS8, iOS9|
-| [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS8, iOS9|
-| [Two-Factor](Two-Factor/README.md): Demo OTP with Keycloak server.| - | **OTP** | - |iOS8, iOS9|
-| [Howdy](Howdy/README.md): Tell me how it is going for you. Howdy demoes text input notification with iOS9 on your phone and even on Watch.| - | **Push** | - |iOS9|
+| [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth.| - | - | **basic/digest** |, iOS8, iOS9, iOS10|
+| [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization.| **http** | - | - |, iOS8, iOS9, iOS10|
+| [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo.| **sync** | - | - |iOS8, iOS9, iOS10|
+| [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS8, iOS9, iOS10|
+| [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS8, iOS9, iOS10|
+| [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS8, iOS9, iOS10|
+| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS8, iOS9, iOS10|
+| [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS8, iOS9, iOS10|
+| [Two-Factor](Two-Factor/README.md): Demo OTP with Keycloak server.| - | **OTP** | - |iOS8, iOS9, iOS10|
+| [Howdy](Howdy/README.md): Tell me how it is going for you. Howdy demoes text input notification with iOS9 on your phone and even on Watch.| - | **Push** | - |iOS9, iOS10|
 
 Most of the recipes illustrate one main topic which is listed in bold in the table. Some examples demonstrate other aspects of the libraries so it is also listed in the different topics. 
 

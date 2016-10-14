@@ -1,7 +1,7 @@
 Authentication
 =======
 Level: Beginner  
-Technologies: Swift, iOS  
+Technologies: Swift 2.3, iOS  
 Summary: A basic example of performing http basic/digest authentication using aerogear-ios-http
 
 What is it?
@@ -11,8 +11,8 @@ This project is a very simple app, to show how to perform an HTTP Basic/Digest a
 
 System requirements
 -------------------
-- iOS8, iOS9
-- Xcode7.3
+- iOS8, iOS9, iOS10
+- Xcode 8+
 
 Configure
 ---------

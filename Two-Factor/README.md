@@ -1,7 +1,7 @@
 # Two-Factor
 ------------
 Level: Beginner   
-Technologies: Swift, iOS   
+Technologies: Swift 2.3, iOS   
 Summary: A basic example how to use OTP   
 
 ## What is it?
@@ -12,8 +12,8 @@ The ```Two-Factor``` app demonstrates how to generate OTP tokens using Keycloak 
 
 ### 0. System Requirements
 
-* iOS8, iOS9
-* Xcode 7.3
+* iOS8, iOS9, iOS10
+* Xcode 8+
 
 ### Configuring a testing server
 

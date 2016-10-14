@@ -1,7 +1,7 @@
 Jedi
 ====
 Level: Beginner  
-Technologies: Swift, iOS  
+Technologies: Swift 2.3, iOS  
 Summary: A basic example of [aerogear-ios-sync](https://github.com/aerogear/aerogear-ios-sync), [aerogear-ios-sync-client](https://github.com/aerogear/aerogear-ios-sync-client)  
 
 What is it?
@@ -11,7 +11,7 @@ This project is a simple demo for the work around [AeroGear Differential Synchro
 System requirements
 -------------------
 - iOS8, iOS9, iOS10
-- Xcode8
+- Xcode 8+
 
 Configure
 ---------

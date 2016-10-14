@@ -20,7 +20,7 @@
 		48DE7B951BA0192900F4B2A9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE7B941BA0192900F4B2A9 /* ExtensionDelegate.swift */; };
 		48DE7B971BA0192900F4B2A9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE7B961BA0192900F4B2A9 /* NotificationController.swift */; };
 		48DE7B991BA0192900F4B2A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48DE7B981BA0192900F4B2A9 /* Assets.xcassets */; };
-		48DE7BAE1BA01FA900F4B2A9 /* AeroGearPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */; settings = {ASSET_TAGS = (); }; };
+		48DE7BAE1BA01FA900F4B2A9 /* AeroGearPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */; };
 		48DE7BB01BA0212B00F4B2A9 /* AeroGearPush.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -77,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		483BE5E41DAE5F87004A0425 /* helloworldpush.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = helloworldpush.entitlements; sourceTree = "<group>"; };
+		483BE5E51DAE6012004A0425 /* helloworldpush WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "helloworldpush WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		48DE7B6A1BA0192900F4B2A9 /* helloworldpush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloworldpush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48DE7B6D1BA0192900F4B2A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48DE7B6F1BA0192900F4B2A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		48DE7B6C1BA0192900F4B2A9 /* helloworldpush */ = {
 			isa = PBXGroup;
 			children = (
+				483BE5E41DAE5F87004A0425 /* helloworldpush.entitlements */,
 				48DE7B6D1BA0192900F4B2A9 /* AppDelegate.swift */,
 				48DE7B6F1BA0192900F4B2A9 /* ViewController.swift */,
 				48DE7B711BA0192900F4B2A9 /* Main.storyboard */,
@@ -164,6 +167,7 @@
 		48DE7B8F1BA0192900F4B2A9 /* helloworldpush WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				483BE5E51DAE6012004A0425 /* helloworldpush WatchKit Extension.entitlements */,
 				48DE7B921BA0192900F4B2A9 /* InterfaceController.swift */,
 				48DE7B941BA0192900F4B2A9 /* ExtensionDelegate.swift */,
 				48DE7B961BA0192900F4B2A9 /* NotificationController.swift */,
@@ -245,20 +249,32 @@
 		48DE7B621BA0192900F4B2A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = AeroGear;
 				TargetAttributes = {
 					48DE7B691BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					48DE7B7B1BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
+						LastSwiftMigration = 0800;
 					};
 					48DE7B8A1BA0192900F4B2A9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 357BX7TCT5;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -388,8 +404,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -433,8 +451,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -453,6 +473,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -461,7 +482,10 @@
 		48DE7B9E1BA0192900F4B2A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "helloworldpush WatchKit Extension/helloworldpush WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,20 +493,24 @@
 				);
 				INFOPLIST_FILE = "helloworldpush WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
 		48DE7B9F1BA0192900F4B2A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "helloworldpush WatchKit Extension/helloworldpush WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,51 +518,56 @@
 				);
 				INFOPLIST_FILE = "helloworldpush WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
 		48DE7BA21BA0192900F4B2A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
 		48DE7BA31BA0192900F4B2A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = helloworldpush_WatchKit_Extension;
 				INFOPLIST_FILE = "helloworldpush WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -542,7 +575,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -550,8 +586,11 @@
 				);
 				INFOPLIST_FILE = helloworldpush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -559,7 +598,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -567,8 +609,11 @@
 				);
 				INFOPLIST_FILE = helloworldpush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.how;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
