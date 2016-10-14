@@ -1,7 +1,7 @@
 AeroGear iOS Cookbook
 =====================
 
-> Recipe app build with Xcode7.3
+> Recipe apps built with Xcode8
 
 The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. 
 

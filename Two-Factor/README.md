@@ -1,7 +1,7 @@
 # Two-Factor
 ------------
 Level: Beginner   
-Technologies: Swift, iOS   
+Technologies: Swift 2.3, iOS   
 Summary: A basic example how to use OTP   
 
 ## What is it?

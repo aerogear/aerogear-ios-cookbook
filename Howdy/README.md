@@ -1,7 +1,7 @@
 Watch Howdy app
 ================
 Level: Beginner  
-Technologies: Swift, iOS9 + watchOS2 / iOS10 + watchOS3   
+Technologies: Swift 2.3, iOS9 + watchOS2 / iOS10 + watchOS3   
 Summary: A basic example of aerogear-ios-push with actionable action (text input).  
 
 What is it?
