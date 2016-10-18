@@ -24,13 +24,13 @@ class MasterViewController: UITableViewController {
     let http = Http()
     func addRandomJokeToTableView() -> () {
         var _: String
-        http.request(.GET, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
+        http.request(method: .get, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
              if error != nil {
                 print("An error has occured during read! \(error!)")
                 return;
             }
-            if let response = response, let value = response["value"] {
-                if let value = value, let id  = value["id"] as? Int, let description = value["joke"] as? String {
+            if let response = response as? Dictionary<String, Any>, let value = response["value"] {
+                if let value = value as? Dictionary<String, Any>, let id  = value["id"] as? Int, let description = value["joke"] as? String {
                     let joke = Joke(id: id, description: description)
                     self.data.append(joke)
                     self.tableView.reloadData()
@@ -48,20 +48,20 @@ class MasterViewController: UITableViewController {
         addRandomJokeToTableView()
     }
 
-    @IBAction func add(sender: UIBarButtonItem) {
+    @IBAction func add(_ sender: UIBarButtonItem) {
         addRandomJokeToTableView()
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as! BasicCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as! BasicCell
 
-        let joke = data[indexPath.row]
+        let joke = data[(indexPath as NSIndexPath).row]
         cell.titleLabel.text = "Joke #\(joke.id)"
         cell.subtitleLabel.text = joke.description
-        cell.tag = indexPath.row
+        cell.tag = (indexPath as NSIndexPath).row
         
         return cell
     }
