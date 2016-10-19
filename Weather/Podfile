@@ -5,7 +5,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Weather' do
-	pod 'AeroGearHttp', '0.8.0'
+	pod 'AeroGearHttp', :git => 'https://github.com/corinnekrych/aerogear-ios-http-1', :branch => 'Swift3'
 end
 
 # Workaround to fix swift version to 2.3 for Pods.
@@ -14,7 +14,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '2.3'
+      config.build_settings['SWIFT_VERSION'] = '3.0'
     end
   end
 end

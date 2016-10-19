@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         self.loadingIndicator?.startAnimating()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
 
         locationManager.requestAlwaysAuthorization()
         
@@ -47,9 +47,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    func updateWeatherInfo(_ latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
-        session.request(.GET, path: "http://api.openweathermap.org/data/2.5/weather", parameters:  ["APPID": "1cbe434326367a7b5baed20ffaa4cf2c", "lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+        session.request(.get, path: "http://api.openweathermap.org/data/2.5/weather", parameters:  ["APPID": "1cbe434326367a7b5baed20ffaa4cf2c", "lat":latitude, "lon":longitude, "cnt":0], completionHandler: { (response: Any?, error: NSError?) -> Void in
             if error != nil {
                 print("Error retrieving Weather \(error!)")
                 return
@@ -58,7 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 // TODO refactor once AGIOS-13 is ready (object serialization)
                 if let resp = response as? NSDictionary! {
                     print("JSON: " + resp.description)
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         self.updateUISuccess(resp)
                     })
                 }
@@ -68,12 +68,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func updateUISuccess(jsonResult: NSDictionary!) {
+    func updateUISuccess(_ jsonResult: NSDictionary!) {
         self.loading?.text = nil
-        self.loadingIndicator?.hidden = true
+        self.loadingIndicator?.isHidden = true
         self.loadingIndicator?.stopAnimating()
         
-        func temperatureUnit(country: String?, temperature: Double) -> Double {
+        func temperatureUnit(_ country: String?, temperature: Double) -> Double {
             if (country == "US") {
                 // Convert temperature to Fahrenheit if user is within the US
                 return round(((temperature - 273.15) * 1.8) + 32)
@@ -95,7 +95,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     let sunrise = sys["sunrise"] as! Double
                     let sunset = sys["sunset"] as! Double
                     var nightTime = false
-                    let now = NSDate().timeIntervalSince1970
+                    let now = Date().timeIntervalSince1970
                     if (now < sunrise || now > sunset) {
                         nightTime = true
                     }
@@ -111,7 +111,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     *  To pick the right icon go check weather table
     *  http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
     */
-    func updateWeatherIcon(condition: Int, nightTime: Bool) {
+    func updateWeatherIcon(_ condition: Int, nightTime: Bool) {
         var imageName: String
         switch (condition) {
         case let x where x < 300: imageName = "11"
@@ -133,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.icon?.image = UIImage(named: "\(imageName)\(nightTime ? night : day ).png")
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location:CLLocation = locations[locations.count-1] 
         
         if (location.horizontalAccuracy > 0) {
@@ -143,7 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
         self.loading?.text = "Can't get your location!"
     }
