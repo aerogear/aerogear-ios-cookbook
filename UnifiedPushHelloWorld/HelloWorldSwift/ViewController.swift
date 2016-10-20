@@ -29,19 +29,19 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         // register to be notified when state changes
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.registered), name: "success_registered", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.errorRegistration), name: "error_register", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.messageReceived(_:)), name: "message_received", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.registered), name: NSNotification.Name(rawValue: "success_registered"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.errorRegistration), name: NSNotification.Name(rawValue: "error_register"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.messageReceived(_:)), name: NSNotification.Name(rawValue: "message_received"), object: nil)
     }
    
     func registered() {
         print("registered")
         
         // workaround to get messages when app was not running
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults();
-        if(defaults.objectForKey("message_received") != nil) {
-            let msg : String! = defaults.objectForKey("message_received") as! String
-            defaults.removeObjectForKey("message_received")
+        let defaults: UserDefaults = UserDefaults.standard;
+        if(defaults.object(forKey: "message_received") != nil) {
+            let msg : String! = defaults.object(forKey: "message_received") as! String
+            defaults.removeObject(forKey: "message_received")
             defaults.synchronize()
     
             if(msg != nil) {
@@ -55,15 +55,16 @@ class ViewController: UITableViewController {
 
     func errorRegistration() {
         // can't do much, inform user to verify the UPS details entered and return
-        let message = UIAlertController(title: "Registration Error!", message: "Please verify the provisionioning profile and the UPS details have been setup correctly.", preferredStyle:  .Alert)
+        let message = UIAlertController(title: "Registration Error!", message: "Please verify the provisionioning profile and the UPS details have been setup correctly.", preferredStyle:  .alert)
         
-        self.presentViewController(message, animated:true, completion:nil)
+        self.present(message, animated:true, completion:nil)
     }
     
-    func messageReceived(notification: NSNotification) {
+    func messageReceived(_ notification: Notification) {
         print("received")
 
-        let obj:AnyObject? = notification.userInfo!["aps"]!["alert"]
+        let aps : [String: AnyObject] = ((notification as NSNotification).userInfo!["aps"] as? [String: AnyObject])!
+        let obj:AnyObject? = aps["alert"]
         
         // if alert is a flat string
         if let msg = obj as? String {
@@ -77,41 +78,41 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         var bgView:UIView?
         
         // determine current state
         if (!isRegistered) {  // not yet registered
-            let progress = self.navigationController?.storyboard?.instantiateViewControllerWithIdentifier("ProgressViewController")
+            let progress = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "ProgressViewController")
             if let progress = progress {bgView = progress.view}
         } else if (messages.count == 0) {  // registered but no notification received yet
-            let empty = self.navigationController?.storyboard?.instantiateViewControllerWithIdentifier("EmptyViewController")
+            let empty = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "EmptyViewController")
             if let empty = empty {bgView = empty.view}
         }
         
         // set the background view if needed
         if (bgView != nil) {
             self.tableView.backgroundView = bgView
-            self.tableView.separatorStyle = .None
+            self.tableView.separatorStyle = .none
             return 0
         }
         
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count;
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // if it's the first message in the stream, let's clear the 'empty' placeholder vier
         if (self.tableView.backgroundView != nil) {
             self.tableView.backgroundView = nil
-            self.tableView.separatorStyle = .SingleLine
+            self.tableView.separatorStyle = .singleLine
         }
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(AGNotificationCellIdentifier)!
-        cell.textLabel?.text = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: AGNotificationCellIdentifier)!
+        cell.textLabel?.text = messages[(indexPath as NSIndexPath).row]
         
         return cell
     }
