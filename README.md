@@ -27,8 +27,7 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS8, iOS9, iOS10|
 | [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS8, iOS9, iOS10|
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS8, iOS9, iOS10|
-| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS8, iOS9, iOS10|
-| [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-ios-client): Complete demo of Push notification with server side using UnifiedPush server.| - | **Push** | - |iOS8, iOS9, iOS10|
+| [UnifiedPushHelloWorld](UnifiedPushHelloWorld/README.md): Simple demo of Push registration and notification handles with framework as dependencies.| - | **push** | - |iOS8, iOS9, iOS10|
 | [Two-Factor](Two-Factor/README.md): Demo OTP with Keycloak server.| - | **OTP** | - |iOS8, iOS9, iOS10|
 | [Howdy](Howdy/README.md): Tell me how it is going for you. Howdy demoes text input notification with iOS9 on your phone and even on Watch.| - | **Push** | - |iOS9, iOS10|
 

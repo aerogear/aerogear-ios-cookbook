@@ -48,7 +48,7 @@ Application Flow
 
 ### Registration
 
-When the application is launched, AGAppDelegate's ```application:didFinishLaunchingWithOptions:``` registers the app to receive remote notifications. 
+When the application is launched, AppDelegate's ```application:didFinishLaunchingWithOptions:``` registers the app to receive remote notifications. 
 
 Note that _registerForRemoteNotificationTypes:_ has been removed in iOS8 in favor of _registerUserNotificationSettings:_ and _registerForRemoteNotifications_
 
@@ -64,9 +64,9 @@ Note that _registerForRemoteNotificationTypes:_ has been removed in iOS8 in favo
     }
 ```
 
-Therefore, AGAppDelegate's ```application:didRegisterForRemoteNotificationsWithDeviceToken:``` will be called.
+Therefore, AppDelegate's ```application:didRegisterForRemoteNotificationsWithDeviceToken:``` will be called.
 
-When AGAppDelegate's ```application:didRegisterForRemoteNotificationsWithDeviceToken:``` is called, the device is registered to UnifiedPush Server instance. This is where configuration changes are required (see code snippet below).
+When AppDelegate's ```application:didRegisterForRemoteNotificationsWithDeviceToken:``` is called, the device is registered to UnifiedPush Server instance. This is where configuration changes are required (see code snippet below).
 
 ### Sending message
 Now you can send a message to your device by clicking `Compose Message...` from the application page. Write a message in the text field and hit 'Send Push Message'. 
@@ -75,11 +75,11 @@ Now you can send a message to your device by clicking `Compose Message...` from 
 
 After a while you will see the message end up on the device. 
 
-When the application is running in foreground, you can catch messages in AGAppDelegate's  ```application:didReceiveRemoteNotification:```. The event is forwarded using ```NSNotificationCenter``` for decoupling AGappDelegate and AGViewController. It will be the responsability of AGViewController's ```messageReceived:``` method to render the message on UITableView.
+When the application is running in foreground, you can catch messages in AppDelegate's  ```application:didReceiveRemoteNotification:```. The event is forwarded using ```NSNotificationCenter``` for decoupling appDelegate and ViewController. It will be the responsability of ViewController's ```messageReceived:``` method to render the message on UITableView.
 
-When the app is running in background, user can bring the app in the foreground by selecting the Push notification. Therefore AGAppDelegate's  ```application:didReceiveRemoteNotification:``` will be triggered and the message displayed on the list. If a background processing was needed we could have used ```application:didReceiveRemoteNotification:fetchCompletionHandler:```. Refer to [Apple documentation for more details](https://developer.apple.com/library/ios/documentation/uikit/reference/UIApplicationDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:didReceiveRemoteNotification:fetchCompletionHandler:)
+When the app is running in background, user can bring the app in the foreground by selecting the Push notification. Therefore AppDelegate's  ```application:didReceiveRemoteNotification:``` will be triggered and the message displayed on the list. If a background processing was needed we could have used ```application:didReceiveRemoteNotification:fetchCompletionHandler:```. Refer to [Apple documentation for more details](https://developer.apple.com/library/ios/documentation/uikit/reference/UIApplicationDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:didReceiveRemoteNotification:fetchCompletionHandler:)
 
-For application not running, we're using AGAppDelegate's ```application:didFinishLaunchingWithOptions:```, we locally save the latest message and forward the event to AGViewController's ```messageReceived:```.
+For application not running, we're using AppDelegate's ```application:didFinishLaunchingWithOptions:```, we locally save the latest message and forward the event to ViewController's ```messageReceived:```.
 
 **NOTE**: The local save is required here because of the asynchronous nature of ```viewDidLoad``` vs ```application:didFinishLaunchingWithOptions:```
 
