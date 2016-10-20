@@ -5,7 +5,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Weather' do
-	pod 'AeroGearHttp', :git => 'https://github.com/corinnekrych/aerogear-ios-http-1', :branch => 'Swift3'
+	pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http'
 end
 
 # Workaround to fix swift version to 2.3 for Pods.
