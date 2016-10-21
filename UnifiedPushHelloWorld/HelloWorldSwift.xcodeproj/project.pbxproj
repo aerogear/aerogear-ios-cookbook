@@ -455,7 +455,7 @@
 				INFOPLIST_FILE = HelloWorldSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.holloworldpush;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -485,7 +485,7 @@
 				INFOPLIST_FILE = HelloWorldSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.holloworldpush;
+				PRODUCT_BUNDLE_IDENTIFIER = org.aerogear.helloworldpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;

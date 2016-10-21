@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         defaults.set(alert, forKey: "message_received")
                         defaults.synchronize()
                     } else {
-                        if let alert = aps["alert"] as? [String: String] {
+                        if let alert = aps["alert"] as? [String: Any] {
                             let msg = alert["body"]
                             defaults.set(msg, forKey: "message_received")
                             defaults.synchronize()
