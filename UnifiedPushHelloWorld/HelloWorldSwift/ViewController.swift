@@ -29,9 +29,9 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         // register to be notified when state changes
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.registered), name: NSNotification.Name(rawValue: "success_registered"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.errorRegistration), name: NSNotification.Name(rawValue: "error_register"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.messageReceived(_:)), name: NSNotification.Name(rawValue: "message_received"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.registered), name: Notification.Name(rawValue: "success_registered"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.errorRegistration), name: Notification.Name(rawValue: "error_register"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.messageReceived(_:)), name: Notification.Name(rawValue: "message_received"), object: nil)
     }
    
     func registered() {
@@ -39,12 +39,11 @@ class ViewController: UITableViewController {
         
         // workaround to get messages when app was not running
         let defaults: UserDefaults = UserDefaults.standard;
-        if(defaults.object(forKey: "message_received") != nil) {
-            let msg : String! = defaults.object(forKey: "message_received") as! String
+        if let obj = defaults.object(forKey: "message_received") {
             defaults.removeObject(forKey: "message_received")
             defaults.synchronize()
     
-            if(msg != nil) {
+            if let msg = obj as? String {
                 messages.append(msg)
             }
         }
@@ -62,19 +61,15 @@ class ViewController: UITableViewController {
     
     func messageReceived(_ notification: Notification) {
         print("received")
-
-        let aps : [String: AnyObject] = ((notification as NSNotification).userInfo!["aps"] as? [String: AnyObject])!
-        let obj:AnyObject? = aps["alert"]
-        
-        // if alert is a flat string
-        if let msg = obj as? String {
-            messages.append(msg)
-        } else {
-            // if the alert is a dictionary we need to extract the value of the body key
-            let msg = obj!["body"] as! String
-            messages.append(msg)
+        if let userInfo = notification.userInfo, let aps = userInfo["aps"] as? [String: Any] {
+            // if alert is a flat string
+            if let msg = aps["alert"] as? String {
+                messages.append(msg)
+            } else if let obj = aps["alert"] as? [String: Any], let msg = obj["body"] as? String {
+                // if the alert is a dictionary we need to extract the value of the body key
+                messages.append(msg)
+            }
         }
-        
         tableView.reloadData()
     }
     
@@ -112,7 +107,7 @@ class ViewController: UITableViewController {
         }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: AGNotificationCellIdentifier)!
-        cell.textLabel?.text = messages[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = messages[(indexPath as IndexPath).row]
         
         return cell
     }

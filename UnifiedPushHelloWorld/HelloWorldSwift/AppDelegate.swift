@@ -35,17 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Display all push messages (even the message used to open the app)
         if let options = launchOptions {
-            if let option : NSDictionary = options[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+            if let option = options[UIApplicationLaunchOptionsKey.remoteNotification] as? [String: Any] {
                 let defaults: UserDefaults = UserDefaults.standard;
                 // Send a message received signal to display the notification in the table.
-                if let aps : [String: AnyObject] = option["aps"] as? [String: AnyObject] {
-                    if let alert : String = aps["alert"] as? String {
+                if let aps = option["aps"] as? [String: Any] {
+                    if let alert = aps["alert"] as? String {
                         defaults.set(alert, forKey: "message_received")
                         defaults.synchronize()
                     } else {
-                        let msg = aps["alert"]!["body"] as! String
-                        defaults.set(msg, forKey: "message_received")
-                        defaults.synchronize()
+                        if let alert = aps["alert"] as? [String: String] {
+                            let msg = alert["body"]
+                            defaults.set(msg, forKey: "message_received")
+                            defaults.synchronize()
+                        }
                     }
                 }
             }
@@ -100,15 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // successfully registered!
                 print("successfully registered with UPS!")
                 
-                // send NSNotification for success_registered, will be handle by registered ViewController
-                let notification = NSNotification(name:NSNotification.Name(rawValue: "success_registered"), object: nil)
+                // send Notification for success_registered, will be handle by registered ViewController
+                let notification = Notification(name: Notification.Name(rawValue: "success_registered"), object: nil)
                 NotificationCenter.default.post(notification as Notification)
             },
             
-            failure: {(error: NSError!) in
+            failure: {(error: Error!) in
                 print("Error Registering with UPS: \(error.localizedDescription)")
                 
-                let notification = NSNotification(name:NSNotification.Name(rawValue: "error_register"), object: nil)
+                let notification = Notification(name: Notification.Name(rawValue: "error_register"), object: nil)
                 NotificationCenter.default.post(notification as Notification)
         })
     }
@@ -120,8 +122,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // When a message is received, send NSNotification, would be handled by registered ViewController
-        let notification:Notification = Notification(name:Notification.Name(rawValue: "message_received"), object:nil, userInfo:userInfo)
+        // When a message is received, send Notification, would be handled by registered ViewController
+        let notification:Notification = Notification(name: Notification.Name(rawValue: "message_received"), object:nil, userInfo:userInfo)
         NotificationCenter.default.post(notification)
         print("UPS message received: \(userInfo)")
         
