@@ -134,4 +134,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchCompletionHandler(UIBackgroundFetchResult.noData)
     }
     
+    // Needed on iOS 10 only, you won't be able to receive push messages when the app is in background due to a bug (https://forums.developer.apple.com/thread/54322) if you don't add this func.
+    // It has been fixed on iOS 10.1
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+        // When a message is received, send Notification, would be handled by registered ViewController
+        let notification:Notification = Notification(name: Notification.Name(rawValue: "message_received"), object:nil, userInfo:userInfo)
+        NotificationCenter.default.post(notification)
+        print("UPS message received: \(userInfo)")
+        
+        // Send metrics when app is launched due to push notification
+        PushAnalytics.sendMetricsWhenAppAwoken(application.applicationState, userInfo: userInfo)
+    }
+    
 }
