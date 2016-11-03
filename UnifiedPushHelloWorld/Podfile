@@ -5,7 +5,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'HelloWorldSwift' do
-    pod 'AeroGear-Push-Swift', :git => 'https://github.com/jcesarmobile/aerogear-ios-push', :branch => 'RHMAP-10113'
+    pod 'AeroGear-Push-Swift', :git => 'https://github.com/aerogear/aerogear-ios-push', :branch => 'master'
 end
 
 # Workaround to fix swift version to 3.0 for Pods.
