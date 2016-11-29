@@ -12,8 +12,8 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext: Any?) {
+        super.awake(withContext: withContext)
         
         // Configure interface objects here.
     }

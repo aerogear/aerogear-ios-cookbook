@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AeroGearPush-Swift.h</key>
 		<data>
-		mCOBqx/SqCgSjIsIv3Ot4DWzvik=
+		R0QMwCPfAo7qmfenyZcVradanvI=
 		</data>
 		<key>Headers/push-sdk-swift.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XWVLDm44LSSPE+z8T0cbmxKwXUU=
+		DyLvF8LmRuEv0EioaH2+tMDo3O0=
 		</data>
 		<key>Modules/AeroGearPush.swiftmodule/i386.swiftdoc</key>
 		<data>
-		nittDaJAM1cQiXW0XwdLrYjBpXQ=
+		s9dEBWSezNON2SFa+T2uFDNgroo=
 		</data>
 		<key>Modules/AeroGearPush.swiftmodule/i386.swiftmodule</key>
 		<data>
-		DrXUp+wF8YlUwu9Oe8csn9h52iY=
+		w4Sy1jPFh6djlnKeQpYZERrVwyY=
 		</data>
 		<key>Modules/AeroGearPush.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		e1cLxciaEW5YVpunVr35Ik09cP0=
+		cXWMGO3XkDJ82OxSnNaP6rF699c=
 		</data>
 		<key>Modules/AeroGearPush.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		YSd+l+OydvhzxZLGIfamfojRGFQ=
+		ENDeiwDQNZsAs1XNt50V1qNSSTo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,11 +47,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mCOBqx/SqCgSjIsIv3Ot4DWzvik=
+			R0QMwCPfAo7qmfenyZcVradanvI=
 			</data>
 			<key>hash2</key>
 			<data>
-			VN5Y2+TRA359TyUUUGR+KJd7yUhK8ROKw0KgOxjO0pg=
+			g94bMatCMvT/0sUxKtZOp7ovT5ARLwJxGsy+ync09tE=
 			</data>
 		</dict>
 		<key>Headers/push-sdk-swift.h</key>
@@ -69,44 +69,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nittDaJAM1cQiXW0XwdLrYjBpXQ=
+			s9dEBWSezNON2SFa+T2uFDNgroo=
 			</data>
 			<key>hash2</key>
 			<data>
-			nO5MVYWoaxkR8UlVJSGoiH7t7tncXN1lhyPEHYV8/Ag=
+			eKdoZlyXWNFbvHUwnmip9cTQbiSWYmh7IpwTgbvThMM=
 			</data>
 		</dict>
 		<key>Modules/AeroGearPush.swiftmodule/i386.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DrXUp+wF8YlUwu9Oe8csn9h52iY=
+			w4Sy1jPFh6djlnKeQpYZERrVwyY=
 			</data>
 			<key>hash2</key>
 			<data>
-			/PYcLb9GX0f8K8NVlrY108yw8xAxdkc1uIuyUt38U1Q=
+			ua9Mxr3w0lx+ElMbgxeGuSy3sQoiVpMxJy01frUf/CI=
 			</data>
 		</dict>
 		<key>Modules/AeroGearPush.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e1cLxciaEW5YVpunVr35Ik09cP0=
+			cXWMGO3XkDJ82OxSnNaP6rF699c=
 			</data>
 			<key>hash2</key>
 			<data>
-			UaJrQF/V1JHu/qyEoKaxly95HnJlmfA3ik9oyp62hrU=
+			RtnsZkdQgore49H0FXsNwemDJIQohPiLJdi4wb2phl0=
 			</data>
 		</dict>
 		<key>Modules/AeroGearPush.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YSd+l+OydvhzxZLGIfamfojRGFQ=
+			ENDeiwDQNZsAs1XNt50V1qNSSTo=
 			</data>
 			<key>hash2</key>
 			<data>
-			sOTl3EGK3LqStNE/DP4UrGrmzh62OBWDNcwe7Sfr7HI=
+			LRBgMsqR/h6Zi8E610xx60Uh4xhxlTuNvAWOJqNc8RE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
