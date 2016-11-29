@@ -5,14 +5,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'AeroGearSyncDemo' do
-	# to do starscream pod declaration can be removed once AeroGearSyncJsonPatch is published
-	pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream', :tag => '2.0.2'
-	pod 'AeroGearSyncJsonPatch', :git => 'https://github.com/corinnekrych/aerogear-ios-sync.git', :branch => 'AGIOS-529.swift3.migration'
-	pod 'AeroGearSyncClientJsonPatch', :git => 'https://github.com/corinnekrych/aerogear-ios-sync-client.git', :branch => 'AGIOS-529.swift3.migration'
+	pod 'AeroGearSyncJsonPatch', '1.0.0-alpha.6'
+	pod 'AeroGearSyncClientJsonPatch', '1.0.0-alpha.6'
 	target 'AeroGearSyncDemoTests' do
-		# to do starscream pod declaration can be removed once AeroGearSyncJsonPatch is published
-		pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream', :tag => '2.0.2'
-		pod 'AeroGearSyncJsonPatch', :git => 'https://github.com/corinnekrych/aerogear-ios-sync.git', :branch => 'AGIOS-529.swift3.migration'
-		pod 'AeroGearSyncClientJsonPatch', :git => 'https://github.com/corinnekrych/aerogear-ios-sync-client.git', :branch => 'AGIOS-529.swift3.migration'
+		pod 'AeroGearSyncJsonPatch', '1.0.0-alpha.6'
+		pod 'AeroGearSyncClientJsonPatch', '1.0.0-alpha.6'
 	end
 end
