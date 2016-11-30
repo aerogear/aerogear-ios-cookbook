@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.registerForRemoteNotifications()
         
         // Send metrics when app is launched due to push notification
-        PushAnalytics.sendMetricsWhenAppLaunched(launchOptions)
+        PushAnalytics.sendMetricsWhenAppLaunched(launchOptions: launchOptions)
         
         // Display all push messages (even the message used to open the app)
         if let options = launchOptions {
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // time to register user with the "AeroGear UnifiedPush Server"
         let device = DeviceRegistration(config: "pushconfig")
         // perform registration of this device
-        device.registerWithClientInfo({ (clientInfo: ClientDeviceInformation!) in
+        device.register(clientInfo: { (clientInfo: ClientDeviceInformation!) in
             
             // set the deviceToken
             clientInfo.deviceToken = deviceToken
@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("UPS message received: \(userInfo)")
         
         // Send metrics when app is launched due to push notification
-        PushAnalytics.sendMetricsWhenAppAwoken(application.applicationState, userInfo: userInfo)
+        PushAnalytics.sendMetricsWhenAppAwoken(applicationState: application.applicationState, userInfo: userInfo)
         
         // No additioanl data to fetch
         fetchCompletionHandler(UIBackgroundFetchResult.noData)
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("UPS message received: \(userInfo)")
         
         // Send metrics when app is launched due to push notification
-        PushAnalytics.sendMetricsWhenAppAwoken(application.applicationState, userInfo: userInfo)
+        PushAnalytics.sendMetricsWhenAppAwoken(applicationState: application.applicationState, userInfo: userInfo)
     }
     
 }
