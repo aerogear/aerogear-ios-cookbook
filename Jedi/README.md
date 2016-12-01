@@ -1,7 +1,7 @@
 Jedi
 ====
 Level: Beginner  
-Technologies: Swift 2.3, iOS  
+Technologies: Swift 3.0, iOS  
 Summary: A basic example of [aerogear-ios-sync](https://github.com/aerogear/aerogear-ios-sync), [aerogear-ios-sync-client](https://github.com/aerogear/aerogear-ios-sync-client)  
 
 What is it?

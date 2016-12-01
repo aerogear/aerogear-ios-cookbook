@@ -32,7 +32,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
             let input = try AVCaptureDeviceInput(device: captureDevice)
             // Initialize the captureSession object.
             captureSession = AVCaptureSession()
@@ -48,7 +48,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
             captureSession?.addOutput(captureMetadataOutput)
             
             // Set delegate and use the default dispatch queue to execute the call back
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedBarCodes
             
             // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
@@ -73,28 +73,28 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
     }
     
     
-    private func parametersFromQueryString(queryString: String) -> [String: String] {
+    fileprivate func parametersFromQueryString(_ queryString: String) -> [String: String] {
         var parameters = [String: String]()
         
         let queryPart = queryString.characters.split{$0 == "?"}
         let query: String? = queryPart.count > 1 ? String(queryPart[1]) : nil
         
         if let query = query {
-            let parameterScanner: NSScanner = NSScanner(string: query)
+            let parameterScanner: Scanner = Scanner(string: query)
             var name: NSString? = nil
             var value: NSString? = nil
             
-            while (parameterScanner.atEnd != true) {
+            while (parameterScanner.isAtEnd != true) {
                 name = nil;
-                parameterScanner.scanUpToString("=", intoString: &name)
-                parameterScanner.scanString("=", intoString:nil)
+                parameterScanner.scanUpTo("=", into: &name)
+                parameterScanner.scanString("=", into:nil)
                 
                 value = nil
-                parameterScanner.scanUpToString("&", intoString:&value)
-                parameterScanner.scanString("&", intoString:nil)
+                parameterScanner.scanUpTo("&", into:&value)
+                parameterScanner.scanString("&", into:nil)
                 print("name::\(name) and value::\(value)")
                 if (name != nil && value != nil) {
-                    parameters[name!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!] = value!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+                    parameters[name!.replacingPercentEscapes(using: String.Encoding.utf8.rawValue)!] = value!.replacingPercentEscapes(using: String.Encoding.utf8.rawValue)
                 }
             }
         }
@@ -102,7 +102,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
         return parameters;
     }
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
@@ -129,7 +129,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
                 }
 
                 // go back to main screen
-                self.performSegueWithIdentifier("displayOTP:", sender: self)
+                self.performSegue(withIdentifier: "displayOTP:", sender: self)
             }
         }
     }
@@ -138,10 +138,10 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let viewController = segue.destinationViewController as! ViewController
+        let viewController = segue.destination as! ViewController
         viewController.otp = otp
     }
     

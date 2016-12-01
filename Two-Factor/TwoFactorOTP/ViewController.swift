@@ -25,7 +25,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var scanQRCodeButton: UIButton!
     
     var otp: AGTotp?
-    var timer = NSTimer()
+    var timer = Timer()
     
     var counter:Int = 0 {
         didSet {
@@ -39,24 +39,24 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let _ = otp {
-            displayQRCode.hidden = false
-            progressBarView.hidden = false
+            displayQRCode.isHidden = false
+            progressBarView.isHidden = false
             progressBarView.setProgress(0, animated: true)
-            scanQRCodeButton.hidden = true
+            scanQRCodeButton.isHidden = true
             self.generateOTPAndStartCount()
 
         } else {
-            displayQRCode.hidden = true
-            progressBarView.hidden = true
-            scanQRCodeButton.hidden = false
+            displayQRCode.isHidden = true
+            progressBarView.isHidden = true
+            scanQRCodeButton.isHidden = false
         }
 
     }
     
-    private func generateOTPAndStartCount() {
-        displayQRCode.text = self.otp!.generateOTP()
+    fileprivate func generateOTPAndStartCount() {
+        displayQRCode.text = self.otp!.generate()
         self.counter = 0
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
     
     internal func update() {
@@ -73,8 +73,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func captureQRCode(sender: AnyObject) {
-        self.performSegueWithIdentifier("qrcodecapture:", sender: sender)
+    @IBAction func captureQRCode(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "qrcodecapture:", sender: sender)
     }
 
 }

@@ -23,7 +23,7 @@ class MasterViewController: UITableViewController {
     var data: [Joke] = []
     let http = Http()
     func addRandomJokeToTableView() -> () {
-        http.request(.get, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
+        http.request(method: .get, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
              if error != nil {
                 print("An error has occured during read! \(error!)")
                 return;

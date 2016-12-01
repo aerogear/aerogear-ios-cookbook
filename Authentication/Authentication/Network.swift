@@ -18,13 +18,7 @@
 import Foundation
 import AeroGearHttp
 
-public class Network {
-    
-    public class var http: Http {
-        struct Singleton {
-            static let instance = Http(baseURL: "https://bacon-corinnekrych.rhcloud.com")
-        }
-        
-        return Singleton.instance
-    }
+open class Network {
+    static let http = Http(baseURL: "https://bacon-corinnekrych.rhcloud.com")
+    private init() {}
 }
