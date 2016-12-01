@@ -115,12 +115,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let facebookConfig = FacebookConfig(
             clientId: "YYY",
             clientSecret: "XXX",
-            scopes:["photo_upload, publish_actions"])
+            scopes:["publish_actions"])
         // If you want to use embedded web view uncomment
         //facebookConfig.isWebView = true
         
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
-        let fbModule = KeycloakOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
+        let fbModule = FacebookOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
         //let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
