@@ -87,21 +87,20 @@ class ViewController: UIViewController {
             self.keycloakHttp.request(method: .get, path: "\(HOST)/shoot/rest/photos", parameters: nil, completionHandler: { (response: Any?, error: NSError?) -> Void in
                 if error != nil {
                     print("Oops something must have being wrong. Check your URL. Is your Keycloak server running? \n\(error)")
-                }
-                let files = response as! [AnyObject]
-                let _ = files.map({ (file: AnyObject) -> () in
-                    let image = file as? [String: AnyObject]
-                    if let image = image {
-                        let fileId = image["filename"] as! String
-                        // Find the path where the photo will be downloaded
-                        let fileManager = FileManager.default
-                        let path  = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] 
-                        try! fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-                        let finalDestination = (path as NSString).appendingPathComponent(fileId)
-                        // Download the photo one by one
-                        self.keycloakHttp.download(url: "\(HOST)/shoot/rest/photos/images/\(fileId)",
-                            progress: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)  in
-
+                } else {
+                    let files = response as! [AnyObject]
+                    let _ = files.map({ (file: AnyObject) -> () in
+                        let image = file as? [String: AnyObject]
+                        if let image = image {
+                            let fileId = image["filename"] as! String
+                            // Find the path where the photo will be downloaded
+                            let fileManager = FileManager.default
+                            let path  = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                            try! fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                            let finalDestination = (path as NSString).appendingPathComponent(fileId)
+                            // Download the photo one by one
+                            self.keycloakHttp.download(url: "\(HOST)/shoot/rest/photos/images/\(fileId)",
+                                progress: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)  in
                             }, completionHandler: { (response, error) in
                                 let fileBase64EncodedContent = try? String(contentsOfFile: finalDestination, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                                 if let fileBase64EncodedContent = fileBase64EncodedContent {
@@ -116,9 +115,10 @@ class ViewController: UIViewController {
                                 if  self.images.count > 0 && self.imageView.image == nil {
                                     self.imageView.image = self.images[self.currentIndex]
                                 }
-                        })
-                    }
-                })
+                            })
+                        }
+                    })
+                }
             })
         }
     }

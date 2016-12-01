@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>org.aerogear.SharedShoot</string>
+				<string>org.aerogear.sharedshoot</string>
 				<string>fbYYY</string>
 			</array>
 		</dict>
