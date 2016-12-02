@@ -137,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //googleConfig.isWebView = true
         
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
-        let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
+        let gdModule = OAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
         
         //let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
