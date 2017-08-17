@@ -1,18 +1,18 @@
 ChuckNorrisJokes
 ================
 Level: Beginner  
-Technologies: Swift 3.0, iOS  
+Technologies: Swift 4.0, iOS
 Summary: A basic example of aerogear-ios-http  
 
 What is it?
 -----------
 
-This project is a very simple app, to show how to do a http call against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library for http layer . 
+This project is a very simple app, to show how to do a http call against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library for http layer.
 
 System requirements
 -------------------
-- iOS8, iOS9, iOS10
-- Xcode 8+
+- iOS9, iOS10, iOS11
+- Xcode 9+
 
 Build and Deploy ChuckNorrisJokes
 ---------------------------------
