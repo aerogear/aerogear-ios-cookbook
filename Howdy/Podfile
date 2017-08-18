@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+project 'helloworldpush.xcodeproj'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'helloworldpush' do
+  pod 'AeroGear-Push-Swift', '2.0.1'
+end
