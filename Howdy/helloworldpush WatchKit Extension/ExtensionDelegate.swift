@@ -29,7 +29,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     {
         // This is the callback when the user has clicked on one of the action
         // Once you retrived the text, do something usefull with it!
-        print("After selection an action \(withIdentifier)!!!")
+        print("After selection an action \(String(describing: withIdentifier))!!!")
     }
 
 }

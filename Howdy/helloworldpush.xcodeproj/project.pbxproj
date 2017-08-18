@@ -20,8 +20,7 @@
 		48DE7B951BA0192900F4B2A9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE7B941BA0192900F4B2A9 /* ExtensionDelegate.swift */; };
 		48DE7B971BA0192900F4B2A9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE7B961BA0192900F4B2A9 /* NotificationController.swift */; };
 		48DE7B991BA0192900F4B2A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48DE7B981BA0192900F4B2A9 /* Assets.xcassets */; };
-		48DE7BAE1BA01FA900F4B2A9 /* AeroGearPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */; };
-		48DE7BB01BA0212B00F4B2A9 /* AeroGearPush.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9AA35DC49D36EF17753B80AB /* Pods_helloworldpush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D60906F3A820D9628B8C44 /* Pods_helloworldpush.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +69,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				48DE7BB01BA0212B00F4B2A9 /* AeroGearPush.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +95,9 @@
 		48DE7B961BA0192900F4B2A9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		48DE7B981BA0192900F4B2A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48DE7B9A1BA0192900F4B2A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AeroGearPush.framework; sourceTree = "<group>"; };
+		98D60906F3A820D9628B8C44 /* Pods_helloworldpush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_helloworldpush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9B9EEBE1F60AB42FC5B287 /* Pods-helloworldpush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworldpush.debug.xcconfig"; path = "Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush.debug.xcconfig"; sourceTree = "<group>"; };
+		F9CE340AEE7DBB1C7BBD027A /* Pods-helloworldpush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworldpush.release.xcconfig"; path = "Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48DE7BAE1BA01FA900F4B2A9 /* AeroGearPush.framework in Frameworks */,
+				9AA35DC49D36EF17753B80AB /* Pods_helloworldpush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,17 +116,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9EAF1627D319557D7FF9C37D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47A9C4C92174910FB67F033A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B9EEBE1F60AB42FC5B287 /* Pods-helloworldpush.debug.xcconfig */,
+				F9CE340AEE7DBB1C7BBD027A /* Pods-helloworldpush.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		48DE7B611BA0192900F4B2A9 = {
 			isa = PBXGroup;
 			children = (
-				48DE7BAD1BA01FA900F4B2A9 /* AeroGearPush.framework */,
 				48DE7B6C1BA0192900F4B2A9 /* helloworldpush */,
 				48DE7B801BA0192900F4B2A9 /* helloworldpush WatchKit App */,
 				48DE7B8F1BA0192900F4B2A9 /* helloworldpush WatchKit Extension */,
 				48DE7B6B1BA0192900F4B2A9 /* Products */,
+				47A9C4C92174910FB67F033A /* Pods */,
+				4CE2E74670B792A7A3A1AA24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +203,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4CE2E74670B792A7A3A1AA24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98D60906F3A820D9628B8C44 /* Pods_helloworldpush.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,11 +218,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48DE7BA51BA0192900F4B2A9 /* Build configuration list for PBXNativeTarget "helloworldpush" */;
 			buildPhases = (
+				7AB275103DD436F954090725 /* [CP] Check Pods Manifest.lock */,
 				48DE7B661BA0192900F4B2A9 /* Sources */,
 				48DE7B671BA0192900F4B2A9 /* Frameworks */,
 				48DE7B681BA0192900F4B2A9 /* Resources */,
 				48DE7BA41BA0192900F4B2A9 /* Embed Watch Content */,
 				48DE7BAF1BA0211700F4B2A9 /* CopyFiles */,
+				69919E6987191F89D4FE93D5 /* [CP] Embed Pods Frameworks */,
+				61175385FB62F66C795819F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +243,7 @@
 			buildPhases = (
 				48DE7B7A1BA0192900F4B2A9 /* Resources */,
 				48DE7BA01BA0192900F4B2A9 /* Embed App Extensions */,
+				9EAF1627D319557D7FF9C37D /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +357,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61175385FB62F66C795819F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69919E6987191F89D4FE93D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AeroGear-Push-Swift/AeroGearPush.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AeroGearPush.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AB275103DD436F954090725 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-helloworldpush-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		48DE7B661BA0192900F4B2A9 /* Sources */ = {
@@ -578,6 +661,7 @@
 		};
 		48DE7BA61BA0192900F4B2A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE9B9EEBE1F60AB42FC5B287 /* Pods-helloworldpush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;
@@ -601,6 +685,7 @@
 		};
 		48DE7BA71BA0192900F4B2A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9CE340AEE7DBB1C7BBD027A /* Pods-helloworldpush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = helloworldpush/helloworldpush.entitlements;

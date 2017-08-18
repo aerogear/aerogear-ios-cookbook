@@ -1,3 +1,0 @@
-framework module AeroGearPush {
-    header "AeroGearPush-Swift.h"
-}
