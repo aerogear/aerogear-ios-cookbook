@@ -5,7 +5,7 @@ With Shoot'nShare you can take picture, browse your camera roll, pick a picture 
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
-Supported platforms: iOS8, iOS9.
+Supported platforms: iOS8, iOS9, iOS10.
 
 ### Run it in Xcode
 
@@ -35,14 +35,13 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
             clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
             scopes:["https://www.googleapis.com/auth/drive"])
         //googleConfig.isWebView = true                               // [2]
-        let gdModule = AccountManager.addGoogleAccount(googleConfig)  // [3]
-        let http = Http(url: "https://www.googleapis.com/upload/drive/v2/files")
-        http.authzModule = gdModule                                   // [4]
-        self.performUpload(http, parameters: self.extractImageAsMultipartParams())
+        let gdModule = AccountManager.addGoogleAccount(config: googleConfig)  // [3]
+        self.http.authzModule = gdModule                                   // [4]
+        self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
 ```
 In [1] initialize config. The default config uses an external browser approach when lauching the authorization request (ie: Safari opens to prompt you for your credentials). If you prefer to use an embedded webview, uncomment line [2].
 
 You can use AccountManager to create an OAuth2Module in [3]
 
-Simply create an http object and inject the oauth2 module [4], then all headers will be added for you when you do http.POST/GET etc...
+Inject the oauth2 module to self.http [4], then all headers will be added for you when self.performUpload do the http.POST 

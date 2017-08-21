@@ -15,42 +15,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Add some categories
         let textAction = UIMutableUserNotificationAction()
         textAction.identifier = "TEXT_ACTION"
         textAction.title = "Reply"
-        textAction.authenticationRequired = false
-        textAction.destructive = false
-        textAction.behavior = .TextInput
+        textAction.isAuthenticationRequired = false
+        textAction.isDestructive = false
+        textAction.behavior = .textInput
         
         let declineAction = UIMutableUserNotificationAction()
         declineAction.identifier = "DECLINE_ACTION"
         declineAction.title = "Decline"
-        declineAction.authenticationRequired = false
-        declineAction.destructive = true
+        declineAction.isAuthenticationRequired = false
+        declineAction.isDestructive = true
         
         let category = UIMutableUserNotificationCategory()
         category.identifier = "CATEGORY_ID"
-        category.setActions([textAction, declineAction], forContext: .Default)
-        category.setActions([textAction, declineAction], forContext: .Minimal)
+        category.setActions([textAction, declineAction], for: .default)
+        category.setActions([textAction, declineAction], for: .minimal)
         
         let categories = NSSet(object: category) as! Set<UIUserNotificationCategory>
         
         // bootstrap the registration process by asking the user to 'Accept' and then register with APNS thereafter
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: categories)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: categories)
+        UIApplication.shared.registerUserNotificationSettings(settings)
+        UIApplication.shared.registerForRemoteNotifications()
     
         
         return true
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // time to register user with the "AeroGear UnifiedPush Server"
-        let device = AGDeviceRegistration()
+        let device = DeviceRegistration()
         // perform registration of this device
-        device.registerWithClientInfo({ (clientInfo: AGClientDeviceInformation!) in
+        device.register(clientInfo: { (clientInfo: ClientDeviceInformation!) in
             
             // set the deviceToken
             clientInfo.deviceToken = deviceToken
@@ -69,41 +69,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("successfully registered with UPS!")
                 
                 // send NSNotification for success_registered, will be handle by registered AGViewController
-                let notification = NSNotification(name:"success_registered", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+                let notification = Notification(name:Notification.Name(rawValue: "success_registered"), object: nil)
+                NotificationCenter.default.post(notification)
             },
             
             failure: {(error: NSError!) in
                 print("Error Registering with UPS: \(error.localizedDescription)")
                 
-                let notification = NSNotification(name:"error_register", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+                let notification = Notification(name:Notification.Name(rawValue: "error_register"), object: nil)
+                NotificationCenter.default.post(notification)
         })
     }
 
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unified Push registration Error \(error)")
     }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
 
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("UPS message received: \(userInfo)")
     }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
 
 }
 

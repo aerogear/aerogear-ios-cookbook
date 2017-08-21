@@ -24,9 +24,9 @@ class BeersViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let credential = NSURLCredential(user: "john", password: "123", persistence: .None)
-        Network.http.request(.GET, path:"/rest/grocery/beers",  credential: credential,
-            completionHandler: { (response: AnyObject?, error: NSError?) -> Void in
+        let credential = URLCredential(user: "john", password: "123", persistence: .none)
+        Network.http.request(method: .get, path:"/rest/grocery/beers",  credential: credential,
+            completionHandler: { (response: Any?, error: NSError?) -> Void in
                 if error != nil {
                     print("An error has occured during read! \(error!)")
                     return
@@ -38,12 +38,12 @@ class BeersViewController: UITableViewController {
             })
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
         
         cell.textLabel?.text = data[indexPath.row]
         return cell

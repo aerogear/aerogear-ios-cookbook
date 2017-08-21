@@ -18,12 +18,12 @@
 import Foundation
 import AeroGearSyncClientJsonPatch
 
-public typealias JsonNode = [String: AnyObject]
-public class Info : CustomStringConvertible {
+public typealias JsonNode = [String: Any]
+open class Info : CustomStringConvertible {
 
-    public let name: String
-    public let profession: String
-    public let hobbies: [Hobby]
+    open let name: String
+    open let profession: String
+    open let hobbies: [Hobby]
 
     public init(name: String, profession: String, hobbies: [Hobby]) {
         self.name = name;
@@ -37,19 +37,19 @@ public class Info : CustomStringConvertible {
             hobbies: (dict["hobbies"] as! [JsonNode]).map { Hobby(desc: $0["description"]! as! String) })
     }
 
-    public var description: String {
+    open var description: String {
         return "Info[name=\(name), profession=\(profession), hobbies=\(hobbies)"
     }
 
-    public class Hobby : CustomStringConvertible {
+    open class Hobby : CustomStringConvertible {
 
-        public let desc: String
+        open let desc: String
 
         public init(desc: String) {
             self.desc = desc
         }
 
-        public var description: String {
+        open var description: String {
             return "Hobby[description=\(self.description)]"
         }
     }

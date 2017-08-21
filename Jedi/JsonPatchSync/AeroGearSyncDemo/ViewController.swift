@@ -21,7 +21,7 @@ import AeroGearSyncJsonPatch
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    let backgroundQueue = NSOperationQueue()
+    let backgroundQueue = OperationQueue()
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var profession: UITextField!
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var connection: UIButton!
     var dirty = false
 
-    let clientId = NSUUID().UUIDString
+    let clientId = UUID().uuidString
     let documentId = "12345"
     var content = Info(name: "Luke Skywalker",
         profession: "Jedi",
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             Info.Hobby(desc: "Bulls eyeing Womprats on his T-16")
         ])
 
-    private var syncClient: SyncClient<JsonPatchSynchronizer, InMemoryDataStore<JsonNode, JsonPatchEdit>>!
+    fileprivate var syncClient: SyncClient<JsonPatchSynchronizer, InMemoryDataStore<JsonNode, JsonPatchEdit>>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,51 +54,51 @@ class ViewController: UIViewController, UITextFieldDelegate {
         hobby4.delegate = self
         updateFields(content)
 
-        let syncServerHost = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerHost")! as! String
-        let syncServerPort = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPort")! as! Int
-        let syncPath = NSBundle.mainBundle().objectForInfoDictionaryKey("SyncServerPath")! as! String
+        let syncServerHost = Bundle.main.object(forInfoDictionaryKey: "SyncServerHost")! as! String
+        let syncServerPort = Bundle.main.object(forInfoDictionaryKey: "SyncServerPort")! as! Int
+        let syncPath = Bundle.main.object(forInfoDictionaryKey: "SyncServerPath")! as! String
         let engine = ClientSyncEngine(synchronizer: JsonPatchSynchronizer(), dataStore: InMemoryDataStore())
         syncClient = SyncClient(url: "ws://\(syncServerHost):\(syncServerPort)\(syncPath)", syncEngine: engine)
         connect()
         print("ClientId=\(clientId)")
     }
 
-    private func syncCallback(doc: ClientDocument<JsonNode>) {
+    fileprivate func syncCallback(_ doc: ClientDocument<JsonNode>) {
         updateFieldsMainQueue(Info(dict:doc.content))
     }
 
-    @IBAction func connection(button: UIButton) {
+    @IBAction func connection(_ button: UIButton) {
         let text = button.titleLabel!.text!
         if text == "Disconnect" {
             disconnect()
-            connection.setTitle("Connect", forState:UIControlState.Normal)
+            connection.setTitle("Connect", for:UIControlState())
         } else {
             connect()
-            connection.setTitle("Disconnect", forState:UIControlState.Normal)
+            connection.setTitle("Disconnect", for:UIControlState())
         }
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         disconnect()
     }
 
-    private func connect() {
+    fileprivate func connect() {
         syncClient.connect()
-        syncClient.addDocument(ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson()), callback: syncCallback)
+        syncClient.addDocument(doc: ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson()), callback: syncCallback)
     }
 
-    private func disconnect() {
+    fileprivate func disconnect() {
         syncClient.disconnect()
     }
 
-    private func updateFieldsMainQueue(content: Info) {
-        NSOperationQueue.mainQueue().addOperationWithBlock() {
+    fileprivate func updateFieldsMainQueue(_ content: Info) {
+        OperationQueue.main.addOperation() {
             self.updateFields(content)
             self.content = content;
         }
     }
 
-    private func updateFields(content: Info) {
+    fileprivate func updateFields(_ content: Info) {
         self.nameLabel.text = content.name
         self.profession.text = content.profession
         self.hobby1.text = content.hobbies[0].desc
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the current field gives up focus
     */
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
 
@@ -129,7 +129,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     :param: textField the UITextField that is in focus
     :returns: Bool true so that the keyboard is removed.
     */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sync(textField)
         textField.resignFirstResponder()
         return true
@@ -142,7 +142,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     :param: textField the UITextField that is in focus
     */
-    @IBAction func editEnd(textField: UITextField) {
+    @IBAction func editEnd(_ textField: UITextField) {
         sync(textField)
     }
 
@@ -152,28 +152,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     :param: textField the UITextField that is in focus
     */
-    @IBAction func updates(sender: UITextField) {
+    @IBAction func updates(_ sender: UITextField) {
         if !dirty {
             dirty = true
         }
     }
 
-    private func sync(field: UITextField) {
+    fileprivate func sync(_ field: UITextField) {
         print("syncing...\(field.text)")
         let doc = ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson())
         if dirty {
-            backgroundQueue.addOperationWithBlock() {
+            backgroundQueue.addOperation() {
                 self.dirty = false
                 self.syncClient.diffAndSend(doc)
             }
         }
     }
 
-    private func fieldsAsJson() -> JsonNode {
+    fileprivate func fieldsAsJson() -> JsonNode {
         var info = JsonNode()
         
-        info["name"] = nameLabel.text!
-        info["profession"] = profession.text!
+        info["name"] = nameLabel.text! as AnyObject?
+        info["profession"] = profession.text! as AnyObject?
         
         info["hobbies"] = [
             ["description" : hobby1.text!],

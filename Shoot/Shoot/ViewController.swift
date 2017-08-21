@@ -42,26 +42,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
 
         // Let's register for settings update notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.handleSettingsChangedNotification),
-            name: NSUserDefaultsDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleSettingsChangedNotification),
+            name: UserDefaults.didChangeNotification, object: nil)
         self.http = Http()
         self.useCamera()
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
 
     func handleSettingsChangedNotification() {
 
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let clear = userDefaults.boolForKey("clearShootKeychain")
+        let userDefaults = UserDefaults.standard
+        let clear = userDefaults.bool(forKey: "clearShootKeychain")
 
         if clear {
             print("clearing keychain")
             let kc = KeychainWrap()
-            kc.resetKeychain()
+            _ = kc.resetKeychain()
         }
     }
 
@@ -69,42 +69,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func goToCamera(sender: UIButton) {
+    @IBAction func goToCamera(_ sender: UIButton) {
         self.useCamera()
     }
 
-    @IBAction func takePicture(sender: UIBarButtonItem) {
+    @IBAction func takePicture(_ sender: UIBarButtonItem) {
         self.imagePicker.takePicture()
     }
 
-    @IBAction func goToSettings(sender: AnyObject) {
-        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString)
-        UIApplication.sharedApplication().openURL(settingsUrl!)
+    @IBAction func goToSettings(_ sender: AnyObject) {
+        let settingsUrl = URL(string:UIApplicationOpenSettingsURLString)
+        UIApplication.shared.openURL(settingsUrl!)
     }
 
     func useCamera() {
-        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
             imagePicker.delegate = self
-            imagePicker.sourceType = .Camera
+            imagePicker.sourceType = .camera
             imagePicker.mediaTypes = [String(kUTTypeImage)]
             imagePicker.allowsEditing = false
             
             // custom camera overlayview
             imagePicker.showsCameraControls = false
-            NSBundle.mainBundle().loadNibNamed("OverlayView", owner:self, options:nil)
+            Bundle.main.loadNibNamed("OverlayView", owner:self, options:nil)
             self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
             imagePicker.cameraOverlayView = self.overlayView
             self.overlayView = nil
-            self.presentViewController(imagePicker, animated:true, completion:{})
+            self.present(imagePicker, animated:true, completion:{})
             newMedia = true
         } else {
-            if (UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum)) {
+            if (UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self;
-                imagePicker.sourceType = .PhotoLibrary
+                imagePicker.sourceType = .photoLibrary
                 imagePicker.mediaTypes = [String(kUTTypeImage)]
                 imagePicker.allowsEditing = false
-                self.presentViewController(imagePicker, animated:true, completion:{})
+                self.present(imagePicker, animated:true, completion:{})
                 newMedia = false
             }
         }
@@ -115,12 +115,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let facebookConfig = FacebookConfig(
             clientId: "YYY",
             clientSecret: "XXX",
-            scopes:["photo_upload, publish_actions"])
+            scopes:["publish_actions"])
         // If you want to use embedded web view uncomment
         //facebookConfig.isWebView = true
         
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
-        let fbModule = KeycloakOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
+        let fbModule = FacebookOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
         //let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
@@ -137,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //googleConfig.isWebView = true
         
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
-        let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
+        let gdModule = OAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
         
         //let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
@@ -163,8 +163,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
 
-    func performUpload(url: String, parameters: [String: AnyObject]?) {
-        self.http.request(.POST, path: url, parameters: parameters, completionHandler: {(response, error) in
+    func performUpload(_ url: String, parameters: [String: AnyObject]?) {
+        self.http.request(method: .post, path: url, parameters: parameters, completionHandler: {(response, error) in
             if (error != nil) {
                 self.presentAlert("Error", message: error!.localizedDescription)
             } else {
@@ -175,30 +175,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     // MARK - UIImagePickerControllerDelegate
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
-        self.dismissViewControllerAnimated(true, completion:nil)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        self.dismiss(animated: true, completion:nil)
         let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         if (newMedia == true) {
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else {
-            let imageURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            let imageURL:URL = info[UIImagePickerControllerReferenceURL] as! URL
             let assetslibrary = ALAssetsLibrary()
-            assetslibrary.assetForURL(imageURL, resultBlock: {
-                (asset: ALAsset!) in
-                if asset != nil {
+            
+            assetslibrary.asset(for: imageURL, resultBlock: {
+                (asset: ALAsset?) in
+                if let asset = asset {
                     let assetRep: ALAssetRepresentation = asset.defaultRepresentation()
                     self.imageView.accessibilityIdentifier = assetRep.filename()
                     self.imageView.image = image;
                 }
-            }, failureBlock: {
-                (error: NSError!) in
+            }, failureBlock: { error in
                 print("Error \(error)")
             }
             )
         }
     }
 
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafePointer<Void>) {
+    func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
@@ -208,8 +208,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
    }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion:nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion:nil)
     }
 
     func extractImageAsMultipartParams() -> [String: AnyObject] {
@@ -224,10 +224,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return ["file": multiPartData]
     }
 
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+    func presentAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

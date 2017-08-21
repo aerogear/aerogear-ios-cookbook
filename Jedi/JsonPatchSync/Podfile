@@ -5,10 +5,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'AeroGearSyncDemo' do
-	pod 'AeroGearSyncClientJsonPatch', :git => 'https://github.com/aerogear/aerogear-ios-sync-client'
-	pod 'AeroGearSyncJsonPatch', :git => 'https://github.com/aerogear/aerogear-ios-sync'
+	pod 'AeroGearSyncJsonPatch', '1.0.0-alpha.6'
+	pod 'AeroGearSyncClientJsonPatch', '1.0.0-alpha.6'
 	target 'AeroGearSyncDemoTests' do
-		pod 'AeroGearSyncClientJsonPatch', :git => 'https://github.com/aerogear/aerogear-ios-sync-client'
-		pod 'AeroGearSyncJsonPatch', :git => 'https://github.com/aerogear/aerogear-ios-sync'
+		pod 'AeroGearSyncJsonPatch', '1.0.0-alpha.6'
+		pod 'AeroGearSyncClientJsonPatch', '1.0.0-alpha.6'
 	end
 end

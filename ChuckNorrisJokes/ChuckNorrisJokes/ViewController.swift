@@ -18,26 +18,22 @@
 import UIKit
 
 import AeroGearHttp
-import AeroGearJsonSZ
 
 class MasterViewController: UITableViewController {
-
-    var http = Http()
     var data: [Joke] = []
-    var serializer = JsonSZ()
-
+    let http = Http()
     func addRandomJokeToTableView() -> () {
-        var _: String
-        http.request(.GET, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
+        http.request(method: .get, path: "http://api.icndb.com/jokes/random/", completionHandler: { (response, error) -> Void in
              if error != nil {
                 print("An error has occured during read! \(error!)")
                 return;
             }
-            
-            if  let obj = response as? [String: AnyObject] {
-                    let joke = self.serializer.fromJSON(obj["value"]!, to: Joke.self)
+            if let response = response as? Dictionary<String, Any>, let value = response["value"] {
+                if let value = value as? Dictionary<String, Any>, let id  = value["id"] as? Int, let description = value["joke"] as? String {
+                    let joke = Joke(id: id, description: description)
                     self.data.append(joke)
                     self.tableView.reloadData()
+                }
             }
         })
     }
@@ -51,51 +47,32 @@ class MasterViewController: UITableViewController {
         addRandomJokeToTableView()
     }
 
-    @IBAction func add(sender: UIBarButtonItem) {
+    @IBAction func add(_ sender: UIBarButtonItem) {
         addRandomJokeToTableView()
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as! BasicCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as! BasicCell
 
-        let joke = data[indexPath.row]
+        let joke = data[(indexPath as NSIndexPath).row]
         cell.titleLabel.text = "Joke #\(joke.id)"
-        cell.subtitleLabel.text = joke.joke
-        cell.tag = indexPath.row
+        cell.subtitleLabel.text = joke.description
+        cell.tag = (indexPath as NSIndexPath).row
         
         return cell
     }
 }
 
-class Joke: JSONSerializable {
+class Joke {
     var id: Int = 0
-    var joke: String = ""
+    var description: String = ""
     
-    init(id: Int, joke: String) {
+    init(id: Int, description: String) {
         self.id = id
-        self.joke = joke
-    }
-    
-    required init() {}
-    
-    class func map(source: JsonSZ, object: Joke) {
-        object.id <= source["id"]
-        object.joke <= source["joke"]
-    }
-
-}
-
-extension Joke: CustomStringConvertible {
-    var description: String {
-        get {
-            var description = ">>"
-            description += "id:\(id) "
-            description += "joke:\(joke) "
-            return description
-        }
+        self.description = description
     }
 }
 

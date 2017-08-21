@@ -22,6 +22,11 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,21 +48,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    
-    
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    
-    <key>serverURL</key>
-    <string>https://corinne-ckrych.rhcloud.com/ag-push/</string>
-    <key>variantID</key>
-    <string>9475eca5-6421-48ae-bb0f-3539ae4c0768</string>
-    <key>variantSecret</key>
-    <string>799cb9c8-56fc-4ba7-beeb-9558c6ba2870</string>
-    
+	<key>serverURL</key>
+	<string>https://push-ckrych.rhcloud.com/ag-push/</string>
+	<key>variantID</key>
+	<string>59917037-d149-4583-b3cc-94120cad7432</string>
+	<key>variantSecret</key>
+	<string>4dedc76f-0633-454e-965d-5f87de5b0120</string>
 </dict>
 </plist>

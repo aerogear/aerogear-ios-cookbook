@@ -1,7 +1,7 @@
 # Two-Factor
 ------------
 Level: Beginner   
-Technologies: Swift, iOS   
+Technologies: Swift 3.0, iOS   
 Summary: A basic example how to use OTP   
 
 ## What is it?
@@ -12,8 +12,8 @@ The ```Two-Factor``` app demonstrates how to generate OTP tokens using Keycloak 
 
 ### 0. System Requirements
 
-* iOS8, iOS9
-* Xcode 7.3
+* iOS8, iOS9, iOS10
+* Xcode 8+
 
 ### Configuring a testing server
 
@@ -22,7 +22,7 @@ The ```Two-Factor``` app demonstrates how to generate OTP tokens using Keycloak 
 1. Login with username: *user* and password: *password*.
 1. Now open [iOS OTP client application](https://github.com/aerogear/aerogear-iOS-cookbook/tree/master/Two-Factor) on your phone
 1. Then scan the *Scan QRCode*
-1. Enter the current OTP on your mobile
+1. On the OTP backend, enter the current OTP displayed on your mobile
 
 For more details, please refer to our [documentation](http://aerogear.org/docs/specs/aerogear-security-otp/)
 
