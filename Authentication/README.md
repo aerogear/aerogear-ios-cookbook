@@ -1,18 +1,18 @@
 Authentication
 =======
 Level: Beginner  
-Technologies: Swift 3.0, iOS  
+Technologies: Swift 4.0, iOS  
 Summary: A basic example of performing http basic/digest authentication using aerogear-ios-http
 
 What is it?
 -----------
 
-This project is a very simple app, to show how to perform an HTTP Basic/Digest authentication against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library. Backend REST endpoint is implemented in this [repo](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication). For convenience an [OpenShift instance](https://bacon-corinnekrych.rhcloud.com/) has been deployed and the demo has been preconfigured to use it. Please make sure it is not idle before running the app, by hitting the URL in your browser. 
+This project is a very simple app, to show how to perform an HTTP Basic/Digest authentication against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library. Backend REST endpoint is implemented in this [repo](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication). For convenience an [OpenShift instance](https://bacon-corinnekrych.rhcloud.com/) has been deployed and the demo has been preconfigured to use it. Please make sure it is not idle before running the app, by hitting the URL in your browser.
 
 System requirements
 -------------------
-- iOS8, iOS9, iOS10
-- Xcode 8+
+- iOS9, iOS910, iOS11
+- Xcode 9+
 
 Configure
 ---------
@@ -47,4 +47,4 @@ Application Flow
 ----------------
 When the application is launched, you will be presented with two tabs in which the former fetches data after performing HTTP basic and the latter after performing HTTP digest.
 
- ![import](screenshot-auth-basic.png)   ![import](screenshot-auth-digest.png) 
+ ![import](screenshot-auth-basic.png)   ![import](screenshot-auth-digest.png)
