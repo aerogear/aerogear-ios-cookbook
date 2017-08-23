@@ -145,6 +145,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+        self.loadingIndicator?.isHidden = true
+        self.loadingIndicator?.stopAnimating()
         self.loading?.text = "Can't get your location!"
     }
 }

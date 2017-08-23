@@ -1,22 +1,22 @@
 Weather
 =======
 Level: Beginner  
-Technologies: Swift 3.0, iOS
+Technologies: Swift 4.0, iOS
 Summary: A basic example of aerogear-ios-http  
 
 What is it?
 -----------
 
-This project is a very simple app, to show how to do a http call against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library. 
+This project is a very simple app, to show how to do a http call against a simple REST endpoint. The demo is implemented in [Swift](https://developer.apple.com/swift/) and uses the [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) library.
 
 System requirements
 -------------------
-- iOS8, iOS9, iOS10
-- Xcode8
+- iOS9, iOS10, iOS11
+- Xcode9
 
 Configure
 ---------
-Nothing to be done. 
+Nothing to be done.
 The app fetches data from http://api.openweathermap.org/data/2.5/weather
 
 Build and Deploy Buddies
