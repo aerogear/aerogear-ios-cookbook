@@ -102,8 +102,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
         return parameters;
     }
     
-    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             return
@@ -125,7 +124,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
                     print("Secret found: \(secret)")
                     otp = AGTotp(secret: AGBase32.base32Decode(secret))
                 } else {
-                     print("Secret not found.")
+                    print("Secret not found.")
                 }
 
                 // go back to main screen
@@ -134,7 +133,6 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
         }
     }
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
