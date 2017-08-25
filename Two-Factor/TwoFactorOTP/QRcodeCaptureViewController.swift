@@ -27,13 +27,13 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
     var otp: AGTotp?
     
     // Added to support different barcodes
-    let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
+    let supportedBarCodes = [AVMetadataObject.ObjectType.qr, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+            let input = try AVCaptureDeviceInput(device: captureDevice!)
             // Initialize the captureSession object.
             captureSession = AVCaptureSession()
             // Set the input device on the capture session.
@@ -52,8 +52,8 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
             captureMetadataOutput.metadataObjectTypes = supportedBarCodes
             
             // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
             
@@ -102,7 +102,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
         return parameters;
     }
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
@@ -120,7 +120,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
             if metadataObj.stringValue != nil {
                 // Capture is over
                 captureSession?.stopRunning()
-                let secret = self.parametersFromQueryString(metadataObj.stringValue)["secret"]
+                let secret = self.parametersFromQueryString(metadataObj.stringValue!)["secret"]
                 if let secret = secret {
                     print("Secret found: \(secret)")
                     otp = AGTotp(secret: AGBase32.base32Decode(secret))
