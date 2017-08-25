@@ -92,9 +92,9 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
                 value = nil
                 parameterScanner.scanUpTo("&", into:&value)
                 parameterScanner.scanString("&", into:nil)
-                print("name::\(name) and value::\(value)")
+                print("name::\(String(describing: name)) and value::\(String(describing: value))")
                 if (name != nil && value != nil) {
-                    parameters[name!.replacingPercentEscapes(using: String.Encoding.utf8.rawValue)!] = value!.replacingPercentEscapes(using: String.Encoding.utf8.rawValue)
+                    parameters[name!.removingPercentEncoding!] = value!.removingPercentEncoding;
                 }
             }
         }
@@ -104,7 +104,7 @@ class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObje
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
-        if metadataObjects == nil || metadataObjects.count == 0 {
+        if metadataObjects == [] || metadataObjects.count == 0 {
             return
         }
         
