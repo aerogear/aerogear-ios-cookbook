@@ -6,13 +6,13 @@ Summary: A basic example how to use OTP
 
 ## What is it?
 
-The ```Two-Factor``` app demonstrates how to generate OTP tokens using Keycloak for the server side.
+The `Two-Factor` app demonstrates how to generate OTP tokens using Keycloak for the server side.
 
 ## How do I run it?
 
 ### 0. System Requirements
 
-* iOS8, iOS9, iOS10
+* iOS9, iOS10, iOS11
 * Xcode 8+
 
 ### Configuring a testing server

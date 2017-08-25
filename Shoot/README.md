@@ -5,7 +5,7 @@ With Shoot'nShare you can take picture, browse your camera roll, pick a picture 
 Picture get uploaded to your GoogleDrive or Facebook wall.
 You can also run this demo with its associated [Keycloak backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot) and upload photo to your own social network.
 
-Supported platforms: iOS8, iOS9, iOS10.
+Supported platforms: iOS9, iOS10, iOS11.
 
 ### Run it in Xcode
 
@@ -14,7 +14,7 @@ The project uses [CocoaPods](http://cocoapods.org) or handling its dependencies.
 ```bash
 pod install
 ```
-and then double click on the generated .xcworkspace to open in Xcode.
+and then double click on the generated `.xcworkspace` to open in Xcode.
 
 For the complete instructions about how to setup Google, Facebook or Keycloak credentials, visit our [OAuth2 documentation guide](https://aerogear.org/docs/guides/security/oauth2-guide/#_before_you_get_started)
 
@@ -44,4 +44,4 @@ In [1] initialize config. The default config uses an external browser approach w
 
 You can use AccountManager to create an OAuth2Module in [3]
 
-Inject the oauth2 module to self.http [4], then all headers will be added for you when self.performUpload do the http.POST 
+Inject the oauth2 module to self.http [4], then all headers will be added for you when self.performUpload do the http.POST

@@ -10,7 +10,7 @@ This project is a simple demo for the work around [AeroGear Differential Synchro
 
 System requirements
 -------------------
-- iOS8, iOS9, iOS10
+- iOS9, iOS10, iOS11
 - Xcode 8+
 
 Configure
@@ -33,7 +33,7 @@ Choose the variant of the demo you want to use, enter the directory and run:
 pod install
 ```
 
-and then double click on the generated .xcworkspace to open in Xcode.
+and then double click on the generated `.xcworkspace` to open in Xcode.
 
 
 Application Flow
@@ -45,4 +45,3 @@ To test the application, you will need two Jedi demos running. For exemple:
 - modify one field on simulator and see it instantly synchronized on device!
 
 ![import](Jedi.png)
-
