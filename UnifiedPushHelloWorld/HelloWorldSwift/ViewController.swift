@@ -111,5 +111,8 @@ class ViewController: UITableViewController {
         
         return cell
     }
-}
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
