@@ -53,8 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
-        
         return true
     }
     
