@@ -1,18 +1,18 @@
 Watch Howdy app
 ================
 Level: Beginner  
-Technologies: Swift 3.0, iOS9 + watchOS2 / iOS10 + watchOS3   
+Technologies: Swift 4.0, iOS9 + watchOS2 / iOS10 + watchOS3 / iOS11 + watchOS4
 Summary: A basic example of aerogear-ios-push with actionable action (text input).  
 
 What is it?
 -----------
 
-Howdy is a very simple app that receive push notification asking you "how do you do?". You can do a direct reply on the push notification itself ([actionable push notification](http://blogs.imediaconnection.com/blog/2015/04/16/actionable-notifications-and-the-apple-watch/) available since iOS8). You can answer canned responses and since iOS9 "input text" is also possible. When push notification are received on watch the dictation is activated instead of keybord access.
+Howdy is a very simple app that receive push notification asking you "how do you do?". You can do a direct reply on the push notification itself ([actionable push notification](http://blogs.imediaconnection.com/blog/2015/04/16/actionable-notifications-and-the-apple-watch/) available since iOS8). You can answer canned responses and since iOS9 "input text" is also possible. When push notification are received on watch the dictation is activated instead of keyboard access.
 
 Configuration
 -------------
 ### Server side
-Actionnable notification are supported in UnifiedPush 1.1.x+. 
+Actionnable notification are supported in UnifiedPush 1.1.x+.
 You will need to deploy either [UnifiedPush Server locally or using OpenShift](https://aerogear.org/push/).
 
 ### Client side
@@ -38,8 +38,8 @@ Replace SERVERL-URL, VARIANT-ID, VARIANT-SECRET from the on one provided for you
 **Note:** If you're running the server locally on development mode (ie: without TLS), you need to add a TLS1.2 exception in iOS9.
 
 ### Changing bundle id
-* In the main tab, go to Target -> `helloworldpush` target, change `org.aerogear.how` to your own identifier for the `Bundle identifier` field. 
-* Do the same for WatchKit and WatchKit extension targets. 
+* In the main tab, go to Target -> `helloworldpush` target, change `org.aerogear.how` to your own identifier for the `Bundle identifier` field.
+* Do the same for WatchKit and WatchKit extension targets.
 * Go to `Howdy/helloworldpush WatchKit App/Info.plist` right click `Open as source`, replace `org.aerogear.how` by your bundle id:
 ```
  <key>WKCompanionAppBundleIdentifier</key>
@@ -55,8 +55,8 @@ Well done!
 
 System requirements
 -------------------
-- iOS 9, iOS10 / watchOS2, watchOS3 
-- Xcode 8+
+- iOS 9, iOS10, iOS11 / watchOS2, watchOS3, watchOS4
+- Xcode 9+
 
 Build and Deploy
 ----------------
