@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11852756DDF29C59D98D1C3F /* libPods-AeroGear-Crypto-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE1D226DDE6B402872B4239 /* libPods-AeroGear-Crypto-Demo.a */; };
 		186C2B288C3149B7B3020839 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F62CE8F71F46458C59E4A3 /* libPods.a */; };
 		48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
 		48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10C1821066100CDD418 /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		117CA5E0DA15AA0F268B4C88 /* Pods-AeroGear-Crypto-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGear-Crypto-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		2FE1D226DDE6B402872B4239 /* libPods-AeroGear-Crypto-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGear-Crypto-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F62CE8F71F46458C59E4A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AeroGear-Crypto-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B7F10A1821066100CDD418 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +56,7 @@
 		6FE1EC671824141400AB9866 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B23D58E80C0248458512743C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		C2AF9EBBAAA843DFDBE07467 /* Pods-AeroGear-Crypto-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGear-Crypto-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 				48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */,
 				48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */,
 				186C2B288C3149B7B3020839 /* libPods.a in Frameworks */,
+				11852756DDF29C59D98D1C3F /* libPods-AeroGear-Crypto-Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +84,7 @@
 				48B7F1091821066100CDD418 /* Frameworks */,
 				48B7F1081821066100CDD418 /* Products */,
 				B23D58E80C0248458512743C /* Pods.xcconfig */,
+				93C35FAEC1D51B691722C440 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +106,7 @@
 				48B7F10E1821066100CDD418 /* UIKit.framework */,
 				48B7F1291821066100CDD418 /* XCTest.framework */,
 				31F62CE8F71F46458C59E4A3 /* libPods.a */,
+				2FE1D226DDE6B402872B4239 /* libPods-AeroGear-Crypto-Demo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -188,6 +195,15 @@
 			path = Resources/splash;
 			sourceTree = "<group>";
 		};
+		93C35FAEC1D51B691722C440 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				117CA5E0DA15AA0F268B4C88 /* Pods-AeroGear-Crypto-Demo.debug.xcconfig */,
+				C2AF9EBBAAA843DFDBE07467 /* Pods-AeroGear-Crypto-Demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,11 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48B7F1391821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-Demo" */;
 			buildPhases = (
-				ED3408093FE144A2AB73D223 /* Check Pods Manifest.lock */,
+				ED3408093FE144A2AB73D223 /* [CP] Check Pods Manifest.lock */,
 				48B7F1031821066100CDD418 /* Sources */,
 				48B7F1041821066100CDD418 /* Frameworks */,
 				48B7F1051821066100CDD418 /* Resources */,
-				ADC3BCB0FCAB4833A2681C73 /* Copy Pods Resources */,
+				ADC3BCB0FCAB4833A2681C73 /* [CP] Copy Pods Resources */,
+				D8ED601A7376672FA19E04F9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,34 +268,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		ADC3BCB0FCAB4833A2681C73 /* Copy Pods Resources */ = {
+		ADC3BCB0FCAB4833A2681C73 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ED3408093FE144A2AB73D223 /* Check Pods Manifest.lock */ = {
+		D8ED601A7376672FA19E04F9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED3408093FE144A2AB73D223 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AeroGear-Crypto-Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,7 +430,7 @@
 		};
 		48B7F13A1821066100CDD418 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B23D58E80C0248458512743C /* Pods.xcconfig */;
+			baseConfigurationReference = 117CA5E0DA15AA0F268B4C88 /* Pods-AeroGear-Crypto-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -407,7 +445,7 @@
 		};
 		48B7F13B1821066100CDD418 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B23D58E80C0248458512743C /* Pods.xcconfig */;
+			baseConfigurationReference = C2AF9EBBAAA843DFDBE07467 /* Pods-AeroGear-Crypto-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
