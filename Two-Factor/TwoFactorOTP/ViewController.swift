@@ -59,7 +59,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
     
-    internal func update() {
+    @objc internal func update() {
         counter += 1
         if counter == 30 {
             timer.invalidate()
