@@ -22,6 +22,7 @@
 		6FE1EC661823FE3B00AB9866 /* AGPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */; };
 		6FE1EC681824141400AB9866 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC671824141400AB9866 /* SystemConfiguration.framework */; };
 		6FE1EC6A1824141B00AB9866 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */; };
+		ADB86A117B7059B9A36B1BA2 /* libPods-AeroGear-Crypto-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA24F8F9B2FD47AE157CA0C /* libPods-AeroGear-Crypto-Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		6FE1EC671824141400AB9866 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C2AF9EBBAAA843DFDBE07467 /* Pods-AeroGear-Crypto-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AeroGear-Crypto-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AeroGear-Crypto-Demo/Pods-AeroGear-Crypto-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		ECA24F8F9B2FD47AE157CA0C /* libPods-AeroGear-Crypto-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AeroGear-Crypto-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */,
 				48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */,
 				48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */,
+				ADB86A117B7059B9A36B1BA2 /* libPods-AeroGear-Crypto-Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +98,7 @@
 				48B7F10A1821066100CDD418 /* Foundation.framework */,
 				48B7F10C1821066100CDD418 /* CoreGraphics.framework */,
 				48B7F10E1821066100CDD418 /* UIKit.framework */,
+				ECA24F8F9B2FD47AE157CA0C /* libPods-AeroGear-Crypto-Demo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
