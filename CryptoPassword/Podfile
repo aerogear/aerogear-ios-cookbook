@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 project 'AeroGear-Crypto-Demo.xcodeproj'
-platform :ios, '7.0'
+platform :ios, '9.0'
 
 target 'AeroGear-Crypto-Demo' do
   pod 'AeroGear', '1.6.1'
