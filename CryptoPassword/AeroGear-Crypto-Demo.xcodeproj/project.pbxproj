@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		186C2B288C3149B7B3020839 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F62CE8F71F46458C59E4A3 /* libPods.a */; };
+		48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10A1821066100CDD418 /* Foundation.framework */; };
+		48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10C1821066100CDD418 /* CoreGraphics.framework */; };
+		48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B7F10E1821066100CDD418 /* UIKit.framework */; };
+		48B7F1151821066100CDD418 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1131821066100CDD418 /* InfoPlist.strings */; };
+		48B7F1171821066100CDD418 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F1161821066100CDD418 /* main.m */; };
+		48B7F11E1821066100CDD418 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F11C1821066100CDD418 /* Main.storyboard */; };
+		48B7F1231821066100CDD418 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B7F1221821066100CDD418 /* Images.xcassets */; };
+		48B7F168182170F200CDD418 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F167182170F200CDD418 /* AppDelegate.m */; };
+		48B7F16E1821719F00CDD418 /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F16D1821719F00CDD418 /* AGLoginViewController.m */; };
+		6F3512081823C33500115C4D /* AGPasswordManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3512071823C33500115C4D /* AGPasswordManagerViewController.m */; };
+		6F35120B1823C85500115C4D /* AGAddPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */; };
+		6F35120E1823D4B900115C4D /* AGCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F35120D1823D4B900115C4D /* AGCredential.m */; };
+		6FE1EC661823FE3B00AB9866 /* AGPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */; };
+		6FE1EC681824141400AB9866 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC671824141400AB9866 /* SystemConfiguration.framework */; };
+		6FE1EC6A1824141B00AB9866 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		31F62CE8F71F46458C59E4A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AeroGear-Crypto-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B7F10A1821066100CDD418 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		48B7F10C1821066100CDD418 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		48B7F10E1821066100CDD418 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		48B7F1121821066100CDD418 /* AeroGear-Crypto-Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AeroGear-Crypto-Demo-Info.plist"; sourceTree = "<group>"; };
+		48B7F1141821066100CDD418 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		48B7F1161821066100CDD418 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48B7F1181821066100CDD418 /* AeroGear-Crypto-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AeroGear-Crypto-Demo-Prefix.pch"; sourceTree = "<group>"; };
+		48B7F11D1821066100CDD418 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48B7F1221821066100CDD418 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		48B7F1291821066100CDD418 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		48B7F166182170F200CDD418 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		48B7F167182170F200CDD418 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		48B7F16C1821719F00CDD418 /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGLoginViewController.h; path = Classes/Controller/AGLoginViewController.h; sourceTree = "<group>"; };
+		48B7F16D1821719F00CDD418 /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGLoginViewController.m; path = Classes/Controller/AGLoginViewController.m; sourceTree = "<group>"; };
+		6F3512061823C33500115C4D /* AGPasswordManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPasswordManagerViewController.h; path = Classes/Controller/AGPasswordManagerViewController.h; sourceTree = "<group>"; };
+		6F3512071823C33500115C4D /* AGPasswordManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGPasswordManagerViewController.m; path = Classes/Controller/AGPasswordManagerViewController.m; sourceTree = "<group>"; };
+		6F3512091823C85500115C4D /* AGAddPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAddPasswordViewController.h; path = Classes/Controller/AGAddPasswordViewController.h; sourceTree = "<group>"; };
+		6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAddPasswordViewController.m; path = Classes/Controller/AGAddPasswordViewController.m; sourceTree = "<group>"; };
+		6F35120C1823D4B900115C4D /* AGCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGCredential.h; path = Classes/Model/AGCredential.h; sourceTree = "<group>"; };
+		6F35120D1823D4B900115C4D /* AGCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGCredential.m; path = Classes/Model/AGCredential.m; sourceTree = "<group>"; };
+		6FE1EC641823FE3B00AB9866 /* AGPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPasswordViewController.h; path = Classes/Controller/AGPasswordViewController.h; sourceTree = "<group>"; };
+		6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGPasswordViewController.m; path = Classes/Controller/AGPasswordViewController.m; sourceTree = "<group>"; };
+		6FE1EC671824141400AB9866 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B23D58E80C0248458512743C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48B7F1041821066100CDD418 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FE1EC6A1824141B00AB9866 /* MobileCoreServices.framework in Frameworks */,
+				6FE1EC681824141400AB9866 /* SystemConfiguration.framework in Frameworks */,
+				48B7F10D1821066100CDD418 /* CoreGraphics.framework in Frameworks */,
+				48B7F10F1821066100CDD418 /* UIKit.framework in Frameworks */,
+				48B7F10B1821066100CDD418 /* Foundation.framework in Frameworks */,
+				186C2B288C3149B7B3020839 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48B7F0FE1821066100CDD418 = {
+			isa = PBXGroup;
+			children = (
+				48B7F1101821066100CDD418 /* AeroGear-Crypto-Demo */,
+				48B7F1091821066100CDD418 /* Frameworks */,
+				48B7F1081821066100CDD418 /* Products */,
+				B23D58E80C0248458512743C /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		48B7F1081821066100CDD418 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48B7F1091821066100CDD418 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FE1EC691824141B00AB9866 /* MobileCoreServices.framework */,
+				6FE1EC671824141400AB9866 /* SystemConfiguration.framework */,
+				48B7F10A1821066100CDD418 /* Foundation.framework */,
+				48B7F10C1821066100CDD418 /* CoreGraphics.framework */,
+				48B7F10E1821066100CDD418 /* UIKit.framework */,
+				48B7F1291821066100CDD418 /* XCTest.framework */,
+				31F62CE8F71F46458C59E4A3 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48B7F1101821066100CDD418 /* AeroGear-Crypto-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1401821124300CDD418 /* Model */,
+				48B7F13F1821123A00CDD418 /* Controller */,
+				48B7F1421821130F00CDD418 /* Resources */,
+				48B7F11C1821066100CDD418 /* Main.storyboard */,
+				48B7F1221821066100CDD418 /* Images.xcassets */,
+				48B7F1111821066100CDD418 /* Supporting Files */,
+			);
+			path = "AeroGear-Crypto-Demo";
+			sourceTree = "<group>";
+		};
+		48B7F1111821066100CDD418 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1121821066100CDD418 /* AeroGear-Crypto-Demo-Info.plist */,
+				48B7F1131821066100CDD418 /* InfoPlist.strings */,
+				48B7F1161821066100CDD418 /* main.m */,
+				48B7F1181821066100CDD418 /* AeroGear-Crypto-Demo-Prefix.pch */,
+				48B7F166182170F200CDD418 /* AppDelegate.h */,
+				48B7F167182170F200CDD418 /* AppDelegate.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48B7F13F1821123A00CDD418 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F16C1821719F00CDD418 /* AGLoginViewController.h */,
+				48B7F16D1821719F00CDD418 /* AGLoginViewController.m */,
+				6F3512061823C33500115C4D /* AGPasswordManagerViewController.h */,
+				6F3512071823C33500115C4D /* AGPasswordManagerViewController.m */,
+				6F3512091823C85500115C4D /* AGAddPasswordViewController.h */,
+				6F35120A1823C85500115C4D /* AGAddPasswordViewController.m */,
+				6FE1EC641823FE3B00AB9866 /* AGPasswordViewController.h */,
+				6FE1EC651823FE3B00AB9866 /* AGPasswordViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		48B7F1401821124300CDD418 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F35120C1823D4B900115C4D /* AGCredential.h */,
+				6F35120D1823D4B900115C4D /* AGCredential.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		48B7F1421821130F00CDD418 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				48B7F1431821132A00CDD418 /* icons */,
+				48B7F1481821132A00CDD418 /* images */,
+				48B7F14F1821132A00CDD418 /* splash */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		48B7F1431821132A00CDD418 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = icons;
+			path = Resources/icons;
+			sourceTree = "<group>";
+		};
+		48B7F1481821132A00CDD418 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
+			path = Resources/images;
+			sourceTree = "<group>";
+		};
+		48B7F14F1821132A00CDD418 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = splash;
+			path = Resources/splash;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48B7F1061821066100CDD418 /* AeroGear-Crypto-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B7F1391821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-Demo" */;
+			buildPhases = (
+				ED3408093FE144A2AB73D223 /* Check Pods Manifest.lock */,
+				48B7F1031821066100CDD418 /* Sources */,
+				48B7F1041821066100CDD418 /* Frameworks */,
+				48B7F1051821066100CDD418 /* Resources */,
+				ADC3BCB0FCAB4833A2681C73 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AeroGear-Crypto-Demo";
+			productName = "AeroGear-Crypto-Demo";
+			productReference = 48B7F1071821066100CDD418 /* AeroGear-Crypto-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48B7F0FF1821066100CDD418 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = AeroGear;
+			};
+			buildConfigurationList = 48B7F1021821066100CDD418 /* Build configuration list for PBXProject "AeroGear-Crypto-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48B7F0FE1821066100CDD418;
+			productRefGroup = 48B7F1081821066100CDD418 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48B7F1061821066100CDD418 /* AeroGear-Crypto-Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48B7F1051821066100CDD418 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B7F1231821066100CDD418 /* Images.xcassets in Resources */,
+				48B7F1151821066100CDD418 /* InfoPlist.strings in Resources */,
+				48B7F11E1821066100CDD418 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADC3BCB0FCAB4833A2681C73 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED3408093FE144A2AB73D223 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48B7F1031821066100CDD418 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F35120E1823D4B900115C4D /* AGCredential.m in Sources */,
+				48B7F16E1821719F00CDD418 /* AGLoginViewController.m in Sources */,
+				48B7F168182170F200CDD418 /* AppDelegate.m in Sources */,
+				48B7F1171821066100CDD418 /* main.m in Sources */,
+				6F3512081823C33500115C4D /* AGPasswordManagerViewController.m in Sources */,
+				6FE1EC661823FE3B00AB9866 /* AGPasswordViewController.m in Sources */,
+				6F35120B1823C85500115C4D /* AGAddPasswordViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		48B7F1131821066100CDD418 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48B7F1141821066100CDD418 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		48B7F11C1821066100CDD418 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48B7F11D1821066100CDD418 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48B7F1371821066100CDD418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		48B7F1381821066100CDD418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48B7F13A1821066100CDD418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B23D58E80C0248458512743C /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				INFOPLIST_FILE = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		48B7F13B1821066100CDD418 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B23D58E80C0248458512743C /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Prefix.pch";
+				INFOPLIST_FILE = "AeroGear-Crypto-Demo/AeroGear-Crypto-Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48B7F1021821066100CDD418 /* Build configuration list for PBXProject "AeroGear-Crypto-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B7F1371821066100CDD418 /* Debug */,
+				48B7F1381821066100CDD418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B7F1391821066100CDD418 /* Build configuration list for PBXNativeTarget "AeroGear-Crypto-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B7F13A1821066100CDD418 /* Debug */,
+				48B7F13B1821066100CDD418 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48B7F0FF1821066100CDD418 /* Project object */;
+}
