@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.messageReceived(_:)), name: Notification.Name(rawValue: "message_received"), object: nil)
     }
    
-    func registered() {
+    @objc func registered() {
         print("registered")
         
         // workaround to get messages when app was not running
@@ -52,14 +52,14 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    func errorRegistration() {
+    @objc func errorRegistration() {
         // can't do much, inform user to verify the UPS details entered and return
         let message = UIAlertController(title: "Registration Error!", message: "Please verify the provisionioning profile and the UPS details have been setup correctly.", preferredStyle:  .alert)
         
         self.present(message, animated:true, completion:nil)
     }
     
-    func messageReceived(_ notification: Notification) {
+    @objc func messageReceived(_ notification: Notification) {
         print("received")
         if let userInfo = notification.userInfo, let aps = userInfo["aps"] as? [String: Any] {
             // if alert is a flat string
@@ -111,5 +111,8 @@ class ViewController: UITableViewController {
         
         return cell
     }
-}
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}

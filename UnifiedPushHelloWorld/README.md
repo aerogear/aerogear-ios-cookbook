@@ -2,7 +2,7 @@ helloworld-push-ios: Basic Mobile Application showing the AeroGear Push feature 
 ======================================================================================
 Author: Corinne Krych (ckrych), Christos Vasilakis (cvasilak)
 Level: Beginner  
-Technologies: Swift 3.0, iOS  
+Technologies: Swift 4.0, iOS
 Summary: A basic example of Push : Registration and receiving messages.  
 Target Product: Mobile  
 Product Versions: MP 1.0
@@ -11,12 +11,12 @@ Source: https://github.com/aerogear/aerogear-push-helloworld/ios-swift
 What is it?
 -----------
 
-This project is a very simple helloworld, to show how to get started with the UnifiedPush Server on iOS. The demo is implemented in [Swift 3.0](https://developer.apple.com/swift/) and uses the push-sdk [Swift|https://github.com/aerogear/aerogear-ios-push/tree/master] for registering to the UnifiedPush Server.
+This project is a very simple helloworld, to show how to get started with the UnifiedPush Server on iOS. The demo is implemented in [Swift 4.0](https://developer.apple.com/swift/) and uses the push-sdk [Swift|https://github.com/aerogear/aerogear-ios-push/tree/master] for registering to the UnifiedPush Server.
 
 System requirements
 -------------------
 - iOS 9, iOS 10, iOS 11
-- Xcode version 8.0+
+- Xcode version 9.0+
 
 Configure
 ---------
