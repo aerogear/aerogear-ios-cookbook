@@ -203,8 +203,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
         if let _ = didFinishSavingWithError {
-            let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
-                alert.show()
+            self.presentAlert("Save failed", message: "Failed to save image")
         }
    }
 
