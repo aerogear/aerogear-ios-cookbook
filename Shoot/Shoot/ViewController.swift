@@ -53,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 
-    func handleSettingsChangedNotification() {
+    @objc func handleSettingsChangedNotification() {
 
         let userDefaults = UserDefaults.standard
         let clear = userDefaults.bool(forKey: "clearShootKeychain")
@@ -198,7 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
