@@ -25,7 +25,7 @@ import AeroGearOAuth2
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var overlayView: UIView?
+    @IBOutlet weak var  overlayView: UIView?
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
     var http: Http!
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.useCamera()
     }
 
-    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+    @IBAction func takePicture(_ sender: UIButton) {
         self.imagePicker.takePicture()
     }
 
