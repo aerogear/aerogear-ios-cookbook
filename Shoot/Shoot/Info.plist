@@ -7,8 +7,8 @@
     <string>This app needs access to the camera to take photos.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>This app needs access to photos.</string>
-
-    
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>This app needs to store photos.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

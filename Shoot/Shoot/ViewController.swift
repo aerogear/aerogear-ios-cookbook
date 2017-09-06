@@ -25,7 +25,7 @@ import AeroGearOAuth2
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var overlayView: UIView?
+    @IBOutlet weak var  overlayView: UIView?
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
     var http: Http!
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 
-    func handleSettingsChangedNotification() {
+    @objc func handleSettingsChangedNotification() {
 
         let userDefaults = UserDefaults.standard
         let clear = userDefaults.bool(forKey: "clearShootKeychain")
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.useCamera()
     }
 
-    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+    @IBAction func takePicture(_ sender: UIButton) {
         self.imagePicker.takePicture()
     }
 
@@ -198,13 +198,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
         if let _ = didFinishSavingWithError {
-            let alert = UIAlertView(title: "Save failed", message: "Failed to save image", delegate: nil, cancelButtonTitle:"OK", otherButtonTitles:"")
-                alert.show()
+            self.presentAlert("Save failed", message: "Failed to save image")
         }
    }
 

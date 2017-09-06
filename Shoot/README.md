@@ -40,8 +40,8 @@ NOTES: Because this app uses your camera, you should run it on actual device. Ru
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
     }
 ```
-In [1] initialize config. The default config uses an external browser approach when lauching the authorization request (ie: Safari opens to prompt you for your credentials). If you prefer to use an embedded webview, uncomment line [2].
+In [1] initialize config. The default config uses an external browser approach when launching the authorization request (ie: Safari opens to prompt you for your credentials). If you prefer to use an embedded webview, uncomment line [2].
 
 You can use AccountManager to create an OAuth2Module in [3]
 
-Inject the oauth2 module to self.http [4], then all headers will be added for you when self.performUpload do the http.POST
+Inject the oauth2 module to self.http [4], then all headers will be added for you when self.performUpload do the http.request with method: .post
