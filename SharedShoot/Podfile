@@ -5,6 +5,6 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'SharedShoot' do
-	pod 'AeroGearHttp', '1.0.0'
-	pod 'AeroGearOAuth2', '1.0.0'
+	pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git', :branch => 'ios11'
+	pod 'AeroGearOAuth2', :git => 'https://github.com/aerogear/aerogear-ios-oauth2.git', :branch => 'ios11'
 end
