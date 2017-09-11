@@ -86,7 +86,7 @@ class ViewController: UIViewController {
             // Get the list of photos
             self.keycloakHttp.request(method: .get, path: "\(HOST)/shoot/rest/photos", parameters: nil, completionHandler: { (response: Any?, error: NSError?) -> Void in
                 if error != nil {
-                    print("Oops something must have being wrong. Check your URL. Is your Keycloak server running? \n\(error)")
+                    print("Oops something must have being wrong. Check your URL. Is your Keycloak server running? \n\(String(describing: error))")
                 } else {
                     let files = response as! [AnyObject]
                     let _ = files.map({ (file: AnyObject) -> () in
