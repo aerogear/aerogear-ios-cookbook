@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     fileprivate func connect() {
-        syncClient.connect()
+        _ = syncClient.connect()
         syncClient.addDocument(doc: ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson()), callback: syncCallback)
     }
 
@@ -159,12 +159,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     fileprivate func sync(_ field: UITextField) {
-        print("syncing...\(field.text)")
+        print("syncing...\(String(describing: field.text))")
         let doc = ClientDocument<JsonNode>(id: documentId, clientId: clientId, content: fieldsAsJson())
         if dirty {
             backgroundQueue.addOperation() {
                 self.dirty = false
-                self.syncClient.diffAndSend(doc)
+                _ = self.syncClient.diffAndSend(doc)
             }
         }
     }
