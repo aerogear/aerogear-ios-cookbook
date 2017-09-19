@@ -1,7 +1,7 @@
 Jedi
 ====
 Level: Beginner  
-Technologies: Swift 3.0, iOS  
+Technologies: Swift 4.0, iOS  
 Summary: A basic example of [aerogear-ios-sync](https://github.com/aerogear/aerogear-ios-sync), [aerogear-ios-sync-client](https://github.com/aerogear/aerogear-ios-sync-client)  
 
 What is it?
@@ -11,14 +11,14 @@ This project is a simple demo for the work around [AeroGear Differential Synchro
 System requirements
 -------------------
 - iOS9, iOS10, iOS11
-- Xcode 8+
+- Xcode 9+
 
 Configure
 ---------
 
 This project requires that the [AeroGear Differential Synchronization Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty) be running. Please refer to that project for instructions for starting the server.
 
-To run on actual device, select the version you want to use,  modify ```<Demo>/AeroGearSyncDemo/Info.plist``` and change the SyncServerHost to match your IP address and make sure it matches the one on [AeroGear Differential Synchronization Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty).
+To run on actual device, select the version you want to use,  modify `<Demo>/AeroGearSyncDemo/Info.plist` and change the SyncServerHost to match your IP address and make sure it matches the one on [AeroGear Differential Synchronization Server](https://github.com/aerogear/aerogear-sync-server/tree/master/server/server-netty).
 
 Build and Deploy Jedi
 ---------------------
