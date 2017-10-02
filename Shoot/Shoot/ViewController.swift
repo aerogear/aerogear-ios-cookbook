@@ -25,7 +25,7 @@ import AeroGearOAuth2
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var  overlayView: UIView?
+    @IBOutlet weak var overlayView: UIView?
     var imagePicker = UIImagePickerController()
     var newMedia: Bool = true
     var http: Http!
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // Let's register for settings update notification
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleSettingsChangedNotification),
-            name: UserDefaults.didChangeNotification, object: nil)
+                name: UserDefaults.didChangeNotification, object: nil)
         self.http = Http()
         self.useCamera()
     }
@@ -78,7 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func goToSettings(_ sender: AnyObject) {
-        let settingsUrl = URL(string:UIApplicationOpenSettingsURLString)
+        let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
         UIApplication.shared.openURL(settingsUrl!)
     }
 
@@ -88,14 +88,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePicker.sourceType = .camera
             imagePicker.mediaTypes = [String(kUTTypeImage)]
             imagePicker.allowsEditing = false
-            
+
             // custom camera overlayview
             imagePicker.showsCameraControls = false
-            Bundle.main.loadNibNamed("OverlayView", owner:self, options:nil)
+            Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)
             self.overlayView!.frame = imagePicker.cameraOverlayView!.frame
             imagePicker.cameraOverlayView = self.overlayView
             self.overlayView = nil
-            self.present(imagePicker, animated:true, completion:{})
+            self.present(imagePicker, animated: true, completion: {})
             newMedia = true
         } else {
             if (UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)) {
@@ -104,7 +104,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.mediaTypes = [String(kUTTypeImage)]
                 imagePicker.allowsEditing = false
-                self.present(imagePicker, animated:true, completion:{})
+                self.present(imagePicker, animated: true, completion: {})
                 newMedia = false
             }
         }
@@ -113,32 +113,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareWithFacebook() {
         print("Perform photo upload with Facebook")
         let facebookConfig = FacebookConfig(
-            clientId: "YYY",
-            clientSecret: "XXX",
-            scopes:["publish_actions"])
+                clientId: "YYY",
+                clientSecret: "XXX",
+                scopes: ["publish_actions"])
         // If you want to use embedded web view uncomment
         //facebookConfig.isWebView = true
-        
+
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
         let fbModule = FacebookOAuth2Module(config: facebookConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(facebookConfig.clientId)"))
         //let fbModule =  AccountManager.addFacebookAccount(facebookConfig)
         self.http.authzModule = fbModule
 
-        self.performUpload("https://graph.facebook.com/me/photos",  parameters: self.extractImageAsMultipartParams())
+        self.performUpload("https://graph.facebook.com/me/photos", parameters: self.extractImageAsMultipartParams())
     }
 
     @IBAction func shareWithGoogleDrive() {
         print("Perform photo upload with Google")
 
         let googleConfig = GoogleConfig(
-            clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
-            scopes:["https://www.googleapis.com/auth/drive"])
+                clientId: "873670803862-g6pjsgt64gvp7r25edgf4154e8sld5nq.apps.googleusercontent.com",
+                scopes: ["https://www.googleapis.com/auth/drive"])
         // If you want to use embedded web view uncomment
         //googleConfig.isWebView = true
-        
+
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
         let gdModule = OAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
-        
+
         //let gdModule = AccountManager.addGoogleAccount(googleConfig)
         self.http.authzModule = gdModule
         self.performUpload("https://www.googleapis.com/upload/drive/v2/files", parameters: self.extractImageAsMultipartParams())
@@ -149,12 +149,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let keycloakHost = "http://localhost:8080"
         let keycloakConfig = KeycloakConfig(
-            clientId: "shoot-third-party",
-            host: keycloakHost,
-            realm: "shoot-realm")
+                clientId: "shoot-third-party",
+                host: keycloakHost,
+                realm: "shoot-realm")
         // If you want to use embedded web view uncomment
         //keycloakConfig.isWebView = true
-        
+
         // Workaround issue on Keychain https://forums.developer.apple.com/message/23323
         let gdModule = KeycloakOAuth2Module(config: keycloakConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(keycloakConfig.clientId)"))
         //let gdModule = AccountManager.addKeycloakAccount(keycloakConfig)
@@ -164,7 +164,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func performUpload(_ url: String, parameters: [String: AnyObject]?) {
-        self.http.request(method: .post, path: url, parameters: parameters, completionHandler: {(response, error) in
+        self.http.request(method: .post, path: url, parameters: parameters, completionHandler: { (response, error) in
             if (error != nil) {
                 self.presentAlert("Error", message: error!.localizedDescription)
             } else {
@@ -176,39 +176,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK - UIImagePickerControllerDelegate
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        self.dismiss(animated: true, completion:nil)
+        self.dismiss(animated: true, completion: nil)
         let image: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         if (newMedia == true) {
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else {
-            let imageURL:URL = info[UIImagePickerControllerReferenceURL] as! URL
-            let assetslibrary = ALAssetsLibrary()
-            
-            assetslibrary.asset(for: imageURL, resultBlock: {
-                (asset: ALAsset?) in
-                if let asset = asset {
-                    let assetRep: ALAssetRepresentation = asset.defaultRepresentation()
-                    self.imageView.accessibilityIdentifier = assetRep.filename()
-                    self.imageView.image = image;
-                }
-            }, failureBlock: { error in
-                print("Error \(error)")
-            }
-            )
+            let pickedImage: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.imageView.image = pickedImage
         }
     }
 
-    @objc func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo:UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo: UnsafeRawPointer) {
         self.imageView.image = image;
         self.imageView.accessibilityIdentifier = "Untitled.jpg";
 
         if let _ = didFinishSavingWithError {
             self.presentAlert("Save failed", message: "Failed to save image")
         }
-   }
+    }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion:nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     func extractImageAsMultipartParams() -> [String: AnyObject] {
@@ -216,9 +204,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let filename = self.imageView.accessibilityIdentifier;
 
         let multiPartData = MultiPartData(data: UIImageJPEGRepresentation(self.imageView.image!, 0.2)!,
-            name: "image",
-            filename: filename!,
-            mimeType: "image/jpg")
+                name: "image",
+                filename: filename!,
+                mimeType: "image/jpg")
 
         return ["file": multiPartData]
     }
