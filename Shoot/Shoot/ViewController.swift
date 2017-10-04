@@ -18,7 +18,7 @@
 
 import UIKit
 import MobileCoreServices
-import AssetsLibrary
+import Photos
 
 import AeroGearHttp
 import AeroGearOAuth2
@@ -182,6 +182,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(ViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else {
             let pickedImage: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [imageURL as URL], options: nil)
+            let filename = fetchResult.firstObject?.value(forKey: "filename") ?? ""
+            
+            self.imageView.accessibilityIdentifier = filename as? String
             self.imageView.image = pickedImage
         }
     }
