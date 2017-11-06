@@ -304,7 +304,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HelloWorldSwift/Pods-HelloWorldSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AeroGear-Push-Swift/AeroGearPush.framework",
+				"${BUILT_PRODUCTS_DIR}/AeroGearPush-Swift/AeroGearPush.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -472,7 +472,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = $SOURCE_ROOT/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$SOURCE_ROOT/include";
 				INFOPLIST_FILE = HelloWorldSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -503,7 +503,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = $SOURCE_ROOT/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$SOURCE_ROOT/include";
 				INFOPLIST_FILE = HelloWorldSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";

@@ -4,5 +4,5 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'helloworldpush' do
-  pod 'AeroGear-Push-Swift', :git => 'https://github.com/aerogear/aerogear-ios-push', :branch => 'ios11'
+  pod 'AeroGearPush-Swift', '~> 3.0.0'
 end

@@ -208,11 +208,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TwoFactorOTP/Pods-TwoFactorOTP-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AeroGear-OTP/AeroGear_OTP.framework",
+				"${BUILT_PRODUCTS_DIR}/AeroGearOTP/AeroGearOTP.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AeroGear_OTP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AeroGearOTP.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
