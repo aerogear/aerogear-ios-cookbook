@@ -5,5 +5,5 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'Weather' do
-	pod 'AeroGearHttp', :git => 'https://github.com/aerogear/aerogear-ios-http.git', :branch => 'ios11'
+	pod 'AeroGearHttp', '~> 2.0.0'
 end

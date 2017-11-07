@@ -17,7 +17,7 @@
 
 import UIKit
 import AVFoundation
-import AeroGear_OTP
+import AeroGearOTP
 
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var displayQRCode: UILabel!

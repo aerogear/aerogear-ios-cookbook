@@ -381,7 +381,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-helloworldpush/Pods-helloworldpush-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AeroGear-Push-Swift/AeroGearPush.framework",
+				"${BUILT_PRODUCTS_DIR}/AeroGearPush-Swift/AeroGearPush.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

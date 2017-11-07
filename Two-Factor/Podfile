@@ -5,5 +5,5 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'TwoFactorOTP' do
-	pod 'AeroGear-OTP', '1.0.1'
+	pod 'AeroGearOTP', '~> 2.0.0'
 end

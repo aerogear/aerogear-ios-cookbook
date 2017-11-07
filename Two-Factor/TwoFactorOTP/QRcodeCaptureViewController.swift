@@ -17,7 +17,7 @@
 
 import UIKit
 import AVFoundation
-import AeroGear_OTP
+import AeroGearOTP
 
 class QRcodeCaptureViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     // QRCode reader
