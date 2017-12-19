@@ -23,7 +23,6 @@ Each recipe is a complete iOS app. The goal of the recipes is to show you how ea
 | ------------- |:-------------:| :-----:|:-----:|:----:|
 | [Authentication](Authentication/README.md): login to [backend](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication) using basic/digest auth.| - | - | **basic/digest** |iOS9, iOS10, iOS11|
 | [ChuckNorrisJokes](ChuckNorrisJokes/README.md): Simple demo for http usage and serialization.| **http** | - | - |iOS9, iOS10, iOS11|
-| [Jedi](Jedi/README.md): websocket based synchronization based DiffMatchPatch algo.| **sync** | - | - |iOS9, iOS10, iOS11|
 | [Shoot](Shoot/README.md): oauth2 sharing photo, web-app to display photos.| http, **oauth2** | - | - |iOS9, iOS10, iOS11|
 | [SharedShoot](SharedShoot/README.md): login using OpenId Connect to download Shoot'nShare photos.| http, **oauth2** | - | - |iOS9, iOS10, iOS11|
 | [Weather](Weather/README.md): geo-loation based app to fetch information using http lib.| **http** | - | - |iOS9, iOS10, iOS11|
