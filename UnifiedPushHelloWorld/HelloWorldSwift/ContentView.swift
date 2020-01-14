@@ -19,7 +19,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var notificationListModel = ListViewModel()
-    var items = ["a1", "a2"]
     
     init() {
         UINavigationBar.appearance().backgroundColor = UIColor.orange
@@ -75,9 +74,6 @@ class ListViewModel: ObservableObject {
                 items.append(msg)
             }
         }
-        
-//        isRegistered = true
-//        tableView.reloadData()
     }
     
     @objc func errorRegistration() {
@@ -95,6 +91,5 @@ class ListViewModel: ObservableObject {
                 items.append(msg)
             }
         }
-        //tableView.reloadData()
     }
 }
